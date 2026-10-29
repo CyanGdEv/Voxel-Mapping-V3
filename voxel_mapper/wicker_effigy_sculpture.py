@@ -97,6 +97,7 @@ def sculpted_effigy(profile, e0, n0, offset):
             beam([(sign*5.0,face_sign*1.3,1),(sign*5.4,face_sign*1.5,5.5),
                   (sign*5.8,face_sign*1.3,9.6),(sign*5.0,face_sign*1.1,12.0)],wood='spruce')
 
+    shoulder_result=dict(result)
     # A short neck and continuous collar seat the head on the shoulders.
     for h in np.arange(11.3,13.4,.35):
         for u in np.arange(-1.4,1.41,.35):
@@ -156,6 +157,10 @@ def sculpted_effigy(profile, e0, n0, offset):
     # depth in the surrounding cheek planes instead of projecting door buttons.
     for sign in (-1,1):
         for u in (-1.2,1.2):put(hu+u,hv+sign*2.65,15.3,'dark_oak_slab_top')
+    if profile.get('head_mesh')=='half-block-contoured-opposing-faces-v1':
+        from .wicker_head_contours import contoured_head
+        result=shoulder_result
+        result.update(contoured_head(profile,e0,n0,offset))
     # Two shoulder emitters avoid the six overlapping smoke plumes of v5.
     for sign in (-1,1):
         put(sign*4.8,0,11.9,'spruce_planks')

@@ -57,7 +57,7 @@ class ReferenceScene:
         if self.manifest.get('version') != VERSION: raise ValueError('Pinned reference-world edit manifest required')
         self.profile = _json(self.asset('profile'))
         self.structure_profile = _json(self.asset('structure_profile')) if 'structure_profile' in self.manifest else None
-        if self.structure_profile and self.structure_profile.get('version') not in ('wicker-structural-reconstruction-v1','wicker-structural-reconstruction-v2','wicker-structural-reconstruction-v3'):
+        if self.structure_profile and self.structure_profile.get('version') not in ('wicker-structural-reconstruction-v1','wicker-structural-reconstruction-v2','wicker-structural-reconstruction-v3','wicker-structural-reconstruction-v4'):
             raise ValueError('Pinned structural reconstruction profile required')
         if self.structure_profile:self.l.wicker_sculpture_revision=self.structure_profile['version']
         if self.profile.get('version') != VERSION: raise ValueError('Explicit source-assisted world profile required')

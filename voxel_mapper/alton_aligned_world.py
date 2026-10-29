@@ -33,7 +33,7 @@ from .osm_provisional_alignment import osm_collection
 from .transport import transport_profile, TRANSPORT_KINDS
 from .wicker_registration import apply_candidate
 
-BUILD_VERSION = 'alton-aligned-world-v7'
+BUILD_VERSION = 'alton-aligned-world-v8'
 WICKER_AFFINE = [0.9998213909931154, 0.01889936804739159,
                  -0.018899368047391618, 0.9998213909931155,
                  407471.9211529803, 343471.93766571034]
@@ -688,6 +688,8 @@ def export(layers, output, verify=True):
         root['LevelName']=StringTag('Alton Towers — Wicker sculpture rework v6')
     if getattr(layers,'wicker_sculpture_revision',None)=='wicker-structural-reconstruction-v3':
         root['LevelName']=StringTag('Alton Towers — Wicker track interactions v7')
+    if getattr(layers,'wicker_sculpture_revision',None)=='wicker-structural-reconstruction-v4':
+        root['LevelName']=StringTag('Alton Towers — Wicker head and supports v8')
     root['GameType'], root['Difficulty'] = IntTag(1), IntTag(0)
     root['RandomSeed'], root['Time'] = LongTag(0), LongTag(6000)
     for key, value in zip(('SpawnX', 'SpawnY', 'SpawnZ'), layers.spawn): root[key] = IntTag(value)

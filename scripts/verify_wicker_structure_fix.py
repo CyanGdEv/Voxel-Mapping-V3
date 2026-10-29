@@ -25,11 +25,13 @@ def main():
     a=p.parse_args();out=Path(a.output)
     l=ParkLayers(a.work,a.wicker,a.surface_layers,a.reference_edits,a.lidar_detail)
     report=json.loads((out/'world-report.json').read_text())
-    interaction=getattr(l,'wicker_sculpture_revision',None)=='wicker-structural-reconstruction-v3'
-    revised=getattr(l,'wicker_sculpture_revision',None) in ('wicker-structural-reconstruction-v2','wicker-structural-reconstruction-v3')
-    release='v7' if interaction else 'v6' if revised else 'v5'
+    contoured=getattr(l,'wicker_sculpture_revision',None)=='wicker-structural-reconstruction-v4'
+    interaction=getattr(l,'wicker_sculpture_revision',None) in ('wicker-structural-reconstruction-v3','wicker-structural-reconstruction-v4')
+    revised=getattr(l,'wicker_sculpture_revision',None) in ('wicker-structural-reconstruction-v2','wicker-structural-reconstruction-v3','wicker-structural-reconstruction-v4')
+    release='v8' if contoured else 'v7' if interaction else 'v6' if revised else 'v5'
     expected_title='Alton Towers — Wicker sculpture rework v6' if revised else 'Alton Towers — Wicker structure fix v5'
     if interaction:expected_title='Alton Towers — Wicker track interactions v7'
+    if contoured:expected_title='Alton Towers — Wicker head and supports v8'
     manifest=json.loads(Path(a.reference_edits).read_text())
     structure=json.loads((Path(a.reference_edits).parent/manifest['structure_profile']).resolve().read_text())
     figure_set=set(map(tuple,l.reference_roles['big-bob']))
@@ -59,6 +61,8 @@ def main():
            ('Big Bob: human side',(641,670,-685,-657,147,169),-1),
            ('Support area near 673, 162, -664',(662,686,-679,-650,147,175),1)]
     if revised:cases=cases[:2]
+    if contoured:cases.extend([('Support area near 735,165,-671',(722,747,-691,-650,142,177),1),
+                               ('Support area near 680,162,-644',(670,699,-659,-628,142,175),1)])
     crops=[({}, {}) for _ in cases]
     perspective=({}, {})
     allowed=set()
@@ -66,7 +70,10 @@ def main():
         allowed|=l.track_interaction_allowed_changes|l.wicker_figure_proposal|set(l.ride_wood_source_cells)
         allowed|={(cx*16+x,y,cz*16+z) for (cx,cz),rows in l.ride_wood_clear.items() for x,y,z in rows}
     global_ids={};changed=leaf_removed=leaf_added=water_changes=outside_changes=surface_checks=air_checks=0
-    preserved=Counter();replaced_source_materials=Counter();figure=campfires=0;outside_examples=[];curl_centres=[];wide_space_geometry=0;portal_roofs=[];chunks=set(new.all_chunk_coords('minecraft:overworld'))
+    preserved=Counter();replaced_source_materials=Counter();figure=campfires=0;outside_examples=[];curl_centres=[];wide_space_geometry=0;portal_roofs=[];semantic_cleanup=0;chunks=set(new.all_chunk_coords('minecraft:overworld'))
+    candidates=defaultdict(list)
+    if contoured:
+        for x,y,z in l.ride_wood_candidate_cells:candidates[x//16,z//16].append((x%16,y,z%16))
     try:
         assert len(chunks)==9100 and chunks==set(old.all_chunk_coords('minecraft:overworld'))
         assert new.root_tag.compound['LevelName'].py_str==expected_title
@@ -100,7 +107,12 @@ def main():
             if interaction:
                 outside=np.zeros_like(delta)
                 for x,dy,z in np.argwhere(delta):
-                    if (cx*16+int(x),lo+int(dy),cz*16+int(z)) not in allowed:outside[x,dy,z]=True
+                    if (cx*16+int(x),lo+int(dy),cz*16+int(z)) not in allowed:
+                        was=ca.block_palette[int(arrays[0][x,dy,z])].base_name
+                        now=cb.block_palette[int(arrays[1][x,dy,z])].base_name
+                        inside=low[x,0,z]<=lo+dy<=high[x,0,z]
+                        if contoured and inside and was in ('leaves','log') and now=='air':semantic_cleanup+=1
+                        else:outside[x,dy,z]=True
             outside_changes+=int(outside.sum())
             if len(outside_examples)<10:
                 for x,dy,z in np.argwhere(outside)[:10-len(outside_examples)]:
@@ -117,6 +129,11 @@ def main():
                 surface_checks+=1
             for x,y,z,m in getattr(l,'ride_wood_fences',{}).get(key,()):
                 replaced_source_materials[ca.block_palette[int(ca.blocks[x,y,z])].base_name]+=1
+            for x,y,z in candidates[key]:
+                current=cb.block_palette[int(cb.blocks[x,y,z])]
+                assert current.base_name!='leaves',('remaining native support leaf',key,x,y,z,current)
+            if contoured:
+                for x,y,z,m in l.detail.get(key,()):assert not delta[x,y-lo,z],('v7 retained track/support/building changed',key,x,y,z,m)
             for role,x,y,z in roles[key]:
                 if role=='big-bob':figure+=1
                 else:
@@ -141,7 +158,7 @@ def main():
                             for y in range(y0,y1):
                                 block=chunk.block_palette[int(chunk.blocks[x%16,y,z%16])]
                                 if block.base_name!='air':canvas[x,y,z]=lookup.get(str(block),'stone')
-            if a.textures and 38<=cx<44 and -45<=cz<-39:
+            if a.textures and 38<=cx<(48 if contoured else 44) and -46<=cz<-38:
                 for chunk,canvas in ((ca,perspective[0]),(cb,perspective[1])):
                     for x in range(16):
                         for z in range(16):
@@ -170,10 +187,11 @@ def main():
         assert np.all(ids>0) and len(np.unique(ids))==1,('disconnected effigy',np.unique(ids,return_counts=True))
         if revised:
             import math
-            p=structure['big_bob'];front=np.asarray(p['front_bng_direction']);side=np.array([-front[1],front[0]])
+            p=structure['big_bob'];front=np.asarray(p.get('head_front_bng_direction',p['front_bng_direction']));side=np.array([-front[1],front[0]])
             for sign in (-1,1):
-                en=np.asarray(p['head_center_bng_en'])+sign*3.5*side
-                x,y,z=math.floor(en[0]-l.e0),math.floor(p['base_odn_m']+15.3+l.offset),math.floor(l.n0-en[1])
+                u,v,h=p['contoured_head']['horn_opening_test_u_v_h'] if contoured else (3.5,0,15.3)
+                en=np.asarray(p['head_center_bng_en'])+sign*u*side+v*front
+                x,y,z=math.floor(en[0]-l.e0),math.floor(p['base_odn_m']+h+l.offset),math.floor(l.n0-en[1])
                 chunk=new.load_chunk(x//16,z//16,'minecraft:overworld')
                 assert chunk.block_palette[int(chunk.blocks[x%16,y,z%16])].base_name=='air',('closed native curl',x,y,z)
                 curl_centres.append([x,y,z])
@@ -214,7 +232,24 @@ def main():
                         'actual_native_ceiling_odn_m':ceiling-l.offset,'clear_height_m':ceiling-run})
     finally:old.close();new.close();baseline.cleanup()
     assert water_changes==0 and outside_changes==0,(water_changes,outside_changes,outside_examples)
-    assert figure>500,figure
+    if contoured:
+        # Fewer cubes can give a better contour. Check the actually saved head
+        # surface and its complete owned materials instead of a cube-count goal.
+        p=structure['big_bob'];head_cells=[k for k in figure_set if k[1]>=p['base_odn_m']+13.5+l.offset]
+        assert len(head_cells)>60,('incomplete native contoured head',len(head_cells))
+        from voxel_mapper.wicker_head_contours import contoured_head
+        owned=contoured_head(p,l.e0,l.n0,l.offset)
+        points=np.array([k for k,m in owned.items() if k in figure_set and not m.startswith('dark_oak')])
+        front=np.asarray(p['head_front_bng_direction']);side=np.array([-front[1],front[0]])
+        en=np.column_stack([points[:,0]+l.e0+.5,l.n0-points[:,2]-.5])-p['head_center_bng_en']
+        across,depth=en@side,en@front;crest=points[:,1]==points[:,1].max();cheeks=points[:,1]==int(p['base_odn_m']+15+l.offset)
+        assert np.ptp(across[crest])<np.ptp(across[cheeks]),'Native crown does not taper above the cheeks'
+        lower=(points[:,1]<=int(p['base_odn_m']+13+l.offset));upper=(points[:,1]>=int(p['base_odn_m']+15+l.offset))
+        assert depth[lower].max()>depth[upper].max()+.3,'Native ram muzzle does not project down and forward'
+        head_shape_checks={'saved_head_cells':len(head_cells),'crown_cell_centre_span_m':float(np.ptp(across[crest])),
+            'cheek_cell_centre_span_m':float(np.ptp(across[cheeks])),
+            'lower_muzzle_cell_centre_projection_m':float(depth[lower].max()),'upper_face_cell_centre_projection_m':float(depth[upper].max())}
+    else:assert figure>500,figure
     if revised:assert leaf_added==0,('foliage correction regressed',leaf_added)
     else:assert leaf_removed>500,leaf_removed
     assert campfires==(2 if revised else 6),('missing shoulder emitters',campfires)
@@ -241,7 +276,7 @@ def main():
         for i,view in enumerate(viewpoints):
             eye=np.asarray(view['feet_xyz'])+[0,1.62,0]
             for j,canvas in enumerate(perspective):
-                name='v6 baseline' if j==0 and interaction else 'v5 baseline' if j==0 and revised else 'baseline' if j==0 else release
+                name='v7 baseline' if j==0 and contoured else 'v6 baseline' if j==0 and interaction else 'v5 baseline' if j==0 and revised else 'baseline' if j==0 else release
                 label=name+' | feet '+str(view['feet_xyz'])+' | saved-block diagnostic view'
                 rendered=render(canvas,eye,view['target_xyz'],a.textures,size=(960,540),horizontal_fov=80,label=label)
                 views.paste(rendered,(j*960,i*565))
@@ -249,7 +284,19 @@ def main():
         ImageDraw.Draw(views).text((10,len(viewpoints)*565+5),
             'Vanilla texture inputs, approximate camera aim, diagnostic lighting. No client particles/shaders. Not Minecraft screenshots.',fill='black')
         views.save(out/f'Wicker-Man-{release}-Viewpoint-Comparison.png')
-    validation={'version':'wicker-track-interactions-v7' if interaction else 'wicker-sculpture-rework-v2' if revised else 'wicker-structure-fix-v1','status':'passed','tests_passed':a.tests_passed,
+        if contoured:
+            p=structure['big_bob'];centre=np.array([p['head_center_bng_en'][0]-l.e0,p['base_odn_m']+15+l.offset,l.n0-p['head_center_bng_en'][1]])
+            front=np.array([p['head_front_bng_direction'][0],0,-p['head_front_bng_direction'][1]]);side=np.cross(front,[0,1,0])
+            closeups=[('Marked plaza side',centre-front*14+[0,1,0]),('Opposite side',centre+front*14),('Side profile',centre+side*15+[0,.5,0])]
+            close=Image.new('RGB',(1400,len(closeups)*535+30),'#e7e6df')
+            for i,(label,eye) in enumerate(closeups):
+                for j,canvas in enumerate(perspective):
+                    head={k:m for k,m in canvas.items() if k[1]>=159 and np.linalg.norm(np.asarray(k)[[0,2]]-centre[[0,2]])<=9}
+                    close.paste(render(head,eye,centre,a.textures,size=(700,520),horizontal_fov=50,
+                        label=label+(' | v7' if j==0 else ' | v8')+' | saved native blocks'),(j*700,i*535))
+            ImageDraw.Draw(close).text((10,len(closeups)*535+5),'Diagnostic geometry render; approximate camera and lighting, not Minecraft client screenshots.',fill='black')
+            close.save(out/'Wicker-Man-v8-Head-Comparison.png')
+    validation={'version':'wicker-head-supports-v8' if contoured else 'wicker-track-interactions-v7' if interaction else 'wicker-sculpture-rework-v2' if revised else 'wicker-structure-fix-v1','status':'passed','tests_passed':a.tests_passed,
         'baseline_archive_sha256':file_hash(a.baseline),'native_full_export':report['native_world']['round_trip'],
         'compared_world_chunks':len(chunks),'changed_native_block_states':changed,'foliage_blocks_removed':leaf_removed,
         'foliage_blocks_added':leaf_added,
@@ -274,8 +321,17 @@ def main():
             native_changes_outside_declared_edit_cells=outside_changes,reserved_space_cells_inspected=air_checks,
             retained_geometry_cells_in_wide_openings=wide_space_geometry,actual_native_portal_ceilings=portal_roofs,
             change_scope='Exact 3-D track/support revision, figure/opening proposals and two-block source-foliage cells')
+    if contoured:
+        validation.update(all_v7_retained_track_support_building_cells_unchanged=True,
+            remaining_native_leaves_at_two_block_deck_or_member_candidates=0,
+            additional_capped_figure_vegetation_cleanup_cells=semantic_cleanup,
+            head_pose={'centre_bng_en':structure['big_bob']['head_center_bng_en'],
+                      'ram_front_bng_direction':structure['big_bob']['head_front_bng_direction'],
+                      'authority':structure['big_bob']['head_pose_authority']},
+            native_head_shape_checks=head_shape_checks,
+            change_scope='Figure/opening proposals, two-block deck/member source foliage cells and capped figure foliage/trunk cleanup')
     atomic_json(out/'validation.json',validation)
-    evidence='wicker-track-interactions-v7-validation.json' if interaction else 'wicker-sculpture-rework-v6-validation.json' if revised else 'wicker-structure-fix-validation.json'
+    evidence='wicker-head-supports-v8-validation.json' if contoured else 'wicker-track-interactions-v7-validation.json' if interaction else 'wicker-sculpture-rework-v6-validation.json' if revised else 'wicker-structure-fix-validation.json'
     atomic_json(Path(__file__).resolve().parents[1]/'evidence'/evidence,validation)
     print(json.dumps({k:v for k,v in validation.items() if k in ('status','changed_native_block_states','foliage_blocks_removed','big_bob_native_blocks_verified','above_ground_changes_outside_structural_columns','native_changes_outside_declared_edit_cells')}),flush=True)
 

@@ -1,0 +1,41 @@
+{
+  "bays": 566,
+  "columns": 1334,
+  "crossing_tracks_joined_by_xy": false,
+  "interpretation": "Only adjacent brown-footing-to-assigned-track bays, capped below both deck undersides; no global footprint hull.",
+  "limitation": "This checks bounded adjacent-footing bays below their deck undersides; it does not label all nearby canopy as timber or prove survey completeness.",
+  "maximum_adjacent_footing_gap_m": 5,
+  "maximum_adjacent_station_gap_m": 3,
+  "native_cells_checked": 12884,
+  "native_chunks_checked": 33,
+  "native_material_counts": {
+    "air": 3603,
+    "cobblestone": 10,
+    "concrete": 29,
+    "dirt": 2184,
+    "fence": 2984,
+    "granite": 2,
+    "grass_block": 1141,
+    "mud_bricks": 15,
+    "planks": 65,
+    "stairs": 28,
+    "stone": 2745,
+    "stone_bricks": 62,
+    "terracotta": 8,
+    "trapdoor": 4,
+    "wool": 4
+  },
+  "registered_cap_grid_sha256": "9679bc72683b767fac5abd3843b9159908595b60a5f4b083ba7d8aef877eea74",
+  "remaining_native_leaves_inside_capped_registered_bays": 0,
+  "retained_support_report_sha256": "dbdcdb142f3a61bb91f3d683afe5f323527dede35bf84306d1b0d1a08c75a29c",
+  "source_feet_and_track_assignments_relocated": false,
+  "source_to_exported_voxel_row_offset": 1,
+  "status": "passed",
+  "version": "registered-wicker-support-bays-v1",
+  "withheld_pairs": {
+    "degenerate_or_crossed_bay": 664,
+    "footing_gap": 6,
+    "station_gap": 147
+  },
+  "world_geometry_modified": false
+}
