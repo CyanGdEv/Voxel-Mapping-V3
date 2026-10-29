@@ -1,0 +1,80 @@
+{
+  "final_source_replay": {
+    "appearance_audit_exact": true,
+    "clean_rgb_exact": true,
+    "layered_dataset_id": "5cb307c1a5dab47f0f754065966db5bbde20acbf87d2bfdbf1489ac7f1744fac",
+    "layered_dataset_sha256": "586280da3d8c01049ce8ab36462d40c8d9d0412724d2cd50d8e438dccaed1eef",
+    "mosaic_audit_exact": true,
+    "neural_predictions_used": false,
+    "physical_registration_verified": false,
+    "source_ground_masks": [
+      {
+        "id": "user-towers-mutiny",
+        "image_sha256": "8638a0e9cc9f88e383668492eb78907da85ebbec6411c1e6897c80bb5f2c5a6a",
+        "mask_sha256": "b19286f0a3df9ca443e774078d8289f1c0ee69e99456c2876e04487bec16ff19",
+        "retained_source_mask_exact": true
+      },
+      {
+        "id": "user-gardens-lake",
+        "image_sha256": "ec3efec3a6e8464b6aa7dd816e76d8478523620deb38ce7bf7c5d8ee5233e219",
+        "mask_sha256": "2404e038a5eeb8adedd225e78e9c610f15e462dfe0e86f8c1156db430f84ef5c",
+        "retained_source_mask_exact": true
+      },
+      {
+        "id": "user-tight-gardens",
+        "image_sha256": "429f1847aaa11114de368302cb728e71797cb751fef1a3b3678655fca17f9309",
+        "mask_sha256": "e76b6080d401eada2565ea101176718f2b0daaf8756ee646eb866c283fda6457",
+        "retained_source_mask_exact": true
+      }
+    ]
+  },
+  "geometry_checks": {
+    "cleared_paving_for_grass_cells": 236,
+    "conflicting_source_cells_unchanged": 26,
+    "explicit_nonpaving_island_cells": 900,
+    "explicit_nonpaving_islands": 4,
+    "grass_clearance_reversed_by_image_infill": 0,
+    "guide_added_paving_cells": 2205,
+    "guide_added_paving_in_building_water_protected_detail_or_classified_roof": 0,
+    "guide_added_paving_in_explicit_island_exclusions": 0,
+    "guide_added_paving_in_green_rgb_vegetation": 0,
+    "mapped_water_audit_unchanged": true,
+    "retained_wicker_detail_audit_unchanged": true,
+    "source_paving_cells_screened_by_green_rgb": 1873
+  },
+  "limitations": [
+    "Partial source-assisted draft masks, not independently reviewed truth.",
+    "No new ride tracks or structure footprints inferred from sparse dots.",
+    "Native readback and archive integrity do not establish Minecraft client import or visual fidelity."
+  ],
+  "model_weights_modified": false,
+  "native_readback": {
+    "all_materials_and_states_exact": true,
+    "chunks": 9100,
+    "compared_envelope_cells": 53073408,
+    "composition_sha256": "831e35f09d9fbc450fefb50edf40e7de88abf5bef78a326c6638ee010a4c6609",
+    "metadata_checked": true,
+    "minecraft_client_tested": false,
+    "occupied_blocks": 19156496,
+    "spawn_floor_and_four_air_cells_checked": true,
+    "spawn_x_y_z": [
+      418,
+      154,
+      -787
+    ],
+    "unwritten_section_air_checked": true
+  },
+  "status": "passed",
+  "tests": {
+    "suites": {
+      "alton_aligned_world": 4,
+      "appearance_palettes": 5,
+      "bedrock_auto": 8,
+      "transport": 8,
+      "world_surface_layers": 9
+    },
+    "unique_tests_passed": 34
+  },
+  "version": "alton-world-surface-update-validation-v1",
+  "zip_crc": "passed"
+}
