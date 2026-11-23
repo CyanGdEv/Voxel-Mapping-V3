@@ -1,0 +1,69 @@
+{
+  "park": "Alton Towers",
+  "output_directory": "D:/Voxel/Alton_Towers_ArcGIS_Bundle",
+  "surface_resolution_m": 1.0,
+  "vertical_datum": "ODN",
+  "ground_returns_verified": true,
+  "area_of_interest": "D:/GIS/Alton_Towers.gdb/ParkBoundary",
+  "sources": [
+    {
+      "id": "lidar-source",
+      "type": "lidar",
+      "provider": "Replace with actual provider",
+      "url": "https://example.org/replace-with-source-record",
+      "license": "Replace with actual license",
+      "observed_date": "2024-06-01"
+    },
+    {
+      "id": "imagery-source",
+      "type": "aerial",
+      "provider": "Replace with actual imagery provider",
+      "url": "https://example.org/replace-with-imagery-record",
+      "license": "Replace with actual license",
+      "observed_date": "2024-06-01"
+    },
+    {
+      "id": "planning-source",
+      "type": "planning",
+      "provider": "Replace with actual planning authority",
+      "url": "https://example.org/replace-with-planning-record",
+      "license": "Replace with actual license",
+      "observed_date": "2024-06-01"
+    }
+  ],
+  "inputs": {
+    "classified_lidar": {
+      "path": "D:/GIS/Alton_Towers.lasd",
+      "source_id": "lidar-source",
+      "horizontal_accuracy_m": 0.5,
+      "vertical_accuracy_m": 0.25,
+      "observed_date": "2024-06-01"
+    },
+    "surface_labels": {
+      "path": "D:/GIS/Alton_Towers.gdb/ReviewedSurfaceLabels",
+      "source_id": "imagery-source",
+      "class_codes": [1, 6, 7, 8, 9, 255],
+      "labels_reviewed": true,
+      "resolution_m": 0.25,
+      "horizontal_accuracy_m": 0.5,
+      "observed_date": "2024-06-01"
+    },
+    "path_polygons": {
+      "path": "D:/GIS/Alton_Towers.gdb/ReviewedPaths",
+      "source_id": "planning-source",
+      "evidence_type": "planning",
+      "horizontal_accuracy_m": 1.0,
+      "observed_date": "2024-06-01",
+      "width_field": "width_m"
+    },
+    "building_footprints": {
+      "path": "D:/GIS/Alton_Towers.gdb/ReviewedBuildings",
+      "source_id": "planning-source",
+      "evidence_type": "planning",
+      "horizontal_accuracy_m": 1.0,
+      "observed_date": "2024-06-01",
+      "height_field": "height_m",
+      "base_elevation_field": "base_elevation_m"
+    }
+  }
+}
