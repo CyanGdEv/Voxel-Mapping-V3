@@ -7,8 +7,8 @@
     "training_domain": "international_theme_park",
     "coverage_status": {
       "osm": "available_on_run; completeness_not_verified",
-      "lidar": "regional_Orange_County_project_documented; exact_AOI_tiles_unverified",
-      "aerial_imagery": "USDA_NAIP_is_a_free_public_domain_candidate; Florida_acquisition_year_and_tile_coverage_unverified"
+      "lidar": "four_USGS_Orange_County_2018_project_LAZ_tiles_intersect_the_AOI",
+      "aerial_imagery": "one_USDA_NAIP_2021_22_quarter_quad_tile_intersects_the_AOI"
     }
   },
   "bbox": [-81.5900, 28.4100, -81.5700, 28.4250],
@@ -31,8 +31,8 @@
       "provider": "USDA Farm Service Agency / FPAC Business Center",
       "url": "https://www.fpacbc.usda.gov/geospatial-services/customer-services/naip-coverage-map",
       "license": "Public domain",
-      "coverage_status": "Florida tile year, resolution and exact AOI coverage must be checked against USDA coverage index",
-      "role": "candidate RGB/CIR imagery for reviewed semantic and surface labels; imagery date and resolution must be recorded"
+      "coverage_status": "one intersecting quarter-quad confirmed in the USDA Florida 2021-22 coverage index",
+      "role": "candidate RGB/CIR imagery for reviewed semantic and surface labels; tile metadata and imagery date retained below"
     },
     {
       "id": "usgs-3dep-fl-peninsular-2018-orange",
@@ -41,10 +41,74 @@
       "url": "https://rockyweb.usgs.gov/vdelivery/Datasets/Staged/Elevation/metadata/FL_Peninsular_FDEM_2018_D19_DRRA/FL_Peninsular_FDEM_Orange_2018/reports/Orange_County_Report_USGS.pdf",
       "license": "Public domain; free of charge and without use restrictions",
       "access": "Download via USGS The National Map public-data service",
-      "coverage_status": "Orange County project reported; intersect its official tile footprint with this AOI before use",
+      "coverage_status": "four intersecting LAZ products confirmed using the TNM Access API",
       "role": "optional terrain and classified point-cloud evidence; not a paving-material label source"
     }
   ],
+  "coverage_verification": {
+    "checked_utc_date": "2026-11-23",
+    "aoi_bbox_wgs84": [-81.5900, 28.4100, -81.5700, 28.4250],
+    "naip": {
+      "coverage_index": "https://www.fpacbc.usda.gov/sites/default/files/2024-10/fl_naip21qq-1.zip",
+      "coverage_index_description": "USDA NAIP quarter-quad coverage map; Florida 2021-22 index",
+      "intersecting_feature_count": 1,
+      "tile_id": "m_2808136_sw_17_060_20211201_20220330.tif",
+      "quadrangle": "WINDERMERE SW",
+      "state": "FL",
+      "nominal_gsd_m": 0.6,
+      "acquisition_window_from_tile_id": ["2021-12-01", "2022-03-30"],
+      "spectral_bands": 4,
+      "imagery_catalog": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2021_CONUS/ImageServer"
+    },
+    "lidar": {
+      "query_api": "https://tnmaccess.nationalmap.gov/api/v1/products",
+      "query_parameters": {
+        "bbox": "-81.59,28.41,-81.57,28.425",
+        "datasets": "Lidar Point Cloud (LPC)",
+        "prodFormats": "LAZ",
+        "max": 100
+      },
+      "project": "FL_Peninsular_FDEM_2018_D19_DRRA / Orange County",
+      "intersecting_product_count": 4,
+      "sum_download_size_bytes": 1053165897,
+      "products": [
+        {
+          "tile_id": "LID2019_260760_E",
+          "url": "https://rockyweb.usgs.gov/vdelivery/Datasets/Staged/Elevation/LPC/Projects/FL_Peninsular_FDEM_2018_D19_DRRA/FL_Peninsular_FDEM_Orange_2018/LAZ/USGS_LPC_FL_Peninsular_FDEM_2018_D19_DRRA_LID2019_260760_E.laz",
+          "size_bytes": 317403535,
+          "bbox_wgs84": [-81.5947953916, 28.4175920482, -81.5791643388, 28.4314103550],
+          "metadata_url": "https://www.sciencebase.gov/catalog/item/607fc2dcd34e8564d6830873"
+        },
+        {
+          "tile_id": "LID2019_260761_E",
+          "url": "https://rockyweb.usgs.gov/vdelivery/Datasets/Staged/Elevation/LPC/Projects/FL_Peninsular_FDEM_2018_D19_DRRA/FL_Peninsular_FDEM_Orange_2018/LAZ/USGS_LPC_FL_Peninsular_FDEM_2018_D19_DRRA_LID2019_260761_E.laz",
+          "size_bytes": 261864516,
+          "bbox_wgs84": [-81.5792390980, 28.4176590897, -81.5636099094, 28.4314756577],
+          "metadata_url": "https://www.sciencebase.gov/catalog/item/607fc2d9d34e8564d6830868"
+        },
+        {
+          "tile_id": "LID2019_261060_E",
+          "url": "https://rockyweb.usgs.gov/vdelivery/Datasets/Staged/Elevation/LPC/Projects/FL_Peninsular_FDEM_2018_D19_DRRA/FL_Peninsular_FDEM_Orange_2018/LAZ/USGS_LPC_FL_Peninsular_FDEM_2018_D19_DRRA_LID2019_261060_E.laz",
+          "size_bytes": 243775061,
+          "bbox_wgs84": [-81.5947185287, 28.4038406278, -81.5790894447, 28.4176590072],
+          "metadata_url": "https://www.sciencebase.gov/catalog/item/607fc244d34e8564d68306eb"
+        },
+        {
+          "tile_id": "LID2019_261061_E",
+          "url": "https://rockyweb.usgs.gov/vdelivery/Datasets/Staged/Elevation/LPC/Projects/FL_Peninsular_FDEM_2018_D19_DRRA/FL_Peninsular_FDEM_Orange_2018/LAZ/USGS_LPC_FL_Peninsular_FDEM_2018_D19_DRRA_LID2019_261061_E.laz",
+          "size_bytes": 230122785,
+          "bbox_wgs84": [-81.5791642451, 28.4039076311, -81.5635371172, 28.4177242722],
+          "metadata_url": "https://www.sciencebase.gov/catalog/item/607fc242d34e8564d68306e1"
+        }
+      ],
+      "download_strategy": "Crop tiles to the park AOI before storing derivative training inputs; full source downloads total about 1.05 GB."
+    },
+    "limitations": [
+      "Coverage is bbox intersection, not confirmation of every park feature or current on-ground conditions.",
+      "NAIP captures are from 2021-22 and may predate park changes.",
+      "LiDAR tile acquisition classification, point spacing, and vertical datum must be read from per-product metadata before reconstruction."
+    ]
+  },
   "training_profile": {
     "schema": "voxel-park-training-v1",
     "ground_surface_classes": {
