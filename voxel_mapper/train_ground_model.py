@@ -201,7 +201,6 @@ def train(args: argparse.Namespace) -> dict:
     )
     if not valid_samples:
         raise ValueError("validation split is empty")
-    class_count = max(max(label_map), args.num_classes - 1) + 1
     if max(label_map) >= args.num_classes:
         raise ValueError("--num-classes must be greater than the largest label ID")
 
@@ -286,7 +285,7 @@ def train(args: argparse.Namespace) -> dict:
                             matrix += np.bincount(pairs, minlength=args.num_classes**2).reshape(args.num_classes, args.num_classes)
         return matrix
 
-    best_loss = float("inf")
+    best_validation_accuracy = -1.0
     history = []
     for epoch in range(1, args.epochs + 1):
         model.train()
@@ -296,6 +295,8 @@ def train(args: argparse.Namespace) -> dict:
         for start in range(0, len(order), args.batch_size):
             batch = [train_samples[i] for i in order[start:start + args.batch_size]]
             xb, yb = to_batch(batch, True)
+            if not torch.any(yb != IGNORE):
+                continue
             optimizer.zero_grad(set_to_none=True)
             logits = model(xb)
             loss = loss_fn(logits, yb)
@@ -320,8 +321,8 @@ def train(args: argparse.Namespace) -> dict:
         }
         history.append(record)
         # Without reviewed validation pixels, do not select a checkpoint.
-        if valid_pixels and train_loss_sum / max(steps, 1) < best_loss:
-            best_loss = train_loss_sum / max(steps, 1)
+        if valid_pixels and pixel_accuracy is not None and pixel_accuracy > best_validation_accuracy:
+            best_validation_accuracy = pixel_accuracy
             torch.save({"state_dict": model.state_dict(), "num_classes": args.num_classes,
                         "class_map": label_map, "input_channels": 3}, args.output / "model.pt")
 
