@@ -101,7 +101,8 @@ def _read_samples(dataset_path: Path) -> tuple[list[Sample], dict, dict]:
             if invalid:
                 raise ValueError(f"{dataset_path}: sample has labels absent from label_map: {invalid}")
             park_id = str(record.get("park_id") or park_default)
-            group = str(record.get("split_group") or record.get("source_group") or\n                        manifest.get("source_tile") or record.get("sample_id") or index)
+            group = str(record.get("split_group") or record.get("source_group") or
+                        manifest.get("source_tile") or record.get("sample_id") or index)
             sample_id = str(record.get("sample_id") or f"{dataset_path.stem}:{index}")
             samples.append(Sample(sample_id, park_id, group, rgb, labels))
     return samples, label_map, {
@@ -155,6 +156,11 @@ def _tile(rgb: np.ndarray, labels: np.ndarray, size: int, training: bool) -> tup
     if training:
         top = random.randint(0, height - size)
         left = random.randint(0, width - size)
+        if not np.any(labels[top:top + size, left:left + size] != IGNORE):
+            valid_y, valid_x = np.where(labels != IGNORE)
+            chosen = random.randrange(len(valid_y))
+            top = min(max(0, int(valid_y[chosen]) - random.randrange(size)), height - size)
+            left = min(max(0, int(valid_x[chosen]) - random.randrange(size)), width - size)
     else:
         top = max(0, (height - size) // 2)
         left = max(0, (width - size) // 2)
@@ -313,6 +319,8 @@ def train(args: argparse.Namespace) -> dict:
             pixel_accuracy = float(cm.trace() / valid_pixels)
         else:
             pixel_accuracy = None
+        if steps == 0:
+            raise ValueError("training yielded no labelled patches; verify the masks and split")
         record = {
             "epoch": epoch,
             "train_loss": train_loss_sum / max(steps, 1),
@@ -326,6 +334,12 @@ def train(args: argparse.Namespace) -> dict:
             torch.save({"state_dict": model.state_dict(), "num_classes": args.num_classes,
                         "class_map": label_map, "input_channels": 3}, args.output / "model.pt")
 
+    checkpoint = args.output / "model.pt"
+    best_metric = None
+    if checkpoint.exists():
+        saved = torch.load(checkpoint, map_location=device, weights_only=False)
+        model.load_state_dict(saved["state_dict"])
+        best_metric = best_validation_accuracy
     final_cm = confusion_for(valid_samples)
     per_class = {}
     for class_id, name in sorted(label_map.items()):
@@ -346,7 +360,8 @@ def train(args: argparse.Namespace) -> dict:
         "validation_samples": len(valid_samples),
         "sources": source_reports,
         "training": {"epochs": args.epochs, "batch_size": args.batch_size,
-                     "patch_size": args.patch_size, "learning_rate": args.learning_rate},
+                     "patch_size": args.patch_size, "learning_rate": args.learning_rate,
+                     "best_validation_pixel_accuracy": best_metric},
         "history": history,
         "validation_confusion_matrix": final_cm.tolist(),
         "per_class": per_class,
