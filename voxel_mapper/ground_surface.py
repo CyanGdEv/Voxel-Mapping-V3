@@ -16,7 +16,7 @@ import math
 
 IGNORE = 255
 SURFACE_CLASSES = {
-    1: "healthy_grass",
+    1: "grass_unspecified",
     2: "worn_grass",
     3: "dry_soil",
     4: "mud",
@@ -24,14 +24,15 @@ SURFACE_CLASSES = {
     6: "stone_paving",
     7: "brick_paving",
     8: "asphalt",
-    9: "unknown_ground",
+    9: "paving_unspecified",
+    10: "unknown_ground",
     IGNORE: "ignore_unlabelled",
 }
 
 # Suggested Minecraft material targets. Keeping this table separate from
 # classification allows a park palette to change without relabelling imagery.
 DEFAULT_BLOCKS = {
-    "healthy_grass": "minecraft:grass_block",
+    "grass_unspecified": "minecraft:grass_block",
     "worn_grass": "minecraft:coarse_dirt",
     "dry_soil": "minecraft:dirt",
     "mud": "minecraft:mud",
@@ -127,7 +128,7 @@ def validate_label_codes(labels: Iterable[int]) -> dict[str, object]:
             raise ValueError(f"unknown ground-surface label code: {value}")
         counts[value] += 1
     present = {code for code, count in counts.items() if count and code != IGNORE}
-    required = set(SURFACE_CLASSES) - {IGNORE, 9}
+    required = set(SURFACE_CLASSES) - {IGNORE, 10}
     return {
         "class_counts": {str(code): counts.get(code, 0) for code in SURFACE_CLASSES},
         "missing_reviewed_classes": [SURFACE_CLASSES[code] for code in sorted(required - present)],
