@@ -277,12 +277,18 @@ def train(args: argparse.Namespace) -> dict:
         with torch.no_grad():
             for sample in items:
                 h, w = sample.labels.shape
-                # Evaluate non-overlapping patches over the complete sample.
+                # Keep edge pixels at their original scale. Pad RGB by repeating
+                # edge pixels and ignore-pad labels so padding never enters metrics.
                 for y in range(0, h, args.patch_size):
                     for x in range(0, w, args.patch_size):
                         rgb = sample.image[y:y + args.patch_size, x:x + args.patch_size]
                         mask = sample.labels[y:y + args.patch_size, x:x + args.patch_size]
-                        rgb, mask = _tile(rgb, mask, args.patch_size, False)
+                        pad_h = args.patch_size - rgb.shape[0]
+                        pad_w = args.patch_size - rgb.shape[1]
+                        if pad_h or pad_w:
+                            rgb = np.pad(rgb, ((0, pad_h), (0, pad_w), (0, 0)), mode="edge")
+                            mask = np.pad(mask, ((0, pad_h), (0, pad_w)), mode="constant",
+                                          constant_values=IGNORE)
                         xb = torch.from_numpy(rgb.copy()).permute(2, 0, 1).float().unsqueeze(0).to(device) / 255.0
                         pred = model(xb).argmax(1).squeeze(0).cpu().numpy()
                         valid = mask != IGNORE
@@ -291,7 +297,7 @@ def train(args: argparse.Namespace) -> dict:
                             matrix += np.bincount(pairs, minlength=args.num_classes**2).reshape(args.num_classes, args.num_classes)
         return matrix
 
-    best_validation_accuracy = -1.0
+    best_validation_mean_iou = -1.0
     history = []
     for epoch in range(1, args.epochs + 1):
         model.train()
@@ -314,11 +320,14 @@ def train(args: argparse.Namespace) -> dict:
         valid_pixels = int(cm.sum())
         valid_loss = None
         if valid_pixels:
-            # Confusion-based pixel accuracy is reported; validation loss is
-            # intentionally omitted because each sample is evaluated in tiles.
             pixel_accuracy = float(cm.trace() / valid_pixels)
+            intersections = np.diag(cm).astype(np.float64)
+            unions = cm.sum(axis=0) + cm.sum(axis=1) - intersections
+            defined = unions > 0
+            mean_iou = float(np.mean(intersections[defined] / unions[defined])) if np.any(defined) else None
         else:
             pixel_accuracy = None
+            mean_iou = None
         if steps == 0:
             raise ValueError("training yielded no labelled patches; verify the masks and split")
         record = {
@@ -326,11 +335,12 @@ def train(args: argparse.Namespace) -> dict:
             "train_loss": train_loss_sum / max(steps, 1),
             "validation_labelled_pixels": valid_pixels,
             "validation_pixel_accuracy": pixel_accuracy,
+            "validation_mean_iou": mean_iou,
         }
         history.append(record)
         # Without reviewed validation pixels, do not select a checkpoint.
-        if valid_pixels and pixel_accuracy is not None and pixel_accuracy > best_validation_accuracy:
-            best_validation_accuracy = pixel_accuracy
+        if valid_pixels and mean_iou is not None and mean_iou > best_validation_mean_iou:
+            best_validation_mean_iou = mean_iou
             torch.save({"state_dict": model.state_dict(), "num_classes": args.num_classes,
                         "class_map": label_map, "input_channels": 3}, args.output / "model.pt")
 
@@ -362,6 +372,7 @@ def train(args: argparse.Namespace) -> dict:
         "sources": source_reports,
         "training": {"epochs": args.epochs, "batch_size": args.batch_size,
                      "patch_size": args.patch_size, "learning_rate": args.learning_rate,
+                     "best_validation_mean_iou": best_validation_mean_iou if best_metric is not None else None,
                      "best_validation_pixel_accuracy": best_metric},
         "history": history,
         "validation_confusion_matrix": final_cm.tolist(),
