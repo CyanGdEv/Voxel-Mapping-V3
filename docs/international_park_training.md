@@ -20,11 +20,11 @@ The shared classes are a schema, not training examples. The current Alton Towers
 
 ### Verified free coverage
 
-The AOI was intersected against the USDA Florida 2021-22 NAIP quarter-quad index: one tile intersects, `m_2808136_sw_17_060_20211201_20220330.tif` (Windermere SW, nominal 0.6 m GSD, four bands, acquisition window encoded in the tile ID). The tile is linked in the profile and can be clipped to the pilot AOI before use. USDA NAIP imagery is public domain.
+The AOI was intersected against the USDA Florida 2021-22 NAIP quarter-quad index: one tile intersects, `m_2808136_sw_17_060_20211201_20220330.tif` (Windermere SW, nominal 0.6 m GSD, four bands, acquisition window encoded in the tile ID). The tile is linked in the profile. A 3,200 × 2,700 four-band crop has been prepared from the free public image service at about 0.619 m per pixel in EPSG:32617, and is included in the label-starter package. USDA NAIP imagery is public domain.
 
 The AOI was also queried against the USGS TNM Access API for LAZ LiDAR Point Cloud products. Four Orange County tiles from the Florida Peninsular 2018 project intersect: `LID2019_260760_E`, `LID2019_260761_E`, `LID2019_261060_E`, and `LID2019_261061_E`. Their full source files total about 1.05 GB; crop them to the park AOI before keeping training derivatives. The metadata and direct public download URLs are recorded in the profile. Check acquisition details, classification, point spacing, horizontal CRS and vertical datum from the product metadata before converting the points to geometry.
 
-These are coverage intersections, not proof that every park feature is captured. NAIP is from 2021-22 and may predate changes at the resort. LiDAR helps with terrain and structure/vegetation geometry, but cannot identify paving material by itself. No tiles have been downloaded into the training corpus and no Magic Kingdom labels exist yet.
+These are coverage intersections, not proof that every park feature is captured. NAIP is from 2021-22 and may predate changes at the resort. LiDAR helps with terrain and structure/vegetation geometry, but cannot identify paving material by itself. The clipped crop is a source starter only: its aligned ground-surface mask is all ignore (255), and there are no reviewed Magic Kingdom labels yet.
 
 The `ground_surface_classes` map follows the existing ground-label vocabulary and IDs. Broader scene categories live in `semantic_feature_classes` and require their own reviewed masks/labels; they are not mixed into that ground-material mask.
 
