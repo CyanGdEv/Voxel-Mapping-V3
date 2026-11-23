@@ -118,10 +118,15 @@ def validate(root: Path, manifest_path: Path) -> dict[str, Any]:
             if not isinstance(codes, list) or not codes:
                 _error(errors, f"{prefix}.class_codes is required for a surface_labels raster")
             else:
-                invalid = sorted({int(c) for c in codes} - set(SURFACE_CODES))
+                try:
+                    numeric_codes = {int(c) for c in codes}
+                except (TypeError, ValueError):
+                    _error(errors, f"{prefix}.class_codes must contain integer codes")
+                    numeric_codes = set()
+                invalid = sorted(numeric_codes - set(SURFACE_CODES))
                 if invalid:
                     _error(errors, f"{prefix} has unsupported surface class codes: {invalid}")
-                if 2 in {int(c) for c in codes} and not layer.get("labels_reviewed", False):
+                if 2 in numeric_codes and not layer.get("labels_reviewed", False):
                     warnings.append(f"{prefix}: worn-grass labels are marked present but not reviewed")
         if role == "classified_lidar" and not layer.get("classification_scheme"):
             warnings.append(f"{prefix}: declare classification_scheme (ASPRS recommended)")
@@ -156,7 +161,8 @@ def validate(root: Path, manifest_path: Path) -> dict[str, Any]:
         warnings.append("No path polygons: ArcGIS path extraction is not represented in this bundle")
     return {"ok": not errors, "schema_version": SCHEMA, "park": park,
             "crs": crs, "layers": normalized, "errors": errors, "warnings": warnings,
-            "downstream_status": "validated_for_mapper_ingest" if not errors else "blocked"}
+            "downstream_status": "validated_export_bundle" if not errors else "blocked",
+            "limitation": "Validation does not convert GIS layers into Minecraft geometry."}
 
 
 def main() -> None:
