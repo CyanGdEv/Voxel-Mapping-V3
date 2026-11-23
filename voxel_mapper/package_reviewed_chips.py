@@ -109,9 +109,8 @@ def package(chips_dir: Path, output_zip: Path, park_id: str, zone_id: str) -> di
             "park_id": park_id,
             "zone_id": zone_id,
             "version": "2026-11-ground-v1",
-            "label_map": {str(key): value for key, value in LABEL_MAP.items()} | {
-                str(IGNORE): "ignore_unlabelled"
-            },
+            "label_map": {str(key): value for key, value in LABEL_MAP.items()},
+            "ignore_label": IGNORE,
             "source": {
                 "source_id": "usda_naip_2021",
                 "source_tile": "m_2808136_sw_17_060_20211201_20220330",
