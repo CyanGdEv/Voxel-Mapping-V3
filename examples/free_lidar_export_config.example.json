@@ -1,0 +1,24 @@
+{
+  "park": "Alton Towers",
+  "output_directory": "./output/alton_towers_open_lidar",
+  "crs": "EPSG:27700",
+  "vertical_datum": "ODN",
+  "resolution_m": 1.0,
+  "classification_verified": false,
+  "source_id": "ea-lidar-survey",
+  "sources": [
+    {
+      "id": "ea-lidar-survey",
+      "type": "lidar",
+      "provider": "Environment Agency",
+      "url": "https://environment.data.gov.uk/dataset/2e8d0733-4f43-48b4-9e51-631c25d1b0a9",
+      "license": "Open Government Licence v3.0"
+    }
+  ],
+  "las_tiles": [
+    "./data/replace-with-ea-survey-tile-1.laz",
+    "./data/replace-with-ea-survey-tile-2.laz"
+  ],
+  "vegetation_classes": [3, 4, 5],
+  "dsm_class_limits": "Classification[0:6],Classification[9:11]"
+}
