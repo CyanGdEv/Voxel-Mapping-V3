@@ -1,6 +1,6 @@
 # International park training and Magic Kingdom pilot
 
-This adds a park-neutral data contract and a U.S. pilot configuration to the current open-data workflow. It does **not** train neural-network weights: the repository currently prepares labels and maps evidence-backed geometries, but has no model-training or Minecraft world-export stage.
+This adds a park-neutral data contract, a U.S. pilot configuration, and an optional RGB U-Net baseline for reviewed ground-surface masks. It does **not** train Magic Kingdom weights yet: its label templates remain all ignore, and the repository still has no Minecraft world-export stage.
 
 ## Cross-park learning rules
 
@@ -34,7 +34,23 @@ The `ground_surface_classes` map follows the existing ground-label vocabulary an
 2. Download the four LAZ sources only if needed, crop each to the AOI, and preserve the original classification and full per-tile metadata.
 3. Create reviewed, pixel-aligned image/mask examples for paths, paving materials, buildings, vegetation canopy, water and parking. Keep uncertain/occluded pixels as ignore.
 4. Split evaluation by park zone/source capture; compare transfer from Alton Towers to Magic Kingdom and report per-class misses and false detections.
-5. Add a real trainer and world exporter only after sample provenance, labels and evaluation reports exist.
+5. Once labels are reviewed, run the optional trainer described below, review per-class metrics, then connect accepted predictions to reconstruction. World export is still a separate stage.
+
+## Train and evaluate reviewed surface labels
+
+The optional trainer reads dataset ZIPs whose root contains manifest.json and aligned image/label pairs. It supports the existing prepared Alton Towers dataset and Magic Kingdom chip_index.csv packages. Samples with all pixels set to ignore (255) are skipped. Overlapping chips from the same NAIP tile stay in one split group.
+
+Install the optional dependencies and run:
+
+```sh
+python -m pip install 'voxel-mapper[train]'
+voxel-train-surfaces --dataset path/to/alton_ground_training.zip \
+  --dataset path/to/magic_kingdom_reviewed_chips.zip \
+  --output model/magic_kingdom_transfer \
+  --holdout-park walt_disney_world_magic_kingdom
+```
+
+For a single labeled park, validation is split by source_group/split_group; it refuses a split with fewer than two groups. With multiple labeled parks, the default validation holds out one whole park. Reports include a confusion matrix and per-class precision/recall, and the best checkpoint is selected by held-out pixel accuracy. The model currently trains only the ground-surface classes, uses RGB (first three source channels), and is not yet wired into world reconstruction. Add reviewed Magic Kingdom masks before running a Disney transfer evaluation; its current all-ignore chips will be skipped.
 
 ## International source adapters
 
