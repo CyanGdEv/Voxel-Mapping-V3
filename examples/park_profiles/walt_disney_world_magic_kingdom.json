@@ -30,8 +30,8 @@
       "type": "lidar",
       "provider": "U.S. Geological Survey 3D Elevation Program",
       "url": "https://rockyweb.usgs.gov/vdelivery/Datasets/Staged/Elevation/metadata/FL_Peninsular_FDEM_2018_D19_DRRA/FL_Peninsular_FDEM_Orange_2018/reports/Orange_County_Report_USGS.pdf",
-      "license": "Public domain; verify dataset-specific metadata",
-      "access": "Use free public USGS download route; verify access conditions for the selected tile",
+      "license": "Public domain; free of charge and without use restrictions",
+      "access": "Download via USGS The National Map public-data service",
       "coverage_status": "Orange County project reported; intersect its official tile footprint with this AOI before use",
       "role": "optional terrain and classified point-cloud evidence; not a paving-material label source"
     }
