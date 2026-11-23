@@ -18,18 +18,22 @@ The shared classes are a schema, not training examples. The current Alton Towers
 
 `examples/park_profiles/walt_disney_world_magic_kingdom.json` is a small WGS84 AOI around Magic Kingdom, not a surveyed park boundary. The current CLI accepts its `bbox`, `voxel_size_m`, budgets and `sources` fields; without `--features`, it can request currently mapped OSM features from Overpass. It remains a coarse baseline because attractions, detailed paving, tree canopy and buildings are incomplete in OSM.
 
-The profile includes USDA NAIP as a free public-domain imagery candidate. USDA provides state coverage indexes; the Florida acquisition year, resolution and exact coverage of this AOI still need verification before imagery is downloaded or labeled. USDA describes its acquired aerial photography and orthophotography as public domain. Record the actual tile metadata and keep date/resolution with each label.
+### Verified free coverage
 
-The profile also registers USGS 3DEP as optional elevation evidence and links the Florida Peninsular 2018 Orange County project report. Orange County project coverage is documented, but this config does not claim that exact Magic Kingdom tiles have been downloaded or verified. Before ingesting tiles, intersect the AOI with the official LiDAR footprint, inspect acquisition date, point spacing, classifications, horizontal/vertical CRS and tile access terms. Use only the free public download route. LiDAR supports terrain and structure/vegetation geometry; it does not identify paving material by itself.
+The AOI was intersected against the USDA Florida 2021-22 NAIP quarter-quad index: one tile intersects, `m_2808136_sw_17_060_20211201_20220330.tif` (Windermere SW, nominal 0.6 m GSD, four bands, acquisition window encoded in the tile ID). The tile is linked in the profile and can be clipped to the pilot AOI before use. USDA NAIP imagery is public domain.
+
+The AOI was also queried against the USGS TNM Access API for LAZ LiDAR Point Cloud products. Four Orange County tiles from the Florida Peninsular 2018 project intersect: `LID2019_260760_E`, `LID2019_260761_E`, `LID2019_261060_E`, and `LID2019_261061_E`. Their full source files total about 1.05 GB; crop them to the park AOI before keeping training derivatives. The metadata and direct public download URLs are recorded in the profile. Check acquisition details, classification, point spacing, horizontal CRS and vertical datum from the product metadata before converting the points to geometry.
+
+These are coverage intersections, not proof that every park feature is captured. NAIP is from 2021-22 and may predate changes at the resort. LiDAR helps with terrain and structure/vegetation geometry, but cannot identify paving material by itself. No tiles have been downloaded into the training corpus and no Magic Kingdom labels exist yet.
 
 The `ground_surface_classes` map follows the existing ground-label vocabulary and IDs. Broader scene categories live in `semantic_feature_classes` and require their own reviewed masks/labels; they are not mixed into that ground-material mask.
 
-## Suggested rollout
+## Next data-preparation stage
 
-1. Check USDA's Florida NAIP coverage index and the USGS LiDAR footprint against the AOI; record exact tiles, dates, resolution, CRS and download URLs.
-2. Obtain permitted, dated imagery and point-cloud tiles. Make reviewed masks for representative paths, roofs, vegetation, water and surfaces.
-3. Package Magic Kingdom examples with the shared label map. Keep them grouped by aerial capture/zone for holdout evaluation.
-4. Compare against Alton Towers and a separate held-out park. Tune shared features only when the held-out error improves; keep park-specific material/architecture overrides as explicit profiles.
+1. Download the selected NAIP tile and crop it to the AOI; keep the original tile ID/date and four-band data as source evidence.
+2. Download the four LAZ sources only if needed, crop each to the AOI, and preserve the original classification and full per-tile metadata.
+3. Create reviewed, pixel-aligned image/mask examples for paths, paving materials, buildings, vegetation canopy, water and parking. Keep uncertain/occluded pixels as ignore.
+4. Split evaluation by park zone/source capture; compare transfer from Alton Towers to Magic Kingdom and report per-class misses and false detections.
 5. Add a real trainer and world exporter only after sample provenance, labels and evaluation reports exist.
 
 ## International source adapters
