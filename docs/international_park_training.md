@@ -1,0 +1,33 @@
+# International park training and Magic Kingdom pilot
+
+This adds a park-neutral data contract and a U.S. pilot configuration to the current open-data workflow. It does **not** train neural-network weights: the repository currently prepares labels and maps evidence-backed geometries, but has no model-training or Minecraft world-export stage.
+
+## Cross-park learning rules
+
+- Reuse the shared semantic vocabulary across parks: buildings, paths/plazas, parking, water, vegetation canopy, ride/attraction structures, and unknown/ignore.
+- Keep fine surface labels separate: brick, stone, asphalt, concrete, gravel, soil/mud, grass, and unknown. Do not infer a fine material from a generic path label.
+- Store every sample with park, region, source URL, source date, license, imagery/point-cloud resolution, CRS and label scheme.
+- Split training/validation by source capture and park area, never by nearby image patches from the same capture. Hold out entire parks or large park zones to measure geographic transfer.
+- Report per-class precision/recall and coverage by park/region. A global average can hide a class that only works in one park.
+- Keep attribution and license metadata with every artifact. Only ingest imagery, plans and point clouds whose terms permit the intended use; public viewing does not imply permission to redistribute imagery.
+- For an unfamiliar region, use OSM as a coarse geometry prior, then add only open/licensed local elevation, aerial, planning and survey data. Preserve source conflicts and uncertainty rather than silently snapping one source over another.
+
+The shared classes are a schema, not training examples. Add reviewed image/mask pairs before claiming a class has been learned in a new region.
+
+## Magic Kingdom pilot
+
+`examples/park_profiles/walt_disney_world_magic_kingdom.json` is a small WGS84 AOI around Magic Kingdom, not a surveyed park boundary. The current CLI accepts its `bbox`, `voxel_size_m`, budgets and `sources` fields; without `--features`, it can request currently mapped OSM features from Overpass. It remains a coarse baseline because attractions, detailed paving, tree canopy and buildings are incomplete in OSM.
+
+The profile registers USGS 3DEP as an optional evidence source and links the Florida Peninsular 2018 Orange County project report. Orange County project coverage is documented, but this config does not claim that exact Magic Kingdom tiles have been downloaded or verified. Before ingesting tiles, intersect the AOI with the official LiDAR footprint, inspect acquisition date, point spacing, classifications, horizontal/vertical CRS and tile access terms. Use only the free public download route, and record any source restrictions. LiDAR supports terrain and structure/vegetation geometry; it does not identify paving material by itself.
+
+## Suggested rollout
+
+1. Run the AOI in small tiles and inspect the existing quality report. This checks coordinate and feature flow, not reconstruction accuracy.
+2. Obtain permitted, dated aerial imagery and verify the USGS tile footprint. Make reviewed masks for representative paths, roofs, vegetation, water and surfaces.
+3. Package Magic Kingdom examples with the shared label map. Keep them grouped by aerial capture/zone for holdout evaluation.
+4. Compare against Alton Towers and a separate held-out park. Tune shared features only when the held-out error improves; keep park-specific material/architecture overrides as explicit profiles.
+5. Add a real trainer and world exporter only after sample provenance, labels and evaluation reports exist.
+
+## International source adapters
+
+There is no single free, high-resolution LiDAR or aerial provider for every country. Select a national or regional open-data portal per park. Add source adapters through the same metadata fields (provider, URL, license, capture date, horizontal CRS, vertical datum, units, resolution, classification and coverage). Reproject to a local metric CRS per park; do not assume U.S. feet, British National Grid, or one global vertical datum. If no suitable open data exists, the profile should report missing coverage instead of substituting paid imagery or fabricated detail.
