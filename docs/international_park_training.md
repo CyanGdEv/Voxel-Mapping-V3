@@ -50,7 +50,7 @@ voxel-train-surfaces --dataset path/to/alton_ground_training.zip \
   --holdout-park walt_disney_world_magic_kingdom
 ```
 
-For a single labeled park, validation is split by source_group/split_group; it refuses a split with fewer than two groups. With multiple labeled parks, the default validation holds out one whole park. Reports include a confusion matrix and per-class precision/recall, and the best checkpoint is selected by held-out pixel accuracy. The model currently trains only the ground-surface classes, uses RGB (first three source channels), and is not yet wired into world reconstruction. Add reviewed Magic Kingdom masks before running a Disney transfer evaluation; its current all-ignore chips will be skipped.
+For a single labeled park, validation is split by source_group/split_group; it refuses a split with fewer than two groups. With multiple labeled parks, the default validation holds out one whole park. Reports include a confusion matrix, per-class precision/recall/IoU, and mean IoU; the best checkpoint is selected by held-out mean IoU. Edge patches are padded at the original pixel scale and padding is excluded from metrics. The model currently trains only the ground-surface classes, uses RGB (first three source channels), and is not yet wired into world reconstruction. Add reviewed Magic Kingdom masks before running a Disney transfer evaluation; its current all-ignore chips will be skipped.
 
 ## International source adapters
 
