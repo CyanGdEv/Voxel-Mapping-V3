@@ -349,7 +349,7 @@ def train(args: argparse.Namespace) -> dict:
     if checkpoint.exists():
         saved = torch.load(checkpoint, map_location=device, weights_only=False)
         model.load_state_dict(saved["state_dict"])
-        best_metric = best_validation_accuracy
+        best_metric = best_validation_mean_iou
     final_cm = confusion_for(valid_samples)
     per_class = {}
     for class_id, name in sorted(label_map.items()):
