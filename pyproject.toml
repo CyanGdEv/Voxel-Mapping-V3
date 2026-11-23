@@ -14,6 +14,7 @@ train = ["torch>=2.4,<3", "numpy>=1.26,<3", "Pillow>=10,<13"]
 [project.scripts]
 voxel-mapper = "voxel_mapper.cli:main"
 voxel-train-surfaces = "voxel_mapper.train_ground_model:main"
+voxel-package-reviewed-chips = "voxel_mapper.package_reviewed_chips:main"
 
 [tool.setuptools.packages.find]
 include = ["voxel_mapper*"]
