@@ -8,7 +8,7 @@
     "coverage_status": {
       "osm": "available_on_run; completeness_not_verified",
       "lidar": "regional_Orange_County_project_documented; exact_AOI_tiles_unverified",
-      "aerial_imagery": "not_configured"
+      "aerial_imagery": "USDA_NAIP_is_a_free_public_domain_candidate; Florida_acquisition_year_and_tile_coverage_unverified"
     }
   },
   "bbox": [-81.5900, 28.4100, -81.5700, 28.4250],
@@ -24,6 +24,15 @@
       "url": "https://www.openstreetmap.org/copyright",
       "license": "ODbL-1.0",
       "role": "coarse mapped geometry; verify completeness"
+    },
+    {
+      "id": "usda-naip",
+      "type": "aerial_imagery",
+      "provider": "USDA Farm Service Agency / FPAC Business Center",
+      "url": "https://www.fpacbc.usda.gov/geospatial-services/customer-services/naip-coverage-map",
+      "license": "Public domain",
+      "coverage_status": "Florida tile year, resolution and exact AOI coverage must be checked against USDA coverage index",
+      "role": "candidate RGB/CIR imagery for reviewed semantic and surface labels; imagery date and resolution must be recorded"
     },
     {
       "id": "usgs-3dep-fl-peninsular-2018-orange",
