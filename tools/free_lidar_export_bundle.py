@@ -56,6 +56,8 @@ def export(config_path: Path) -> Path:
     grid = config.get("grid", {})
     if grid and not all(k in grid for k in ("origin_x", "origin_y", "width", "height")):
         raise ValueError("grid requires origin_x, origin_y, width and height together")
+    if grid and (int(grid["width"]) <= 0 or int(grid["height"]) <= 0):
+        raise ValueError("grid width and height must be positive cell counts")
     bounds = config.get("bounds")
     if bounds and (not isinstance(bounds, list) or len(bounds) != 4):
         raise ValueError("bounds must be [xmin, ymin, xmax, ymax] in the LAS projected CRS")
@@ -70,7 +72,7 @@ def export(config_path: Path) -> Path:
     for source in sources:
         if not isinstance(source, dict) or not source.get("id") or not source.get("url") or not source.get("license"):
             raise ValueError("Each source needs id, URL and an explicit open-data license")
-        license_name = str(source["license"]).casefold()
+        license_name = str(source["license"]).casefold().replace("-", " ").replace("_", " ")
         if not any(marker in license_name for marker in allowed_license_markers):
             raise ValueError(f"Source {source['id']} does not declare a supported open-data license")
     if not source_id or not any(s.get("id") == source_id for s in sources if isinstance(s, dict)):
