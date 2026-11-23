@@ -11,7 +11,12 @@
       "aerial_imagery": "one_USDA_NAIP_2021_22_quarter_quad_tile_intersects_the_AOI"
     }
   },
-  "bbox": [-81.5900, 28.4100, -81.5700, 28.4250],
+  "bbox": [
+    -81.59,
+    28.41,
+    -81.57,
+    28.425
+  ],
   "voxel_size_m": 1,
   "max_area_m2": 4000000,
   "max_voxels": 5000000,
@@ -47,7 +52,12 @@
   ],
   "coverage_verification": {
     "checked_utc_date": "2026-11-23",
-    "aoi_bbox_wgs84": [-81.5900, 28.4100, -81.5700, 28.4250],
+    "aoi_bbox_wgs84": [
+      -81.59,
+      28.41,
+      -81.57,
+      28.425
+    ],
     "naip": {
       "coverage_index": "https://www.fpacbc.usda.gov/sites/default/files/2024-10/fl_naip21qq-1.zip",
       "coverage_index_description": "USDA NAIP quarter-quad coverage map; Florida 2021-22 index",
@@ -56,9 +66,46 @@
       "quadrangle": "WINDERMERE SW",
       "state": "FL",
       "nominal_gsd_m": 0.6,
-      "acquisition_window_from_tile_id": ["2021-12-01", "2022-03-30"],
+      "acquisition_window_from_tile_id": [
+        "2021-12-01",
+        "2022-03-30"
+      ],
       "spectral_bands": 4,
-      "imagery_catalog": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2021_CONUS/ImageServer"
+      "imagery_catalog": "https://imagery.geoplatform.gov/iipp/rest/services/NAIP/NAIP2021_CONUS/ImageServer",
+      "derived_crop": {
+        "status": "prepared_in_Magic_Kingdom_NAIP_2021_Label_Starter.zip",
+        "request": {
+          "bbox_wgs84": [
+            -81.59,
+            28.41,
+            -81.57,
+            28.425
+          ],
+          "bbox_sr": "EPSG:4326",
+          "image_sr": "EPSG:32617",
+          "size_px": [
+            3200,
+            2700
+          ],
+          "band_ids": [
+            0,
+            1,
+            2,
+            3
+          ]
+        },
+        "output": {
+          "width_px": 3200,
+          "height_px": 2700,
+          "bands": 4,
+          "crs": "EPSG:32617",
+          "pixel_size_m": [
+            0.61896750697,
+            0.61896750697
+          ]
+        },
+        "labels": "ground_surface_labels_ignore_template.png is all 255 ignore; no reviewed ground truth"
+      }
     },
     "lidar": {
       "query_api": "https://tnmaccess.nationalmap.gov/api/v1/products",
@@ -76,28 +123,48 @@
           "tile_id": "LID2019_260760_E",
           "url": "https://rockyweb.usgs.gov/vdelivery/Datasets/Staged/Elevation/LPC/Projects/FL_Peninsular_FDEM_2018_D19_DRRA/FL_Peninsular_FDEM_Orange_2018/LAZ/USGS_LPC_FL_Peninsular_FDEM_2018_D19_DRRA_LID2019_260760_E.laz",
           "size_bytes": 317403535,
-          "bbox_wgs84": [-81.5947953916, 28.4175920482, -81.5791643388, 28.4314103550],
+          "bbox_wgs84": [
+            -81.5947953916,
+            28.4175920482,
+            -81.5791643388,
+            28.431410355
+          ],
           "metadata_url": "https://www.sciencebase.gov/catalog/item/607fc2dcd34e8564d6830873"
         },
         {
           "tile_id": "LID2019_260761_E",
           "url": "https://rockyweb.usgs.gov/vdelivery/Datasets/Staged/Elevation/LPC/Projects/FL_Peninsular_FDEM_2018_D19_DRRA/FL_Peninsular_FDEM_Orange_2018/LAZ/USGS_LPC_FL_Peninsular_FDEM_2018_D19_DRRA_LID2019_260761_E.laz",
           "size_bytes": 261864516,
-          "bbox_wgs84": [-81.5792390980, 28.4176590897, -81.5636099094, 28.4314756577],
+          "bbox_wgs84": [
+            -81.579239098,
+            28.4176590897,
+            -81.5636099094,
+            28.4314756577
+          ],
           "metadata_url": "https://www.sciencebase.gov/catalog/item/607fc2d9d34e8564d6830868"
         },
         {
           "tile_id": "LID2019_261060_E",
           "url": "https://rockyweb.usgs.gov/vdelivery/Datasets/Staged/Elevation/LPC/Projects/FL_Peninsular_FDEM_2018_D19_DRRA/FL_Peninsular_FDEM_Orange_2018/LAZ/USGS_LPC_FL_Peninsular_FDEM_2018_D19_DRRA_LID2019_261060_E.laz",
           "size_bytes": 243775061,
-          "bbox_wgs84": [-81.5947185287, 28.4038406278, -81.5790894447, 28.4176590072],
+          "bbox_wgs84": [
+            -81.5947185287,
+            28.4038406278,
+            -81.5790894447,
+            28.4176590072
+          ],
           "metadata_url": "https://www.sciencebase.gov/catalog/item/607fc244d34e8564d68306eb"
         },
         {
           "tile_id": "LID2019_261061_E",
           "url": "https://rockyweb.usgs.gov/vdelivery/Datasets/Staged/Elevation/LPC/Projects/FL_Peninsular_FDEM_2018_D19_DRRA/FL_Peninsular_FDEM_Orange_2018/LAZ/USGS_LPC_FL_Peninsular_FDEM_2018_D19_DRRA_LID2019_261061_E.laz",
           "size_bytes": 230122785,
-          "bbox_wgs84": [-81.5791642451, 28.4039076311, -81.5635371172, 28.4177242722],
+          "bbox_wgs84": [
+            -81.5791642451,
+            28.4039076311,
+            -81.5635371172,
+            28.4177242722
+          ],
           "metadata_url": "https://www.sciencebase.gov/catalog/item/607fc242d34e8564d68306e1"
         }
       ],
