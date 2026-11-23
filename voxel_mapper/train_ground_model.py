@@ -101,7 +101,7 @@ def _read_samples(dataset_path: Path) -> tuple[list[Sample], dict, dict]:
             if invalid:
                 raise ValueError(f"{dataset_path}: sample has labels absent from label_map: {invalid}")
             park_id = str(record.get("park_id") or park_default)
-            group = str(record.get("split_group") or record.get("source_group") or record.get("sample_id") or index)
+            group = str(record.get("split_group") or record.get("source_group") or\n                        manifest.get("source_tile") or record.get("sample_id") or index)
             sample_id = str(record.get("sample_id") or f"{dataset_path.stem}:{index}")
             samples.append(Sample(sample_id, park_id, group, rgb, labels))
     return samples, label_map, {
