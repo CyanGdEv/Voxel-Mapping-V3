@@ -1,0 +1,78 @@
+{
+  "park": {
+    "id": "walt_disney_world_magic_kingdom",
+    "name": "Magic Kingdom, Walt Disney World Resort",
+    "country": "United States",
+    "region": "Florida",
+    "training_domain": "international_theme_park",
+    "coverage_status": {
+      "osm": "available_on_run; completeness_not_verified",
+      "lidar": "regional_Orange_County_project_documented; exact_AOI_tiles_unverified",
+      "aerial_imagery": "not_configured"
+    }
+  },
+  "bbox": [-81.5900, 28.4100, -81.5700, 28.4250],
+  "voxel_size_m": 1,
+  "max_area_m2": 4000000,
+  "max_voxels": 5000000,
+  "strict": false,
+  "sources": [
+    {
+      "id": "osm",
+      "type": "vector",
+      "provider": "OpenStreetMap contributors",
+      "url": "https://www.openstreetmap.org/copyright",
+      "license": "ODbL-1.0",
+      "role": "coarse mapped geometry; verify completeness"
+    },
+    {
+      "id": "usgs-3dep-fl-peninsular-2018-orange",
+      "type": "lidar",
+      "provider": "U.S. Geological Survey 3D Elevation Program",
+      "url": "https://rockyweb.usgs.gov/vdelivery/Datasets/Staged/Elevation/metadata/FL_Peninsular_FDEM_2018_D19_DRRA/FL_Peninsular_FDEM_Orange_2018/reports/Orange_County_Report_USGS.pdf",
+      "license": "Public domain; verify dataset-specific metadata",
+      "access": "Use free public USGS download route; verify access conditions for the selected tile",
+      "coverage_status": "Orange County project reported; intersect its official tile footprint with this AOI before use",
+      "role": "optional terrain and classified point-cloud evidence; not a paving-material label source"
+    }
+  ],
+  "training_profile": {
+    "schema": "voxel-park-semantic-v1",
+    "shared_classes": [
+      "building",
+      "path_or_plaza",
+      "parking",
+      "water",
+      "vegetation_canopy",
+      "ride_or_attraction_structure",
+      "grass_unspecified",
+      "stone_paving",
+      "brick_paving",
+      "asphalt",
+      "concrete",
+      "gravel",
+      "soil_or_mud",
+      "ignore_unlabelled"
+    ],
+    "split_unit": "park_zone_and_source_capture",
+    "validation": "hold_out_entire_park_or_large_zone",
+    "do_not_infer_material_from": [
+      "generic_path_geometry",
+      "lidar_ground_classification",
+      "osm_feature_presence"
+    ],
+    "required_sample_metadata": [
+      "park_id",
+      "zone_id",
+      "source_id",
+      "source_url",
+      "source_license",
+      "capture_date",
+      "horizontal_crs",
+      "vertical_datum_if_applicable",
+      "ground_sample_distance_or_point_spacing",
+      "label_scheme",
+      "review_status"
+    ]
+  }
+}
