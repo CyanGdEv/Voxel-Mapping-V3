@@ -37,21 +37,26 @@
     }
   ],
   "training_profile": {
-    "schema": "voxel-park-semantic-v1",
-    "shared_classes": [
+    "schema": "voxel-park-training-v1",
+    "ground_surface_classes": {
+      "1": "grass_unspecified",
+      "2": "worn_grass_unlabelled",
+      "3": "dry_soil_unlabelled",
+      "4": "mud_unlabelled",
+      "5": "gravel_unlabelled",
+      "6": "stone_paving",
+      "7": "brick_paving",
+      "8": "asphalt",
+      "9": "paving_unspecified",
+      "255": "ignore_unlabelled"
+    },
+    "semantic_feature_classes": [
       "building",
       "path_or_plaza",
       "parking",
       "water",
       "vegetation_canopy",
       "ride_or_attraction_structure",
-      "grass_unspecified",
-      "stone_paving",
-      "brick_paving",
-      "asphalt",
-      "concrete",
-      "gravel",
-      "soil_or_mud",
       "ignore_unlabelled"
     ],
     "split_unit": "park_zone_and_source_capture",
