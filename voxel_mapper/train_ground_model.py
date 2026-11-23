@@ -70,6 +70,8 @@ def _read_samples(dataset_path: Path) -> tuple[list[Sample], dict, dict]:
         manifest = _manifest_from_zip(archive)
         label_map = {int(k): str(v) for k, v in
                      manifest.get("label_map", manifest.get("ground_surface_classes", DEFAULT_LABEL_MAP)).items()}
+        # Ignore is a mask value, never a model output class.
+        label_map.pop(IGNORE, None)
         park_default = manifest.get("park_id", manifest.get("park", "unknown_park"))
         if isinstance(park_default, dict):
             park_default = park_default.get("id", "unknown_park")
