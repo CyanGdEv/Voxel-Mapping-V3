@@ -38,7 +38,16 @@ The `ground_surface_classes` map follows the existing ground-label vocabulary an
 
 ## Train and evaluate reviewed surface labels
 
-The optional trainer reads dataset ZIPs whose root contains manifest.json and aligned image/label pairs. It supports the existing prepared Alton Towers dataset and Magic Kingdom chip_index.csv packages. Samples with all pixels set to ignore (255) are skipped. Overlapping chips from the same NAIP tile stay in one split group.
+The optional trainer reads dataset ZIPs whose root contains manifest.json and aligned image/label pairs. Samples with all pixels set to ignore (255) are skipped. Overlapping chips from the same NAIP tile stay in one split group.
+
+To package the Magic Kingdom annotation chips after reviewing their grayscale masks, extract the chip archive, edit files under labels/, then run:
+
+```sh
+voxel-package-reviewed-chips --chips-dir path/to/extracted_magic_kingdom_chips \\
+  --output data/magic_kingdom_reviewed_chips.zip
+```
+
+Use class IDs 1-9 from the profile and 255 for uncertain or unreviewed pixels. The packager checks that each mask matches its image and contains only valid IDs, preserves source/date/CRS/license and park metadata, and reports labelled pixels by class. It refuses to create a training bundle if every mask is still ignore. It retains all overlapping chips under one source group.
 
 Install the optional dependencies and run:
 
