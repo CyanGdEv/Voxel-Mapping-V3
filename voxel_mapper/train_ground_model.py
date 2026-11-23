@@ -348,8 +348,9 @@ def train(args: argparse.Namespace) -> dict:
         fn = int(final_cm[class_id, :].sum() - tp)
         precision = tp / (tp + fp) if tp + fp else None
         recall = tp / (tp + fn) if tp + fn else None
+        iou = tp / (tp + fp + fn) if tp + fp + fn else None
         per_class[str(class_id)] = {"name": name, "precision": precision, "recall": recall,
-                                    "labelled_pixels": int(final_cm[class_id, :].sum())}
+                                    "iou": iou, "labelled_pixels": int(final_cm[class_id, :].sum())}
     report = {
         "schema": "voxel-ground-segmentation-training-v1",
         "status": "trained" if final_cm.sum() else "no_validation_labels_checkpoint_not_saved",
