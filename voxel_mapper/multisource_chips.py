@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import hashlib
 import io
 import json
@@ -172,7 +173,8 @@ def pack(dataset, catalog_path, output):
             if isinstance(park_default,dict): park_default=park_default.get("id")
             for item in src.infolist():
                 if item.filename!="manifest.json" and not item.filename.startswith("gis-context/"):
-                    dst.writestr(item,src.read(item))
+                    # Writing mutates ZipInfo offsets; preserve the source directory.
+                    dst.writestr(copy.copy(item),src.read(item))
             for i,record in enumerate(records):
                 record.pop("context",None)
                 record.pop("context_provenance",None)

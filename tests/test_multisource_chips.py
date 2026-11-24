@@ -78,10 +78,16 @@ class ContextTests(unittest.TestCase):
             counts=pack(root/"base.zip",root/"catalog.json",root/"packed.zip")
             self.assertEqual(counts["aligned"],1)
             with zipfile.ZipFile(root/"packed.zip") as z:
+                self.assertIsNone(z.testzip())
+                self.assertEqual(z.read("rgb.png"), image.getvalue())
                 self.assertEqual(z.read("mask.png"),labels.getvalue())
                 m=json.loads(z.read("manifest.json"))
                 chip=decode(z.read(m["samples"][0]["context"]),2,2)
                 np.testing.assert_array_equal(chip,a)
+            self.assertEqual(pack(root/"packed.zip",root/"catalog.json",root/"repacked.zip"), counts)
+            with zipfile.ZipFile(root/"repacked.zip") as z:
+                self.assertIsNone(z.testzip())
+                self.assertEqual(z.read("mask.png"), labels.getvalue())
 
     @unittest.skipIf(rasterio is None,"install GIS and Pillow")
     def test_synchronized_training_augmentation(self):

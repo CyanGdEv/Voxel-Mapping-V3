@@ -3,10 +3,15 @@ from __future__ import annotations
 
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
+import hashlib
 import json
 import math
+from pathlib import Path
+import time
 
 import requests
+from requests.adapters import HTTPAdapter
+from urllib3.util.retry import Retry
 from shapely.geometry import box, shape, mapping
 from shapely.strtree import STRtree
 from shapely.errors import GEOSException
@@ -124,12 +129,49 @@ def collect(bounds, settings, output, *, get=requests.get):
     if not isinstance(requested,list) or set(requested)-{s["id"] for s in SOURCES}:
         raise ValueError("Unknown GIS source in configuration")
     layers = [s for s in SOURCES if s["id"] in requested]
+    workers = int(settings.get("workers", 3))
+    if not 1 <= workers <= 8:
+        raise ValueError("GIS workers must be between 1 and 8")
+    max_features = int(settings.get("max_features_per_source", 10000))
+    cache_dir = Path(settings.get("cache_dir", output / "evidence-cache"))
+    ttl = float(settings.get("cache_max_age_seconds", 86400))
+    if not math.isfinite(ttl) or ttl < 0:
+        raise ValueError("Invalid GIS cache lifetime")
+    cache_dir.mkdir(parents=True, exist_ok=True)
     def run(layer):
+        key = hashlib.sha256(json.dumps(["gis-cache-v1", layer, list(bounds), max_features], sort_keys=True).encode()).hexdigest()
+        path = cache_dir / (key + ".json")
         try:
-            return acquire(layer,bounds,get=get,max_features=int(settings.get("max_features_per_source",10000)))
+            cached = json.loads(path.read_text())
+            payload = cached["payload"]
+            digest = hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()
+            age = time.time() - cached["stored_at"]
+            if digest == cached["sha256"] and 0 <= age < ttl:
+                fs, report = payload
+                return fs, {**report, "cache_hit": True, "cache_key": key}
+        except (OSError, ValueError, KeyError, TypeError):
+            pass
+        try:
+            # Separate sessions avoid sharing mutable connection state across workers.
+            with requests.Session() as session:
+                retry = Retry(total=3, backoff_factor=0.5,
+                              status_forcelist=(429, 500, 502, 503, 504),
+                              allowed_methods=("GET",), respect_retry_after_header=False)
+                session.mount("https://", HTTPAdapter(max_retries=retry))
+                fs, report = acquire(layer,bounds,get=session.get if get is requests.get else get,max_features=max_features)
+            report = {**report, "cache_hit": False, "cache_key": key}
+            # Preserve partial observations in the output, but retry them next run.
+            if report["status"] in ("available", "no_intersections"):
+                payload = [fs, report]
+                cached = {"payload": payload, "stored_at": time.time(),
+                          "sha256": hashlib.sha256(json.dumps(payload, sort_keys=True).encode()).hexdigest()}
+                temp = path.with_suffix(".tmp")
+                temp.write_text(json.dumps(cached))
+                temp.replace(path)
+            return fs, report
         except (requests.RequestException, ValueError, TypeError, KeyError) as exc:
             return [], {"source_id":layer["id"],"status":"unavailable","error":str(exc)[:500]}
-    with ThreadPoolExecutor(max_workers=3) as pool:
+    with ThreadPoolExecutor(max_workers=workers) as pool:
         results = list(pool.map(run,layers))
     features = [f for fs,_ in results for f in fs]
     report = {"schema":"voxel-open-gis-v1","bbox":bounds,"sources":layers,

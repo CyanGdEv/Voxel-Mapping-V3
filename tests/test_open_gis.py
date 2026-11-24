@@ -68,5 +68,29 @@ class GIS(unittest.TestCase):
         self.assertEqual(fuse(collection,[f],promote_missing=True)["draft_footprints_added"],0)
         self.assertEqual(collection["features"],[])
 
+    def test_cache_reuse_integrity_and_bounds(self):
+        with tempfile.TemporaryDirectory() as td:
+            root = Path(td)
+            settings = {"sources":[self.layer["id"]], "cache_dir":str(root/"cache")}
+            fs, first = collect(self.bounds, settings, root/"one", get=self.get)
+            def offline(*args, **kwargs):
+                raise AssertionError("cache should avoid network")
+            cached, second = collect(self.bounds, settings, root/"two", get=offline)
+            self.assertEqual(json.loads(json.dumps(fs)), cached)
+            self.assertTrue(second["layers"][0]["cache_hit"])
+            path = next((root/"cache").glob("*.json"))
+            data = json.loads(path.read_text())
+            data["payload"][0] = []
+            path.write_text(json.dumps(data))
+            restored, report = collect(self.bounds, settings, root/"three", get=self.get)
+            self.assertEqual(restored, fs)
+            self.assertFalse(report["layers"][0]["cache_hit"])
+            settings["cache_max_age_seconds"] = 0
+            _, report = collect(self.bounds, settings, root/"four", get=self.get)
+            self.assertFalse(report["layers"][0]["cache_hit"])
+            settings["workers"] = 9
+            with self.assertRaisesRegex(ValueError,"workers"):
+                collect(self.bounds, settings, root/"bad", get=self.get)
+
 if __name__=="__main__":
     unittest.main()
