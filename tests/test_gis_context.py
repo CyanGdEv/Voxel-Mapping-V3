@@ -2,8 +2,8 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
-from shapely.geometry import box, mapping
-from voxel_mapper.gis_context import review_geometry, import_polygons, write_context_grid
+from shapely.geometry import box, mapping, LineString
+from voxel_mapper.gis_context import review_geometry, import_polygons, write_context_grid, annotate_context
 
 try:
     import numpy as np
@@ -36,6 +36,18 @@ class GeometryReview(unittest.TestCase):
         self.assertEqual(report["comparison_count"],1)
         self.assertEqual(report["comparisons"][0]["matches"][0]["centroid_offset_m"],0)
         self.assertEqual(report["candidate_count"],0)
+
+    def test_path_under_woodland_is_retained(self):
+        path=f("path",LineString([(-1.8999,52.9804),(-1.8991,52.9804)]),kind="path")
+        wood=f("wood",box(-1.8998,52.9802,-1.8992,52.9806),gis_role="woodland_context",source_id="nfi")
+        geometry=path["geometry"]
+        result=annotate_context({"features":[path]},[wood,wood],BOUNDS)
+        self.assertEqual(result["annotated_features"],1)
+        self.assertEqual(path["geometry"],geometry)
+        context=path["properties"]["gis_context_overlaps"]
+        self.assertEqual(len(context),1)
+        self.assertAlmostEqual(context[0]["fraction"],0.75,places=3)
+        self.assertIn("woodland_overlap_preserve_mapped_geometry",path["properties"]["gis_review_flags"])
 
     def test_local_polygon_import(self):
         with tempfile.TemporaryDirectory() as d:
