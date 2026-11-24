@@ -18,6 +18,7 @@ voxel-train-surfaces = "voxel_mapper.train_ground_model:main"
 voxel-package-reviewed-chips = "voxel_mapper.package_reviewed_chips:main"
 voxel-pack-multisource = "voxel_mapper.multisource_chips:main"
 voxel-recover-chip-georef = "voxel_mapper.recover_chip_georef:main"
+voxel-recover-paving-georef = "voxel_mapper.recover_paving_georef:main"
 voxel-benchmark-multisource = "voxel_mapper.benchmark_multisource:main"
 
 [tool.setuptools.packages.find]
