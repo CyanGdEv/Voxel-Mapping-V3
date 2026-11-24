@@ -9,6 +9,7 @@ requires-python = ">=3.11"
 dependencies = ["pyproj>=3.6,<4", "shapely>=2,<3", "requests>=2.32,<3"]
 
 [project.optional-dependencies]
+gis = ["rasterio>=1.3,<2", "numpy>=1.26,<3"]
 train = ["torch>=2.4,<3", "numpy>=1.26,<3", "Pillow>=10,<13"]
 
 [project.scripts]
