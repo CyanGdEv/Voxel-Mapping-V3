@@ -172,6 +172,8 @@ def write_context_grid(bounds, features, layers, output, *, landcover_report=Non
     channels, metadata = [], []
     for layer in layers:
         sid = layer["source_id"]
+        if any(m["source_id"]==sid for m in metadata):
+            raise ValueError("Duplicate context source ID: "+sid)
         geoms = by_source[sid]
         status = layer["status"]
         arr = np.full(dims,255,dtype=np.uint8)
@@ -183,19 +185,21 @@ def write_context_grid(bounds, features, layers, output, *, landcover_report=Non
         channels.append(arr)
         metadata.append({"source_id":sid,"status":status,"encoding":{"0":"not mapped","1":"mapped","255":"unknown"},
                          "all_touched":True,"mapped_cells":int((arr==1).sum())})
-    if landcover_report and landcover_report.get("status")=="available":
+    if landcover_report is not None:
+        from .landcover import CLASSES
         arr = np.full(dims,255,dtype=np.uint8)
-        path = output / landcover_report["path"]
-        if hashlib.sha256(path.read_bytes()).hexdigest()!=landcover_report["sha256"]:
-            raise ValueError("Land-cover evidence checksum mismatch")
-        with rasterio.open(path) as src:
-            reproject(source=rasterio.band(src,1),destination=arr,src_transform=src.transform,src_crs=src.crs,
-                      src_nodata=src.nodata,dst_transform=affine,dst_crs=crs,dst_nodata=255,
-                      resampling=Resampling.nearest)
-        arr[(~inside)|(arr==0)|(arr==10)]=255
+        if landcover_report.get("status")=="available":
+            path = output / landcover_report["path"]
+            if hashlib.sha256(path.read_bytes()).hexdigest()!=landcover_report["sha256"]:
+                raise ValueError("Land-cover evidence checksum mismatch")
+            with rasterio.open(path) as src:
+                reproject(source=rasterio.band(src,1),destination=arr,src_transform=src.transform,src_crs=src.crs,
+                          src_nodata=src.nodata,dst_transform=affine,dst_crs=crs,dst_nodata=255,
+                          resampling=Resampling.nearest)
+            arr[(~inside)|(arr==0)|(arr==10)]=255
         channels.append(arr)
-        metadata.append({"source_id":"sentinel2-landcover","year":landcover_report["year"],
-                         "nominal_resolution_m":10,"encoding":landcover_report["classes"],"unknown":255})
+        metadata.append({"source_id":"sentinel2-landcover","status":landcover_report["status"],"year":landcover_report["year"],
+                         "nominal_resolution_m":10,"encoding":CLASSES,"unknown":255})
     output.mkdir(parents=True,exist_ok=True)
     path = output/"gis-context.npz"
     stack = np.stack(channels) if channels else np.empty((0,*dims),dtype=np.uint8)
