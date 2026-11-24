@@ -39,3 +39,21 @@ The Alton and Magic Kingdom profiles now enable `landcover: {enabled: true, year
 For existing classified LAZ data, set `export_ground_intensity: true` with explicit grid or bounds in the free PDAL/GDAL export configuration. This adds mean class-2 intensity as `ground_intensity.tif` and registers the `lidar_intensity` role. It is not calibrated reflectance and must not be converted to a paving label without training/validation. Actual PDAL execution and live tile downloads remain unverified.
 
 CI: GIS evidence checks installs the optional raster dependencies and runs unit tests. A manual workflow dispatch with `live_pilot=true` queries the Alton vector and land-cover sources without needing Overpass or world export. Reports are uploaded even on a failed acquisition. Workflow dispatch is subject to GitHub availability/default-branch workflow rules; use the documented local CLI as an alternative.
+
+
+## Metric context and geometry review
+
+Both pilot profiles now enable `gis_context`. This writes `gis-context.npz` (uint8 [channel,row,column], AOI mask) and `gis-context.json` (CRS, affine, channel semantics, hash). Default cells are 5 m; this does not increase the resolution of a 10 m satellite product. Each source has a separate channel: 1 mapped, 0 not mapped (not confirmed absent), 255 unknown. Partial sources only mark positive mapped cells; missing sources remain unknown. Sentinel-2 preserves its class codes with cloud/no-data marked unknown. Source roles and lineage should be read from the GIS report. Context tensors are inputs for future georeferenced chip preparation; the existing RGB trainer is unchanged.
+
+`gis-geometry-review.json` compares exact source polygons with current non-draft mapped polygons in local metres: coverage fraction, unmatched area, IoU, centroid offset and boundary Hausdorff distance. These are agreement metrics, not accuracy against survey truth. `gis-gap-candidates.geojson` contains review-only unmatched polygon parts, never directly voxelized. Paths under woodland are retained, water overlaps are marked for crossing/disagreement review, and overlaps are included in the feature properties. Heritage designations and river centrelines are never promoted to outlines.
+
+OS OpenMap Local is available for free download in GeoPackage/Shapefile format from https://www.ordnancesurvey.co.uk/products/os-open-map-local . Export its SurfaceWater (area) and Woodland polygons as RFC 7946 WGS84 GeoJSON. Supply them in the config relative to the config file:
+
+```json
+{"gis_context":{"enabled":true,"cell_m":5,"min_gap_m2":4,"local_polygons":[
+ {"id":"os-water","role":"water_polygon","path":"water.geojson","crs":"EPSG:4326","license":"OGL-3.0","url":"https://www.ordnancesurvey.co.uk/products/os-open-map-local","attribution":"Contains OS data © Crown copyright and database right","lineage_family":"ordnance-survey"},
+ {"id":"os-woodland","role":"woodland_polygon","path":"woodland.geojson","crs":"EPSG:4326","license":"OGL-3.0","url":"https://www.ordnancesurvey.co.uk/products/os-open-map-local","attribution":"Contains OS data © Crown copyright and database right","lineage_family":"ordnance-survey"}
+]}}
+```
+
+This is a local export adapter, not automatic national tile downloading. No actual OS water/woodland export has been loaded for the pilot yet. The existing voxel writer still lacks full Minecraft world export, and no network or training benchmark has been verified.
