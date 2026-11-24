@@ -137,6 +137,7 @@ def main():
     parser.add_argument("--config", required=True)
     parser.add_argument("--features", help="WGS84 GeoJSON with source_id, kind, height_m, base_elevation_m")
     parser.add_argument("--output", default="output")
+    parser.add_argument("--gis", action="store_true", help="Collect free Great Britain GIS evidence")
     args = parser.parse_args()
     config = json.loads(Path(args.config).read_text())
     output = Path(args.output)
@@ -147,11 +148,31 @@ def main():
     else:
         collection, raw, skipped = fetch_osm(config["bbox"])
         (output / "osm-raw.json").write_text(json.dumps(raw))
-        config.setdefault("sources", []).append({"id": "osm", "url": "https://www.openstreetmap.org/copyright", "license": "ODbL-1.0"})
+        if not any(s["id"] == "osm" for s in config.setdefault("sources", [])):
+            config["sources"].append({"id": "osm", "url": "https://www.openstreetmap.org/copyright", "license": "ODbL-1.0"})
+    gis_report = None
+    settings = config.get("gis", {})
+    if args.gis or settings.get("enabled", False):
+        from .open_gis import collect, fuse
+        if config.get("strict", False) and settings.get("promote_missing_footprints", False):
+            raise ValueError("Draft GIS footprint promotion is not permitted in strict mode")
+        features, gis_report = collect(config["bbox"], settings, output)
+        gis_report["fusion"] = fuse(collection, features, promote_missing=settings.get("promote_missing_footprints", False))
+        registered = config.setdefault("sources", [])
+        for source in gis_report["sources"]:
+            if not any(s["id"] == source["id"] for s in registered):
+                registered.append(source)
+        (output / "gis-report.json").write_text(json.dumps(gis_report, indent=2), encoding="utf-8")
     (output / "input.geojson").write_text(json.dumps(collection))
     report = build(config, collection, output)
     report["skipped_osm"] = skipped
+    if gis_report is not None:
+        report["gis"] = {k: gis_report[k] for k in ("feature_count", "layers", "fusion", "policy")}
+        if settings.get("required", False) and any(layer["status"] in ("partial", "unavailable") for layer in gis_report["layers"]):
+            report["issues"].append({"severity": "error", "reason": "Required GIS evidence unavailable or partial"})
     (output / "quality-report.json").write_text(json.dumps(report, indent=2))
+    if gis_report is not None and settings.get("required", False) and any(layer["status"] in ("partial", "unavailable") for layer in gis_report["layers"]):
+        raise SystemExit("Required GIS sources failed; inspect gis-report.json")
     if config.get("strict", False) and (report["issues"] or skipped or not report["features"]):
         raise SystemExit("Strict accuracy gate failed; inspect quality-report.json")
 
