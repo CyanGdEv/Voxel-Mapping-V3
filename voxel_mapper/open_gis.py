@@ -5,11 +5,11 @@ from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 import json
 import math
-from pathlib import Path
 
 import requests
 from shapely.geometry import box, shape, mapping
 from shapely.strtree import STRtree
+from shapely.errors import GEOSException
 
 OS = "https://services.arcgis.com/qHLhLQrcvEnxjtPr/arcgis/rest/services/"
 HE = "https://services-eu1.arcgis.com/ZOdPfBS3aqqDYPUQ/arcgis/rest/services/National_Heritage_List_for_England_NHLE_v02_VIEW/FeatureServer/"
@@ -97,11 +97,12 @@ def acquire(layer, bounds, *, get=requests.get, max_features=10000):
                 geom = shape(f["geometry"])
                 if geom.is_empty or not geom.is_valid:
                     raise ValueError("Invalid source geometry")
+                family = geom.geom_type.removeprefix("Multi")
                 geom = geom.intersection(area)
-                if geom.is_empty or geom.geom_type != shape(f["geometry"]).geom_type and geom.geom_type not in ("MultiPolygon","MultiLineString","MultiPoint"):
+                if geom.is_empty or geom.geom_type.removeprefix("Multi") != family:
                     outside += 1
                     continue
-            except (ValueError, TypeError, KeyError) as exc:
+            except (ValueError, TypeError, KeyError, GEOSException) as exc:
                 rejected.append({"object_id":ident,"reason":str(exc)})
                 continue
             features.append({"type":"Feature","id":f'{layer["id"]}/{ident}',
@@ -150,7 +151,10 @@ def fuse(collection, features, *, promote_missing=False):
     for f in original:
         if f.get("properties",{}).get("kind") != "building":
             continue
-        g = shape(f["geometry"])
+        try:
+            g = shape(f["geometry"])
+        except (ValueError, TypeError, KeyError, GEOSException):
+            continue
         if g.is_valid and not g.is_empty and g.area > 0:
             indexed.append((f,g))
     tree = STRtree([g for _,g in indexed])
