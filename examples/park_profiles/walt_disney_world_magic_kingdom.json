@@ -224,5 +224,11 @@
     "enabled": true,
     "year": 2025,
     "required": false
+  },
+  "gis_context": {
+    "enabled": true,
+    "cell_m": 5,
+    "min_gap_m2": 4,
+    "local_polygons": []
   }
 }
