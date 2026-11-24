@@ -1,0 +1,57 @@
+name: GIS evidence checks
+on:
+  pull_request:
+    paths:
+      - 'voxel_mapper/**'
+      - 'tests/**'
+      - 'pyproject.toml'
+      - 'examples/**'
+      - 'tools/free_lidar_export_bundle.py'
+      - '.github/workflows/gis-evidence.yml'
+  workflow_dispatch:
+    inputs:
+      live_pilot:
+        type: boolean
+        default: false
+        description: Query public GIS sources for the Alton Towers pilot
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install '.[gis]'
+      - run: python -m unittest discover -s tests -v
+  live-pilot:
+    if: github.event_name == 'workflow_dispatch' && inputs.live_pilot
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install '.[gis]'
+      - run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from voxel_mapper.open_gis import collect
+          from voxel_mapper.landcover import collect as landcover
+          config = json.loads(Path("examples/alton_gis.json").read_text())
+          output = Path("output/gis-pilot")
+          _, report = collect(config["bbox"], config["gis"], output)
+          raster = landcover(config["bbox"], config["landcover"], output)
+          if any(layer["status"] in ("partial","unavailable") for layer in report["layers"]) or raster["status"] != "available":
+              raise SystemExit("Incomplete live acquisition; inspect evidence reports")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: alton-gis-evidence
+          path: output/gis-pilot/
