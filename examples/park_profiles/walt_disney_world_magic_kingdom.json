@@ -219,5 +219,10 @@
       "label_scheme",
       "review_status"
     ]
+  },
+  "landcover": {
+    "enabled": true,
+    "year": 2025,
+    "required": false
   }
 }
