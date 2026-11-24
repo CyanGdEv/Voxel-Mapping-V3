@@ -43,10 +43,12 @@ jobs:
           from pathlib import Path
           from voxel_mapper.open_gis import collect
           from voxel_mapper.landcover import collect as landcover
+          from voxel_mapper.gis_context import write_context_grid
           config = json.loads(Path("examples/alton_gis.json").read_text())
           output = Path("output/gis-pilot")
-          _, report = collect(config["bbox"], config["gis"], output)
+          features, report = collect(config["bbox"], config["gis"], output)
           raster = landcover(config["bbox"], config["landcover"], output)
+          write_context_grid(config["bbox"], features, report["layers"], output, landcover_report=raster, cell_m=config["gis_context"]["cell_m"])
           if any(layer["status"] in ("partial","unavailable") for layer in report["layers"]) or raster["status"] != "available":
               raise SystemExit("Incomplete live acquisition; inspect evidence reports")
           PY
