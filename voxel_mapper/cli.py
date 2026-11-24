@@ -151,6 +151,7 @@ def main():
         if not any(s["id"] == "osm" for s in config.setdefault("sources", [])):
             config["sources"].append({"id": "osm", "url": "https://www.openstreetmap.org/copyright", "license": "ODbL-1.0"})
     gis_report = None
+    features = []
     settings = config.get("gis", {})
     if args.gis or settings.get("enabled", False):
         from .open_gis import collect, fuse
@@ -172,6 +173,26 @@ def main():
         registered = config.setdefault("sources", [])
         if not any(s["id"] == source["id"] for s in registered):
             registered.append(source)
+    context_report = None
+    review_report = None
+    context_settings = config.get("gis_context", {})
+    if context_settings.get("enabled", False):
+        from .gis_context import import_polygons, review_geometry, write_context_grid
+        local, local_sources, local_layers = import_polygons(context_settings.get("local_polygons", []), config["bbox"], root=Path(args.config).resolve().parent)
+        layers = (gis_report["layers"] if gis_report else []) + local_layers
+        registered = config.setdefault("sources", [])
+        for source in local_sources:
+            if any(s["id"] == source["id"] for s in registered):
+                raise ValueError("Duplicate local GIS source ID: " + source["id"])
+            registered.append(source)
+        features = features + local
+        if local:
+            (output / "gis-local-polygons.geojson").write_text(json.dumps({"type":"FeatureCollection","features":local}), encoding="utf-8")
+        review_report, candidates = review_geometry(collection, features, config["bbox"], min_gap_m2=float(context_settings.get("min_gap_m2",4)))
+        review_report["local_layers"] = local_layers
+        (output / "gis-geometry-review.json").write_text(json.dumps(review_report, indent=2), encoding="utf-8")
+        (output / "gis-gap-candidates.geojson").write_text(json.dumps(candidates), encoding="utf-8")
+        context_report = write_context_grid(config["bbox"], features, layers, output, landcover_report=landcover_report, cell_m=float(context_settings.get("cell_m",5)))
     (output / "input.geojson").write_text(json.dumps(collection))
     report = build(config, collection, output)
     report["skipped_osm"] = skipped
@@ -179,6 +200,9 @@ def main():
         report["gis"] = {k: gis_report[k] for k in ("feature_count", "layers", "fusion", "policy")}
         if settings.get("required", False) and any(layer["status"] in ("partial", "unavailable") for layer in gis_report["layers"]):
             report["issues"].append({"severity": "error", "reason": "Required GIS evidence unavailable or partial"})
+    if context_report is not None:
+        report["gis_context"] = context_report
+        report["gis_geometry_review"] = {k:v for k,v in review_report.items() if k!="comparisons"}
     if landcover_report is not None:
         report["landcover"] = landcover_report
         if landcover_settings.get("required", False) and landcover_report["status"] != "available":
