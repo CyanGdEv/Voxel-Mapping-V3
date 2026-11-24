@@ -15,5 +15,10 @@
     "promote_missing_footprints": false,
     "max_features_per_source": 10000
   },
-  "sources": []
+  "sources": [],
+  "landcover": {
+    "enabled": true,
+    "year": 2025,
+    "required": false
+  }
 }
