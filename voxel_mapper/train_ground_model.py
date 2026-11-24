@@ -239,7 +239,7 @@ def train(args: argparse.Namespace) -> dict:
     )
     if not valid_samples:
         raise ValueError("validation split is empty")
-    if use_context and not all(any(s.context is not None and np.any(s.context) for s in split) for split in (train_samples,valid_samples)):
+    if use_context and not all(any(s.context is not None and np.any(s.context[s.labels != IGNORE]) for s in split) for split in (train_samples,valid_samples)):
         raise ValueError("Multisource training requires nonempty context in both training and validation splits")
     if max(label_map) >= args.num_classes:
         raise ValueError("--num-classes must be greater than the largest label ID")
@@ -370,7 +370,8 @@ def train(args: argparse.Namespace) -> dict:
             pixel_accuracy = float(cm.trace() / valid_pixels)
             intersections = np.diag(cm).astype(np.float64)
             unions = cm.sum(axis=0) + cm.sum(axis=1) - intersections
-            defined = unions > 0
+            # Compare the same reviewed classes regardless of predicted classes.
+            defined = cm.sum(axis=1) > 0
             mean_iou = float(np.mean(intersections[defined] / unions[defined])) if np.any(defined) else None
         else:
             pixel_accuracy = None
