@@ -1,0 +1,19 @@
+{
+  "bbox": [
+    -1.903,
+    52.983,
+    -1.88,
+    52.995
+  ],
+  "voxel_size_m": 1,
+  "max_area_m2": 4000000,
+  "max_voxels": 5000000,
+  "strict": false,
+  "gis": {
+    "enabled": true,
+    "required": false,
+    "promote_missing_footprints": false,
+    "max_features_per_source": 10000
+  },
+  "sources": []
+}
