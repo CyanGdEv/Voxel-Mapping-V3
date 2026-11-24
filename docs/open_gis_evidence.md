@@ -4,7 +4,7 @@ This branch adds token-free feature service acquisition to the existing mapper C
 
 ## Run
 ```sh
-python -m pip install .
+python -m pip install '.[gis]'
 voxel-mapper --config examples/alton_gis.json --output output/alton-gis
 ```
 
@@ -22,7 +22,7 @@ Alternatively use `--gis` with an existing GB config. GIS collection is opt-in f
 
 ## Other identified open datasets
 
-The following are not yet automatically downloaded or used by this branch: OS OpenMap Local water and woodland polygons, Environment Agency intensity/DTM/DSM/point-cloud tiles, Sentinel-2 10m land cover or multispectral imagery, Overture and Microsoft footprints, WRI canopy height, flood/soil/geology data. Use the existing geospatial bundle intake for supported local exports until their acquisition and downstream adapters are implemented. See [free LiDAR pipeline](free_lidar_pipeline.md).
+The following are not yet automatically downloaded or used by this branch: OS OpenMap Local water and woodland polygons, Environment Agency intensity/DTM/DSM/point-cloud tile downloads, Sentinel-2 multispectral imagery, Overture and Microsoft footprints, WRI canopy height, flood/soil/geology data. Use the existing geospatial bundle intake for supported local exports until their acquisition and downstream adapters are implemented. See [free LiDAR pipeline](free_lidar_pipeline.md).
 
 The evidence registry retains provider URLs and attribution. Preserve those records with any derivative output. Living England and NFI have shared imagery/OS lineage; multiple layers do not constitute independent validation. The query uses a fixed source registry, not arbitrary premium ArcGIS endpoints. Empty intersections do not prove absence. Source availability and positional accuracy still need a live Alton Towers pilot.
 
@@ -31,3 +31,11 @@ The evidence registry retains provider URLs and attribution. Preserve those reco
 python -m unittest discover -s tests -v
 ```
 Mock tests cover complete ID batching, AOI clipping, missing results, feature budgets, building overlap and no extrusion of context layers.
+
+## Global raster and local intensity evidence
+
+The Alton and Magic Kingdom profiles now enable `landcover: {enabled: true, year: 2025, required: false}`. The public Sentinel-2 land-cover ImageServer exports one categorical TIFF at its nominal 10 m product scale on a snapped EPSG:3857 grid, with the year explicitly selected. The mapper checks band count, data type, CRS, grid, class codes, byte/pixel budgets and usable fraction; it writes a SHA-256 and provenance to `landcover-report.json`. This is coarse context, not a fine material or tree-location target. EPSG:3857 grid units are projected metres, not exact ground metres. Classes and year are based on the published service directory; a successful mock export is not proof of live availability.
+
+For existing classified LAZ data, set `export_ground_intensity: true` with explicit grid or bounds in the free PDAL/GDAL export configuration. This adds mean class-2 intensity as `ground_intensity.tif` and registers the `lidar_intensity` role. It is not calibrated reflectance and must not be converted to a paving label without training/validation. Actual PDAL execution and live tile downloads remain unverified.
+
+CI: GIS evidence checks installs the optional raster dependencies and runs unit tests. A manual workflow dispatch with `live_pilot=true` queries the Alton vector and land-cover sources without needing Overpass or world export. Reports are uploaded even on a failed acquisition. Workflow dispatch is subject to GitHub availability/default-branch workflow rules; use the documented local CLI as an alternative.
