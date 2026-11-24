@@ -163,6 +163,15 @@ def main():
             if not any(s["id"] == source["id"] for s in registered):
                 registered.append(source)
         (output / "gis-report.json").write_text(json.dumps(gis_report, indent=2), encoding="utf-8")
+    landcover_report = None
+    landcover_settings = config.get("landcover", {})
+    if landcover_settings.get("enabled", False):
+        from .landcover import collect as collect_landcover
+        landcover_report = collect_landcover(config["bbox"], landcover_settings, output)
+        source = landcover_report["source"]
+        registered = config.setdefault("sources", [])
+        if not any(s["id"] == source["id"] for s in registered):
+            registered.append(source)
     (output / "input.geojson").write_text(json.dumps(collection))
     report = build(config, collection, output)
     report["skipped_osm"] = skipped
@@ -170,7 +179,13 @@ def main():
         report["gis"] = {k: gis_report[k] for k in ("feature_count", "layers", "fusion", "policy")}
         if settings.get("required", False) and any(layer["status"] in ("partial", "unavailable") for layer in gis_report["layers"]):
             report["issues"].append({"severity": "error", "reason": "Required GIS evidence unavailable or partial"})
+    if landcover_report is not None:
+        report["landcover"] = landcover_report
+        if landcover_settings.get("required", False) and landcover_report["status"] != "available":
+            report["issues"].append({"severity":"error","reason":"Required land-cover evidence unavailable"})
     (output / "quality-report.json").write_text(json.dumps(report, indent=2))
+    if landcover_report is not None and landcover_settings.get("required", False) and landcover_report["status"] != "available":
+        raise SystemExit("Required land-cover evidence unavailable; inspect landcover-report.json")
     if gis_report is not None and settings.get("required", False) and any(layer["status"] in ("partial", "unavailable") for layer in gis_report["layers"]):
         raise SystemExit("Required GIS sources failed; inspect gis-report.json")
     if config.get("strict", False) and (report["issues"] or skipped or not report["features"]):
