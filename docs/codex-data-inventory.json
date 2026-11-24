@@ -1,0 +1,45 @@
+{
+  "schema": "voxel-external-data-inventory-v1",
+  "status": "external_files_not_uploaded",
+  "root": "data",
+  "files": [
+    {
+      "path": "training/Alton_Towers_Georeferenced_Ground_Training.zip",
+      "sha256": "22522d22be8b63a9ffb482eab5e413f189cf29af2377abaad58b1f96f2235973"
+    },
+    {
+      "path": "training/Magic_Kingdom_Georeferenced_Paving_Starter.zip",
+      "sha256": "9161a3fccdec380fd55c2f02dec4b09ab4ae36339f66687ae28f10a21676d344"
+    },
+    {
+      "path": "experiments/Mutiny_Bay_Offline_Multisource_Pilot.zip",
+      "sha256": "43719d6d8d3e18294a247bf9e7143bdafe5173f0b0f8f660a22522237e353865"
+    },
+    {
+      "path": "audit/Alton_Georeferencing_Audit.json",
+      "sha256": "c590a19b0461084a401a9e6ad94e753e20100cd2501556b4d6f80cfaede718ea"
+    },
+    {
+      "path": "lidar/Alton_Tree_Canopy_LiDAR_Training.zip",
+      "sha256": "787851d42c29665049220f6876de73802b8b8afe26f7cc17db9aabe2e09f547e"
+    },
+    {
+      "path": "training/Alton_Towers_Parkwide_Semantic_Training_2026-11_v1.zip",
+      "sha256": "4e20a17896d9ec60691c97d45b7cab72594ec1b10f51d6ee9670fe528cb25170"
+    },
+    {
+      "path": "training/Alton_Towers_AI_Training_Expansion_2026-11_v2.zip",
+      "sha256": "a8da54f402ea9ac26cdd111d405ca1a682765b91661c613d2d510b733cb7e99b"
+    },
+    {
+      "path": "lidar/alton_lidar_geometry.zip",
+      "sha256": "a14fd2b0c49cc8d45d0b823fefa59b05f0c7c3ae5be7d8607422a571ff235364"
+    },
+    {
+      "path": "training/alton_registered_views.zip",
+      "sha256": "492ea934100b9e63116dc91cd367cecd3d54589285ed37536a0726df1dbb1c68"
+    }
+  ],
+  "baseline": "Supply latest validated .mcworld separately; do not substitute a generated dummy world.",
+  "notes": "These hashes were computed on actual local files. Binary archives are not in this public repository. Verify redistribution rights before public upload; use private storage or local workspace if needed."
+}
