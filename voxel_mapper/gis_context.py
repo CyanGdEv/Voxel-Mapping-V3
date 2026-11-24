@@ -210,3 +210,55 @@ def write_context_grid(bounds, features, layers, output, *, landcover_report=Non
               "policy":"Context input only; never a material target or evidence of absence. Resampling adds no source detail."}
     (output/"gis-context.json").write_text(json.dumps(report,indent=2),encoding="utf-8")
     return report
+
+
+def annotate_context(collection, features, bounds):
+    """Attach per-source overlap evidence to mapped features; never delete paths under trees."""
+    crs = metric_crs(bounds)
+    tf = Transformer.from_crs(4326,crs,always_xy=True)
+    area = transform(tf.transform,box(*bounds))
+    entries = []
+    for f in features:
+        p = f["properties"]
+        if p.get("gis_role") not in ("woodland_context","woodland_polygon","water_polygon","habitat_context"):
+            continue
+        g = projected(f,tf,area)
+        if g is not None and g.area>0:
+            entries.append((p,g))
+    tree = STRtree([g for _,g in entries])
+    count, review = 0, []
+    for f in collection["features"]:
+        p = f.setdefault("properties",{})
+        if p.get("kind") not in ("path","building","parking","water","vegetation","tree","woodland","canopy"):
+            continue
+        g = projected(f,tf,area)
+        if g is None:
+            continue
+        measure = "area" if g.area>0 else "length" if g.length>0 else None
+        if measure is None:
+            continue
+        overlaps = defaultdict(list)
+        for i in tree.query(g,predicate="intersects"):
+            props,h = entries[int(i)]
+            overlap = g.intersection(h)
+            if getattr(overlap,measure)>0:
+                overlaps[(props["source_id"],props["gis_role"])].append(overlap)
+        context = []
+        for (sid,role),parts in sorted(overlaps.items()):
+            fraction = getattr(unary_union(parts),measure)/getattr(g,measure)
+            context.append({"source_id":sid,"role":role,"fraction":round(min(1.0,fraction),4),"measure":measure})
+        if not context:
+            continue
+        p["gis_context_overlaps"] = context
+        count += 1
+        if p.get("kind") in ("path","building","parking"):
+            flags = []
+            if any(v["role"] in ("woodland_context","woodland_polygon") for v in context):
+                flags.append("woodland_overlap_preserve_mapped_geometry")
+            if any(v["role"]=="water_polygon" for v in context):
+                flags.append("water_overlap_review_crossing_or_source_disagreement")
+            if flags:
+                p["gis_review_flags"] = flags
+                review.append({"feature_id":f.get("id"),"flags":flags})
+    return {"annotated_features":count,"review_flags":review,
+            "policy":"Overlap may represent real vertical layering; never erase paths or infer a bridge or surface material."}
