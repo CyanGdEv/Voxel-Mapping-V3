@@ -177,7 +177,7 @@ def main():
     review_report = None
     context_settings = config.get("gis_context", {})
     if context_settings.get("enabled", False):
-        from .gis_context import import_polygons, review_geometry, write_context_grid
+        from .gis_context import import_polygons, review_geometry, write_context_grid, annotate_context
         local, local_sources, local_layers = import_polygons(context_settings.get("local_polygons", []), config["bbox"], root=Path(args.config).resolve().parent)
         layers = (gis_report["layers"] if gis_report else []) + local_layers
         registered = config.setdefault("sources", [])
@@ -190,6 +190,7 @@ def main():
             (output / "gis-local-polygons.geojson").write_text(json.dumps({"type":"FeatureCollection","features":local}), encoding="utf-8")
         review_report, candidates = review_geometry(collection, features, config["bbox"], min_gap_m2=float(context_settings.get("min_gap_m2",4)))
         review_report["local_layers"] = local_layers
+        review_report["feature_context"] = annotate_context(collection, features, config["bbox"])
         (output / "gis-geometry-review.json").write_text(json.dumps(review_report, indent=2), encoding="utf-8")
         (output / "gis-gap-candidates.geojson").write_text(json.dumps(candidates), encoding="utf-8")
         context_report = write_context_grid(config["bbox"], features, layers, output, landcover_report=landcover_report, cell_m=float(context_settings.get("cell_m",5)))
