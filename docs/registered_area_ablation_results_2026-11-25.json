@@ -1,0 +1,4171 @@
+{
+  "schema": "registered-area-ablation-results-v1",
+  "configuration": {
+    "schema": "registered-area-ablation-v1",
+    "seeds": [
+      41,
+      42,
+      43
+    ],
+    "epochs": 20,
+    "modes": {
+      "rgb": {},
+      "zero28": {
+        "context_baseline": true
+      },
+      "vectors": {
+        "context_group": [
+          "building",
+          "water",
+          "woodland",
+          "habitat",
+          "heritage",
+          "watercourse"
+        ]
+      },
+      "landcover": {
+        "context_group": [
+          "landcover"
+        ]
+      },
+      "height": {
+        "context_group": [
+          "height"
+        ]
+      },
+      "intensity": {
+        "context_group": [
+          "intensity"
+        ]
+      },
+      "full": {},
+      "full_scaled": {
+        "context_normalization": "train_p95"
+      }
+    },
+    "datasets": {
+      "east": {
+        "path": "/workspace/data/alton-broad-east-margin64-context.zip",
+        "sha256": "73362e8adabf8962c54f82ffdd334966ec4dfc1af3e70b0742fe8da17b0ee686"
+      },
+      "south": {
+        "path": "/workspace/data/alton-broad-south-margin64-context.zip",
+        "sha256": "6243d4f77c6cec2a750ee13b8a136d6b9bd384de0ce144656e6da5571e426159"
+      },
+      "north": {
+        "path": "/workspace/data/alton-broad-north-margin64-context.zip",
+        "sha256": "69d2583845c2781511a7097d3168c84a9ea0563dd2d545154ac1c0bcc66decd5"
+      }
+    },
+    "policy": "Checkpoint selection uses validation; no independent test or model promotion. Overlapping training observations are not independent. Broad grass/paving only."
+  },
+  "common_settings": {
+    "batch_size": 4,
+    "patch_size": 64,
+    "learning_rate": 0.001,
+    "num_classes": 10,
+    "context_dropout": 0.2,
+    "threads": 2,
+    "cpu": true
+  },
+  "code_commit": "4620bae3a21cb2f5632942945ccd9f2126af0022",
+  "environment": {
+    "python": "3.12.14",
+    "torch": "2.15.0+cpu",
+    "numpy": "2.3.5",
+    "rasterio": "1.5.2"
+  },
+  "summary": {
+    "rgb": {
+      "east": {
+        "mean_iou": 0.9529310613796232,
+        "min_iou": 0.9421034717494894,
+        "max_iou": 0.9583448561946903,
+        "sample_std_iou": 0.009376967681448974,
+        "mean_top_label_ece": 0.267015852286654,
+        "per_seed": [
+          {
+            "area": "east",
+            "seed": 41,
+            "mode": "rgb",
+            "mean_iou": 0.9421034717494894,
+            "reviewed_class_mean_iou": 0.9421034717494894,
+            "pixel_accuracy": 0.9703389830508474,
+            "predicted_unsupported_class_pixels": 0,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 1.0,
+                "recall": 0.9380530973451328,
+                "iou": 0.9380530973451328,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9461538461538461,
+                "recall": 1.0,
+                "iou": 0.9461538461538461,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.19488280329663876
+          },
+          {
+            "area": "east",
+            "seed": 42,
+            "mode": "rgb",
+            "mean_iou": 0.9583448561946903,
+            "reviewed_class_mean_iou": 0.9583448561946903,
+            "pixel_accuracy": 0.9788135593220338,
+            "predicted_unsupported_class_pixels": 0,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 1.0,
+                "recall": 0.9557522123893806,
+                "iou": 0.9557522123893806,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9609375,
+                "recall": 1.0,
+                "iou": 0.9609375,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.2904964300914336
+          },
+          {
+            "area": "east",
+            "seed": 43,
+            "mode": "rgb",
+            "mean_iou": 0.9583448561946903,
+            "reviewed_class_mean_iou": 0.9583448561946903,
+            "pixel_accuracy": 0.9788135593220338,
+            "predicted_unsupported_class_pixels": 0,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 1.0,
+                "recall": 0.9557522123893806,
+                "iou": 0.9557522123893806,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9609375,
+                "recall": 1.0,
+                "iou": 0.9609375,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.31566832347188956
+          }
+        ]
+      },
+      "south": {
+        "mean_iou": 0.9348353951011754,
+        "min_iou": 0.8748017508124329,
+        "max_iou": 0.9762836700336701,
+        "sample_std_iou": 0.053232574123252184,
+        "mean_top_label_ece": 0.22661981146220125,
+        "per_seed": [
+          {
+            "area": "south",
+            "seed": 41,
+            "mode": "rgb",
+            "mean_iou": 0.953420764457423,
+            "reviewed_class_mean_iou": 0.953420764457423,
+            "pixel_accuracy": 0.982051282051282,
+            "predicted_unsupported_class_pixels": 0,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9623287671232876,
+                "recall": 0.9656357388316151,
+                "iou": 0.9304635761589404,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9886104783599089,
+                "recall": 0.987485779294653,
+                "iou": 0.9763779527559056,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.1996046285089265
+          },
+          {
+            "area": "south",
+            "seed": 42,
+            "mode": "rgb",
+            "mean_iou": 0.8748017508124329,
+            "reviewed_class_mean_iou": 0.8748017508124329,
+            "pixel_accuracy": 0.8743589743589744,
+            "predicted_unsupported_class_pixels": 144,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9961240310077519,
+                "recall": 0.8831615120274914,
+                "iou": 0.8801369863013698,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9973958333333334,
+                "recall": 0.8714448236632537,
+                "iou": 0.8694665153234961,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.32523280830464807
+          },
+          {
+            "area": "south",
+            "seed": 43,
+            "mode": "rgb",
+            "mean_iou": 0.9762836700336701,
+            "reviewed_class_mean_iou": 0.9762836700336701,
+            "pixel_accuracy": 0.982051282051282,
+            "predicted_unsupported_class_pixels": 14,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9797297297297297,
+                "recall": 0.9965635738831615,
+                "iou": 0.9764309764309764,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9988372093023256,
+                "recall": 0.9772468714448237,
+                "iou": 0.9761363636363637,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.15502199757302929
+          }
+        ]
+      },
+      "north": {
+        "mean_iou": 0.8537371746768662,
+        "min_iou": 0.8011561845908501,
+        "max_iou": 0.9233644543670929,
+        "sample_std_iou": 0.0628621292383475,
+        "mean_top_label_ece": 0.35865241152800076,
+        "per_seed": [
+          {
+            "area": "north",
+            "seed": 41,
+            "mode": "rgb",
+            "mean_iou": 0.9233644543670929,
+            "reviewed_class_mean_iou": 0.9233644543670929,
+            "pixel_accuracy": 0.9758162031438936,
+            "predicted_unsupported_class_pixels": 11,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.8947368421052632,
+                "recall": 0.9714285714285714,
+                "iou": 0.8717948717948718,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9986486486486487,
+                "recall": 0.9762219286657859,
+                "iou": 0.974934036939314,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.1727251355528399
+          },
+          {
+            "area": "north",
+            "seed": 42,
+            "mode": "rgb",
+            "mean_iou": 0.8366908850726552,
+            "reviewed_class_mean_iou": 0.8366908850726552,
+            "pixel_accuracy": 0.9214026602176542,
+            "predicted_unsupported_class_pixels": 51,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.8181818181818182,
+                "recall": 0.9,
+                "iou": 0.75,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 0.9233817701453104,
+                "iou": 0.9233817701453104,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.5723067951606003
+          },
+          {
+            "area": "north",
+            "seed": 43,
+            "mode": "rgb",
+            "mean_iou": 0.8011561845908501,
+            "reviewed_class_mean_iou": 0.8011561845908501,
+            "pixel_accuracy": 0.7968561064087062,
+            "predicted_unsupported_class_pixels": 154,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.8783783783783784,
+                "recall": 0.9285714285714286,
+                "iou": 0.8227848101265823,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.991652754590985,
+                "recall": 0.7846763540290621,
+                "iou": 0.7795275590551181,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.33092530387056196
+          }
+        ]
+      },
+      "equal_area_mean_iou": 0.9138345437192216
+    },
+    "zero28": {
+      "east": {
+        "mean_iou": 0.9148139964607681,
+        "min_iou": 0.8716495829884765,
+        "max_iou": 0.9544386061946903,
+        "sample_std_iou": 0.041507869720564826,
+        "mean_top_label_ece": 0.1775219147488222,
+        "per_seed": [
+          {
+            "area": "east",
+            "seed": 41,
+            "mode": "zero28",
+            "mean_iou": 0.918353800199137,
+            "reviewed_class_mean_iou": 0.918353800199137,
+            "pixel_accuracy": 0.9576271186440678,
+            "predicted_unsupported_class_pixels": 0,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9813084112149533,
+                "recall": 0.9292035398230089,
+                "iou": 0.9130434782608695,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.937984496124031,
+                "recall": 0.983739837398374,
+                "iou": 0.9236641221374046,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.26433529212313184
+          },
+          {
+            "area": "east",
+            "seed": 42,
+            "mode": "zero28",
+            "mean_iou": 0.9544386061946903,
+            "reviewed_class_mean_iou": 0.9544386061946903,
+            "pixel_accuracy": 0.9745762711864406,
+            "predicted_unsupported_class_pixels": 1,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 1.0,
+                "recall": 0.9557522123893806,
+                "iou": 0.9557522123893806,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9606299212598425,
+                "recall": 0.991869918699187,
+                "iou": 0.953125,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.24591033337479928
+          },
+          {
+            "area": "east",
+            "seed": 43,
+            "mode": "zero28",
+            "mean_iou": 0.8716495829884765,
+            "reviewed_class_mean_iou": 0.8716495829884765,
+            "pixel_accuracy": 0.9322033898305084,
+            "predicted_unsupported_class_pixels": 0,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 1.0,
+                "recall": 0.8584070796460177,
+                "iou": 0.8584070796460177,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.8848920863309353,
+                "recall": 1.0,
+                "iou": 0.8848920863309353,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.022320118748535574
+          }
+        ]
+      },
+      "south": {
+        "mean_iou": 0.8823120320450967,
+        "min_iou": 0.8309748427672956,
+        "max_iou": 0.9148313098651699,
+        "sample_std_iou": 0.04498402063241333,
+        "mean_top_label_ece": 0.2293397061038561,
+        "per_seed": [
+          {
+            "area": "south",
+            "seed": 41,
+            "mode": "zero28",
+            "mean_iou": 0.9011299435028248,
+            "reviewed_class_mean_iou": 0.9011299435028248,
+            "pixel_accuracy": 0.8760683760683761,
+            "predicted_unsupported_class_pixels": 135,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.986159169550173,
+                "recall": 0.979381443298969,
+                "iou": 0.9661016949152542,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9919571045576407,
+                "recall": 0.8418657565415245,
+                "iou": 0.8361581920903954,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.2530768413701628
+          },
+          {
+            "area": "south",
+            "seed": 42,
+            "mode": "zero28",
+            "mean_iou": 0.8309748427672956,
+            "reviewed_class_mean_iou": 0.8309748427672956,
+            "pixel_accuracy": 0.811965811965812,
+            "predicted_unsupported_class_pixels": 192,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9148264984227129,
+                "recall": 0.9965635738831615,
+                "iou": 0.9119496855345912,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9984871406959153,
+                "recall": 0.7508532423208191,
+                "iou": 0.75,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.14476366803432122
+          },
+          {
+            "area": "south",
+            "seed": 43,
+            "mode": "zero28",
+            "mean_iou": 0.9148313098651699,
+            "reviewed_class_mean_iou": 0.9148313098651699,
+            "pixel_accuracy": 0.9017094017094017,
+            "predicted_unsupported_class_pixels": 103,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9826989619377162,
+                "recall": 0.9759450171821306,
+                "iou": 0.9594594594594594,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9910025706940874,
+                "recall": 0.8771331058020477,
+                "iou": 0.8702031602708804,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.29017860890708425
+          }
+        ]
+      },
+      "north": {
+        "mean_iou": 0.929057194578991,
+        "min_iou": 0.8618083076471452,
+        "max_iou": 0.976882430647292,
+        "sample_std_iou": 0.059945576198038995,
+        "mean_top_label_ece": 0.26201980904867833,
+        "per_seed": [
+          {
+            "area": "north",
+            "seed": 41,
+            "mode": "zero28",
+            "mean_iou": 0.9484808454425363,
+            "reviewed_class_mean_iou": 0.9484808454425363,
+            "pixel_accuracy": 0.905683192261185,
+            "predicted_unsupported_class_pixels": 78,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 1.0,
+                "recall": 1.0,
+                "iou": 1.0,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 0.8969616908850726,
+                "iou": 0.8969616908850726,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.5090098557982508
+          },
+          {
+            "area": "north",
+            "seed": 42,
+            "mode": "zero28",
+            "mean_iou": 0.8618083076471452,
+            "reviewed_class_mean_iou": 0.8618083076471452,
+            "pixel_accuracy": 0.9504232164449818,
+            "predicted_unsupported_class_pixels": 21,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.7777777777777778,
+                "recall": 1.0,
+                "iou": 0.7777777777777778,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 0.9458388375165125,
+                "iou": 0.9458388375165125,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.20630690149125047
+          },
+          {
+            "area": "north",
+            "seed": 43,
+            "mode": "zero28",
+            "mean_iou": 0.976882430647292,
+            "reviewed_class_mean_iou": 0.976882430647292,
+            "pixel_accuracy": 0.9576783555018138,
+            "predicted_unsupported_class_pixels": 35,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 1.0,
+                "recall": 1.0,
+                "iou": 1.0,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 0.9537648612945839,
+                "iou": 0.9537648612945839,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.0707426698565339
+          }
+        ]
+      },
+      "equal_area_mean_iou": 0.9087277410282852
+    },
+    "vectors": {
+      "east": {
+        "mean_iou": 0.6866694354780396,
+        "min_iou": 0.4959349593495935,
+        "max_iou": 0.911504424778761,
+        "sample_std_iou": 0.20987288747770733,
+        "mean_top_label_ece": 0.33522596539624333,
+        "per_seed": [
+          {
+            "area": "east",
+            "seed": 41,
+            "mode": "vectors",
+            "mean_iou": 0.4959349593495935,
+            "reviewed_class_mean_iou": 0.4959349593495935,
+            "pixel_accuracy": 0.5169491525423728,
+            "predicted_unsupported_class_pixels": 114,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": null,
+                "recall": 0.0,
+                "iou": 0.0,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 0.991869918699187,
+                "iou": 0.991869918699187,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.13839861763230826
+          },
+          {
+            "area": "east",
+            "seed": 42,
+            "mode": "vectors",
+            "mean_iou": 0.911504424778761,
+            "reviewed_class_mean_iou": 0.911504424778761,
+            "pixel_accuracy": 0.9152542372881356,
+            "predicted_unsupported_class_pixels": 20,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 1.0,
+                "recall": 0.8230088495575221,
+                "iou": 0.8230088495575221,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 1.0,
+                "iou": 1.0,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.5213905798618571
+          },
+          {
+            "area": "east",
+            "seed": 43,
+            "mode": "vectors",
+            "mean_iou": 0.6525689223057645,
+            "reviewed_class_mean_iou": 0.6525689223057645,
+            "pixel_accuracy": 0.7966101694915254,
+            "predicted_unsupported_class_pixels": 2,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9850746268656716,
+                "recall": 0.584070796460177,
+                "iou": 0.5789473684210527,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.7305389221556886,
+                "recall": 0.991869918699187,
+                "iou": 0.7261904761904762,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.3458886986945646
+          }
+        ]
+      },
+      "south": {
+        "mean_iou": 0.5831269260481252,
+        "min_iou": 0.4072978303747535,
+        "max_iou": 0.746061144716569,
+        "sample_std_iou": 0.16974938637795453,
+        "mean_top_label_ece": 0.23226709027066192,
+        "per_seed": [
+          {
+            "area": "south",
+            "seed": 41,
+            "mode": "vectors",
+            "mean_iou": 0.746061144716569,
+            "reviewed_class_mean_iou": 0.746061144716569,
+            "pixel_accuracy": 0.8777777777777778,
+            "predicted_unsupported_class_pixels": 23,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.740506329113924,
+                "recall": 0.8041237113402062,
+                "iou": 0.6273458445040214,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9542719614921781,
+                "recall": 0.9021615472127418,
+                "iou": 0.8647764449291166,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.23616286313686616
+          },
+          {
+            "area": "south",
+            "seed": 42,
+            "mode": "vectors",
+            "mean_iou": 0.5960218030530531,
+            "reviewed_class_mean_iou": 0.5960218030530531,
+            "pixel_accuracy": 0.7974358974358975,
+            "predicted_unsupported_class_pixels": 24,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.6338582677165354,
+                "recall": 0.5532646048109966,
+                "iou": 0.4192708333333333,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.8654708520179372,
+                "recall": 0.8782707622298066,
+                "iou": 0.7727727727727728,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.3270398570558964
+          },
+          {
+            "area": "south",
+            "seed": 43,
+            "mode": "vectors",
+            "mean_iou": 0.4072978303747535,
+            "reviewed_class_mean_iou": 0.4072978303747535,
+            "pixel_accuracy": 0.705982905982906,
+            "predicted_unsupported_class_pixels": 207,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.0,
+                "recall": 0.0,
+                "iou": 0.0,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.8595213319458896,
+                "recall": 0.9397042093287827,
+                "iou": 0.814595660749507,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.13359855061922318
+          }
+        ]
+      },
+      "north": {
+        "mean_iou": 0.5192073379102266,
+        "min_iou": 0.48026315789473684,
+        "max_iou": 0.5924705509739192,
+        "sample_std_iou": 0.06348993453634418,
+        "mean_top_label_ece": 0.3403191523643714,
+        "per_seed": [
+          {
+            "area": "north",
+            "seed": 41,
+            "mode": "vectors",
+            "mean_iou": 0.5924705509739192,
+            "reviewed_class_mean_iou": 0.5924705509739192,
+            "pixel_accuracy": 0.905683192261185,
+            "predicted_unsupported_class_pixels": 5,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.46774193548387094,
+                "recall": 0.4142857142857143,
+                "iou": 0.2815533980582524,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9473684210526315,
+                "recall": 0.9511228533685601,
+                "iou": 0.903387703889586,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.4342629735818653
+          },
+          {
+            "area": "north",
+            "seed": 42,
+            "mode": "vectors",
+            "mean_iou": 0.48488830486202367,
+            "reviewed_class_mean_iou": 0.48488830486202367,
+            "pixel_accuracy": 0.8923821039903265,
+            "predicted_unsupported_class_pixels": 84,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.0,
+                "recall": 0.0,
+                "iou": 0.0,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9946091644204852,
+                "recall": 0.9749009247027741,
+                "iou": 0.9697766097240473,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.4203003540977457
+          },
+          {
+            "area": "north",
+            "seed": 43,
+            "mode": "vectors",
+            "mean_iou": 0.48026315789473684,
+            "reviewed_class_mean_iou": 0.48026315789473684,
+            "pixel_accuracy": 0.8827085852478839,
+            "predicted_unsupported_class_pixels": 82,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.0,
+                "recall": 0.0,
+                "iou": 0.0,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9959072305593452,
+                "recall": 0.964332892998679,
+                "iou": 0.9605263157894737,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.1663941294135033
+          }
+        ]
+      },
+      "equal_area_mean_iou": 0.5963345664787972
+    },
+    "landcover": {
+      "east": {
+        "mean_iou": 0.970924434246054,
+        "min_iou": 0.9463504647348278,
+        "max_iou": 0.9915489944373128,
+        "sample_std_iou": 0.022856621519793594,
+        "mean_top_label_ece": 0.2721589152085579,
+        "per_seed": [
+          {
+            "area": "east",
+            "seed": 41,
+            "mode": "landcover",
+            "mean_iou": 0.9463504647348278,
+            "reviewed_class_mean_iou": 0.9463504647348278,
+            "pixel_accuracy": 0.9703389830508474,
+            "predicted_unsupported_class_pixels": 1,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9572649572649573,
+                "recall": 0.9911504424778761,
+                "iou": 0.9491525423728814,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9915254237288136,
+                "recall": 0.9512195121951219,
+                "iou": 0.9435483870967742,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.42910036975044313
+          },
+          {
+            "area": "east",
+            "seed": 42,
+            "mode": "landcover",
+            "mean_iou": 0.9915489944373128,
+            "reviewed_class_mean_iou": 0.9915489944373128,
+            "pixel_accuracy": 0.9957627118644068,
+            "predicted_unsupported_class_pixels": 0,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9912280701754386,
+                "recall": 1.0,
+                "iou": 0.9912280701754386,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 0.991869918699187,
+                "iou": 0.991869918699187,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.22987484224772048
+          },
+          {
+            "area": "east",
+            "seed": 43,
+            "mode": "landcover",
+            "mean_iou": 0.9748738435660218,
+            "reviewed_class_mean_iou": 0.9748738435660218,
+            "pixel_accuracy": 0.9872881355932204,
+            "predicted_unsupported_class_pixels": 0,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9741379310344828,
+                "recall": 1.0,
+                "iou": 0.9741379310344828,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 0.975609756097561,
+                "iou": 0.975609756097561,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.15750153362751007
+          }
+        ]
+      },
+      "south": {
+        "mean_iou": 0.8456358788244165,
+        "min_iou": 0.7826841945784677,
+        "max_iou": 0.8962755735572374,
+        "sample_std_iou": 0.05778788072687166,
+        "mean_top_label_ece": 0.10871374013162405,
+        "per_seed": [
+          {
+            "area": "south",
+            "seed": 41,
+            "mode": "landcover",
+            "mean_iou": 0.8962755735572374,
+            "reviewed_class_mean_iou": 0.8962755735572374,
+            "pixel_accuracy": 0.9222222222222223,
+            "predicted_unsupported_class_pixels": 63,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9605734767025089,
+                "recall": 0.9209621993127147,
+                "iou": 0.8874172185430463,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9794685990338164,
+                "recall": 0.9226393629124005,
+                "iou": 0.9051339285714286,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.1410264922512902
+          },
+          {
+            "area": "south",
+            "seed": 42,
+            "mode": "landcover",
+            "mean_iou": 0.8579478683375441,
+            "reviewed_class_mean_iou": 0.8579478683375441,
+            "pixel_accuracy": 0.864957264957265,
+            "predicted_unsupported_class_pixels": 126,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9269102990033222,
+                "recall": 0.9587628865979382,
+                "iou": 0.8913738019169329,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9865410497981157,
+                "recall": 0.8339021615472128,
+                "iou": 0.8245219347581553,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.14101044478324742
+          },
+          {
+            "area": "south",
+            "seed": 43,
+            "mode": "landcover",
+            "mean_iou": 0.7826841945784677,
+            "reviewed_class_mean_iou": 0.7826841945784677,
+            "pixel_accuracy": 0.9008547008547009,
+            "predicted_unsupported_class_pixels": 0,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.7507163323782235,
+                "recall": 0.9003436426116839,
+                "iou": 0.6931216931216931,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9646772228989038,
+                "recall": 0.9010238907849829,
+                "iou": 0.8722466960352423,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.04410428336033455
+          }
+        ]
+      },
+      "north": {
+        "mean_iou": 0.870827057809433,
+        "min_iou": 0.7683739998024302,
+        "max_iou": 0.9867899603698811,
+        "sample_std_iou": 0.10983291802799497,
+        "mean_top_label_ece": 0.2984641062569493,
+        "per_seed": [
+          {
+            "area": "north",
+            "seed": 41,
+            "mode": "landcover",
+            "mean_iou": 0.8573172132559876,
+            "reviewed_class_mean_iou": 0.8573172132559876,
+            "pixel_accuracy": 0.9576783555018138,
+            "predicted_unsupported_class_pixels": 13,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.7608695652173914,
+                "recall": 1.0,
+                "iou": 0.7608695652173914,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 0.9537648612945839,
+                "iou": 0.9537648612945839,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.35349583324887296
+          },
+          {
+            "area": "north",
+            "seed": 42,
+            "mode": "landcover",
+            "mean_iou": 0.7683739998024302,
+            "reviewed_class_mean_iou": 0.7683739998024302,
+            "pixel_accuracy": 0.9467956469165659,
+            "predicted_unsupported_class_pixels": 1,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.6363636363636364,
+                "recall": 0.9,
+                "iou": 0.5943396226415094,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9903713892709766,
+                "recall": 0.9511228533685601,
+                "iou": 0.9424083769633508,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.39681673808498563
+          },
+          {
+            "area": "north",
+            "seed": 43,
+            "mode": "landcover",
+            "mean_iou": 0.9867899603698811,
+            "reviewed_class_mean_iou": 0.9867899603698811,
+            "pixel_accuracy": 0.9758162031438936,
+            "predicted_unsupported_class_pixels": 20,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 1.0,
+                "recall": 1.0,
+                "iou": 1.0,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 0.9735799207397622,
+                "iou": 0.9735799207397622,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.14507974743698934
+          }
+        ]
+      },
+      "equal_area_mean_iou": 0.8957957902933011
+    },
+    "height": {
+      "east": {
+        "mean_iou": 0.9640450819443602,
+        "min_iou": 0.9423389830508475,
+        "max_iou": 0.9831504424778761,
+        "sample_std_iou": 0.020529653800146475,
+        "mean_top_label_ece": 0.09683355150249717,
+        "per_seed": [
+          {
+            "area": "east",
+            "seed": 41,
+            "mode": "height",
+            "mean_iou": 0.9666458203043569,
+            "reviewed_class_mean_iou": 0.9666458203043569,
+            "pixel_accuracy": 0.9830508474576272,
+            "predicted_unsupported_class_pixels": 0,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9658119658119658,
+                "recall": 1.0,
+                "iou": 0.9658119658119658,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 0.967479674796748,
+                "iou": 0.967479674796748,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.09870798898450399
+          },
+          {
+            "area": "east",
+            "seed": 42,
+            "mode": "height",
+            "mean_iou": 0.9831504424778761,
+            "reviewed_class_mean_iou": 0.9831504424778761,
+            "pixel_accuracy": 0.9915254237288136,
+            "predicted_unsupported_class_pixels": 0,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 1.0,
+                "recall": 0.9823008849557522,
+                "iou": 0.9823008849557522,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.984,
+                "recall": 1.0,
+                "iou": 0.984,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.10663839745319496
+          },
+          {
+            "area": "east",
+            "seed": 43,
+            "mode": "height",
+            "mean_iou": 0.9423389830508475,
+            "reviewed_class_mean_iou": 0.9423389830508475,
+            "pixel_accuracy": 0.9703389830508474,
+            "predicted_unsupported_class_pixels": 0,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9568965517241379,
+                "recall": 0.9823008849557522,
+                "iou": 0.940677966101695,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9833333333333333,
+                "recall": 0.959349593495935,
+                "iou": 0.944,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.0851542680697926
+          }
+        ]
+      },
+      "south": {
+        "mean_iou": 0.9146720484016638,
+        "min_iou": 0.89649022835676,
+        "max_iou": 0.9352250875952908,
+        "sample_std_iou": 0.019475993947566654,
+        "mean_top_label_ece": 0.21305396535415255,
+        "per_seed": [
+          {
+            "area": "south",
+            "seed": 41,
+            "mode": "height",
+            "mean_iou": 0.9352250875952908,
+            "reviewed_class_mean_iou": 0.9352250875952908,
+            "pixel_accuracy": 0.935042735042735,
+            "predicted_unsupported_class_pixels": 63,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9793103448275862,
+                "recall": 0.9759450171821306,
+                "iou": 0.9562289562289562,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9914320685434517,
+                "recall": 0.9215017064846417,
+                "iou": 0.9142212189616253,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.1907420392092476
+          },
+          {
+            "area": "south",
+            "seed": 42,
+            "mode": "height",
+            "mean_iou": 0.9123008292529404,
+            "reviewed_class_mean_iou": 0.9123008292529404,
+            "pixel_accuracy": 0.9384615384615385,
+            "predicted_unsupported_class_pixels": 43,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9486301369863014,
+                "recall": 0.9518900343642611,
+                "iou": 0.9052287581699346,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9832335329341317,
+                "recall": 0.9340159271899886,
+                "iou": 0.9193729003359462,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.2937593337371309
+          },
+          {
+            "area": "south",
+            "seed": 43,
+            "mode": "height",
+            "mean_iou": 0.89649022835676,
+            "reviewed_class_mean_iou": 0.89649022835676,
+            "pixel_accuracy": 0.9427350427350427,
+            "predicted_unsupported_class_pixels": 25,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9108910891089109,
+                "recall": 0.9484536082474226,
+                "iou": 0.8679245283018868,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.982185273159145,
+                "recall": 0.9408418657565415,
+                "iou": 0.9250559284116331,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.15466052311607914
+          }
+        ]
+      },
+      "north": {
+        "mean_iou": 0.8540975141002192,
+        "min_iou": 0.6918416617318818,
+        "max_iou": 0.9590305298693673,
+        "sample_std_iou": 0.1425198355001179,
+        "mean_top_label_ece": 0.23229827643858245,
+        "per_seed": [
+          {
+            "area": "north",
+            "seed": 41,
+            "mode": "height",
+            "mean_iou": 0.9114203506994083,
+            "reviewed_class_mean_iou": 0.9114203506994083,
+            "pixel_accuracy": 0.875453446191052,
+            "predicted_unsupported_class_pixels": 100,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.958904109589041,
+                "recall": 1.0,
+                "iou": 0.958904109589041,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 0.8639365918097754,
+                "iou": 0.8639365918097754,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.4216760817505285
+          },
+          {
+            "area": "north",
+            "seed": 42,
+            "mode": "height",
+            "mean_iou": 0.6918416617318818,
+            "reviewed_class_mean_iou": 0.6918416617318818,
+            "pixel_accuracy": 0.909310761789601,
+            "predicted_unsupported_class_pixels": 0,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.4827586206896552,
+                "recall": 1.0,
+                "iou": 0.4827586206896552,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 0.9009247027741083,
+                "iou": 0.9009247027741083,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.10154030640511587
+          },
+          {
+            "area": "north",
+            "seed": 43,
+            "mode": "height",
+            "mean_iou": 0.9590305298693673,
+            "reviewed_class_mean_iou": 0.9590305298693673,
+            "pixel_accuracy": 0.9504232164449818,
+            "predicted_unsupported_class_pixels": 39,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9722222222222222,
+                "recall": 1.0,
+                "iou": 0.9722222222222222,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 0.9458388375165125,
+                "iou": 0.9458388375165125,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.17367844116010284
+          }
+        ]
+      },
+      "equal_area_mean_iou": 0.9109382148154145
+    },
+    "intensity": {
+      "east": {
+        "mean_iou": 0.9674347360317436,
+        "min_iou": 0.9314954051796157,
+        "max_iou": 0.9959349593495934,
+        "sample_std_iou": 0.03285756040984005,
+        "mean_top_label_ece": 0.2521224834109094,
+        "per_seed": [
+          {
+            "area": "east",
+            "seed": 41,
+            "mode": "intensity",
+            "mean_iou": 0.9314954051796157,
+            "reviewed_class_mean_iou": 0.9314954051796157,
+            "pixel_accuracy": 0.9491525423728814,
+            "predicted_unsupported_class_pixels": 8,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9902912621359223,
+                "recall": 0.9026548672566371,
+                "iou": 0.8947368421052632,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.976,
+                "recall": 0.991869918699187,
+                "iou": 0.9682539682539683,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.35587410982382506
+          },
+          {
+            "area": "east",
+            "seed": 42,
+            "mode": "intensity",
+            "mean_iou": 0.9959349593495934,
+            "reviewed_class_mean_iou": 0.9959349593495934,
+            "pixel_accuracy": 0.9957627118644068,
+            "predicted_unsupported_class_pixels": 1,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 1.0,
+                "recall": 1.0,
+                "iou": 1.0,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 0.991869918699187,
+                "iou": 0.991869918699187,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.3204753301027468
+          },
+          {
+            "area": "east",
+            "seed": 43,
+            "mode": "intensity",
+            "mean_iou": 0.9748738435660218,
+            "reviewed_class_mean_iou": 0.9748738435660218,
+            "pixel_accuracy": 0.9872881355932204,
+            "predicted_unsupported_class_pixels": 0,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9741379310344828,
+                "recall": 1.0,
+                "iou": 0.9741379310344828,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 0.975609756097561,
+                "iou": 0.975609756097561,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.0800180103061563
+          }
+        ]
+      },
+      "south": {
+        "mean_iou": 0.9391394564735895,
+        "min_iou": 0.8932421046515007,
+        "max_iou": 0.9733875921375921,
+        "sample_std_iou": 0.0413231529402002,
+        "mean_top_label_ece": 0.1793679169121801,
+        "per_seed": [
+          {
+            "area": "south",
+            "seed": 41,
+            "mode": "intensity",
+            "mean_iou": 0.9733875921375921,
+            "reviewed_class_mean_iou": 0.9733875921375921,
+            "pixel_accuracy": 0.9752136752136752,
+            "predicted_unsupported_class_pixels": 23,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9830508474576272,
+                "recall": 0.9965635738831615,
+                "iou": 0.9797297297297297,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9988262910798122,
+                "recall": 0.9681456200227532,
+                "iou": 0.9670454545454545,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.188861750301897
+          },
+          {
+            "area": "south",
+            "seed": 42,
+            "mode": "intensity",
+            "mean_iou": 0.8932421046515007,
+            "reviewed_class_mean_iou": 0.8932421046515007,
+            "pixel_accuracy": 0.9162393162393162,
+            "predicted_unsupported_class_pixels": 66,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9419795221843004,
+                "recall": 0.9484536082474226,
+                "iou": 0.8961038961038961,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9815043156596794,
+                "recall": 0.9055745164960182,
+                "iou": 0.8903803131991052,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.15425357544778762
+          },
+          {
+            "area": "south",
+            "seed": 43,
+            "mode": "intensity",
+            "mean_iou": 0.9507886726316761,
+            "reviewed_class_mean_iou": 0.9507886726316761,
+            "pixel_accuracy": 0.9572649572649573,
+            "predicted_unsupported_class_pixels": 39,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9929078014184397,
+                "recall": 0.9621993127147767,
+                "iou": 0.9556313993174061,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9893992932862191,
+                "recall": 0.9556313993174061,
+                "iou": 0.9459459459459459,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.1949884249868556
+          }
+        ]
+      },
+      "north": {
+        "mean_iou": 0.7557198952176639,
+        "min_iou": 0.6989666458279704,
+        "max_iou": 0.8301849405548216,
+        "sample_std_iou": 0.06737834225119493,
+        "mean_top_label_ece": 0.3161782344374528,
+        "per_seed": [
+          {
+            "area": "north",
+            "seed": 41,
+            "mode": "intensity",
+            "mean_iou": 0.6989666458279704,
+            "reviewed_class_mean_iou": 0.6989666458279704,
+            "pixel_accuracy": 0.8923821039903265,
+            "predicted_unsupported_class_pixels": 79,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9714285714285714,
+                "recall": 0.4857142857142857,
+                "iou": 0.4788732394366197,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9873772791023843,
+                "recall": 0.9299867899603699,
+                "iou": 0.9190600522193212,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.6018290536291222
+          },
+          {
+            "area": "north",
+            "seed": 42,
+            "mode": "intensity",
+            "mean_iou": 0.7380080992701994,
+            "reviewed_class_mean_iou": 0.7380080992701994,
+            "pixel_accuracy": 0.9105199516324063,
+            "predicted_unsupported_class_pixels": 22,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.5737704918032787,
+                "recall": 1.0,
+                "iou": 0.5737704918032787,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 0.9022457067371202,
+                "iou": 0.9022457067371202,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.1620528973287654
+          },
+          {
+            "area": "north",
+            "seed": 43,
+            "mode": "intensity",
+            "mean_iou": 0.8301849405548216,
+            "reviewed_class_mean_iou": 0.8301849405548216,
+            "pixel_accuracy": 0.9637243047158404,
+            "predicted_unsupported_class_pixels": 0,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.7,
+                "recall": 1.0,
+                "iou": 0.7,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 0.9603698811096433,
+                "iou": 0.9603698811096433,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.18465275235447082
+          }
+        ]
+      },
+      "equal_area_mean_iou": 0.8874313625743323
+    },
+    "full": {
+      "east": {
+        "mean_iou": 0.8256012596342627,
+        "min_iou": 0.5940638408222925,
+        "max_iou": 1.0,
+        "sample_std_iou": 0.20891305072427563,
+        "mean_top_label_ece": 0.3628622994963395,
+        "per_seed": [
+          {
+            "area": "east",
+            "seed": 41,
+            "mode": "full",
+            "mean_iou": 0.8827399380804954,
+            "reviewed_class_mean_iou": 0.8827399380804954,
+            "pixel_accuracy": 0.9364406779661016,
+            "predicted_unsupported_class_pixels": 1,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.99,
+                "recall": 0.8761061946902655,
+                "iou": 0.868421052631579,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9037037037037037,
+                "recall": 0.991869918699187,
+                "iou": 0.8970588235294118,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.3554246015215324
+          },
+          {
+            "area": "east",
+            "seed": 42,
+            "mode": "full",
+            "mean_iou": 1.0,
+            "reviewed_class_mean_iou": 1.0,
+            "pixel_accuracy": 1.0,
+            "predicted_unsupported_class_pixels": 0,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 1.0,
+                "recall": 1.0,
+                "iou": 1.0,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 1.0,
+                "iou": 1.0,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.21487094903901474
+          },
+          {
+            "area": "east",
+            "seed": 43,
+            "mode": "full",
+            "mean_iou": 0.5940638408222925,
+            "reviewed_class_mean_iou": 0.5940638408222925,
+            "pixel_accuracy": 0.75,
+            "predicted_unsupported_class_pixels": 1,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.6687116564417178,
+                "recall": 0.9646017699115044,
+                "iou": 0.6526946107784432,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9444444444444444,
+                "recall": 0.5528455284552846,
+                "iou": 0.5354330708661418,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.5182913479284715
+          }
+        ]
+      },
+      "south": {
+        "mean_iou": 0.7123013892117074,
+        "min_iou": 0.64526446967599,
+        "max_iou": 0.764007954992187,
+        "sample_std_iou": 0.060838052532564024,
+        "mean_top_label_ece": 0.4211252385861853,
+        "per_seed": [
+          {
+            "area": "south",
+            "seed": 41,
+            "mode": "full",
+            "mean_iou": 0.764007954992187,
+            "reviewed_class_mean_iou": 0.764007954992187,
+            "pixel_accuracy": 0.8572649572649572,
+            "predicted_unsupported_class_pixels": 73,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.8828125,
+                "recall": 0.7766323024054983,
+                "iou": 0.7040498442367601,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9239001189060642,
+                "recall": 0.8839590443686007,
+                "iou": 0.823966065747614,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.5241493487587343
+          },
+          {
+            "area": "south",
+            "seed": 42,
+            "mode": "full",
+            "mean_iou": 0.7276317429669452,
+            "reviewed_class_mean_iou": 0.7276317429669452,
+            "pixel_accuracy": 0.8564102564102564,
+            "predicted_unsupported_class_pixels": 28,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.6608478802992519,
+                "recall": 0.9106529209621993,
+                "iou": 0.6206088992974239,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9946018893387314,
+                "recall": 0.838452787258248,
+                "iou": 0.8346545866364666,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.3486492755066635
+          },
+          {
+            "area": "south",
+            "seed": 43,
+            "mode": "full",
+            "mean_iou": 0.64526446967599,
+            "reviewed_class_mean_iou": 0.64526446967599,
+            "pixel_accuracy": 0.8068376068376069,
+            "predicted_unsupported_class_pixels": 109,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.7440758293838863,
+                "recall": 0.5395189003436426,
+                "iou": 0.45507246376811594,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9258823529411765,
+                "recall": 0.8953356086461889,
+                "iou": 0.8354564755838642,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.3905770914931582
+          }
+        ]
+      },
+      "north": {
+        "mean_iou": 0.6125826374542084,
+        "min_iou": 0.4914698162729659,
+        "max_iou": 0.7757653573580466,
+        "sample_std_iou": 0.14674261805662256,
+        "mean_top_label_ece": 0.31773897935214035,
+        "per_seed": [
+          {
+            "area": "north",
+            "seed": 41,
+            "mode": "full",
+            "mean_iou": 0.7757653573580466,
+            "reviewed_class_mean_iou": 0.7757653573580466,
+            "pixel_accuracy": 0.8899637243047158,
+            "predicted_unsupported_class_pixels": 61,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.7439024390243902,
+                "recall": 0.8714285714285714,
+                "iou": 0.6703296703296703,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9868421052631579,
+                "recall": 0.8916776750330251,
+                "iou": 0.881201044386423,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.25521510904328276
+          },
+          {
+            "area": "north",
+            "seed": 42,
+            "mode": "full",
+            "mean_iou": 0.5705127387316127,
+            "reviewed_class_mean_iou": 0.5705127387316127,
+            "pixel_accuracy": 0.8645707376058042,
+            "predicted_unsupported_class_pixels": 75,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.42105263157894735,
+                "recall": 0.34285714285714286,
+                "iou": 0.23300970873786409,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9942446043165467,
+                "recall": 0.9128137384412153,
+                "iou": 0.9080157687253614,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.34466652503685336
+          },
+          {
+            "area": "north",
+            "seed": 43,
+            "mode": "full",
+            "mean_iou": 0.4914698162729659,
+            "reviewed_class_mean_iou": 0.4914698162729659,
+            "pixel_accuracy": 0.905683192261185,
+            "predicted_unsupported_class_pixels": 69,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.0,
+                "recall": 0.0,
+                "iou": 0.0,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.993368700265252,
+                "recall": 0.9894319682959049,
+                "iou": 0.9829396325459318,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.353335303976285
+          }
+        ]
+      },
+      "equal_area_mean_iou": 0.7168284287667261
+    },
+    "full_scaled": {
+      "east": {
+        "mean_iou": 0.9777219193355808,
+        "min_iou": 0.9583448561946903,
+        "max_iou": 1.0,
+        "sample_std_iou": 0.020978552818631754,
+        "mean_top_label_ece": 0.320700084780064,
+        "per_seed": [
+          {
+            "area": "east",
+            "seed": 41,
+            "mode": "full_scaled",
+            "mean_iou": 1.0,
+            "reviewed_class_mean_iou": 1.0,
+            "pixel_accuracy": 1.0,
+            "predicted_unsupported_class_pixels": 0,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 1.0,
+                "recall": 1.0,
+                "iou": 1.0,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 1.0,
+                "iou": 1.0,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.2592998201311645
+          },
+          {
+            "area": "east",
+            "seed": 42,
+            "mode": "full_scaled",
+            "mean_iou": 0.9583448561946903,
+            "reviewed_class_mean_iou": 0.9583448561946903,
+            "pixel_accuracy": 0.9788135593220338,
+            "predicted_unsupported_class_pixels": 0,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 1.0,
+                "recall": 0.9557522123893806,
+                "iou": 0.9557522123893806,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9609375,
+                "recall": 1.0,
+                "iou": 0.9609375,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.17509516669531996
+          },
+          {
+            "area": "east",
+            "seed": 43,
+            "mode": "full_scaled",
+            "mean_iou": 0.9748209018120522,
+            "reviewed_class_mean_iou": 0.9748209018120522,
+            "pixel_accuracy": 0.9872881355932204,
+            "predicted_unsupported_class_pixels": 0,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 1.0,
+                "recall": 0.9734513274336283,
+                "iou": 0.9734513274336283,
+                "labelled_pixels": 113
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9761904761904762,
+                "recall": 1.0,
+                "iou": 0.9761904761904762,
+                "labelled_pixels": 123
+              }
+            },
+            "top_label_ece_15_bins": 0.5277052675137076
+          }
+        ]
+      },
+      "south": {
+        "mean_iou": 0.8694958356591668,
+        "min_iou": 0.8077045496802902,
+        "max_iou": 0.9390962855869387,
+        "sample_std_iou": 0.06604304919767232,
+        "mean_top_label_ece": 0.27555698918820787,
+        "per_seed": [
+          {
+            "area": "south",
+            "seed": 41,
+            "mode": "full_scaled",
+            "mean_iou": 0.9390962855869387,
+            "reviewed_class_mean_iou": 0.9390962855869387,
+            "pixel_accuracy": 0.9529914529914529,
+            "predicted_unsupported_class_pixels": 37,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9658703071672355,
+                "recall": 0.9725085910652921,
+                "iou": 0.9401993355481728,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9904761904761905,
+                "recall": 0.9465301478953356,
+                "iou": 0.9379932356257046,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.1606862948363663
+          },
+          {
+            "area": "south",
+            "seed": 42,
+            "mode": "full_scaled",
+            "mean_iou": 0.8077045496802902,
+            "reviewed_class_mean_iou": 0.8077045496802902,
+            "pixel_accuracy": 0.8923076923076924,
+            "predicted_unsupported_class_pixels": 56,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.7891566265060241,
+                "recall": 0.9003436426116839,
+                "iou": 0.7257617728531855,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 0.8896473265073948,
+                "iou": 0.8896473265073948,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.28336446653319214
+          },
+          {
+            "area": "south",
+            "seed": 43,
+            "mode": "full_scaled",
+            "mean_iou": 0.8616866717102712,
+            "reviewed_class_mean_iou": 0.8616866717102712,
+            "pixel_accuracy": 0.9136752136752136,
+            "predicted_unsupported_class_pixels": 67,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 1.0,
+                "recall": 0.8109965635738832,
+                "iou": 0.8109965635738832,
+                "labelled_pixels": 291
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 0.9607843137254902,
+                "recall": 0.9476678043230944,
+                "iou": 0.9123767798466593,
+                "labelled_pixels": 879
+              }
+            },
+            "top_label_ece_15_bins": 0.3826202061950651
+          }
+        ]
+      },
+      "north": {
+        "mean_iou": 0.9219170458437301,
+        "min_iou": 0.8595607661822986,
+        "max_iou": 0.9735799207397622,
+        "sample_std_iou": 0.05775684877663595,
+        "mean_top_label_ece": 0.3084026144360256,
+        "per_seed": [
+          {
+            "area": "north",
+            "seed": 41,
+            "mode": "full_scaled",
+            "mean_iou": 0.9326104506091296,
+            "reviewed_class_mean_iou": 0.9326104506091296,
+            "pixel_accuracy": 0.9020556227327691,
+            "predicted_unsupported_class_pixels": 79,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.9722222222222222,
+                "recall": 1.0,
+                "iou": 0.9722222222222222,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 0.892998678996037,
+                "iou": 0.892998678996037,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.35995035592417046
+          },
+          {
+            "area": "north",
+            "seed": 42,
+            "mode": "full_scaled",
+            "mean_iou": 0.8595607661822986,
+            "reviewed_class_mean_iou": 0.8595607661822986,
+            "pixel_accuracy": 0.8573155985489722,
+            "predicted_unsupported_class_pixels": 108,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 0.875,
+                "recall": 1.0,
+                "iou": 0.875,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 0.8441215323645971,
+                "iou": 0.8441215323645971,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.41791269299377115
+          },
+          {
+            "area": "north",
+            "seed": 43,
+            "mode": "full_scaled",
+            "mean_iou": 0.9735799207397622,
+            "reviewed_class_mean_iou": 0.9735799207397622,
+            "pixel_accuracy": 0.9516324062877872,
+            "predicted_unsupported_class_pixels": 40,
+            "per_class": {
+              "1": {
+                "name": "grass_unspecified",
+                "precision": 1.0,
+                "recall": 1.0,
+                "iou": 1.0,
+                "labelled_pixels": 70
+              },
+              "9": {
+                "name": "paving_unspecified",
+                "precision": 1.0,
+                "recall": 0.9471598414795245,
+                "iou": 0.9471598414795245,
+                "labelled_pixels": 757
+              }
+            },
+            "top_label_ece_15_bins": 0.14734479439013526
+          }
+        ]
+      },
+      "equal_area_mean_iou": 0.923044933612826
+    }
+  },
+  "coverage": {
+    "east": {
+      "train": {
+        "building": {
+          "labelled_input_observations": 8379,
+          "known_observations": 8379,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              1.0
+            ],
+            [
+              1.0
+            ]
+          ]
+        },
+        "water": {
+          "labelled_input_observations": 8379,
+          "known_observations": 0,
+          "known_fraction": 0.0,
+          "observed_value_percentiles": null
+        },
+        "woodland": {
+          "labelled_input_observations": 8379,
+          "known_observations": 8379,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              1.0
+            ]
+          ]
+        },
+        "habitat": {
+          "labelled_input_observations": 8379,
+          "known_observations": 8379,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              1.0
+            ],
+            [
+              1.0
+            ],
+            [
+              1.0
+            ],
+            [
+              1.0
+            ]
+          ]
+        },
+        "heritage": {
+          "labelled_input_observations": 8379,
+          "known_observations": 8379,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              1.0
+            ],
+            [
+              1.0
+            ]
+          ]
+        },
+        "watercourse": {
+          "labelled_input_observations": 8379,
+          "known_observations": 8379,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ]
+          ]
+        },
+        "landcover": {
+          "labelled_input_observations": 8379,
+          "known_observations": 8379,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "height": {
+          "labelled_input_observations": 8379,
+          "known_observations": 6296,
+          "known_fraction": 0.7514023153120898,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              1.678466833254788e-05
+            ],
+            [
+              0.13881683349609375
+            ],
+            [
+              0.3644167482852936
+            ]
+          ]
+        },
+        "intensity": {
+          "labelled_input_observations": 8379,
+          "known_observations": 7523,
+          "known_fraction": 0.8978398376894617,
+          "observed_value_percentiles": [
+            [
+              9.155413135886192e-05
+            ],
+            [
+              0.0006561379414051771
+            ],
+            [
+              0.0014877546345815063
+            ],
+            [
+              0.0023956664372235537
+            ]
+          ]
+        }
+      },
+      "validation": {
+        "building": {
+          "labelled_input_observations": 236,
+          "known_observations": 236,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              1.0
+            ],
+            [
+              1.0
+            ],
+            [
+              1.0
+            ]
+          ]
+        },
+        "water": {
+          "labelled_input_observations": 236,
+          "known_observations": 0,
+          "known_fraction": 0.0,
+          "observed_value_percentiles": null
+        },
+        "woodland": {
+          "labelled_input_observations": 236,
+          "known_observations": 236,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ]
+          ]
+        },
+        "habitat": {
+          "labelled_input_observations": 236,
+          "known_observations": 236,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              1.0
+            ],
+            [
+              1.0
+            ],
+            [
+              1.0
+            ],
+            [
+              1.0
+            ]
+          ]
+        },
+        "heritage": {
+          "labelled_input_observations": 236,
+          "known_observations": 236,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ]
+          ]
+        },
+        "watercourse": {
+          "labelled_input_observations": 236,
+          "known_observations": 236,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ]
+          ]
+        },
+        "landcover": {
+          "labelled_input_observations": 236,
+          "known_observations": 236,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "height": {
+          "labelled_input_observations": 236,
+          "known_observations": 163,
+          "known_fraction": 0.690677966101695,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.000133514404296875
+            ],
+            [
+              0.015628586243838078
+            ],
+            [
+              0.02861684188246727
+            ]
+          ]
+        },
+        "intensity": {
+          "labelled_input_observations": 236,
+          "known_observations": 219,
+          "known_fraction": 0.9279661016949152,
+          "observed_value_percentiles": [
+            [
+              0.00021362630650401115
+            ],
+            [
+              0.0007629510946571827
+            ],
+            [
+              0.001771572441793978
+            ],
+            [
+              0.0019073777366429567
+            ]
+          ]
+        }
+      },
+      "train_unique_labelled_pixels": 2097,
+      "validation_unique_labelled_pixels": 236,
+      "separation_m": 335.2148564726808
+    },
+    "south": {
+      "train": {
+        "building": {
+          "labelled_input_observations": 3664,
+          "known_observations": 3664,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              1.0
+            ],
+            [
+              1.0
+            ]
+          ]
+        },
+        "water": {
+          "labelled_input_observations": 3664,
+          "known_observations": 0,
+          "known_fraction": 0.0,
+          "observed_value_percentiles": null
+        },
+        "woodland": {
+          "labelled_input_observations": 3664,
+          "known_observations": 3664,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              1.0
+            ]
+          ]
+        },
+        "habitat": {
+          "labelled_input_observations": 3664,
+          "known_observations": 3664,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              1.0
+            ],
+            [
+              1.0
+            ],
+            [
+              1.0
+            ],
+            [
+              1.0
+            ]
+          ]
+        },
+        "heritage": {
+          "labelled_input_observations": 3664,
+          "known_observations": 3664,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              1.0
+            ],
+            [
+              1.0
+            ]
+          ]
+        },
+        "watercourse": {
+          "labelled_input_observations": 3664,
+          "known_observations": 3664,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ]
+          ]
+        },
+        "landcover": {
+          "labelled_input_observations": 3664,
+          "known_observations": 3664,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "height": {
+          "labelled_input_observations": 3664,
+          "known_observations": 2616,
+          "known_fraction": 0.7139737991266376,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              1.678466833254788e-05
+            ],
+            [
+              0.008900197222828865
+            ],
+            [
+              0.13496679067611694
+            ]
+          ]
+        },
+        "intensity": {
+          "labelled_input_observations": 3664,
+          "known_observations": 3532,
+          "known_fraction": 0.9639737991266376,
+          "observed_value_percentiles": [
+            [
+              0.0001678492408245802
+            ],
+            [
+              0.0007095445180311799
+            ],
+            [
+              0.0018844892038032413
+            ],
+            [
+              0.0023956664372235537
+            ]
+          ]
+        }
+      },
+      "validation": {
+        "building": {
+          "labelled_input_observations": 1170,
+          "known_observations": 1170,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              1.0
+            ]
+          ]
+        },
+        "water": {
+          "labelled_input_observations": 1170,
+          "known_observations": 0,
+          "known_fraction": 0.0,
+          "observed_value_percentiles": null
+        },
+        "woodland": {
+          "labelled_input_observations": 1170,
+          "known_observations": 1170,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              1.0
+            ]
+          ]
+        },
+        "habitat": {
+          "labelled_input_observations": 1170,
+          "known_observations": 1170,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              1.0
+            ],
+            [
+              1.0
+            ],
+            [
+              1.0
+            ],
+            [
+              1.0
+            ]
+          ]
+        },
+        "heritage": {
+          "labelled_input_observations": 1170,
+          "known_observations": 1170,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              1.0
+            ],
+            [
+              1.0
+            ]
+          ]
+        },
+        "watercourse": {
+          "labelled_input_observations": 1170,
+          "known_observations": 1170,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ]
+          ]
+        },
+        "landcover": {
+          "labelled_input_observations": 1170,
+          "known_observations": 1170,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        "height": {
+          "labelled_input_observations": 1170,
+          "known_observations": 878,
+          "known_fraction": 0.7504273504273504,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              1.678466833254788e-05
+            ],
+            [
+              0.1198343563824892
+            ],
+            [
+              0.21324996650218964
+            ]
+          ]
+        },
+        "intensity": {
+          "labelled_input_observations": 1170,
+          "known_observations": 1041,
+          "known_fraction": 0.8897435897435897,
+          "observed_value_percentiles": [
+            [
+              0.00013733119703829288
+            ],
+            [
+              0.0005874723428860307
+            ],
+            [
+              0.0014038300141692162
+            ],
+            [
+              0.0019531548023223877
+            ]
+          ]
+        }
+      },
+      "train_unique_labelled_pixels": 985,
+      "validation_unique_labelled_pixels": 1170,
+      "separation_m": 36.0
+    },
+    "north": {
+      "train": {
+        "building": {
+          "labelled_input_observations": 1542,
+          "known_observations": 1542,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              1.0
+            ],
+            [
+              1.0
+            ]
+          ]
+        },
+        "water": {
+          "labelled_input_observations": 1542,
+          "known_observations": 0,
+          "known_fraction": 0.0,
+          "observed_value_percentiles": null
+        },
+        "woodland": {
+          "labelled_input_observations": 1542,
+          "known_observations": 1542,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              1.0
+            ],
+            [
+              1.0
+            ]
+          ]
+        },
+        "habitat": {
+          "labelled_input_observations": 1542,
+          "known_observations": 1542,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              1.0
+            ],
+            [
+              1.0
+            ],
+            [
+              1.0
+            ],
+            [
+              1.0
+            ]
+          ]
+        },
+        "heritage": {
+          "labelled_input_observations": 1542,
+          "known_observations": 1542,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              1.0
+            ],
+            [
+              1.0
+            ]
+          ]
+        },
+        "watercourse": {
+          "labelled_input_observations": 1542,
+          "known_observations": 1542,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ]
+          ]
+        },
+        "landcover": {
+          "labelled_input_observations": 1542,
+          "known_observations": 1542,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "height": {
+          "labelled_input_observations": 1542,
+          "known_observations": 1052,
+          "known_fraction": 0.682230869001297,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.00010019938054028898
+            ],
+            [
+              0.017666880041360855
+            ],
+            [
+              0.1636502593755722
+            ]
+          ]
+        },
+        "intensity": {
+          "labelled_input_observations": 1542,
+          "known_observations": 1446,
+          "known_fraction": 0.9377431906614786,
+          "observed_value_percentiles": [
+            [
+              0.00015259021893143654
+            ],
+            [
+              0.0006561379414051771
+            ],
+            [
+              0.0017242694739252329
+            ],
+            [
+              0.0019073777366429567
+            ]
+          ]
+        }
+      },
+      "validation": {
+        "building": {
+          "labelled_input_observations": 827,
+          "known_observations": 827,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              1.0
+            ],
+            [
+              1.0
+            ]
+          ]
+        },
+        "water": {
+          "labelled_input_observations": 827,
+          "known_observations": 0,
+          "known_fraction": 0.0,
+          "observed_value_percentiles": null
+        },
+        "woodland": {
+          "labelled_input_observations": 827,
+          "known_observations": 827,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ]
+          ]
+        },
+        "habitat": {
+          "labelled_input_observations": 827,
+          "known_observations": 827,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              1.0
+            ],
+            [
+              1.0
+            ],
+            [
+              1.0
+            ],
+            [
+              1.0
+            ]
+          ]
+        },
+        "heritage": {
+          "labelled_input_observations": 827,
+          "known_observations": 827,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ]
+          ]
+        },
+        "watercourse": {
+          "labelled_input_observations": 827,
+          "known_observations": 827,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ],
+            [
+              0.0
+            ]
+          ]
+        },
+        "landcover": {
+          "labelled_input_observations": 827,
+          "known_observations": 827,
+          "known_fraction": 1.0,
+          "observed_value_percentiles": [
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        "height": {
+          "labelled_input_observations": 827,
+          "known_observations": 632,
+          "known_fraction": 0.7642079806529625,
+          "observed_value_percentiles": [
+            [
+              0.0
+            ],
+            [
+              1.678466833254788e-05
+            ],
+            [
+              0.19417351186275458
+            ],
+            [
+              0.3644167482852936
+            ]
+          ]
+        },
+        "intensity": {
+          "labelled_input_observations": 827,
+          "known_observations": 744,
+          "known_fraction": 0.8996372430471584,
+          "observed_value_percentiles": [
+            [
+              9.155413135886192e-05
+            ],
+            [
+              0.0007095445180311799
+            ],
+            [
+              0.00191170119214803
+            ],
+            [
+              0.0023956664372235537
+            ]
+          ]
+        }
+      },
+      "train_unique_labelled_pixels": 438,
+      "validation_unique_labelled_pixels": 827,
+      "separation_m": 46.0
+    }
+  },
+  "building_ground_overlap": {
+    "east": {
+      "1": {
+        "reviewed_pixels": 113,
+        "building_context_present": 113,
+        "building_context_known": 113
+      },
+      "9": {
+        "reviewed_pixels": 123,
+        "building_context_present": 64,
+        "building_context_known": 123
+      }
+    },
+    "south": {
+      "1": {
+        "reviewed_pixels": 291,
+        "building_context_present": 0,
+        "building_context_known": 291
+      },
+      "9": {
+        "reviewed_pixels": 879,
+        "building_context_present": 28,
+        "building_context_known": 879
+      }
+    },
+    "north": {
+      "1": {
+        "reviewed_pixels": 70,
+        "building_context_present": 0,
+        "building_context_known": 70
+      },
+      "9": {
+        "reviewed_pixels": 757,
+        "building_context_present": 235,
+        "building_context_known": 757
+      }
+    }
+  },
+  "padding_diagnostic": {
+    "datasets": {
+      "/workspace/data/alton-broad-area-context-v2.zip": "4ea28cc91f83350fff7108f6577fcdc7139ee5691e42b6cac503b2ea38fd66cb",
+      "/workspace/data/alton-broad-east-margin64-context.zip": "73362e8adabf8962c54f82ffdd334966ec4dfc1af3e70b0742fe8da17b0ee686"
+    },
+    "identical_training_samples_rgb_labels_context": 46,
+    "identical_reviewed_validation_locations_labels": 236,
+    "tile_phase_unchanged": true,
+    "results": [
+      {
+        "seed": 41,
+        "mode": "rgb",
+        "margin64_mean_iou": 0.9421034717494894,
+        "original_mean_iou": 0.9544386061946903,
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            106,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            7
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            123
+          ]
+        ],
+        "metric": "mean IoU over classes with reviewed validation pixels"
+      },
+      {
+        "seed": 41,
+        "mode": "multisource",
+        "margin64_mean_iou": 0.8827399380804954,
+        "original_mean_iou": 0.7625761335438754,
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            99,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            13
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            122
+          ]
+        ],
+        "metric": "mean IoU over classes with reviewed validation pixels"
+      },
+      {
+        "seed": 42,
+        "mode": "rgb",
+        "margin64_mean_iou": 0.9583448561946903,
+        "original_mean_iou": 0.9583448561946903,
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            108,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            5
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            123
+          ]
+        ],
+        "metric": "mean IoU over classes with reviewed validation pixels"
+      },
+      {
+        "seed": 42,
+        "mode": "multisource",
+        "margin64_mean_iou": 0.9583448561946903,
+        "original_mean_iou": 0.9748209018120522,
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            108,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            5
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            123
+          ]
+        ],
+        "metric": "mean IoU over classes with reviewed validation pixels"
+      },
+      {
+        "seed": 43,
+        "mode": "rgb",
+        "margin64_mean_iou": 0.9265293882447021,
+        "original_mean_iou": 0.8582677165354331,
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            113,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            9,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            114
+          ]
+        ],
+        "metric": "mean IoU over classes with reviewed validation pixels"
+      },
+      {
+        "seed": 43,
+        "mode": "multisource",
+        "margin64_mean_iou": 0.5940638408222925,
+        "original_mean_iou": 0.6889605613082103,
+        "confusion_matrix": [
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            109,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            4
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            54,
+            1,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            68
+          ]
+        ],
+        "metric": "mean IoU over classes with reviewed validation pixels"
+      }
+    ]
+  },
+  "heldout_inference_confusion_matrices_verified": 72,
+  "models_promoted": 0,
+  "world_blocks_changed": 0,
+  "limitations": [
+    "Broad grass/unspecified paving interior labels only.",
+    "Shared RGB acquisition and reference lineage.",
+    "Validation selects epochs and ablations; no independent final test.",
+    "Three geographic groups, not whole-park or cross-park evaluation.",
+    "Boundary accuracy and missing geometry rate unavailable.",
+    "Top-label ECE is descriptive, not independent calibration."
+  ]
+}
