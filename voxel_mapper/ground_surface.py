@@ -138,15 +138,15 @@ def validate_label_codes(labels: Iterable[int]) -> dict[str, object]:
 
 
 def assess_lawn_column(cell, *, surface_offset_m, max_surface_height_m=.05,
-                       max_vertical_residual_m=.1):
+                       max_vertical_residual_m=.1, allow_paving_roof_only=False):
     """Propose a bounded repair from reviewed lawn + measured heights.
 
     No evidence is accepted here. Native observations must cover the complete
     column above terrain; trees, walls, fluids and uncertain geometry survive.
     """
     def reject(reason):return {"status":"withheld","reason":reason,"edits":[]}
-    if cell.get('label')!=1 or not cell.get('safe_interior'):
-        return reject('outside_reviewed_lawn_interior')
+    if cell.get('label') not in ((1,9) if allow_paving_roof_only else (1,)) or not cell.get('safe_interior'):
+        return reject('outside_reviewed_surface_interior' if allow_paving_roof_only else 'outside_reviewed_lawn_interior')
     if cell.get('block_entities') or not cell.get('supported_storage',False):
         return reject('protected_or_unsupported_native_column')
     dtm,dsm=cell.get('dtm'),cell.get('dsm')
@@ -164,19 +164,20 @@ def assess_lawn_column(cell, *, surface_offset_m, max_surface_height_m=.05,
     if profile[top+1]!='minecraft:air':return reject('stale_native_top')
     paving={'minecraft:stone_bricks','minecraft:mossy_stone_bricks','minecraft:cracked_stone_bricks'}
     roof={'minecraft:deepslate_tiles','minecraft:cracked_deepslate_tiles'}
-    if profile[y] not in paving|{'minecraft:grass_block'}:
+    accepted_floor=(paving|{'minecraft:brick_block','minecraft:stone','minecraft:smooth_stone','minecraft:andesite','minecraft:polished_andesite','minecraft:gray_concrete'}) if cell['label']==9 else paving|{'minecraft:grass_block'}
+    if profile[y] not in accepted_floor:
         return reject('unverified_ground_material')
     if profile[y-1] not in paving|{'minecraft:dirt','minecraft:coarse_dirt','minecraft:stone','minecraft:grass_block'}:
         return reject('unsupported_ground_support')
     if any(profile[k] not in roof|{'minecraft:air'} for k in range(y+1,top+1)):
         return reject('retained_structure_vegetation_or_water')
     x,z=cell['x'],cell['z'];edits=[]
-    if profile[y]!='minecraft:grass_block':
+    if cell['label']==1 and profile[y]!='minecraft:grass_block':
         edits.append({'xyz':[x,y,z],'before':profile[y],'after':'minecraft:grass_block','source_type':'reviewed_mask'})
     for k in range(y+1,top+1):
         if profile[k] in roof:
             edits.append({'xyz':[x,k,z],'before':profile[k],'after':'minecraft:air','source_type':'measured_surface_conflict'})
-    return {'status':'candidate' if edits else 'already_matches','reason':'reviewed_lawn_and_low_measured_surface',
+    return {'status':'candidate' if edits else 'already_matches','reason':'reviewed_paving_and_low_measured_surface' if cell['label']==9 else 'reviewed_lawn_and_low_measured_surface',
             'edits':edits,'height_update':{'xz':[x,z],'before':top+1,'after':y+1},
             'before_dsm_residual_m':abs(top+1+surface_offset_m-dsm),
             'after_dsm_residual_m':abs(y+1+surface_offset_m-dsm)}

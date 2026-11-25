@@ -122,3 +122,25 @@ Exact public proposals, scoped review, plan and aggregate execution/chain audit
 are committed alongside this document. Full requests/native observations, visual
 review, chain-audit script and world output are retained in the cycle bundle;
 supplied imagery and world binaries are not committed to Git.
+
+## Completed paving/overhead check
+
+A follow-up audit uses `prepare --include-paving` on the expanded preview to
+inspect all 236 reviewed cells, including the 123 generic-paving cells. The
+optional mode can propose measured unsupported-roof removal above an existing
+supported paving floor, but never chooses or replaces its fine material. This
+keeps geometry checks separate from material inference.
+
+Of the paving cells, 100 remain behind the same boundary margin, 9 have negative
+DSM-DTM and remain unknown, and 5 fail the vertical quantization gate. The other
+9 already match the reviewed open-ground/height evidence. No additional paving
+or overhead edits qualify. All 15 grass repairs already match; the 98 withheld
+lawn cells remain unchanged. This audits every available reviewed courtyard
+label without claiming the unlabelled area or uncertain boundaries are repaired.
+
+The final local suite contains 61 tests (three optional native skips); the five
+isolated native tests pass separately. New regression coverage ensures generic
+paving can support roof-only proposals without changing its floor material and
+that contradictory grass floors are retained. Compact outcome counts and source
+hashes are in `courtyard_complete_label_audit_2026-11-25.json`; full mixed-label
+requests/observations/proposals are retained in the bundle.

@@ -25,6 +25,16 @@ class SurfaceRepairTests(unittest.TestCase):
         c=cell();c['native_top_y']=93;c['native_profile']={'92':'minecraft:dirt','93':'minecraft:grass_block','94':'minecraft:air'}
         self.assertEqual(assess_lawn_column(c,surface_offset_m=98)['status'],'already_matches')
 
+    def test_generic_paving_permits_roof_removal_without_material_replacement(self):
+        c=cell();c['label']=9
+        self.assertEqual(assess_lawn_column(c,surface_offset_m=98)['status'],'withheld')
+        result=assess_lawn_column(c,surface_offset_m=98,allow_paving_roof_only=True)
+        self.assertEqual(len(result['edits']),1)
+        self.assertEqual(result['edits'][0]['after'],'minecraft:air')
+        self.assertTrue(all(e['xyz'][1]!=93 for e in result['edits']))
+        c['native_profile']['93']='minecraft:grass_block'
+        self.assertEqual(assess_lawn_column(c,surface_offset_m=98,allow_paving_roof_only=True)['status'],'withheld')
+
     def test_uncertain_heights_boundaries_and_retained_geometry_survive(self):
         variants=[]
         for key,val in [('safe_interior',False),('label',9),('dtm',None),('dsm',float('nan')),
