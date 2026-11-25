@@ -11,6 +11,7 @@ import csv
 import io
 import hashlib
 import json
+import math
 import random
 import zipfile
 from dataclasses import dataclass
@@ -214,13 +215,41 @@ def _tile(rgb: np.ndarray, labels: np.ndarray, size: int, training: bool, contex
     return (rgb, labels) if context is None else (rgb, labels, np.ascontiguousarray(context))
 
 
-def build_model(input_channels: int, num_classes: int):
+def build_model(input_channels: int, num_classes: int, *, architecture="unet", residual_bound=1.0):
     """Shared training/inference architecture; state-dict keys stay compatible."""
     import torch
     from torch import nn
     import torch.nn.functional as F
     if input_channels not in (3, 28) or not 1 <= num_classes <= 256:
         raise ValueError("Unsupported ground model dimensions")
+    if architecture in ("rgb_residual_v1","rgb_residual_control_v1"):
+        if input_channels != 28 or not math.isfinite(residual_bound) or not 0 < residual_bound <= 2:
+            raise ValueError("Residual fusion requires 28 inputs and a bound in (0,2]")
+        class ResidualFusion(nn.Module):
+            def __init__(self):
+                super().__init__()
+                self.rgb = build_model(3,num_classes)
+                self.rgb.requires_grad_(False)
+                self.adapter = nn.Sequential(nn.Conv2d(28,16,3,padding=1),nn.ReLU(),
+                    nn.Conv2d(16,16,3,padding=1),nn.ReLU(),nn.Conv2d(16,num_classes,1))
+                nn.init.zeros_(self.adapter[-1].weight)
+                nn.init.zeros_(self.adapter[-1].bias)
+            def train(self, mode=True):
+                super().train(mode)
+                self.rgb.eval()  # Freeze BatchNorm statistics as well as weights.
+                return self
+            def residual(self, x):
+                masks = x[:,[4,6,8,10,12,14,23,25,27]]
+                known = masks.amax(1,keepdim=True)
+                adapter_input = torch.cat((x[:,:3],torch.zeros_like(x[:,3:])),1) if architecture == "rgb_residual_control_v1" else x
+                return residual_bound * torch.tanh(self.adapter(adapter_input)) * known
+            def forward(self, x):
+                with torch.no_grad():
+                    baseline = self.rgb(x[:,:3])
+                return baseline + self.residual(x)
+        return ResidualFusion().train(False)
+    if architecture != "unet":
+        raise ValueError("Unsupported ground architecture")
     class ConvBlock(nn.Module):
         def __init__(self, in_ch: int, out_ch: int):
             super().__init__()
@@ -258,6 +287,17 @@ def build_model(input_channels: int, num_classes: int):
             return self.out(self.u1(torch.cat([d, a], dim=1)))
 
     return SmallUNet(num_classes)
+
+
+def validate_rgb_teacher(report, expected, sources):
+    """Reject warm starts with different held-out/training membership or lineage."""
+    if report.get("mode") != "rgb" or report.get("status") != "trained":
+        raise ValueError("A completed RGB baseline is required")
+    for key,value in expected.items():
+        if report.get(key) != value:
+            raise ValueError("RGB baseline mismatch: "+key)
+    if [s["dataset_sha256"] for s in report["sources"]] != [s["dataset_sha256"] for s in sources]:
+        raise ValueError("RGB baseline dataset mismatch")
 
 
 def train(args: argparse.Namespace) -> dict:
@@ -339,8 +379,32 @@ def train(args: argparse.Namespace) -> dict:
     weights[present] /= weights[present].mean()
 
     device = torch.device("cuda" if torch.cuda.is_available() and not args.cpu else "cpu")
-    model = build_model(len(input_names), args.num_classes).to(device)
-    optimizer = torch.optim.AdamW(model.parameters(), lr=args.learning_rate)
+    teacher_path = getattr(args,"rgb_checkpoint",None)
+    architecture = ("rgb_residual_control_v1" if getattr(args,"residual_rgb_only",False) else "rgb_residual_v1") if teacher_path else "unet"
+    residual_bound = getattr(args,"residual_bound",1.)
+    residual_penalty = getattr(args,"residual_penalty",.05)
+    teacher_provenance = None
+    if not math.isfinite(residual_penalty) or residual_penalty < 0:
+        raise ValueError("Invalid residual penalty")
+    model = build_model(len(input_names), args.num_classes, architecture=architecture,
+                        residual_bound=residual_bound).to(device)
+    if teacher_path:
+        teacher_report_path = teacher_path.parent/"training-report.json"
+        teacher_report = json.loads(teacher_report_path.read_text())
+        expected = {"train_ids":[[s.park_id,s.split_group,s.sample_id] for s in train_samples],
+                    "validation_ids":[[s.park_id,s.split_group,s.sample_id] for s in valid_samples],
+                    "class_map":{str(k):v for k,v in label_map.items()},"seed":args.seed,"split":split_report}
+        validate_rgb_teacher(teacher_report,expected,source_reports)
+        if teacher_report["training"]["patch_size"] != args.patch_size:
+            raise ValueError("RGB baseline inference tile size mismatch")
+        saved_teacher = torch.load(teacher_path,map_location=device,weights_only=True)
+        if saved_teacher["input_channels"] != 3 or saved_teacher["num_classes"] != args.num_classes or {str(k):v for k,v in saved_teacher["class_map"].items()} != expected["class_map"]:
+            raise ValueError("RGB checkpoint schema mismatch")
+        model.rgb.load_state_dict(saved_teacher["state_dict"])
+        teacher_provenance = {"checkpoint_sha256":hashlib.sha256(teacher_path.read_bytes()).hexdigest(),
+            "report_sha256":hashlib.sha256(teacher_report_path.read_bytes()).hexdigest()}
+
+    optimizer = torch.optim.AdamW((p for p in model.parameters() if p.requires_grad), lr=args.learning_rate)
     loss_fn = nn.CrossEntropyLoss(
         weight=torch.tensor(weights, dtype=torch.float32, device=device),
         ignore_index=IGNORE,
@@ -393,8 +457,24 @@ def train(args: argparse.Namespace) -> dict:
                             matrix += np.bincount(pairs, minlength=args.num_classes**2).reshape(args.num_classes, args.num_classes)
         return matrix
 
+    def save_checkpoint():
+        torch.save({"state_dict": model.state_dict(), "num_classes": args.num_classes,
+                        "class_map": label_map, "input_channels": len(input_names), "input_names": input_names,
+                        "context_groups":context_groups if use_context else [],
+                        "context_scaling":scaling,
+                        "architecture":architecture,"residual_bound":residual_bound,
+                        "context_schema": "voxel-multisource-v1" if use_context else None}, args.output / "model.pt")
+
     best_validation_mean_iou = -1.0
     history = []
+    baseline_mean_iou = None
+    if teacher_path:
+        cm = confusion_for(valid_samples)
+        supported = cm.sum(1)>0
+        union = cm.sum(0)+cm.sum(1)-cm.diagonal()
+        baseline_mean_iou = float(np.mean(cm.diagonal()[supported]/union[supported]))
+        best_validation_mean_iou = baseline_mean_iou
+        save_checkpoint()  # Explicit epoch-zero fallback, not proof of generalization.
     for epoch in range(1, args.epochs + 1):
         model.train()
         order = list(range(len(train_samples)))
@@ -408,6 +488,8 @@ def train(args: argparse.Namespace) -> dict:
             optimizer.zero_grad(set_to_none=True)
             logits = model(xb)
             loss = loss_fn(logits, yb)
+            if teacher_path:
+                loss = loss + residual_penalty * model.residual(xb).square().mean()
             loss.backward()
             optimizer.step()
             train_loss_sum += float(loss.detach().cpu())
@@ -438,11 +520,7 @@ def train(args: argparse.Namespace) -> dict:
         # Without reviewed validation pixels, do not select a checkpoint.
         if valid_pixels and mean_iou is not None and mean_iou > best_validation_mean_iou:
             best_validation_mean_iou = mean_iou
-            torch.save({"state_dict": model.state_dict(), "num_classes": args.num_classes,
-                        "class_map": label_map, "input_channels": len(input_names), "input_names": input_names,
-                        "context_groups":context_groups if use_context else [],
-                        "context_scaling":scaling,
-                        "context_schema": "voxel-multisource-v1" if use_context else None}, args.output / "model.pt")
+            save_checkpoint()
 
     checkpoint = args.output / "model.pt"
     best_metric = None
@@ -465,6 +543,10 @@ def train(args: argparse.Namespace) -> dict:
         "schema": "voxel-ground-segmentation-training-v1",
         "status": "trained" if final_cm.sum() else "no_validation_labels_checkpoint_not_saved",
         "device": str(device),
+        "architecture":architecture,"teacher":teacher_provenance,
+        "residual_bound":residual_bound if teacher_path else None,
+        "residual_penalty":residual_penalty if teacher_path else None,
+        "epoch_zero_mean_iou":baseline_mean_iou,
         "class_map": {str(k): v for k, v in sorted(label_map.items())},
         "split": split_report,
         "input_names": list(input_names),
@@ -515,6 +597,10 @@ def main() -> None:
     parser.add_argument("--threads", type=int, default=2)
     parser.add_argument("--cpu", action="store_true")
     parser.add_argument("--multisource", action="store_true", help="Use aligned GIS and LiDAR context chips")
+    parser.add_argument("--rgb-checkpoint",type=Path,help="Frozen RGB checkpoint with matching sibling training report")
+    parser.add_argument("--residual-rgb-only",action="store_true",help="Capacity control: correction sees RGB only; same context availability gate")
+    parser.add_argument("--residual-bound",type=float,default=1.)
+    parser.add_argument("--residual-penalty",type=float,default=.05)
     parser.add_argument("--context-normalization", choices=("none","train_p95"), default="none")
     parser.add_argument("--context-baseline", action="store_true", help="28-channel control with every context value and mask zeroed")
     parser.add_argument("--context-dropout", type=float, default=0.2)

@@ -23,7 +23,8 @@ def predict(checkpoint, dataset, output, *, patch_size=64, threads=2):
     names = ("red", "green", "blue") + (CHANNELS if saved["input_channels"] == 28 else ())
     if tuple(saved["input_names"]) != names:
         raise ValueError("Checkpoint input schema mismatch")
-    model = build_model(len(names), saved["num_classes"])
+    model = build_model(len(names), saved["num_classes"], architecture=saved.get("architecture","unet"),
+                        residual_bound=saved.get("residual_bound",1.))
     model.load_state_dict(saved["state_dict"])
     model.eval()
     rows = []
@@ -71,7 +72,8 @@ def predict(checkpoint, dataset, output, *, patch_size=64, threads=2):
                          "context_provenance":record.get("context_provenance", [])})
     report = {"schema":"voxel-ground-prediction-v1", "checkpoint_sha256":hashlib.sha256(checkpoint.read_bytes()).hexdigest(),
               "dataset_sha256":hashlib.sha256(dataset.read_bytes()).hexdigest(), "class_map":saved["class_map"],
-              "input_channels":len(names), "patch_size":patch_size, "samples":rows,
+              "input_channels":len(names), "architecture":saved.get("architecture","unet"),
+              "context_scaling":saved.get("context_scaling"), "patch_size":patch_size, "samples":rows,
               "accepted_for_world":False, "world_blocks_changed":0,
               "policy":"Model candidates only. Softmax confidence is uncalibrated. World placement requires accepted evidence, verified world registration, ground elevation and conflict checks."}
     (output/"predictions.json").write_text(json.dumps(report, indent=2))

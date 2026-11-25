@@ -90,11 +90,16 @@ class TrainingSmoke(unittest.TestCase):
             train_values=np.concatenate([np.full(64*64,.01*(int(row[2])+1),np.float32) for row in multi["train_ids"]])
             self.assertAlmostEqual(multi["context_scaling"]["channels"]["height"]["cap"],
                                    float(np.percentile(train_values,95)),places=6)
+            args.rgb_checkpoint=root/"rgb"/"model.pt"
+            args.output=root/"residual"
+            multi=train(args)
+            self.assertEqual(multi["architecture"],"rgb_residual_v1")
+            self.assertGreaterEqual(multi["training"]["best_validation_mean_iou"],multi["epoch_zero_mean_iou"])
             if importlib.util.find_spec("rasterio"):
                 import rasterio
                 from voxel_mapper.predict_ground_model import predict
                 from voxel_mapper.train_ground_model import _decode_labels
-                result = predict(root/"normalized"/"model.pt", dataset, root/"predictions", threads=1)
+                result = predict(root/"residual"/"model.pt", dataset, root/"predictions", threads=1)
                 self.assertFalse(result["accepted_for_world"])
                 validation = {row[2] for row in multi["validation_ids"]}
                 matrix = np.zeros((10,10), dtype=np.int64)
