@@ -1,0 +1,901 @@
+{
+  "schema": "residual-fusion-experiment-v1",
+  "world_blocks_changed": 0,
+  "models_promoted": 0,
+  "baseline_world_sha256": "0cf1c7712eb4d57f79425fc706a25afc6d521dc1c8f98deb192a6b605ecb6431",
+  "settings": {
+    "context": {
+      "baseline_configuration": {
+        "schema": "registered-area-ablation-v1",
+        "seeds": [
+          41,
+          42,
+          43
+        ],
+        "epochs": 20,
+        "modes": {
+          "rgb": {},
+          "zero28": {
+            "context_baseline": true
+          },
+          "vectors": {
+            "context_group": [
+              "building",
+              "water",
+              "woodland",
+              "habitat",
+              "heritage",
+              "watercourse"
+            ]
+          },
+          "landcover": {
+            "context_group": [
+              "landcover"
+            ]
+          },
+          "height": {
+            "context_group": [
+              "height"
+            ]
+          },
+          "intensity": {
+            "context_group": [
+              "intensity"
+            ]
+          },
+          "full": {},
+          "full_scaled": {
+            "context_normalization": "train_p95"
+          }
+        },
+        "datasets": {
+          "east": {
+            "path": "/workspace/data/alton-broad-east-margin64-context.zip",
+            "sha256": "73362e8adabf8962c54f82ffdd334966ec4dfc1af3e70b0742fe8da17b0ee686"
+          },
+          "south": {
+            "path": "/workspace/data/alton-broad-south-margin64-context.zip",
+            "sha256": "6243d4f77c6cec2a750ee13b8a136d6b9bd384de0ce144656e6da5571e426159"
+          },
+          "north": {
+            "path": "/workspace/data/alton-broad-north-margin64-context.zip",
+            "sha256": "69d2583845c2781511a7097d3168c84a9ea0563dd2d545154ac1c0bcc66decd5"
+          }
+        },
+        "policy": "Checkpoint selection uses validation; no independent test or model promotion. Overlapping training observations are not independent. Broad grass/paving only."
+      },
+      "settings": {
+        "architecture": "rgb_residual_v1",
+        "residual_bound": 1.0,
+        "residual_penalty": 0.05,
+        "epochs": 20,
+        "batch_size": 4,
+        "patch_size": 64,
+        "learning_rate": 0.001,
+        "context_dropout": 0.2,
+        "context_normalization": "train_p95",
+        "threads": 2,
+        "cpu": true
+      },
+      "policy": "Frozen validation-selected RGB warm starts plus 20 adapter epochs; not compute-matched from-scratch training. Epoch-zero fallback is selected on validation. No independent final test or world acceptance."
+    },
+    "rgb_control": {
+      "baseline_configuration": {
+        "schema": "registered-area-ablation-v1",
+        "seeds": [
+          41,
+          42,
+          43
+        ],
+        "epochs": 20,
+        "modes": {
+          "rgb": {},
+          "zero28": {
+            "context_baseline": true
+          },
+          "vectors": {
+            "context_group": [
+              "building",
+              "water",
+              "woodland",
+              "habitat",
+              "heritage",
+              "watercourse"
+            ]
+          },
+          "landcover": {
+            "context_group": [
+              "landcover"
+            ]
+          },
+          "height": {
+            "context_group": [
+              "height"
+            ]
+          },
+          "intensity": {
+            "context_group": [
+              "intensity"
+            ]
+          },
+          "full": {},
+          "full_scaled": {
+            "context_normalization": "train_p95"
+          }
+        },
+        "datasets": {
+          "east": {
+            "path": "/workspace/data/alton-broad-east-margin64-context.zip",
+            "sha256": "73362e8adabf8962c54f82ffdd334966ec4dfc1af3e70b0742fe8da17b0ee686"
+          },
+          "south": {
+            "path": "/workspace/data/alton-broad-south-margin64-context.zip",
+            "sha256": "6243d4f77c6cec2a750ee13b8a136d6b9bd384de0ce144656e6da5571e426159"
+          },
+          "north": {
+            "path": "/workspace/data/alton-broad-north-margin64-context.zip",
+            "sha256": "69d2583845c2781511a7097d3168c84a9ea0563dd2d545154ac1c0bcc66decd5"
+          }
+        },
+        "policy": "Checkpoint selection uses validation; no independent test or model promotion. Overlapping training observations are not independent. Broad grass/paving only."
+      },
+      "settings": {
+        "architecture": "rgb_residual_control_v1",
+        "residual_rgb_only": true,
+        "residual_bound": 1.0,
+        "residual_penalty": 0.05,
+        "epochs": 20,
+        "batch_size": 4,
+        "patch_size": 64,
+        "learning_rate": 0.001,
+        "context_dropout": 0.2,
+        "context_normalization": "train_p95",
+        "threads": 2,
+        "cpu": true
+      },
+      "policy": "Frozen validation-selected RGB warm starts plus 20 adapter epochs; not compute-matched from-scratch training. Epoch-zero fallback is selected on validation. No independent final test or world acceptance."
+    }
+  },
+  "results": {
+    "context": [
+      {
+        "area": "east",
+        "seed": 41,
+        "schema": "voxel-multisource-benchmark-v1",
+        "split": {
+          "mode": "explicit_group",
+          "validation_groups": [
+            "geographic_299b80e09090"
+          ]
+        },
+        "rgb_mean_iou": 0.9421034717494894,
+        "multisource_mean_iou": 0.95019551348014,
+        "delta_mean_iou": 0.00809204173065059,
+        "per_class": {
+          "1": {
+            "name": "grass_unspecified",
+            "labelled_pixels": 113,
+            "rgb_iou": 0.9380530973451328,
+            "multisource_iou": 0.9469026548672567,
+            "delta_iou": 0.008849557522123908
+          },
+          "9": {
+            "name": "paving_unspecified",
+            "labelled_pixels": 123,
+            "rgb_iou": 0.9461538461538461,
+            "multisource_iou": 0.9534883720930233,
+            "delta_iou": 0.007334525939177161
+          }
+        },
+        "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment.",
+        "changed_reviewed_pixels": 1,
+        "baseline_correct_pixels_harmed": 0,
+        "baseline_errors_fixed": 1,
+        "top_label_ece_15_bins": 0.10336314268031364
+      },
+      {
+        "area": "east",
+        "seed": 42,
+        "schema": "voxel-multisource-benchmark-v1",
+        "split": {
+          "mode": "explicit_group",
+          "validation_groups": [
+            "geographic_299b80e09090"
+          ]
+        },
+        "rgb_mean_iou": 0.9583448561946903,
+        "multisource_mean_iou": 0.9665528534596892,
+        "delta_mean_iou": 0.008207997264998879,
+        "per_class": {
+          "1": {
+            "name": "grass_unspecified",
+            "labelled_pixels": 113,
+            "rgb_iou": 0.9557522123893806,
+            "multisource_iou": 0.9646017699115044,
+            "delta_iou": 0.008849557522123797
+          },
+          "9": {
+            "name": "paving_unspecified",
+            "labelled_pixels": 123,
+            "rgb_iou": 0.9609375,
+            "multisource_iou": 0.968503937007874,
+            "delta_iou": 0.007566437007873961
+          }
+        },
+        "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment.",
+        "changed_reviewed_pixels": 1,
+        "baseline_correct_pixels_harmed": 0,
+        "baseline_errors_fixed": 1,
+        "top_label_ece_15_bins": 0.15543680878008825
+      },
+      {
+        "area": "east",
+        "seed": 43,
+        "schema": "voxel-multisource-benchmark-v1",
+        "split": {
+          "mode": "explicit_group",
+          "validation_groups": [
+            "geographic_299b80e09090"
+          ]
+        },
+        "rgb_mean_iou": 0.9583448561946903,
+        "multisource_mean_iou": 0.9583448561946903,
+        "delta_mean_iou": 0.0,
+        "per_class": {
+          "1": {
+            "name": "grass_unspecified",
+            "labelled_pixels": 113,
+            "rgb_iou": 0.9557522123893806,
+            "multisource_iou": 0.9557522123893806,
+            "delta_iou": 0.0
+          },
+          "9": {
+            "name": "paving_unspecified",
+            "labelled_pixels": 123,
+            "rgb_iou": 0.9609375,
+            "multisource_iou": 0.9609375,
+            "delta_iou": 0.0
+          }
+        },
+        "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment.",
+        "changed_reviewed_pixels": 0,
+        "baseline_correct_pixels_harmed": 0,
+        "baseline_errors_fixed": 0,
+        "top_label_ece_15_bins": 0.31566832347188956
+      },
+      {
+        "area": "south",
+        "seed": 41,
+        "schema": "voxel-multisource-benchmark-v1",
+        "split": {
+          "mode": "explicit_group",
+          "validation_groups": [
+            "geographic_1bcc4fca1552"
+          ]
+        },
+        "rgb_mean_iou": 0.953420764457423,
+        "multisource_mean_iou": 0.9574586280402835,
+        "delta_mean_iou": 0.0040378635828605125,
+        "per_class": {
+          "1": {
+            "name": "grass_unspecified",
+            "labelled_pixels": 291,
+            "rgb_iou": 0.9304635761589404,
+            "multisource_iou": 0.9362416107382551,
+            "delta_iou": 0.005778034579314695
+          },
+          "9": {
+            "name": "paving_unspecified",
+            "labelled_pixels": 879,
+            "rgb_iou": 0.9763779527559056,
+            "multisource_iou": 0.978675645342312,
+            "delta_iou": 0.0022976925864064413
+          }
+        },
+        "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment.",
+        "changed_reviewed_pixels": 6,
+        "baseline_correct_pixels_harmed": 2,
+        "baseline_errors_fixed": 4,
+        "top_label_ece_15_bins": 0.10509003596937555
+      },
+      {
+        "area": "south",
+        "seed": 42,
+        "schema": "voxel-multisource-benchmark-v1",
+        "split": {
+          "mode": "explicit_group",
+          "validation_groups": [
+            "geographic_1bcc4fca1552"
+          ]
+        },
+        "rgb_mean_iou": 0.8748017508124329,
+        "multisource_mean_iou": 0.897185692040146,
+        "delta_mean_iou": 0.022383941227713033,
+        "per_class": {
+          "1": {
+            "name": "grass_unspecified",
+            "labelled_pixels": 291,
+            "rgb_iou": 0.8801369863013698,
+            "multisource_iou": 0.8969072164948454,
+            "delta_iou": 0.016770230193475566
+          },
+          "9": {
+            "name": "paving_unspecified",
+            "labelled_pixels": 879,
+            "rgb_iou": 0.8694665153234961,
+            "multisource_iou": 0.8974641675854466,
+            "delta_iou": 0.0279976522619505
+          }
+        },
+        "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment.",
+        "changed_reviewed_pixels": 78,
+        "baseline_correct_pixels_harmed": 0,
+        "baseline_errors_fixed": 52,
+        "top_label_ece_15_bins": 0.3590293586763561
+      },
+      {
+        "area": "south",
+        "seed": 43,
+        "schema": "voxel-multisource-benchmark-v1",
+        "split": {
+          "mode": "explicit_group",
+          "validation_groups": [
+            "geographic_1bcc4fca1552"
+          ]
+        },
+        "rgb_mean_iou": 0.9762836700336701,
+        "multisource_mean_iou": 0.9842029174463908,
+        "delta_mean_iou": 0.007919247412720654,
+        "per_class": {
+          "1": {
+            "name": "grass_unspecified",
+            "labelled_pixels": 291,
+            "rgb_iou": 0.9764309764309764,
+            "multisource_iou": 0.9763513513513513,
+            "delta_iou": -7.96250796251119e-05
+          },
+          "9": {
+            "name": "paving_unspecified",
+            "labelled_pixels": 879,
+            "rgb_iou": 0.9761363636363637,
+            "multisource_iou": 0.9920544835414302,
+            "delta_iou": 0.01591811990506653
+          }
+        },
+        "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment.",
+        "changed_reviewed_pixels": 16,
+        "baseline_correct_pixels_harmed": 1,
+        "baseline_errors_fixed": 15,
+        "top_label_ece_15_bins": 0.13681506025485504
+      },
+      {
+        "area": "north",
+        "seed": 41,
+        "schema": "voxel-multisource-benchmark-v1",
+        "split": {
+          "mode": "explicit_group",
+          "validation_groups": [
+            "geographic_63b0ff5ef1ff"
+          ]
+        },
+        "rgb_mean_iou": 0.9233644543670929,
+        "multisource_mean_iou": 0.9241758792291507,
+        "delta_mean_iou": 0.0008114248620577635,
+        "per_class": {
+          "1": {
+            "name": "grass_unspecified",
+            "labelled_pixels": 70,
+            "rgb_iou": 0.8717948717948718,
+            "multisource_iou": 0.8734177215189873,
+            "delta_iou": 0.001622849724115527
+          },
+          "9": {
+            "name": "paving_unspecified",
+            "labelled_pixels": 757,
+            "rgb_iou": 0.974934036939314,
+            "multisource_iou": 0.974934036939314,
+            "delta_iou": 0.0
+          }
+        },
+        "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment.",
+        "changed_reviewed_pixels": 2,
+        "baseline_correct_pixels_harmed": 0,
+        "baseline_errors_fixed": 1,
+        "top_label_ece_15_bins": 0.17292659267548927
+      },
+      {
+        "area": "north",
+        "seed": 42,
+        "schema": "voxel-multisource-benchmark-v1",
+        "split": {
+          "mode": "explicit_group",
+          "validation_groups": [
+            "geographic_63b0ff5ef1ff"
+          ]
+        },
+        "rgb_mean_iou": 0.8366908850726552,
+        "multisource_mean_iou": 0.9774705488500026,
+        "delta_mean_iou": 0.1407796637773474,
+        "per_class": {
+          "1": {
+            "name": "grass_unspecified",
+            "labelled_pixels": 70,
+            "rgb_iou": 0.75,
+            "multisource_iou": 0.958904109589041,
+            "delta_iou": 0.20890410958904104
+          },
+          "9": {
+            "name": "paving_unspecified",
+            "labelled_pixels": 757,
+            "rgb_iou": 0.9233817701453104,
+            "multisource_iou": 0.9960369881109643,
+            "delta_iou": 0.07265521796565388
+          }
+        },
+        "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment.",
+        "changed_reviewed_pixels": 62,
+        "baseline_correct_pixels_harmed": 0,
+        "baseline_errors_fixed": 62,
+        "top_label_ece_15_bins": 0.3742480720545389
+      },
+      {
+        "area": "north",
+        "seed": 43,
+        "schema": "voxel-multisource-benchmark-v1",
+        "split": {
+          "mode": "explicit_group",
+          "validation_groups": [
+            "geographic_63b0ff5ef1ff"
+          ]
+        },
+        "rgb_mean_iou": 0.8011561845908501,
+        "multisource_mean_iou": 0.9204137311783396,
+        "delta_mean_iou": 0.11925754658748944,
+        "per_class": {
+          "1": {
+            "name": "grass_unspecified",
+            "labelled_pixels": 70,
+            "rgb_iou": 0.8227848101265823,
+            "multisource_iou": 0.8552631578947368,
+            "delta_iou": 0.0324783477681545
+          },
+          "9": {
+            "name": "paving_unspecified",
+            "labelled_pixels": 757,
+            "rgb_iou": 0.7795275590551181,
+            "multisource_iou": 0.9855643044619422,
+            "delta_iou": 0.20603674540682415
+          }
+        },
+        "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment.",
+        "changed_reviewed_pixels": 157,
+        "baseline_correct_pixels_harmed": 0,
+        "baseline_errors_fixed": 157,
+        "top_label_ece_15_bins": 0.3732830498642327
+      }
+    ],
+    "rgb_control": [
+      {
+        "area": "east",
+        "seed": 41,
+        "schema": "voxel-multisource-benchmark-v1",
+        "split": {
+          "mode": "explicit_group",
+          "validation_groups": [
+            "geographic_299b80e09090"
+          ]
+        },
+        "rgb_mean_iou": 0.9421034717494894,
+        "multisource_mean_iou": 0.9583448561946903,
+        "delta_mean_iou": 0.016241384445200957,
+        "per_class": {
+          "1": {
+            "name": "grass_unspecified",
+            "labelled_pixels": 113,
+            "rgb_iou": 0.9380530973451328,
+            "multisource_iou": 0.9557522123893806,
+            "delta_iou": 0.017699115044247815
+          },
+          "9": {
+            "name": "paving_unspecified",
+            "labelled_pixels": 123,
+            "rgb_iou": 0.9461538461538461,
+            "multisource_iou": 0.9609375,
+            "delta_iou": 0.014783653846153877
+          }
+        },
+        "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment.",
+        "changed_reviewed_pixels": 2,
+        "baseline_correct_pixels_harmed": 0,
+        "baseline_errors_fixed": 2,
+        "top_label_ece_15_bins": 0.11395700124360748
+      },
+      {
+        "area": "east",
+        "seed": 42,
+        "schema": "voxel-multisource-benchmark-v1",
+        "split": {
+          "mode": "explicit_group",
+          "validation_groups": [
+            "geographic_299b80e09090"
+          ]
+        },
+        "rgb_mean_iou": 0.9583448561946903,
+        "multisource_mean_iou": 0.9665528534596892,
+        "delta_mean_iou": 0.008207997264998879,
+        "per_class": {
+          "1": {
+            "name": "grass_unspecified",
+            "labelled_pixels": 113,
+            "rgb_iou": 0.9557522123893806,
+            "multisource_iou": 0.9646017699115044,
+            "delta_iou": 0.008849557522123797
+          },
+          "9": {
+            "name": "paving_unspecified",
+            "labelled_pixels": 123,
+            "rgb_iou": 0.9609375,
+            "multisource_iou": 0.968503937007874,
+            "delta_iou": 0.007566437007873961
+          }
+        },
+        "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment.",
+        "changed_reviewed_pixels": 1,
+        "baseline_correct_pixels_harmed": 0,
+        "baseline_errors_fixed": 1,
+        "top_label_ece_15_bins": 0.16301566375009086
+      },
+      {
+        "area": "east",
+        "seed": 43,
+        "schema": "voxel-multisource-benchmark-v1",
+        "split": {
+          "mode": "explicit_group",
+          "validation_groups": [
+            "geographic_299b80e09090"
+          ]
+        },
+        "rgb_mean_iou": 0.9583448561946903,
+        "multisource_mean_iou": 0.9583448561946903,
+        "delta_mean_iou": 0.0,
+        "per_class": {
+          "1": {
+            "name": "grass_unspecified",
+            "labelled_pixels": 113,
+            "rgb_iou": 0.9557522123893806,
+            "multisource_iou": 0.9557522123893806,
+            "delta_iou": 0.0
+          },
+          "9": {
+            "name": "paving_unspecified",
+            "labelled_pixels": 123,
+            "rgb_iou": 0.9609375,
+            "multisource_iou": 0.9609375,
+            "delta_iou": 0.0
+          }
+        },
+        "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment.",
+        "changed_reviewed_pixels": 0,
+        "baseline_correct_pixels_harmed": 0,
+        "baseline_errors_fixed": 0,
+        "top_label_ece_15_bins": 0.31566832347188956
+      },
+      {
+        "area": "south",
+        "seed": 41,
+        "schema": "voxel-multisource-benchmark-v1",
+        "split": {
+          "mode": "explicit_group",
+          "validation_groups": [
+            "geographic_1bcc4fca1552"
+          ]
+        },
+        "rgb_mean_iou": 0.953420764457423,
+        "multisource_mean_iou": 0.9552321906882957,
+        "delta_mean_iou": 0.0018114262308727147,
+        "per_class": {
+          "1": {
+            "name": "grass_unspecified",
+            "labelled_pixels": 291,
+            "rgb_iou": 0.9304635761589404,
+            "multisource_iou": 0.9328859060402684,
+            "delta_iou": 0.002422329881328067
+          },
+          "9": {
+            "name": "paving_unspecified",
+            "labelled_pixels": 879,
+            "rgb_iou": 0.9763779527559056,
+            "multisource_iou": 0.9775784753363229,
+            "delta_iou": 0.0012005225804173625
+          }
+        },
+        "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment.",
+        "changed_reviewed_pixels": 7,
+        "baseline_correct_pixels_harmed": 3,
+        "baseline_errors_fixed": 4,
+        "top_label_ece_15_bins": 0.12127527082577731
+      },
+      {
+        "area": "south",
+        "seed": 42,
+        "schema": "voxel-multisource-benchmark-v1",
+        "split": {
+          "mode": "explicit_group",
+          "validation_groups": [
+            "geographic_1bcc4fca1552"
+          ]
+        },
+        "rgb_mean_iou": 0.8748017508124329,
+        "multisource_mean_iou": 0.9113683736127542,
+        "delta_mean_iou": 0.0365666228003213,
+        "per_class": {
+          "1": {
+            "name": "grass_unspecified",
+            "labelled_pixels": 291,
+            "rgb_iou": 0.8801369863013698,
+            "multisource_iou": 0.8762886597938144,
+            "delta_iou": -0.0038483265075553996
+          },
+          "9": {
+            "name": "paving_unspecified",
+            "labelled_pixels": 879,
+            "rgb_iou": 0.8694665153234961,
+            "multisource_iou": 0.946448087431694,
+            "delta_iou": 0.0769815721081979
+          }
+        },
+        "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment.",
+        "changed_reviewed_pixels": 135,
+        "baseline_correct_pixels_harmed": 3,
+        "baseline_errors_fixed": 101,
+        "top_label_ece_15_bins": 0.38797034702749333
+      },
+      {
+        "area": "south",
+        "seed": 43,
+        "schema": "voxel-multisource-benchmark-v1",
+        "split": {
+          "mode": "explicit_group",
+          "validation_groups": [
+            "geographic_1bcc4fca1552"
+          ]
+        },
+        "rgb_mean_iou": 0.9762836700336701,
+        "multisource_mean_iou": 0.9864252871351892,
+        "delta_mean_iou": 0.010141617101519063,
+        "per_class": {
+          "1": {
+            "name": "grass_unspecified",
+            "labelled_pixels": 291,
+            "rgb_iou": 0.9764309764309764,
+            "multisource_iou": 0.9796610169491525,
+            "delta_iou": 0.0032300405181761027
+          },
+          "9": {
+            "name": "paving_unspecified",
+            "labelled_pixels": 879,
+            "rgb_iou": 0.9761363636363637,
+            "multisource_iou": 0.9931895573212258,
+            "delta_iou": 0.017053193684862133
+          }
+        },
+        "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment.",
+        "changed_reviewed_pixels": 17,
+        "baseline_correct_pixels_harmed": 1,
+        "baseline_errors_fixed": 16,
+        "top_label_ece_15_bins": 0.11203717925609687
+      },
+      {
+        "area": "north",
+        "seed": 41,
+        "schema": "voxel-multisource-benchmark-v1",
+        "split": {
+          "mode": "explicit_group",
+          "validation_groups": [
+            "geographic_63b0ff5ef1ff"
+          ]
+        },
+        "rgb_mean_iou": 0.9233644543670929,
+        "multisource_mean_iou": 0.9241758792291507,
+        "delta_mean_iou": 0.0008114248620577635,
+        "per_class": {
+          "1": {
+            "name": "grass_unspecified",
+            "labelled_pixels": 70,
+            "rgb_iou": 0.8717948717948718,
+            "multisource_iou": 0.8734177215189873,
+            "delta_iou": 0.001622849724115527
+          },
+          "9": {
+            "name": "paving_unspecified",
+            "labelled_pixels": 757,
+            "rgb_iou": 0.974934036939314,
+            "multisource_iou": 0.974934036939314,
+            "delta_iou": 0.0
+          }
+        },
+        "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment.",
+        "changed_reviewed_pixels": 2,
+        "baseline_correct_pixels_harmed": 0,
+        "baseline_errors_fixed": 1,
+        "top_label_ece_15_bins": 0.1730533792325346
+      },
+      {
+        "area": "north",
+        "seed": 42,
+        "schema": "voxel-multisource-benchmark-v1",
+        "split": {
+          "mode": "explicit_group",
+          "validation_groups": [
+            "geographic_63b0ff5ef1ff"
+          ]
+        },
+        "rgb_mean_iou": 0.8366908850726552,
+        "multisource_mean_iou": 0.9774705488500026,
+        "delta_mean_iou": 0.1407796637773474,
+        "per_class": {
+          "1": {
+            "name": "grass_unspecified",
+            "labelled_pixels": 70,
+            "rgb_iou": 0.75,
+            "multisource_iou": 0.958904109589041,
+            "delta_iou": 0.20890410958904104
+          },
+          "9": {
+            "name": "paving_unspecified",
+            "labelled_pixels": 757,
+            "rgb_iou": 0.9233817701453104,
+            "multisource_iou": 0.9960369881109643,
+            "delta_iou": 0.07265521796565388
+          }
+        },
+        "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment.",
+        "changed_reviewed_pixels": 62,
+        "baseline_correct_pixels_harmed": 0,
+        "baseline_errors_fixed": 62,
+        "top_label_ece_15_bins": 0.49345477892957545
+      },
+      {
+        "area": "north",
+        "seed": 43,
+        "schema": "voxel-multisource-benchmark-v1",
+        "split": {
+          "mode": "explicit_group",
+          "validation_groups": [
+            "geographic_63b0ff5ef1ff"
+          ]
+        },
+        "rgb_mean_iou": 0.8011561845908501,
+        "multisource_mean_iou": 0.9258793524848571,
+        "delta_mean_iou": 0.12472316789400695,
+        "per_class": {
+          "1": {
+            "name": "grass_unspecified",
+            "labelled_pixels": 70,
+            "rgb_iou": 0.8227848101265823,
+            "multisource_iou": 0.8648648648648649,
+            "delta_iou": 0.04208005473828258
+          },
+          "9": {
+            "name": "paving_unspecified",
+            "labelled_pixels": 757,
+            "rgb_iou": 0.7795275590551181,
+            "multisource_iou": 0.9868938401048493,
+            "delta_iou": 0.2073662810497312
+          }
+        },
+        "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment.",
+        "changed_reviewed_pixels": 160,
+        "baseline_correct_pixels_harmed": 1,
+        "baseline_errors_fixed": 159,
+        "top_label_ece_15_bins": 0.3826756809614013
+      }
+    ]
+  },
+  "summary": {
+    "context": {
+      "east": {
+        "rgb_mean_iou": 0.9529310613796232,
+        "candidate_mean_iou": 0.9583644077115064,
+        "delta_mean_iou": 0.005433346331883156,
+        "baseline_correct_pixels_harmed_per_seed": {
+          "41": 0,
+          "42": 0,
+          "43": 0
+        },
+        "baseline_errors_fixed_per_seed": {
+          "41": 1,
+          "42": 1,
+          "43": 0
+        }
+      },
+      "south": {
+        "rgb_mean_iou": 0.9348353951011754,
+        "candidate_mean_iou": 0.9462824125089401,
+        "delta_mean_iou": 0.011447017407764734,
+        "baseline_correct_pixels_harmed_per_seed": {
+          "41": 2,
+          "42": 0,
+          "43": 1
+        },
+        "baseline_errors_fixed_per_seed": {
+          "41": 4,
+          "42": 52,
+          "43": 15
+        }
+      },
+      "north": {
+        "rgb_mean_iou": 0.8537371746768662,
+        "candidate_mean_iou": 0.9406867197524976,
+        "delta_mean_iou": 0.08694954507563153,
+        "baseline_correct_pixels_harmed_per_seed": {
+          "41": 0,
+          "42": 0,
+          "43": 0
+        },
+        "baseline_errors_fixed_per_seed": {
+          "41": 1,
+          "42": 62,
+          "43": 157
+        }
+      },
+      "equal_area_mean_iou": 0.9484445133243147
+    },
+    "rgb_control": {
+      "east": {
+        "rgb_mean_iou": 0.9529310613796232,
+        "candidate_mean_iou": 0.9610808552830233,
+        "delta_mean_iou": 0.008149793903399946,
+        "baseline_correct_pixels_harmed_per_seed": {
+          "41": 0,
+          "42": 0,
+          "43": 0
+        },
+        "baseline_errors_fixed_per_seed": {
+          "41": 2,
+          "42": 1,
+          "43": 0
+        }
+      },
+      "south": {
+        "rgb_mean_iou": 0.9348353951011754,
+        "candidate_mean_iou": 0.951008617145413,
+        "delta_mean_iou": 0.016173222044237694,
+        "baseline_correct_pixels_harmed_per_seed": {
+          "41": 3,
+          "42": 3,
+          "43": 1
+        },
+        "baseline_errors_fixed_per_seed": {
+          "41": 4,
+          "42": 101,
+          "43": 16
+        }
+      },
+      "north": {
+        "rgb_mean_iou": 0.8537371746768662,
+        "candidate_mean_iou": 0.9425085935213368,
+        "delta_mean_iou": 0.0887714188444707,
+        "baseline_correct_pixels_harmed_per_seed": {
+          "41": 0,
+          "42": 0,
+          "43": 1
+        },
+        "baseline_errors_fixed_per_seed": {
+          "41": 1,
+          "42": 62,
+          "43": 159
+        }
+      },
+      "equal_area_mean_iou": 0.9515326886499245
+    }
+  },
+  "limitations": [
+    "Reused development validation areas, not independent test.",
+    "Epoch-zero fallback is included in validation selection.",
+    "20 extra adapter epochs after RGB training; not compute-matched to RGB.",
+    "Broad-class interiors only; no fine material or boundary accuracy.",
+    "Confidence reliability is not independent calibration."
+  ],
+  "frozen_teacher_states_verified": 18
+}

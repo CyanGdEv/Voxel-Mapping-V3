@@ -59,3 +59,52 @@ runs are diagnostic validation, not an independent final test. Broad paving
 labels do not establish brick, stone or another fine material. No result from
 this experiment automatically replaces production or authorizes block placement.
 Existing verified world geometry remains untouched.
+
+## Completed real-data results
+
+18 runs completed: two correction modes × three geographic holdouts × three
+seeds. Three-seed mean validation IoU:
+
+| Model | East | South | North | Equal-area mean |
+|---|---:|---:|---:|---:|
+| Original RGB | 95.29% | 93.48% | 85.37% | 91.38% |
+| Frozen RGB + contextual correction | 95.84% | 94.63% | 94.07% | 94.84% |
+| Frozen RGB + RGB-only correction control | 96.11% | 95.10% | 94.25% | 95.15% |
+
+The RGB-only correction control is slightly better in all three area means.
+The contextual model is 0.31 percentage points lower overall. These results do
+not demonstrate incremental benefit from contextual values. Extra RGB capacity
+and optimization are sufficient to explain the observed gains over the original
+RGB model. This supports retaining the control when assessing future fusion
+changes; it does not establish that all contextual evidence is inherently useless.
+
+All 18 initial checkpoints reproduce their paired RGB validation IoU exactly.
+All 18 final checkpoints reproduce their trainer confusion matrices in standalone
+georeferenced candidate inference. Direct tensor comparisons confirm every frozen
+RGB parameter and BatchNorm buffer in all 18 saved models matches its supplied
+RGB checkpoint exactly. New checkpoint architecture metadata reconstructs both
+correction variants; legacy checkpoints continue using the original U-Net.
+
+Aggregate validation non-regression does not preserve each originally correct
+pixel. The contextual branch harms 2 and 1 reviewed pixels in southern seeds
+41 and 43; other contextual runs harm none. The RGB-only control harms 3, 3 and
+1 in the southern seeds and 1 in northern seed 43. These are repeated per-seed
+observations, not independent feature counts. Pixel corrections are candidates,
+not accepted geometry. Existing verified blocks are never overwritten here.
+
+51 local tests pass, including legacy training/inference, report-membership
+rejection, frozen weights/BatchNorm, bounded corrections, zero-initialization,
+exact missing-context fallback, RGB-control context invariance and saved-model
+inference. GIS CI also explicitly runs residual invariant tests with CPU Torch.
+
+Exact per-seed metrics, changed-pixel counts, teacher/data hashes, settings and
+limitations: `residual_context_results_2026-11-25.json`. Boundary accuracy,
+missing reconstruction geometry and independent calibration remain unavailable.
+No production model promoted; no blocks changed. The original world checksum
+was reverified as `0cf1c7712eb4d57f79425fc706a25afc6d521dc1c8f98deb192a6b605ecb6431`.
+
+The next validation gate is a new reviewed geographic area with supported
+material/ground labels, excluded from model and threshold selection. Another
+architecture selected on these same areas would not resolve the missing test
+set. After independent validation and calibrated acceptance, propose bounded
+block changes through the existing native Bedrock pipeline and round-trip them.
