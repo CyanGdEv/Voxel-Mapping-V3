@@ -1,0 +1,112 @@
+{
+  "schema": "voxel-ea-training-acquisition-v1",
+  "bounds_bng": [
+    406912,
+    342896,
+    408960,
+    343984
+  ],
+  "retrieved_at": "2026-11-25T00:38:23.624312+00:00",
+  "survey": {
+    "survey_id": "P_10682",
+    "survey_start": "20220105",
+    "survey_end": "20220105",
+    "archive_files": {
+      "dtm": "DTM_SK0540_P_10682_20220105_20220105.tif",
+      "dsm": "DSM_SK0540_P_10682_20220105_20220105.tif"
+    },
+    "finite_coverage_fraction": {
+      "dtm": 1.0,
+      "dsm": 0.9859484504250919
+    },
+    "terrain_coverage_threshold": 0.99,
+    "surface_gaps": "Preserved as nodata; building/bridge coverage gates apply; no interpolation"
+  },
+  "license": "OGL-3.0",
+  "metadata_url": "https://environment.data.gov.uk/dataset/2e8d0733-4f43-48b4-9e51-631c25d1b0a9",
+  "lineage_family": "environment-agency-P_10682",
+  "attribution": "Contains Environment Agency information \u00a9 Environment Agency and/or database right",
+  "horizontal_crs": "EPSG:27700",
+  "vertical_datum": "ODN",
+  "archives": {
+    "national_lidar_programme_dsm": {
+      "path": "/workspace/evidence/survey/national_lidar_programme_dsm.zip",
+      "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dsm/2022/1/SK0540",
+      "sha256": "f5183ca7dcd21207cef905f490f8afcfec4d870cc87d0eaf267da3e9d9943dac",
+      "bytes": 77522213,
+      "cache_hit": true
+    },
+    "national_lidar_programme_dtm": {
+      "path": "/workspace/evidence/survey/national_lidar_programme_dtm.zip",
+      "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_dtm/2022/1/SK0540",
+      "sha256": "7d177deac1f599e6e59698293cc788d3e1b51fc944977755594613aa1f916130",
+      "bytes": 76420370,
+      "cache_hit": true
+    },
+    "national_lidar_programme_point_cloud": {
+      "path": "/workspace/evidence/survey/national_lidar_programme_point_cloud.zip",
+      "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_point_cloud/2022/1/SK0540",
+      "sha256": "4fd779800ccb99b3bad790accd24e71a67bfc5c94b0d3a699bb96bb906951d9a",
+      "bytes": 384483857,
+      "cache_hit": true
+    }
+  },
+  "classified_cloud": {
+    "selection": {
+      "url": "https://environment.data.gov.uk/tiles/collections/survey/national_lidar_programme_point_cloud/2022/1/SK0540",
+      "filename": "SK0540_P_10682_20220105_20220105.laz",
+      "survey": {
+        "survey_id": "P_10682",
+        "survey_start": "20220105",
+        "survey_end": "20220105",
+        "archive_files": {
+          "dtm": "DTM_SK0540_P_10682_20220105_20220105.tif",
+          "dsm": "DSM_SK0540_P_10682_20220105_20220105.tif"
+        },
+        "finite_coverage_fraction": {
+          "dtm": 1.0,
+          "dsm": 0.9859484504250919
+        },
+        "terrain_coverage_threshold": 0.99,
+        "surface_gaps": "Preserved as nodata; building/bridge coverage gates apply; no interpolation"
+      },
+      "year": "2022",
+      "tile": "SK0540"
+    },
+    "scanned_points": 98342681,
+    "retained_points": 10537336,
+    "classifications": {
+      "1": 63262,
+      "2": 4262744,
+      "3": 256653,
+      "4": 706609,
+      "5": 4993046,
+      "6": 254597,
+      "7": 425
+    },
+    "sha256": "c7e9e1265d2d681621516e732ecc30cdb27994a486eef2bdc373c75cf41a336a",
+    "crs": "EPSG:27700",
+    "units": "m",
+    "vertical_datum": "ODN",
+    "vertical_datum_basis": "EA published dataset declaration; header horizontal CRS checked",
+    "scope": "observed returns only; no semantic geometry, interpolation, floor or lakebed inference",
+    "bounds": [
+      406912,
+      342896,
+      408960,
+      343984
+    ]
+  },
+  "intensity": {
+    "encoding": "raw_las_uint16",
+    "aggregation": "arithmetic mean of observed class-2 intensities per 1m cell",
+    "observed_cells": 1729427,
+    "total_cells": 2228224,
+    "ground_returns": 4262696,
+    "source_points_scanned": 10537336,
+    "sha256": "ed8a20d03514afba5e6264156c64675876d47367d6ea698c647667846a254c42",
+    "policy": "Unknown cells remain nodata; no intensity-to-material inference or interpolation."
+  },
+  "world_blocks_changed": 0,
+  "policy": "Shared EA survey lineage; contextual evidence only. Published intensity raster is not substituted for verified raw LAS intensity."
+}

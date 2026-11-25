@@ -1,0 +1,451 @@
+{
+  "schema": "voxel-world-grid-registration-v1",
+  "baseline_sha256": "0cf1c7712eb4d57f79425fc706a25afc6d521dc1c8f98deb192a6b605ecb6431",
+  "status": "source_grid_recovered",
+  "blocks_per_metre": 1,
+  "horizontal_crs": "EPSG:27700",
+  "world_grid_edge_to_bng_affine": [
+    1,
+    0,
+    406912,
+    0,
+    -1,
+    343984
+  ],
+  "block_centres": "E=406912+X+0.5; N=343984-Z-0.5",
+  "vertical_ground_surface": {
+    "datum": "ODN",
+    "fitted_reference_minus_heightmap_m": 97.98100280761719,
+    "rounded_surface_offset_m": 98,
+    "formula": "ground surface ODN ~= Minecraft block top Y + 98; ground block bottom Y ~= round(DTM_ODN) - 99",
+    "scope": "terrain surface only; roofs and ride heights not independently validated"
+  },
+  "terrain_registration": {
+    "best": {
+      "median_absolute_residual_m": 0.2649993896484375,
+      "reference_minus_heightmap_m": 97.98100280761719,
+      "reference_pixel_offset": [
+        912,
+        516
+      ]
+    },
+    "nearby_candidates": [
+      {
+        "median_absolute_residual_m": 0.2649993896484375,
+        "reference_minus_heightmap_m": 97.98100280761719,
+        "reference_pixel_offset": [
+          912,
+          516
+        ]
+      },
+      {
+        "median_absolute_residual_m": 0.277008056640625,
+        "reference_minus_heightmap_m": 97.98800659179688,
+        "reference_pixel_offset": [
+          913,
+          516
+        ]
+      },
+      {
+        "median_absolute_residual_m": 0.2779998779296875,
+        "reference_minus_heightmap_m": 97.9739990234375,
+        "reference_pixel_offset": [
+          911,
+          516
+        ]
+      },
+      {
+        "median_absolute_residual_m": 0.279998779296875,
+        "reference_minus_heightmap_m": 98.00300598144531,
+        "reference_pixel_offset": [
+          912,
+          515
+        ]
+      },
+      {
+        "median_absolute_residual_m": 0.28399658203125,
+        "reference_minus_heightmap_m": 97.99899291992188,
+        "reference_pixel_offset": [
+          911,
+          515
+        ]
+      },
+      {
+        "median_absolute_residual_m": 0.28399658203125,
+        "reference_minus_heightmap_m": 97.95700073242188,
+        "reference_pixel_offset": [
+          912,
+          517
+        ]
+      },
+      {
+        "median_absolute_residual_m": 0.2859954833984375,
+        "reference_minus_heightmap_m": 97.95899963378906,
+        "reference_pixel_offset": [
+          913,
+          517
+        ]
+      },
+      {
+        "median_absolute_residual_m": 0.3000030517578125,
+        "reference_minus_heightmap_m": 98.00599670410156,
+        "reference_pixel_offset": [
+          913,
+          515
+        ]
+      },
+      {
+        "median_absolute_residual_m": 0.305999755859375,
+        "reference_minus_heightmap_m": 97.99099731445312,
+        "reference_pixel_offset": [
+          910,
+          515
+        ]
+      },
+      {
+        "median_absolute_residual_m": 0.305999755859375,
+        "reference_minus_heightmap_m": 97.94999694824219,
+        "reference_pixel_offset": [
+          911,
+          517
+        ]
+      }
+    ],
+    "fit_bounds": [
+      64,
+      64,
+      1024,
+      1024
+    ],
+    "fit_points": 47240,
+    "validation": [
+      {
+        "world_bounds": [
+          1024,
+          64,
+          1984,
+          512
+        ],
+        "points": 5327,
+        "median_offset_m": 98.01100158691406,
+        "median_absolute_residual_m": 0.25299072265625,
+        "fraction_within_1m": 0.9877980101370377
+      },
+      {
+        "world_bounds": [
+          1024,
+          512,
+          1984,
+          1024
+        ],
+        "points": 85211,
+        "median_offset_m": 97.96800231933594,
+        "median_absolute_residual_m": 0.2679901123046875,
+        "fraction_within_1m": 0.9297860604851487
+      }
+    ],
+    "world_blocks_changed": 0,
+    "policy": "Relative source-grid recovery only. A shared terrain lineage is not independent survey validation. No automatic world placement.",
+    "schema": "voxel-world-terrain-registration-v1",
+    "orientation_scores": [
+      {
+        "orientation": "identity",
+        "correlation": 0.992813392984517,
+        "reference_pixel_offset": [
+          976,
+          576
+        ],
+        "sampled_points": 11785
+      },
+      {
+        "orientation": "transpose",
+        "correlation": 0.789215856634294,
+        "reference_pixel_offset": [
+          1008,
+          608
+        ],
+        "sampled_points": 11785
+      },
+      {
+        "orientation": "flip_x",
+        "correlation": 0.6689011106907787,
+        "reference_pixel_offset": [
+          424,
+          64
+        ],
+        "sampled_points": 11785
+      },
+      {
+        "orientation": "transpose_flip_z",
+        "correlation": 0.6474605921611399,
+        "reference_pixel_offset": [
+          1872,
+          536
+        ],
+        "sampled_points": 11785
+      },
+      {
+        "orientation": "transpose_flip_x",
+        "correlation": 0.6125551503384542,
+        "reference_pixel_offset": [
+          616,
+          608
+        ],
+        "sampled_points": 11785
+      },
+      {
+        "orientation": "flip_z",
+        "correlation": 0.6108316541864625,
+        "reference_pixel_offset": [
+          2144,
+          496
+        ],
+        "sampled_points": 11785
+      },
+      {
+        "orientation": "transpose_flip_both",
+        "correlation": 0.5312861555395829,
+        "reference_pixel_offset": [
+          24,
+          792
+        ],
+        "sampled_points": 11785
+      },
+      {
+        "orientation": "rotate180",
+        "correlation": 0.46258587667353934,
+        "reference_pixel_offset": [
+          1464,
+          112
+        ],
+        "sampled_points": 11785
+      }
+    ],
+    "world_grid_origin_xz": [
+      0,
+      0
+    ],
+    "raster_grid_origin_bng": [
+      406912.0,
+      343984.0
+    ],
+    "world_zero_grid_edge_bng": [
+      406912.0,
+      343984.0
+    ],
+    "source_crs": "EPSG:27700",
+    "minimum_world_height": 10.0,
+    "source_files": {
+      "native-world-heightmap.npz": "855d39aadbcfe779579b83cba6428ceddb49fc0b014be42888664c35a3e432de",
+      "alton-search-dtm.tif": "ac2077a9467ebb6037b145c95e1b1dbea2d08ebc837672f72e4cca92c263e53d"
+    },
+    "accepted_for_block_edits": false
+  },
+  "os_correspondences": {
+    "source": "OS OpenMap Local buildings, generalised footprints",
+    "controls": [
+      {
+        "feature_id": "os-openmap-buildings/3763597",
+        "world_center_xz": [
+          177,
+          633
+        ],
+        "area_m2": 277.3656600620709,
+        "above_ground_median": 8.839004516601562,
+        "roof_candidate_fraction": 1.0,
+        "top_block_xyz": [
+          177,
+          77,
+          633
+        ],
+        "top_block": "universal_minecraft:deepslate_tiles"
+      },
+      {
+        "feature_id": "os-openmap-buildings/9340405",
+        "world_center_xz": [
+          512,
+          337
+        ],
+        "area_m2": 1655.7117097895384,
+        "above_ground_median": 8.457992553710938,
+        "roof_candidate_fraction": 0.9969751966122202,
+        "top_block_xyz": [
+          512,
+          92,
+          337
+        ],
+        "top_block": "universal_minecraft:deepslate_tiles"
+      },
+      {
+        "feature_id": "os-openmap-buildings/7158443",
+        "world_center_xz": [
+          428,
+          884
+        ],
+        "area_m2": 328.9647455384343,
+        "above_ground_median": 3.6110000610351562,
+        "roof_candidate_fraction": 0.9695121951219512,
+        "top_block_xyz": [
+          428,
+          91,
+          884
+        ],
+        "top_block": "universal_minecraft:deepslate_tiles"
+      },
+      {
+        "feature_id": "os-openmap-buildings/2738400",
+        "world_center_xz": [
+          1067,
+          798
+        ],
+        "area_m2": 653.7538616051497,
+        "above_ground_median": 8.527999877929688,
+        "roof_candidate_fraction": 0.9678407350689127,
+        "top_block_xyz": [
+          1067,
+          81,
+          798
+        ],
+        "top_block": "universal_minecraft:deepslate_tiles"
+      },
+      {
+        "feature_id": "os-openmap-buildings/570621",
+        "world_center_xz": [
+          304,
+          292
+        ],
+        "area_m2": 428.2110761268475,
+        "above_ground_median": 4.2285003662109375,
+        "roof_candidate_fraction": 0.9299065420560748,
+        "top_block_xyz": [
+          304,
+          90,
+          292
+        ],
+        "top_block": "universal_minecraft:deepslate_tiles"
+      },
+      {
+        "feature_id": "os-openmap-buildings/9118661",
+        "world_center_xz": [
+          890,
+          688
+        ],
+        "area_m2": 448.0756633104065,
+        "above_ground_median": 11.0570068359375,
+        "roof_candidate_fraction": 0.8797327394209354,
+        "top_block_xyz": [
+          890,
+          91,
+          688
+        ],
+        "top_block": "universal_minecraft:deepslate_tiles"
+      },
+      {
+        "feature_id": "os-openmap-buildings/9953216",
+        "world_center_xz": [
+          846,
+          375
+        ],
+        "area_m2": 80.08310229851462,
+        "above_ground_median": 3.522003173828125,
+        "roof_candidate_fraction": 0.8734177215189873,
+        "top_block_xyz": [
+          846,
+          96,
+          375
+        ],
+        "top_block": "universal_minecraft:deepslate_tiles"
+      },
+      {
+        "feature_id": "os-openmap-buildings/1463828",
+        "world_center_xz": [
+          223,
+          887
+        ],
+        "area_m2": 340.0402483025018,
+        "above_ground_median": 4.9210052490234375,
+        "roof_candidate_fraction": 0.8584070796460177,
+        "top_block_xyz": [
+          223,
+          96,
+          887
+        ],
+        "top_block": "universal_minecraft:deepslate_tiles"
+      }
+    ],
+    "policy": "Corroboration only: source footprints may be generalised; top height alone is not building ground truth; OS lineage is shared across these controls."
+  },
+  "paving_correspondences": {
+    "zero_offset": {
+      "dx": 0,
+      "dz": 0,
+      "physical_family_matches": 2489,
+      "including_palette_proxies": 3202,
+      "total": 3202
+    },
+    "best_neighbour": {
+      "dx": 1,
+      "dz": 0,
+      "physical_family_matches": 2263,
+      "including_palette_proxies": 2934,
+      "total": 3202
+    },
+    "observed_counts": [
+      {
+        "label": 7,
+        "block": "universal_minecraft:brick_block",
+        "count": 1281
+      },
+      {
+        "label": 7,
+        "block": "universal_minecraft:stained_terracotta[color=\"brown\"]",
+        "count": 705
+      },
+      {
+        "label": 6,
+        "block": "universal_minecraft:stone",
+        "count": 313
+      },
+      {
+        "label": 6,
+        "block": "universal_minecraft:smooth_stone",
+        "count": 292
+      },
+      {
+        "label": 6,
+        "block": "universal_minecraft:stone_bricks[variant=\"normal\"]",
+        "count": 178
+      },
+      {
+        "label": 6,
+        "block": "universal_minecraft:andesite[polished=\"true\"]",
+        "count": 169
+      },
+      {
+        "label": 6,
+        "block": "universal_minecraft:stone_bricks[variant=\"cracked\"]",
+        "count": 126
+      },
+      {
+        "label": 6,
+        "block": "universal_minecraft:andesite[polished=\"false\"]",
+        "count": 120
+      },
+      {
+        "label": 8,
+        "block": "universal_minecraft:concrete[color=\"gray\"]",
+        "count": 10
+      },
+      {
+        "label": 8,
+        "block": "universal_minecraft:stained_terracotta[color=\"gray\"]",
+        "count": 8
+      }
+    ],
+    "palette_proxy_status": "Provisional visual palette interpretation; not declared in world metadata or independently verified material truth."
+  },
+  "source_lineage_note": "EA composite/national terrain may share source; source-grid matching is not independent survey validation. World paving likely shares the reviewed label lineage. OS controls share OS lineage.",
+  "allowed_use": "read-only evidence attachment and candidate auditing",
+  "accepted_for_block_edits": false,
+  "world_blocks_changed": 0
+}
