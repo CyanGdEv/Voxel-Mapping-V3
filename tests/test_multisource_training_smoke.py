@@ -47,6 +47,10 @@ class TrainingSmoke(unittest.TestCase):
                     context=empty(64,64)
                     context[:,:,0]=(labels==6)
                     context[:,:,1]=1
+                    context[:,:,21]=.01*(i+1)
+                    context[:,:,22]=1
+                    context[:,:,23]=.001*(i+1)
+                    context[:,:,24]=1
                     for name,arr in ((f"rgb{i}.png",rgb),(f"labels{i}.png",labels)):
                         blob=io.BytesIO()
                         Image.fromarray(arr).save(blob,format="PNG")
@@ -73,11 +77,24 @@ class TrainingSmoke(unittest.TestCase):
             self.assertTrue((root/"multi"/"model.pt").is_file())
             self.assertIn("delta_mean_iou",report)
             self.assertEqual(rgb["validation_ids"],multi["validation_ids"])
+            args.output=root/"zero-control"
+            args.context_baseline=True
+            control=train(args)
+            self.assertEqual(control["context_groups"],[])
+            self.assertEqual(len(control["input_names"]),28)
+            args.context_baseline=False
+            args.context_normalization="train_p95"
+            args.output=root/"normalized"
+            multi=train(args)
+            self.assertEqual(multi["context_scaling"]["method"],"training_positive_p95_v1")
+            train_values=np.concatenate([np.full(64*64,.01*(int(row[2])+1),np.float32) for row in multi["train_ids"]])
+            self.assertAlmostEqual(multi["context_scaling"]["channels"]["height"]["cap"],
+                                   float(np.percentile(train_values,95)),places=6)
             if importlib.util.find_spec("rasterio"):
                 import rasterio
                 from voxel_mapper.predict_ground_model import predict
                 from voxel_mapper.train_ground_model import _decode_labels
-                result = predict(root/"multi"/"model.pt", dataset, root/"predictions", threads=1)
+                result = predict(root/"normalized"/"model.pt", dataset, root/"predictions", threads=1)
                 self.assertFalse(result["accepted_for_world"])
                 validation = {row[2] for row in multi["validation_ids"]}
                 matrix = np.zeros((10,10), dtype=np.int64)

@@ -9,6 +9,8 @@ on:
       - 'tools/free_lidar_export_bundle.py'
       - 'tools/audit_view_georef.py'
       - 'tools/prepare_registered_broad_chips.py'
+      - 'tools/benchmark_registered_areas.py'
+      - 'tools/evaluate_ground_candidates.py'
       - '.github/workflows/gis-evidence.yml'
   workflow_dispatch:
     inputs:

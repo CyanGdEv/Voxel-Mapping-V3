@@ -268,9 +268,13 @@ def train(args: argparse.Namespace) -> dict:
     except ImportError as exc:
         raise SystemExit("Install optional dependencies with: pip install 'voxel-mapper[train]'") from exc
 
-    from .multisource_chips import CHANNELS, GROUPS, empty, drop_groups, select_groups
+    from .multisource_chips import CHANNELS, GROUPS, empty, drop_groups, select_groups, fit_continuous_scaling, scale_continuous
     use_context = getattr(args,"multisource",False)
     context_groups = getattr(args,"context_group",None) or [name for name, _ in GROUPS]
+    if getattr(args,"context_baseline",False):
+        if not use_context:
+            raise ValueError("Context baseline requires multisource mode")
+        context_groups = []
     if set(context_groups) - {name for name, _ in GROUPS}:
         raise ValueError("Unknown context group")
     dropout = getattr(args,"context_dropout",0.2)
@@ -312,8 +316,16 @@ def train(args: argparse.Namespace) -> dict:
     )
     if not valid_samples:
         raise ValueError("validation split is empty")
-    if use_context and not all(any(s.context is not None and np.any(s.context[s.labels != IGNORE]) for s in split) for split in (train_samples,valid_samples)):
+    if use_context and context_groups and not all(any(s.context is not None and np.any(s.context[s.labels != IGNORE]) for s in split) for split in (train_samples,valid_samples)):
         raise ValueError("Multisource training requires nonempty context in both training and validation splits")
+    normalization = getattr(args,"context_normalization","none")
+    if normalization not in ("none","train_p95") or (normalization != "none" and not use_context):
+        raise ValueError("Invalid context normalization mode")
+    scaling = fit_continuous_scaling(s.context for s in train_samples) if normalization == "train_p95" else None
+    if scaling:
+        for sample in train_samples + valid_samples:
+            if sample.context is not None:
+                sample.context = scale_continuous(sample.context, scaling)
     if max(label_map) >= args.num_classes:
         raise ValueError("--num-classes must be greater than the largest label ID")
 
@@ -429,6 +441,7 @@ def train(args: argparse.Namespace) -> dict:
             torch.save({"state_dict": model.state_dict(), "num_classes": args.num_classes,
                         "class_map": label_map, "input_channels": len(input_names), "input_names": input_names,
                         "context_groups":context_groups if use_context else [],
+                        "context_scaling":scaling,
                         "context_schema": "voxel-multisource-v1" if use_context else None}, args.output / "model.pt")
 
     checkpoint = args.output / "model.pt"
@@ -459,6 +472,7 @@ def train(args: argparse.Namespace) -> dict:
         "seed": args.seed,
         "context_dropout": dropout if use_context else 0,
         "context_groups": context_groups if use_context else [],
+        "context_scaling":scaling,
         "train_ids": [[s.park_id,s.split_group,s.sample_id] for s in train_samples],
         "validation_ids": [[s.park_id,s.split_group,s.sample_id] for s in valid_samples],
         "train_samples": len(train_samples),
@@ -501,6 +515,8 @@ def main() -> None:
     parser.add_argument("--threads", type=int, default=2)
     parser.add_argument("--cpu", action="store_true")
     parser.add_argument("--multisource", action="store_true", help="Use aligned GIS and LiDAR context chips")
+    parser.add_argument("--context-normalization", choices=("none","train_p95"), default="none")
+    parser.add_argument("--context-baseline", action="store_true", help="28-channel control with every context value and mask zeroed")
     parser.add_argument("--context-dropout", type=float, default=0.2)
     parser.add_argument("--context-group", action="append", help="Retain only these contextual groups for ablation; repeat as needed")
     args = parser.parse_args()

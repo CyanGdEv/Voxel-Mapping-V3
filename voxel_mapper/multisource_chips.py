@@ -47,6 +47,37 @@ def decode(blob, height, width):
         offset+=size
     return data
 
+def fit_continuous_scaling(contexts):
+    """Fit positive-value p95 caps on training inputs only, including overlaps.
+
+    This is input scaling, not independent observations or label calibration.
+    The one-metre height floor avoids amplifying near-ground survey noise.
+    """
+    contexts = list(contexts)
+    caps = {}
+    for name, value, mask, floor in (("height",21,22,1/60),("intensity",23,24,1/65535)):
+        arrays = [c[:,:,value][(c[:,:,mask]==1)&(c[:,:,value]>0)] for c in contexts if c is not None]
+        values = np.concatenate(arrays) if arrays else np.array([])
+        caps[name] = {"cap":max(floor,float(np.percentile(values,95))) if values.size else 1.,
+                      "positive_input_observations":int(values.size)}
+    return {"method":"training_positive_p95_v1", "channels":caps}
+
+
+def scale_continuous(data, state):
+    """Replay persisted training scaling without changing validity masks."""
+    if state is None:
+        return data
+    if state.get("method") != "training_positive_p95_v1":
+        raise ValueError("Unknown context scaling schema")
+    result = data.copy()
+    for name, value, mask in (("height",21,22),("intensity",23,24)):
+        cap = state["channels"][name]["cap"]
+        if not np.isfinite(cap) or not 0 < cap <= 1:
+            raise ValueError("Invalid fitted context cap")
+        result[:,:,value] = np.where(result[:,:,mask]==1,np.minimum(result[:,:,value]/cap,1),0)
+    return result
+
+
 def drop_groups(data, rng, probability):
     """Hide whole modalities, including validity, to train for outages."""
     result=data.copy()

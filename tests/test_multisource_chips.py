@@ -118,3 +118,23 @@ class ContextTests(unittest.TestCase):
 
 if __name__=="__main__":
     unittest.main()
+
+class ContinuousScalingTests(unittest.TestCase):
+    def test_training_fit_replays_without_scaling_masks_or_unknowns(self):
+        from voxel_mapper.multisource_chips import fit_continuous_scaling, scale_continuous
+        training = empty(4,4)
+        training[:,:,21] = .1
+        training[:,:,22] = 1
+        training[:,:,23] = .002
+        training[:,:,24] = 1
+        state = fit_continuous_scaling([training])
+        validation = training.copy()
+        validation[:,:,21] = .5
+        validation[0,0,22] = 0
+        result = scale_continuous(validation,state)
+        self.assertAlmostEqual(state['channels']['height']['cap'],.1,places=6)
+        self.assertEqual(result[1,1,21],1)
+        self.assertEqual(result[0,0,21],0)
+        np.testing.assert_array_equal(result[:,:,22],validation[:,:,22])
+        np.testing.assert_array_equal(result[:,:,:21],validation[:,:,:21])
+        self.assertEqual(fit_continuous_scaling([empty(1,1)])['channels']['height']['cap'],1)

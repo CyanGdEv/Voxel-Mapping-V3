@@ -8,7 +8,7 @@ import zipfile
 
 import numpy as np
 
-from .multisource_chips import CHANNELS, decode, empty, _grid, select_groups
+from .multisource_chips import CHANNELS, decode, empty, _grid, select_groups, scale_continuous
 from .train_ground_model import build_model, _decode_rgb
 
 
@@ -43,6 +43,7 @@ def predict(checkpoint, dataset, output, *, patch_size=64, threads=2):
                 context = decode(source.read(record["context"]), h, w) if record.get("context") else empty(h, w)
                 if "context_groups" in saved:
                     context = select_groups(context, saved["context_groups"])
+                context = scale_continuous(context, saved.get("context_scaling"))
             labels = np.empty((h, w), np.uint8)
             confidence = np.empty((h, w), np.float32)
             for y in range(0, h, patch_size):

@@ -43,7 +43,17 @@ def merge_labels(current, incoming, conflict):
     current[conflict] = 255
 
 
-def _prepare(dataset, reference, output, holdout_sample):
+def validation_bounds(xx, yy, shape, margin):
+    """Expand by whole inference tiles; refuse a shifted origin at grid edges."""
+    if margin < 0 or margin % 64:
+        raise ValueError("Validation margin must be a nonnegative multiple of 64 to preserve tile phase")
+    x0,y0,x1,y1 = int(xx.min()),int(yy.min()),int(xx.max()+1),int(yy.max()+1)
+    if x0 < margin or y0 < margin:
+        raise ValueError("Reference boundary would change validation tile phase")
+    return x0-margin,y0-margin,min(shape[1],x1+margin),min(shape[0],y1+margin)
+
+
+def _prepare(dataset, reference, output, holdout_sample, validation_margin=0):
     if output.exists() or output.resolve() in (dataset.resolve(),reference.resolve()):
         raise ValueError('Use a fresh derivative output')
     rgb,known,base = load_reference_mosaic(reference)
@@ -87,7 +97,7 @@ def _prepare(dataset, reference, output, holdout_sample):
     hold_mask = (groups==group_ids.index(holdout))&(combined!=255)
     yy,xx = np.where(hold_mask)
     if not len(xx):raise ValueError('No conservative holdout cells')
-    vx0,vy0,vx1,vy1 = int(xx.min()),int(yy.min()),int(xx.max()+1),int(yy.max()+1)
+    vx0,vy0,vx1,vy1 = validation_bounds(xx,yy,shape,validation_margin)
     validation_box = box(vx0,vy0,vx1,vy1)
     records = []
     train_covered = np.zeros(shape,bool)
@@ -126,6 +136,7 @@ def _prepare(dataset, reference, output, holdout_sample):
                   'label_map':{'1':'grass_unspecified','9':'paving_unspecified'},'samples':records,
                   'registration_filter_required':True,'source_dataset_sha256':hashlib.sha256(dataset.read_bytes()).hexdigest(),
                   'reference_archive_sha256':reference_hash,
+                  'validation_margin_pixels':validation_margin,
                   'holdout_group':holdout,'holdout_sample':holdout_sample,'source_views':sources,
                   'conflicting_1m_cells_ignored':int(conflict.sum()),'unique_conservative_cells':int(np.count_nonzero(combined!=255)),
                   'train_unique_labelled_pixels':int(train_covered.sum()),'validation_unique_labelled_pixels':int(hold_mask.sum()),
@@ -137,14 +148,14 @@ def _prepare(dataset, reference, output, holdout_sample):
     return report
 
 
-def prepare(dataset, reference, output, holdout_sample):
+def prepare(dataset, reference, output, holdout_sample, validation_margin=0):
     if output.exists() or output.resolve() in (dataset.resolve(),reference.resolve()):
         raise ValueError('Use a fresh derivative output')
     temporary = output.with_suffix(output.suffix+'.tmp')
     if temporary.exists():
         raise ValueError('Temporary output already exists')
     try:
-        report = _prepare(dataset,reference,temporary,holdout_sample)
+        report = _prepare(dataset,reference,temporary,holdout_sample,validation_margin)
         temporary.replace(output)
         return report
     finally:
@@ -156,6 +167,7 @@ if __name__=='__main__':
     for name in ('dataset','reference','output'):
         parser.add_argument('--'+name,type=Path,required=True)
     parser.add_argument('--holdout-sample',required=True)
+    parser.add_argument('--validation-margin',type=int,default=0)
     args = parser.parse_args()
-    report = prepare(args.dataset,args.reference,args.output,args.holdout_sample)
+    report = prepare(args.dataset,args.reference,args.output,args.holdout_sample,args.validation_margin)
     print(json.dumps({k:v for k,v in report.items() if k!='samples'},indent=2))
