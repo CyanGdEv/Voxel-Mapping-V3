@@ -10,6 +10,7 @@ on:
       - 'tools/audit_view_georef.py'
       - 'tools/prepare_registered_broad_chips.py'
       - 'tools/plan_surface_repairs.py'
+      - 'tools/audit_surface_returns.py'
       - 'tools/benchmark_registered_areas.py'
       - 'tools/benchmark_residual_fusion.py'
       - 'tools/evaluate_ground_candidates.py'

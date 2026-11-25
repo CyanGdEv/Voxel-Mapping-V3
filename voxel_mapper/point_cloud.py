@@ -250,3 +250,72 @@ def building_returns(config, accepted_features, local_crs, terrain, resolution,
                   occupied_voxels=len(rows),ambiguous_footprint_points=ambiguous,
                   single_return_cells_omitted=sum(v<2 for v in cells.values()),features=dict(feature_counts))
     return rows,report
+
+
+def summarize_cell_returns(cloud, cells, grid_transform, *, expected_sha256,
+                           max_scan_points=15_000_000, max_retained_points=250_000):
+    """Observe requested native metre cells without interpolation or raster labels.
+
+    Duplicate XYZ/class/return observations are deduplicated. Counts and quadrant
+    coverage describe one survey lineage, not independent evidence sources.
+    """
+    from affine import Affine
+    grid=Affine(*grid_transform);inverse=~grid
+    axes=np.array([[grid.a,grid.b],[grid.d,grid.e]])
+    if not np.allclose(axes.T@axes,np.eye(2),atol=1e-9):raise ValueError('Metre native grid required')
+    wanted={(int(c['x']),int(c['z'])) for c in cells}
+    if not wanted or len(wanted)>10_000:raise ValueError('Cell budget exceeded')
+    with cloud.open('rb') as stream:actual=hashlib.file_digest(stream,'sha256').hexdigest()
+    if actual!=expected_sha256:raise ValueError('Point-cloud identity mismatch')
+    x0,x1=min(x for x,z in wanted),max(x for x,z in wanted)+1
+    z0,z1=min(z for x,z in wanted),max(z for x,z in wanted)+1
+    corners=[grid*p for p in [(x0,z0),(x1,z0),(x0,z1),(x1,z1)]]
+    lo=np.min(corners,axis=0);hi=np.max(corners,axis=0)
+    groups={key:[] for key in wanted};discarded=collections.Counter();scanned=raw_retained=excluded_flags=0
+    with laspy.open(cloud) as reader:
+        if not is_bng(reader.header.parse_crs()):raise ValueError('Verified native BNG point-cloud CRS required')
+        if not np.isfinite(reader.header.scales).all() or not np.all(reader.header.scales>0) or not np.isfinite(reader.header.offsets).all():raise ValueError('Invalid point coordinate scales/offsets')
+        if reader.header.point_count>max_scan_points:raise ValueError('Point scan budget exceeded')
+        for chunk in reader.chunk_iterator(500_000):
+            scanned+=len(chunk)
+            if scanned>max_scan_points:raise ValueError('Point scan budget exceeded')
+            e,n,h=np.asarray(chunk.x),np.asarray(chunk.y),np.asarray(chunk.z)
+            keep=(e>=lo[0])&(e<=hi[0])&(n>=lo[1])&(n<=hi[1])&np.isfinite(h)
+            withheld=np.asarray(chunk.withheld,dtype=bool);synthetic=np.asarray(chunk.synthetic,dtype=bool)
+            classification=np.asarray(chunk.classification);returns=np.asarray(chunk.return_number);totals=np.asarray(chunk.number_of_returns)
+            for i in np.flatnonzero(keep):
+                fx,fz=inverse*(float(e[i]),float(n[i]));fx,fz=round(fx,8),round(fz,8)
+                key=(int(np.floor(fx)),int(np.floor(fz)))
+                if key not in wanted:continue
+                raw_retained+=1
+                if raw_retained>max_retained_points:raise ValueError('Retained point budget exceeded')
+                if withheld[i] or synthetic[i]:excluded_flags+=1;discarded[key]+=1;continue
+                cls=int(classification[i])
+                if cls in (7,18) or not 1<=int(returns[i])<=int(totals[i])<=15:excluded_flags+=1;discarded[key]+=1;continue
+                groups[key].append((int(chunk.X[i]),int(chunk.Y[i]),int(chunk.Z[i]),cls,
+                   int(returns[i]),int(totals[i]),float(h[i]),fx-key[0],fz-key[1]))
+        if scanned!=reader.header.point_count:raise ValueError('Incomplete point scan')
+        scales=reader.header.scales.tolist()
+    rows=[]
+    for (x,z),points in sorted(groups.items()):
+        unique={p[:6]:p for p in points};values=list(unique.values())
+        ground=[p for p in values if p[3]==2];first=[p for p in ground if p[4]==1]
+        quadrants={int(p[7]>=.5)+2*int(p[8]>=.5) for p in first}
+        heights=np.array([p[6] for p in values]);gh=np.array([p[6] for p in ground])
+        med=float(np.median(gh)) if len(gh) else None
+        classes=collections.Counter(p[3] for p in values)
+        rows.append({'x':x,'z':z,'observed_points':len(points),'unique_returns':len(values),
+            'excluded_points':discarded[x,z],'class_counts':dict(classes),'ground_returns':len(ground),'first_ground_returns':len(first),
+            'first_ground_quadrants':sorted(quadrants),
+            'first_ground_x_span_m':max(p[7] for p in first)-min(p[7] for p in first) if first else 0.,
+            'first_ground_z_span_m':max(p[8] for p in first)-min(p[8] for p in first) if first else 0.,'ground_z_median':med,
+            'ground_z_range':float(np.ptp(gh)) if len(gh) else None,
+            'all_z_min':float(heights.min()) if len(heights) else None,
+            'all_z_max':float(heights.max()) if len(heights) else None,
+            'observed_clear_ground':False})
+    from .ground_surface import direct_ground_support
+    for row in rows:row['observed_clear_ground']=direct_ground_support(row)
+    return {'schema':'classified-cell-return-evidence-v1','source_sha256':actual,'scanned_points':scanned,
+            'raw_retained_points':raw_retained,'excluded_flagged_or_noise_points':excluded_flags,
+            'coordinate_scales_m':scales,'cells':rows,
+            'policy':'Direct observed returns only, no interpolated 0.5m survey or independent source votes. Four first-ground-return quadrants, >=0.5m first-ground span in both axes, >=4 first ground returns, only classes1/2 and <=0.15m vertical spread required for observed clear ground; excluded/noise returns also withhold support. Not calibrated confidence or automatic edit acceptance.'}

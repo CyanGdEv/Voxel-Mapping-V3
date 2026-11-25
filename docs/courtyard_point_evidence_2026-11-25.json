@@ -1,0 +1,441 @@
+{
+  "schema": "classified-cell-return-evidence-v1",
+  "source_sha256": "c7e9e1265d2d681621516e732ecc30cdb27994a486eef2bdc373c75cf41a336a",
+  "scanned_points": 10537336,
+  "raw_retained_points": 592,
+  "excluded_flagged_or_noise_points": 0,
+  "coordinate_scales_m": [
+    0.01,
+    0.01,
+    0.01
+  ],
+  "policy": "Direct observed returns only, no interpolated 0.5m survey or independent source votes. Four first-ground-return quadrants, >=0.5m first-ground span in both axes, >=4 first ground returns, only classes1/2 and <=0.15m vertical spread required for observed clear ground; excluded/noise returns also withhold support. Not calibrated confidence or automatic edit acceptance.",
+  "requests_sha256": "703fc2e6338431b3c6e0a941252406a4b3b3427a81b83e1daf6f53a26a29724a",
+  "registration_sha256": "59374c6f9907e5b48f38e8710aa699d39ff914265133b1256c1a42ed65bfa8b1",
+  "source_metadata_sha256": "0fabe88f628393b1ec7c366ec7d601728ffaf163f7af76ea43113220c21dfbf7",
+  "survey": {
+    "survey_id": "P_10682",
+    "survey_start": "20220105",
+    "survey_end": "20220105",
+    "archive_files": {
+      "dtm": "DTM_SK0540_P_10682_20220105_20220105.tif",
+      "dsm": "DSM_SK0540_P_10682_20220105_20220105.tif"
+    },
+    "finite_coverage_fraction": {
+      "dtm": 1.0,
+      "dsm": 0.9859484504250919
+    },
+    "terrain_coverage_threshold": 0.99,
+    "surface_gaps": "Preserved as nodata; building/bridge coverage gates apply; no interpolation"
+  },
+  "license": "OGL-3.0",
+  "lineage_family": "environment-agency-P_10682",
+  "vertical_datum": "ODN",
+  "accepted_for_block_edits": false,
+  "cell_count": 236,
+  "cells_meeting_observed_ground_criteria": [
+    {
+      "x": 852,
+      "z": 369,
+      "observed_points": 4,
+      "unique_returns": 4,
+      "excluded_points": 0,
+      "class_counts": {
+        "2": 4
+      },
+      "ground_returns": 4,
+      "first_ground_returns": 4,
+      "first_ground_quadrants": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "first_ground_x_span_m": 0.8099999999999454,
+      "first_ground_z_span_m": 0.7599999999999909,
+      "ground_z_median": 191.065,
+      "ground_z_range": 0.020000000000010232,
+      "all_z_min": 191.06,
+      "all_z_max": 191.08,
+      "observed_clear_ground": true
+    },
+    {
+      "x": 855,
+      "z": 369,
+      "observed_points": 4,
+      "unique_returns": 4,
+      "excluded_points": 0,
+      "class_counts": {
+        "2": 4
+      },
+      "ground_returns": 4,
+      "first_ground_returns": 4,
+      "first_ground_quadrants": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "first_ground_x_span_m": 0.5500000000000682,
+      "first_ground_z_span_m": 0.7599999999999909,
+      "ground_z_median": 191.10500000000002,
+      "ground_z_range": 0.060000000000002274,
+      "all_z_min": 191.07,
+      "all_z_max": 191.13,
+      "observed_clear_ground": true
+    },
+    {
+      "x": 855,
+      "z": 371,
+      "observed_points": 4,
+      "unique_returns": 4,
+      "excluded_points": 0,
+      "class_counts": {
+        "2": 4
+      },
+      "ground_returns": 4,
+      "first_ground_returns": 4,
+      "first_ground_quadrants": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "first_ground_x_span_m": 0.5499999999999545,
+      "first_ground_z_span_m": 0.7800000000000296,
+      "ground_z_median": 191.155,
+      "ground_z_range": 0.05000000000001137,
+      "all_z_min": 191.12,
+      "all_z_max": 191.17000000000002,
+      "observed_clear_ground": true
+    },
+    {
+      "x": 856,
+      "z": 366,
+      "observed_points": 4,
+      "unique_returns": 4,
+      "excluded_points": 0,
+      "class_counts": {
+        "2": 4
+      },
+      "ground_returns": 4,
+      "first_ground_returns": 4,
+      "first_ground_quadrants": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "first_ground_x_span_m": 0.7599999999999909,
+      "first_ground_z_span_m": 0.8400000000000318,
+      "ground_z_median": 191.05,
+      "ground_z_range": 0.030000000000001137,
+      "all_z_min": 191.04,
+      "all_z_max": 191.07,
+      "observed_clear_ground": true
+    },
+    {
+      "x": 861,
+      "z": 363,
+      "observed_points": 4,
+      "unique_returns": 4,
+      "excluded_points": 0,
+      "class_counts": {
+        "2": 4
+      },
+      "ground_returns": 4,
+      "first_ground_returns": 4,
+      "first_ground_quadrants": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "first_ground_x_span_m": 0.7799999999999727,
+      "first_ground_z_span_m": 0.9499999999999886,
+      "ground_z_median": 191.01,
+      "ground_z_range": 0.030000000000001137,
+      "all_z_min": 191.0,
+      "all_z_max": 191.03,
+      "observed_clear_ground": true
+    },
+    {
+      "x": 862,
+      "z": 366,
+      "observed_points": 4,
+      "unique_returns": 4,
+      "excluded_points": 0,
+      "class_counts": {
+        "2": 4
+      },
+      "ground_returns": 4,
+      "first_ground_returns": 4,
+      "first_ground_quadrants": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "first_ground_x_span_m": 0.8300000000000409,
+      "first_ground_z_span_m": 0.8000000000000114,
+      "ground_z_median": 191.07,
+      "ground_z_range": 0.06999999999999318,
+      "all_z_min": 191.02,
+      "all_z_max": 191.09,
+      "observed_clear_ground": true
+    },
+    {
+      "x": 863,
+      "z": 369,
+      "observed_points": 4,
+      "unique_returns": 4,
+      "excluded_points": 0,
+      "class_counts": {
+        "2": 4
+      },
+      "ground_returns": 4,
+      "first_ground_returns": 4,
+      "first_ground_quadrants": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "first_ground_x_span_m": 0.7799999999999727,
+      "first_ground_z_span_m": 0.7400000000000091,
+      "ground_z_median": 191.16000000000003,
+      "ground_z_range": 0.060000000000002274,
+      "all_z_min": 191.12,
+      "all_z_max": 191.18,
+      "observed_clear_ground": true
+    },
+    {
+      "x": 876,
+      "z": 357,
+      "observed_points": 4,
+      "unique_returns": 4,
+      "excluded_points": 0,
+      "class_counts": {
+        "2": 4
+      },
+      "ground_returns": 4,
+      "first_ground_returns": 4,
+      "first_ground_quadrants": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "first_ground_x_span_m": 0.8300000000000409,
+      "first_ground_z_span_m": 0.8199999999999932,
+      "ground_z_median": 191.115,
+      "ground_z_range": 0.03999999999999204,
+      "all_z_min": 191.11,
+      "all_z_max": 191.15,
+      "observed_clear_ground": true
+    },
+    {
+      "x": 887,
+      "z": 354,
+      "observed_points": 4,
+      "unique_returns": 4,
+      "excluded_points": 0,
+      "class_counts": {
+        "2": 4
+      },
+      "ground_returns": 4,
+      "first_ground_returns": 4,
+      "first_ground_quadrants": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "first_ground_x_span_m": 0.75,
+      "first_ground_z_span_m": 0.7399999999999523,
+      "ground_z_median": 191.99,
+      "ground_z_range": 0.03999999999999204,
+      "all_z_min": 191.95000000000002,
+      "all_z_max": 191.99,
+      "observed_clear_ground": true
+    },
+    {
+      "x": 888,
+      "z": 352,
+      "observed_points": 4,
+      "unique_returns": 4,
+      "excluded_points": 0,
+      "class_counts": {
+        "2": 4
+      },
+      "ground_returns": 4,
+      "first_ground_returns": 4,
+      "first_ground_quadrants": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "first_ground_x_span_m": 0.5799999999999272,
+      "first_ground_z_span_m": 0.7400000000000091,
+      "ground_z_median": 191.965,
+      "ground_z_range": 0.030000000000001137,
+      "all_z_min": 191.94,
+      "all_z_max": 191.97,
+      "observed_clear_ground": true
+    },
+    {
+      "x": 888,
+      "z": 357,
+      "observed_points": 4,
+      "unique_returns": 4,
+      "excluded_points": 0,
+      "class_counts": {
+        "2": 4
+      },
+      "ground_returns": 4,
+      "first_ground_returns": 4,
+      "first_ground_quadrants": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "first_ground_x_span_m": 0.7800000000000864,
+      "first_ground_z_span_m": 0.9600000000000364,
+      "ground_z_median": 191.9,
+      "ground_z_range": 0.03999999999999204,
+      "all_z_min": 191.89000000000001,
+      "all_z_max": 191.93,
+      "observed_clear_ground": true
+    },
+    {
+      "x": 889,
+      "z": 351,
+      "observed_points": 4,
+      "unique_returns": 4,
+      "excluded_points": 0,
+      "class_counts": {
+        "2": 4
+      },
+      "ground_returns": 4,
+      "first_ground_returns": 4,
+      "first_ground_quadrants": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "first_ground_x_span_m": 0.5299999999999727,
+      "first_ground_z_span_m": 0.7900000000000205,
+      "ground_z_median": 191.99,
+      "ground_z_range": 0.10999999999998522,
+      "all_z_min": 191.93,
+      "all_z_max": 192.04,
+      "observed_clear_ground": true
+    },
+    {
+      "x": 889,
+      "z": 354,
+      "observed_points": 4,
+      "unique_returns": 4,
+      "excluded_points": 0,
+      "class_counts": {
+        "2": 4
+      },
+      "ground_returns": 4,
+      "first_ground_returns": 4,
+      "first_ground_quadrants": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "first_ground_x_span_m": 0.5299999999999727,
+      "first_ground_z_span_m": 0.75,
+      "ground_z_median": 191.92000000000002,
+      "ground_z_range": 0.020000000000010232,
+      "all_z_min": 191.9,
+      "all_z_max": 191.92000000000002,
+      "observed_clear_ground": true
+    },
+    {
+      "x": 890,
+      "z": 354,
+      "observed_points": 4,
+      "unique_returns": 4,
+      "excluded_points": 0,
+      "class_counts": {
+        "2": 4
+      },
+      "ground_returns": 4,
+      "first_ground_returns": 4,
+      "first_ground_quadrants": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "first_ground_x_span_m": 0.5399999999999636,
+      "first_ground_z_span_m": 0.7700000000000387,
+      "ground_z_median": 191.905,
+      "ground_z_range": 0.020000000000010232,
+      "all_z_min": 191.9,
+      "all_z_max": 191.92000000000002,
+      "observed_clear_ground": true
+    },
+    {
+      "x": 890,
+      "z": 357,
+      "observed_points": 4,
+      "unique_returns": 4,
+      "excluded_points": 0,
+      "class_counts": {
+        "2": 4
+      },
+      "ground_returns": 4,
+      "first_ground_returns": 4,
+      "first_ground_quadrants": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "first_ground_x_span_m": 0.5299999999999727,
+      "first_ground_z_span_m": 0.8199999999999932,
+      "ground_z_median": 191.875,
+      "ground_z_range": 0.01999999999998181,
+      "all_z_min": 191.86,
+      "all_z_max": 191.88,
+      "observed_clear_ground": true
+    },
+    {
+      "x": 894,
+      "z": 349,
+      "observed_points": 4,
+      "unique_returns": 4,
+      "excluded_points": 0,
+      "class_counts": {
+        "2": 4
+      },
+      "ground_returns": 4,
+      "first_ground_returns": 4,
+      "first_ground_quadrants": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "first_ground_x_span_m": 0.5500000000000682,
+      "first_ground_z_span_m": 0.7799999999999727,
+      "ground_z_median": 191.97000000000003,
+      "ground_z_range": 0.05000000000001137,
+      "all_z_min": 191.94,
+      "all_z_max": 191.99,
+      "observed_clear_ground": true
+    }
+  ],
+  "full_cell_evidence_sha256": "ea2e3039c65a037ff414e3247cccfb4ccc060eae5c205a5e7ef2e6c3dc0a6759",
+  "source_lineage_note": "Raw returns, DTM and DSM share EA P_10682; reanalysis is not an independent survey.",
+  "coordinate_precision_note": "LAS scale is 0.01m; this is encoding precision, not certified positional accuracy or a new 0.5m survey."
+}

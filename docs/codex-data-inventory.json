@@ -70,6 +70,14 @@
       "status": "native_roundtrip_verified_client_untested",
       "cumulative_block_changes": 30,
       "production_model_promoted": false
+    },
+    {
+      "workspace_path": "/workspace/experiments/Alton_Towers_Courtyard_Classified_LiDAR_Preview.mcworld",
+      "sha256": "4825dadc4a0e0d4e3874affff1583dba0d631280a79b3e7af1bd9ca4a73f1ae1",
+      "parent_sha256": "56d9ef76df2a3937d01670a5ed39e0f5f9343c1f2ff38164f4b154a6be4f1405",
+      "status": "native_roundtrip_verified_client_untested",
+      "cumulative_block_changes": 38,
+      "production_model_promoted": false
     }
   ]
 }

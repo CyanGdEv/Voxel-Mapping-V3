@@ -1,0 +1,48 @@
+{
+  "schema": "ea-survey-discovery-audit-v1",
+  "queries": [
+    {
+      "scope": "courtyard",
+      "query_bounds_bng": [
+        407709,
+        343562,
+        407859,
+        343686
+      ],
+      "query_bounds_wgs84": [
+        -1.8866071533739348,
+        52.9893536981275,
+        -1.8843696575491509,
+        52.990470492214854
+      ],
+      "url": "https://environment.data.gov.uk/tiles/collections/survey/search",
+      "http_status": 200,
+      "count": 14,
+      "finer_than_1m_advertised": 0,
+      "catalogue_sha256": "45373b09d8cbe2bd99ba924aad5cf6f7147c75066c3eefa3859ec86b08dafef6",
+      "retrieved_at": "2026-11-25T18:06:52.627531+00:00"
+    },
+    {
+      "scope": "reference_world",
+      "query_bounds_bng": [
+        406912,
+        342896,
+        408960,
+        343984
+      ],
+      "query_bounds_wgs84": [
+        -1.8984939328610342,
+        52.98334992147189,
+        -1.8679597329528905,
+        52.99315992006088
+      ],
+      "url": "https://environment.data.gov.uk/tiles/collections/survey/search",
+      "http_status": 200,
+      "count": 14,
+      "finer_than_1m_advertised": 0,
+      "catalogue_sha256": "45373b09d8cbe2bd99ba924aad5cf6f7147c75066c3eefa3859ec86b08dafef6",
+      "retrieved_at": "2026-11-25T18:06:52.954881+00:00"
+    }
+  ],
+  "scope": "EA survey catalogue only; no claim that no finer data exists elsewhere"
+}

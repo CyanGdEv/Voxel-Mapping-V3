@@ -76,11 +76,21 @@ def inspect(args):
 
 
 def propose(args):
-    observations=json.loads(args.observations.read_text())
+    observations=json.loads(args.observations.read_text());points={};point_path=getattr(args,'cell_returns',None)
+    if point_path:
+        report=json.loads(point_path.read_text())
+        if report.get('schema')!='classified-cell-return-evidence-v1' or report.get('requests_sha256')!=observations['requests_sha256']:
+            raise ValueError('Classified returns belong to different registered cells')
+        points={(c['x'],c['z']):c for c in report['cells']}
+        if len(points)!=len(report['cells']) or set(points)!={(c['x'],c['z']) for c in observations['cells']}:
+            raise ValueError('Classified return cell membership mismatch')
     return {'schema':'surface-repair-proposals-v1','accepted_for_block_edits':False,
       'observations_sha256':sha(args.observations),'requests_sha256':observations['requests_sha256'],
+      'point_evidence_sha256':sha(point_path) if point_path else None,
       'baseline_sha256':observations['baseline_sha256'],'cells':[
-       {'x':c['x'],'z':c['z'],**({'label':c['label']} if observations.get('paving_roof_only',False) else {}),**assess_lawn_column(c,surface_offset_m=observations['surface_offset_m'],allow_paving_roof_only=observations.get('paving_roof_only',False))}
+       {'x':c['x'],'z':c['z'],**({'label':c['label']} if observations.get('paving_roof_only',False) else {}),
+        **assess_lawn_column(c,surface_offset_m=observations['surface_offset_m'],
+           allow_paving_roof_only=observations.get('paving_roof_only',False),point_evidence=points.get((c['x'],c['z'])))}
        for c in observations['cells']]}
 
 
@@ -113,6 +123,7 @@ def main():
         if mode=='prepare':
             p.add_argument('--sample',required=True)
             p.add_argument('--include-paving',action='store_true',help='Also propose roof-only corrections over reviewed generic paving')
+        if mode=='propose':p.add_argument('--cell-returns',type=Path,help='Hash-bound raw classified-cell evidence; original raster values remain unchanged')
         p.add_argument('--output',type=Path,required=True)
     a=parser.parse_args();result=globals()[a.mode](a);write_fresh(a.output,result)
     print(json.dumps({'output':str(a.output),'schema':result['schema']}))

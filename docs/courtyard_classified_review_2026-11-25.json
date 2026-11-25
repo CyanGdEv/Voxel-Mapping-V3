@@ -1,0 +1,60 @@
+{
+  "schema": "scoped-surface-repair-review-v1",
+  "proposals_sha256": "ae92b8e69cef433851186e0fa40ab38b2c260940cbd06c69492b2ff4805cc132",
+  "accepted_for_scoped_preview": true,
+  "accepted_columns": [
+    [
+      889,
+      351
+    ],
+    [
+      890,
+      351
+    ],
+    [
+      888,
+      352
+    ],
+    [
+      889,
+      354
+    ]
+  ],
+  "point_evidence_sha256": "ea2e3039c65a037ff414e3247cccfb4ccc060eae5c205a5e7ef2e6c3dc0a6759",
+  "review_method": "Direct RGB review confirms four lawn-interior columns. Distributed first ground returns support three columns; the remaining column has the previously accepted raster-pair support. Rooted dirt is retained below ground and recognized as solid support. Original negative raster values are not overwritten. Final obstruction/terrain conflict checks preserve exactly the same four qualified proposals; low vegetation classification alone is contextual, not a fabricated overhead structure.",
+  "height_basis_by_column": [
+    {
+      "x": 889,
+      "z": 351,
+      "basis": "classified_cell_returns"
+    },
+    {
+      "x": 890,
+      "z": 351,
+      "basis": "raster_pair"
+    },
+    {
+      "x": 888,
+      "z": 352,
+      "basis": "classified_cell_returns"
+    },
+    {
+      "x": 889,
+      "z": 354,
+      "basis": "classified_cell_returns"
+    }
+  ],
+  "lidar_provenance": {
+    "survey_id": "P_10682",
+    "observed_date": "2022-01-05",
+    "license": "OGL-3.0",
+    "vertical_datum": "ODN",
+    "lineage": "Raw returns, DTM and DSM share one survey lineage; these are alternative analyses, not independent sources"
+  },
+  "imagery_provenance": {
+    "reference_archive_sha256": "787851d42c29665049220f6876de73802b8b8afe26f7cc17db9aabe2e09f547e",
+    "observed_date": null,
+    "license": "Supplied archive; acquisition/licensing scope not established"
+  },
+  "scope": "Only the four accepted columns. Retain all earlier repairs, material boundaries, vegetation, uncertain floating surfaces and underground geometry. No model promotion."
+}
