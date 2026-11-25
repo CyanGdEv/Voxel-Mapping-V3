@@ -1,0 +1,1098 @@
+{
+  "runs": [
+    {
+      "schema": "voxel-multisource-benchmark-v1",
+      "split": {
+        "mode": "explicit_group",
+        "validation_groups": [
+          "geographic_299b80e09090"
+        ]
+      },
+      "seed": 41,
+      "rgb_mean_iou": 0.9544386061946903,
+      "multisource_mean_iou": 0.7625761335438754,
+      "delta_mean_iou": -0.1918624726508149,
+      "per_class": {
+        "1": {
+          "name": "grass_unspecified",
+          "labelled_pixels": 113,
+          "rgb_iou": 0.9557522123893806,
+          "multisource_iou": 0.7419354838709677,
+          "delta_iou": -0.21381672851841282
+        },
+        "9": {
+          "name": "paving_unspecified",
+          "labelled_pixels": 123,
+          "rgb_iou": 0.953125,
+          "multisource_iou": 0.7832167832167832,
+          "delta_iou": -0.16990821678321677
+        }
+      },
+      "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment."
+    },
+    {
+      "schema": "voxel-multisource-benchmark-v1",
+      "split": {
+        "mode": "explicit_group",
+        "validation_groups": [
+          "geographic_299b80e09090"
+        ]
+      },
+      "seed": 42,
+      "rgb_mean_iou": 0.9583448561946903,
+      "multisource_mean_iou": 0.9748209018120522,
+      "delta_mean_iou": 0.016476045617361823,
+      "per_class": {
+        "1": {
+          "name": "grass_unspecified",
+          "labelled_pixels": 113,
+          "rgb_iou": 0.9557522123893806,
+          "multisource_iou": 0.9734513274336283,
+          "delta_iou": 0.017699115044247704
+        },
+        "9": {
+          "name": "paving_unspecified",
+          "labelled_pixels": 123,
+          "rgb_iou": 0.9609375,
+          "multisource_iou": 0.9761904761904762,
+          "delta_iou": 0.015252976190476164
+        }
+      },
+      "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment."
+    },
+    {
+      "schema": "voxel-multisource-benchmark-v1",
+      "split": {
+        "mode": "explicit_group",
+        "validation_groups": [
+          "geographic_299b80e09090"
+        ]
+      },
+      "seed": 43,
+      "rgb_mean_iou": 0.8582677165354331,
+      "multisource_mean_iou": 0.6889605613082103,
+      "delta_mean_iou": -0.16930715522722284,
+      "per_class": {
+        "1": {
+          "name": "grass_unspecified",
+          "labelled_pixels": 113,
+          "rgb_iou": 0.8582677165354331,
+          "multisource_iou": 0.781021897810219,
+          "delta_iou": -0.07724581872521408
+        },
+        "9": {
+          "name": "paving_unspecified",
+          "labelled_pixels": 123,
+          "rgb_iou": 0.8582677165354331,
+          "multisource_iou": 0.5968992248062015,
+          "delta_iou": -0.2613684917292316
+        }
+      },
+      "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment."
+    }
+  ],
+  "mean_rgb_iou": 0.9236837263082712,
+  "mean_multisource_iou": 0.8087858655547127,
+  "schema": "expanded-broad-area-benchmark-v1",
+  "dataset_sha256": "4ea28cc91f83350fff7108f6577fcdc7139ee5691e42b6cac503b2ea38fd66cb",
+  "source_manifest": {
+    "schema": "reviewed-broad-area-pilot-v1",
+    "park_id": "alton_towers",
+    "label_map": {
+      "1": "grass_unspecified",
+      "9": "paving_unspecified"
+    },
+    "registration_filter_required": true,
+    "source_dataset_sha256": "e069963b0e849797d8dc77b2c0db4d7ee58f53f313f34579ae829d47b226d03e",
+    "reference_archive_sha256": "787851d42c29665049220f6876de73802b8b8afe26f7cc17db9aabe2e09f547e",
+    "holdout_group": "geographic_299b80e09090",
+    "holdout_sample": "selected_aerials/view_01",
+    "source_views": [
+      {
+        "sample_id": "parkwide_batch3/view_03",
+        "group": "geographic_1bcc4fca1552",
+        "original_label_observations": 253376,
+        "conservative_1m_cells": 877
+      },
+      {
+        "sample_id": "parkwide_batch3/view_04",
+        "group": "geographic_1bcc4fca1552",
+        "original_label_observations": 313781,
+        "conservative_1m_cells": 802
+      },
+      {
+        "sample_id": "parkwide_batch3/view_06",
+        "group": "geographic_1f2030b78bd1",
+        "original_label_observations": 14060,
+        "conservative_1m_cells": 100
+      },
+      {
+        "sample_id": "selected_aerials/view_01",
+        "group": "geographic_299b80e09090",
+        "original_label_observations": 123197,
+        "conservative_1m_cells": 236
+      },
+      {
+        "sample_id": "selected_aerials/view_08",
+        "group": "geographic_63b0ff5ef1ff",
+        "original_label_observations": 231105,
+        "conservative_1m_cells": 336
+      },
+      {
+        "sample_id": "selected_aerials/view_09",
+        "group": "geographic_1bcc4fca1552",
+        "original_label_observations": 313781,
+        "conservative_1m_cells": 802
+      },
+      {
+        "sample_id": "selected_aerials/view_10",
+        "group": "geographic_63b0ff5ef1ff",
+        "original_label_observations": 300050,
+        "conservative_1m_cells": 595
+      }
+    ],
+    "conflicting_1m_cells_ignored": 0,
+    "unique_conservative_cells": 2333,
+    "train_unique_labelled_pixels": 2097,
+    "validation_unique_labelled_pixels": 236,
+    "train_class_counts": {
+      "1": 361,
+      "9": 1736
+    },
+    "validation_class_counts": {
+      "1": 113,
+      "9": 123
+    },
+    "minimum_train_image_to_validation_image_separation_m": 406.17360820220705,
+    "policy": "Same reference acquisition; separate geographic areas, not independent source/park test. 95% class coverage and a one-cell boundary erosion. Overlaps deduplicated; conflicts ignored. Broad labels only; no new fine material labels.",
+    "context_schema": "voxel-multisource-v1",
+    "context_report": {
+      "aligned": 47,
+      "missing_georeference": 0,
+      "no_context": 0
+    }
+  },
+  "parameters": {
+    "epochs": 20,
+    "batch_size": 4,
+    "patch_size": 64,
+    "learning_rate": 0.001,
+    "seeds": [
+      41,
+      42,
+      43
+    ],
+    "context_dropout": 0.2,
+    "training_samples": 46,
+    "validation_samples": 1
+  },
+  "per_run_reports": [
+    {
+      "seed": 41,
+      "mode": "rgb",
+      "training": {
+        "epochs": 20,
+        "batch_size": 4,
+        "patch_size": 64,
+        "learning_rate": 0.001,
+        "best_validation_mean_iou": 0.9544386061946903,
+        "best_validation_pixel_accuracy": 0.9745762711864406
+      },
+      "per_class": {
+        "1": {
+          "name": "grass_unspecified",
+          "precision": 1.0,
+          "recall": 0.9557522123893806,
+          "iou": 0.9557522123893806,
+          "labelled_pixels": 113
+        },
+        "9": {
+          "name": "paving_unspecified",
+          "precision": 0.9606299212598425,
+          "recall": 0.991869918699187,
+          "iou": 0.953125,
+          "labelled_pixels": 123
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          108,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          122
+        ]
+      ]
+    },
+    {
+      "seed": 41,
+      "mode": "multisource",
+      "training": {
+        "epochs": 20,
+        "batch_size": 4,
+        "patch_size": 64,
+        "learning_rate": 0.001,
+        "best_validation_mean_iou": 0.7625761335438754,
+        "best_validation_pixel_accuracy": 0.864406779661017
+      },
+      "per_class": {
+        "1": {
+          "name": "grass_unspecified",
+          "precision": 0.8932038834951457,
+          "recall": 0.8141592920353983,
+          "iou": 0.7419354838709677,
+          "labelled_pixels": 113
+        },
+        "9": {
+          "name": "paving_unspecified",
+          "precision": 0.8484848484848485,
+          "recall": 0.9105691056910569,
+          "iou": 0.7832167832167832,
+          "labelled_pixels": 123
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          92,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          20
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          11,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          112
+        ]
+      ]
+    },
+    {
+      "seed": 42,
+      "mode": "rgb",
+      "training": {
+        "epochs": 20,
+        "batch_size": 4,
+        "patch_size": 64,
+        "learning_rate": 0.001,
+        "best_validation_mean_iou": 0.9583448561946903,
+        "best_validation_pixel_accuracy": 0.9788135593220338
+      },
+      "per_class": {
+        "1": {
+          "name": "grass_unspecified",
+          "precision": 1.0,
+          "recall": 0.9557522123893806,
+          "iou": 0.9557522123893806,
+          "labelled_pixels": 113
+        },
+        "9": {
+          "name": "paving_unspecified",
+          "precision": 0.9609375,
+          "recall": 1.0,
+          "iou": 0.9609375,
+          "labelled_pixels": 123
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          108,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          5
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          123
+        ]
+      ]
+    },
+    {
+      "seed": 42,
+      "mode": "multisource",
+      "training": {
+        "epochs": 20,
+        "batch_size": 4,
+        "patch_size": 64,
+        "learning_rate": 0.001,
+        "best_validation_mean_iou": 0.9748209018120522,
+        "best_validation_pixel_accuracy": 0.9872881355932204
+      },
+      "per_class": {
+        "1": {
+          "name": "grass_unspecified",
+          "precision": 1.0,
+          "recall": 0.9734513274336283,
+          "iou": 0.9734513274336283,
+          "labelled_pixels": 113
+        },
+        "9": {
+          "name": "paving_unspecified",
+          "precision": 0.9761904761904762,
+          "recall": 1.0,
+          "iou": 0.9761904761904762,
+          "labelled_pixels": 123
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          110,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          3
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          123
+        ]
+      ]
+    },
+    {
+      "seed": 43,
+      "mode": "rgb",
+      "training": {
+        "epochs": 20,
+        "batch_size": 4,
+        "patch_size": 64,
+        "learning_rate": 0.001,
+        "best_validation_mean_iou": 0.8582677165354331,
+        "best_validation_pixel_accuracy": 0.923728813559322
+      },
+      "per_class": {
+        "1": {
+          "name": "grass_unspecified",
+          "precision": 0.8861788617886179,
+          "recall": 0.9646017699115044,
+          "iou": 0.8582677165354331,
+          "labelled_pixels": 113
+        },
+        "9": {
+          "name": "paving_unspecified",
+          "precision": 0.9646017699115044,
+          "recall": 0.8861788617886179,
+          "iou": 0.8582677165354331,
+          "labelled_pixels": 123
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          109,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          14,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          109
+        ]
+      ]
+    },
+    {
+      "seed": 43,
+      "mode": "multisource",
+      "training": {
+        "epochs": 20,
+        "batch_size": 4,
+        "patch_size": 64,
+        "learning_rate": 0.001,
+        "best_validation_mean_iou": 0.6889605613082103,
+        "best_validation_pixel_accuracy": 0.7796610169491526
+      },
+      "per_class": {
+        "1": {
+          "name": "grass_unspecified",
+          "precision": 0.816793893129771,
+          "recall": 0.9469026548672567,
+          "iou": 0.781021897810219,
+          "labelled_pixels": 113
+        },
+        "9": {
+          "name": "paving_unspecified",
+          "precision": 0.927710843373494,
+          "recall": 0.6260162601626016,
+          "iou": 0.5968992248062015,
+          "labelled_pixels": 123
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          107,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          6
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          24,
+          17,
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          77
+        ]
+      ]
+    }
+  ],
+  "limitations": [
+    "Two broad classes and 236 reviewed interior cells in one held-out area; not fine-material or park-wide accuracy.",
+    "Same reference imagery lineage; not independent source/cross-park testing.",
+    "Overlapping training windows are not independent observations.",
+    "Boundary pixels are deliberately ignored; no boundary accuracy or hidden-path result established.",
+    "Checkpoints selected on this validation area; no independent test set or model promotion."
+  ]
+}

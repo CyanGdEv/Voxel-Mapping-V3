@@ -39,6 +39,7 @@ def main():
     p.add_argument("--output",type=Path,required=True)
     p.add_argument("--holdout-park")
     p.add_argument("--validation-group", action="append", help="Fixed held-out source/area group; must be geographically independent")
+    p.add_argument("--require-georeference", action="store_true")
     p.add_argument("--validation-fraction",type=float,default=.2)
     p.add_argument("--num-classes",type=int,default=10)
     p.add_argument("--epochs",type=int,default=20)

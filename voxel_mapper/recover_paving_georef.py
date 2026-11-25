@@ -11,6 +11,48 @@ import zipfile
 import numpy as np
 from PIL import Image
 
+def load_reference_mosaic(reference, *, max_pixels=4_000_000):
+    """Read aligned reference RGB only; canopy/semantic labels are never targets."""
+    from affine import Affine
+    from rasterio.io import MemoryFile
+    tiles = []
+    total = 0
+    with zipfile.ZipFile(reference) as archive:
+        for member in archive.infolist():
+            if not member.filename.startswith("data/") or not member.filename.endswith("/rgb.tif"):
+                continue
+            if member.file_size > 64_000_000:
+                raise ValueError("Reference tile byte budget exceeded")
+            with MemoryFile(archive.read(member)) as memory, memory.open() as source:
+                t = source.transform
+                if (source.crs is None or source.crs.to_epsg()!=27700 or source.count!=3
+                        or source.dtypes!=("uint8",)*3 or (t.a,t.b,t.d,t.e)!=(1,0,0,-1)
+                        or not float(t.c).is_integer() or not float(t.f).is_integer()):
+                    raise ValueError("Aligned 1m BNG RGB reference required")
+                total += source.width*source.height
+                if total > max_pixels:
+                    raise ValueError("Reference pixel budget exceeded")
+                tiles.append((source.bounds,source.read().transpose(1,2,0)))
+    if not tiles:
+        raise ValueError("No reference RGB tiles")
+    west,north = min(b.left for b,a in tiles),max(b.top for b,a in tiles)
+    width = int(max(b.right for b,a in tiles)-west)
+    height = int(north-min(b.bottom for b,a in tiles))
+    if width*height > max_pixels:
+        raise ValueError("Reference extent budget exceeded")
+    rgb = np.zeros((height,width,3),np.uint8)
+    known = np.zeros((height,width),bool)
+    for bounds, values in tiles:
+        x,y = int(bounds.left-west),int(north-bounds.top)
+        h,w = values.shape[:2]
+        old = known[y:y+h,x:x+w]
+        dest = rgb[y:y+h,x:x+w]
+        if old.any() and not np.array_equal(dest[old],values[old]):
+            raise ValueError("Conflicting reference RGB tiles")
+        dest[:] = values
+        old[:] = True
+    return rgb, known, Affine(1,0,west,0,-1,north)
+
 def rotation_to_original(k,w,h):
     from affine import Affine
     return (Affine.identity(),Affine(0,-1,w,1,0,0),
@@ -19,8 +61,6 @@ def rotation_to_original(k,w,h):
 def recover(dataset, expansion, reference, output, *, west,north):
     """Use a proposed integer BNG crop origin only if all RGB pixels agree."""
     from affine import Affine
-    from rasterio.io import MemoryFile
-    from rasterio.windows import Window
     if output.resolve() in {p.resolve() for p in (dataset,expansion,reference)}:
         raise ValueError("Use a distinct output archive")
     if type(west) is not int or type(north) is not int:
@@ -33,24 +73,12 @@ def recover(dataset, expansion, reference, output, *, west,north):
     if len(index)!=len(rows):
         raise ValueError("Duplicate paving sample IDs")
     h,w=crop.shape[:2]
-    mosaic=np.zeros_like(crop)
-    known=np.zeros((h,w),dtype=bool)
-    with zipfile.ZipFile(reference) as z:
-        for name in z.namelist():
-            if not name.startswith("data/") or not name.endswith("/rgb.tif"): continue
-            with MemoryFile(z.read(name)) as mem,mem.open() as src:
-                t=src.transform
-                if src.crs is None or src.crs.to_epsg()!=27700 or src.count!=3 or src.dtypes!=("uint8",)*3 or (t.a,t.b,t.d,t.e)!=(1,0,0,-1) or not float(t.c).is_integer() or not float(t.f).is_integer():
-                    raise ValueError("Expected aligned 1 m EPSG:27700 RGB reference tiles")
-                x,y=int(t.c)-west,north-int(t.f)
-                x0,y0,x1,y1=max(x,0),max(y,0),min(x+src.width,w),min(y+src.height,h)
-                if x0>=x1 or y0>=y1: continue
-                part=src.read(window=Window(x0-x,y0-y,x1-x0,y1-y0)).transpose(1,2,0)
-                target=mosaic[y0:y1,x0:x1]; old=known[y0:y1,x0:x1]
-                if np.any(old) and not np.array_equal(target[old],part[old]):
-                    raise ValueError("Conflicting overlapping reference tiles")
-                target[:]=part
-                old[:]=True
+    full,coverage,reference_affine=load_reference_mosaic(reference)
+    x,y=west-int(reference_affine.c),int(reference_affine.f)-north
+    if x<0 or y<0 or x+w>full.shape[1] or y+h>full.shape[0]:
+        raise ValueError("Proposed crop outside reference extent")
+    mosaic=full[y:y+h,x:x+w]
+    known=coverage[y:y+h,x:x+w]
     if not np.all(known) or not np.array_equal(mosaic,crop):
         raise ValueError("Proposed crop fails exact RGB reference match")
     with reference.open("rb") as stream:

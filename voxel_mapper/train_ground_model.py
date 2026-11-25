@@ -64,10 +64,11 @@ def _manifest_from_zip(archive: zipfile.ZipFile) -> dict:
     return json.loads(archive.read("manifest.json"))
 
 
-def _read_samples(dataset_path: Path, *, use_context=False) -> tuple[list[Sample], dict, dict]:
+def _read_samples(dataset_path: Path, *, use_context=False, require_georeference=False) -> tuple[list[Sample], dict, dict]:
     samples: list[Sample] = []
     skipped_all_ignore = 0
     skipped_bad_shape = 0
+    skipped_unregistered = 0
     with zipfile.ZipFile(dataset_path) as archive:
         manifest = _manifest_from_zip(archive)
         label_map = {int(k): str(v) for k, v in
@@ -85,6 +86,9 @@ def _read_samples(dataset_path: Path, *, use_context=False) -> tuple[list[Sample
             raise ValueError(f"{dataset_path}: manifest has no samples or chip_index.csv")
 
         for index, record in enumerate(records):
+            if (require_georeference or manifest.get("registration_filter_required")) and not record.get("georef"):
+                skipped_unregistered += 1
+                continue
             image_name = record.get("image")
             label_name = record.get("labels")
             if not image_name or not label_name:
@@ -97,6 +101,9 @@ def _read_samples(dataset_path: Path, *, use_context=False) -> tuple[list[Sample
             if rgb.shape[:2] != labels.shape:
                 skipped_bad_shape += 1
                 continue
+            if require_georeference or manifest.get("registration_filter_required"):
+                from .multisource_chips import _grid
+                _grid(record["georef"],*labels.shape)
             valid = labels != IGNORE
             if not np.any(valid):
                 skipped_all_ignore += 1
@@ -122,6 +129,7 @@ def _read_samples(dataset_path: Path, *, use_context=False) -> tuple[list[Sample
         "labelled_samples": len(samples),
         "skipped_all_ignore": skipped_all_ignore,
         "skipped_shape_mismatch": skipped_bad_shape,
+        "skipped_unregistered": skipped_unregistered,
         "context_samples": sum(s.context is not None for s in samples),
     }
 
@@ -280,7 +288,8 @@ def train(args: argparse.Namespace) -> dict:
 
     samples, label_map, source_reports = [], None, []
     for path in args.dataset:
-        current, current_map, report = _read_samples(path,use_context=use_context)
+        current, current_map, report = _read_samples(path,use_context=use_context,
+            require_georeference=getattr(args,"require_georeference",False))
         with path.open("rb") as stream:
             report["dataset_sha256"] = hashlib.file_digest(stream,"sha256").hexdigest()
         if label_map is None:
@@ -481,6 +490,7 @@ def main() -> None:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--holdout-park", help="Evaluate transfer to this park ID")
     parser.add_argument("--validation-group", action="append", help="Fixed held-out source/area group; repeat as needed. Caller must verify geographic separation.")
+    parser.add_argument("--require-georeference", action="store_true", help="Exclude samples without accepted geographic transforms")
     parser.add_argument("--validation-fraction", type=float, default=0.2)
     parser.add_argument("--num-classes", type=int, default=10)
     parser.add_argument("--epochs", type=int, default=20)

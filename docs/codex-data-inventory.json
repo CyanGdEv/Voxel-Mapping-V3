@@ -26,7 +26,7 @@
     {
       "path": "lidar/Alton_Tree_Canopy_LiDAR_Training.zip",
       "sha256": "787851d42c29665049220f6876de73802b8b8afe26f7cc17db9aabe2e09f547e",
-      "workspace_status": "not_supplied"
+      "workspace_status": "received_checksum_verified"
     },
     {
       "path": "training/Alton_Towers_Parkwide_Semantic_Training_2026-11_v1.zip",
@@ -53,7 +53,7 @@
     "file": "Alton_Towers_Go_Jetters_Queue_v20_Noisy_Leaves.mcworld",
     "sha256": "0cf1c7712eb4d57f79425fc706a25afc6d521dc1c8f98deb192a6b605ecb6431",
     "status": "received_zip_integrity_verified_original_preserved",
-    "geographic_registration": "no_receipt_in_archive"
+    "geographic_registration": "Source grid recovered; corroborated by related supplied canopy archive audit. See world_registration_evidence_2026-11-25.json and reviewed_view_registration_2026-11-25.json."
   },
   "notes": "These hashes were computed on actual local files. Binary archives are not in this public repository. Verify redistribution rights before public upload; use private storage or local workspace if needed."
 }
