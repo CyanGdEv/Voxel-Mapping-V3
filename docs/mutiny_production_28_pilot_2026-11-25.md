@@ -118,3 +118,20 @@ the trainer with the same settings, `--multisource`, and either
 validation group, seed and optimizer settings. Acquisition reproduction is in
 `live_alton_gis_audit_2026-11-24.md`. Generated images, checkpoint binaries and
 private source/world archives remain workspace artifacts, not public Git files.
+
+## Native baseline inspection
+
+Opened an extracted copy successfully with Amulet 1.9.49, amulet-leveldb 1.0.7,
+amulet-nbt 2.1.8 and NumPy 1.26.4 in an isolated environment. The original
+archive checksum remains unchanged. The Bedrock version is 1.21.120.0.0, with 8704
+overworld chunks. All eight sampled coordinates from the existing Go Jetters
+queue placement audit contain light-gray terracotta as declared. This verifies
+those stored blocks, not the geographic registration or every world chunk.
+No save or block placement was performed. Exact observations are recorded in
+`baseline_native_inspection_2026-11-25.json`.
+
+The Linux dependency build needed an actual CMake binary on PATH and
+`CC=gcc CXX=g++`; the runtime default referenced an unavailable clang. Pinning
+amulet-leveldb 1.0.7 avoids the newer binding build path while preserving the
+existing exporter API. Keep these native dependencies isolated from the NumPy 2
+GIS/training environment.

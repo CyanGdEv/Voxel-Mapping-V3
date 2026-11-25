@@ -1,0 +1,91 @@
+{
+  "dimensions": [
+    "minecraft:overworld",
+    "minecraft:the_nether",
+    "minecraft:the_end"
+  ],
+  "platform": "bedrock",
+  "version": [
+    1,
+    21,
+    120,
+    0,
+    0
+  ],
+  "overworld_chunks": 8704,
+  "chunk_bounds": [
+    0,
+    0,
+    127,
+    67
+  ],
+  "placement_audit_samples": [
+    {
+      "xyz": [
+        245,
+        83,
+        346
+      ],
+      "block": "universal_minecraft:stained_terracotta[color=\"light_gray\"]"
+    },
+    {
+      "xyz": [
+        245,
+        83,
+        347
+      ],
+      "block": "universal_minecraft:stained_terracotta[color=\"light_gray\"]"
+    },
+    {
+      "xyz": [
+        245,
+        83,
+        348
+      ],
+      "block": "universal_minecraft:stained_terracotta[color=\"light_gray\"]"
+    },
+    {
+      "xyz": [
+        245,
+        83,
+        349
+      ],
+      "block": "universal_minecraft:stained_terracotta[color=\"light_gray\"]"
+    },
+    {
+      "xyz": [
+        245,
+        83,
+        350
+      ],
+      "block": "universal_minecraft:stained_terracotta[color=\"light_gray\"]"
+    },
+    {
+      "xyz": [
+        246,
+        83,
+        344
+      ],
+      "block": "universal_minecraft:stained_terracotta[color=\"light_gray\"]"
+    },
+    {
+      "xyz": [
+        246,
+        83,
+        345
+      ],
+      "block": "universal_minecraft:stained_terracotta[color=\"light_gray\"]"
+    },
+    {
+      "xyz": [
+        246,
+        83,
+        346
+      ],
+      "block": "universal_minecraft:stained_terracotta[color=\"light_gray\"]"
+    }
+  ],
+  "geographic_registration_verified": false,
+  "world_blocks_changed": 0,
+  "original_baseline_sha256": "0cf1c7712eb4d57f79425fc706a25afc6d521dc1c8f98deb192a6b605ecb6431"
+}
