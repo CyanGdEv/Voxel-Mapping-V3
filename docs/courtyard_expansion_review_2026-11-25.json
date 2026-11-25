@@ -1,0 +1,59 @@
+{
+  "schema": "scoped-surface-repair-review-v1",
+  "proposals_sha256": "265d2b8dd655d957819e9bdc1608f90e6317cfb6a159249d494fa44df6085cb0",
+  "accepted_for_scoped_preview": true,
+  "accepted_columns": [
+    [
+      891,
+      350
+    ],
+    [
+      891,
+      351
+    ],
+    [
+      887,
+      352
+    ],
+    [
+      890,
+      352
+    ],
+    [
+      884,
+      354
+    ],
+    [
+      885,
+      354
+    ],
+    [
+      885,
+      355
+    ],
+    [
+      888,
+      355
+    ],
+    [
+      886,
+      356
+    ]
+  ],
+  "review_method": "Direct RGB overlay review confirms the nine proposed cells lie on the courtyard lawn interior. Existing conservative labels plus two-cell erosion, measured nonnegative DSM-DTM <=0.05m, <=0.1m terrain quantization residual, complete native-column observations and supported ground/roof palettes agree.",
+  "reference_archive_sha256": "787851d42c29665049220f6876de73802b8b8afe26f7cc17db9aabe2e09f547e",
+  "registration_sha256": "59374c6f9907e5b48f38e8710aa699d39ff914265133b1256c1a42ed65bfa8b1",
+  "lidar_provenance": {
+    "source_id": "ea-national-2022-P_10682",
+    "observed_date": "2022-01-05",
+    "license": "OGL-3.0",
+    "vertical_datum": "ODN",
+    "lineage": "DTM and DSM share survey lineage; not independent evidence votes"
+  },
+  "rgb_provenance": {
+    "observed_date": null,
+    "license": "Supplied archive; acquisition/licensing scope not established",
+    "lineage": "Reviewed masks and source RGB share imagery lineage"
+  },
+  "scope": "Nine additional columns only. Preserve six prior repaired columns and all withheld cells. No global registration or AI model promotion."
+}

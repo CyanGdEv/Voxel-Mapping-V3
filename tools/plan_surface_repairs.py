@@ -1,0 +1,113 @@
+"""Prepare, inspect and propose registered surface repairs across two runtimes.
+
+prepare: GIS environment. inspect: isolated Bedrock environment. plan: standard
+Python. Proposals still require a hash-bound scoped review before block writes.
+"""
+import argparse
+import hashlib
+import io
+import json
+import math
+from pathlib import Path
+import zipfile
+
+from voxel_mapper.ground_surface import assess_lawn_column
+
+
+def sha(path):return hashlib.sha256(path.read_bytes()).hexdigest()
+def write_fresh(path,value):
+    path.parent.mkdir(parents=True,exist_ok=True)
+    with path.open('x') as f:json.dump(value,f,indent=2,allow_nan=False)
+
+
+def prepare(args):
+    import numpy as np
+    from PIL import Image
+    from affine import Affine
+    from scipy.ndimage import binary_erosion
+    import rasterio
+    reg=json.loads(args.registration.read_text())
+    grid=Affine(*reg['world_grid_edge_to_bng_affine'])
+    if reg['blocks_per_metre']!=1:raise ValueError('Only 1m native grids supported')
+    with zipfile.ZipFile(args.dataset) as z:
+        m=json.loads(z.read('manifest.json'));r=next(r for r in m['samples'] if r['sample_id']==args.sample)
+        if r['georef']['crs']!=reg['horizontal_crs']:raise ValueError('Align source CRS before planning')
+        if m.get('label_map',{}).get('1')!='grass_unspecified':raise ValueError('Canonical reviewed grass class required')
+        tf=Affine(*r['georef']['transform']);a=np.asarray(Image.open(io.BytesIO(z.read(r['labels']))))
+    mapping=~grid*tf
+    if not np.allclose([mapping.a,mapping.b,mapping.d,mapping.e],[1,0,0,1],atol=1e-8):
+        raise ValueError('Use an already aligned 1m label grid')
+    mask=a==1;safe=binary_erosion(mask,iterations=2);rows=[]
+    for y,x in zip(*np.where(mask)):
+        wx,wz=mapping*(int(x)+.5,int(y)+.5)
+        if not np.allclose([wx%1,wz%1],[.5,.5],atol=1e-7):raise ValueError('Native pixel centres differ')
+        e,n=tf*(int(x)+.5,int(y)+.5)
+        rows.append({'x':int(math.floor(wx)),'z':int(math.floor(wz)), 'easting':e,'northing':n,
+                     'label':1,'safe_interior':bool(safe[y,x])})
+    for role,path in [('dtm',args.dtm),('dsm',args.dsm)]:
+        with rasterio.open(path) as source:
+            if source.crs.to_string()!=reg['horizontal_crs']:raise ValueError('Raster CRS mismatch')
+            if not source.crs.is_projected or abs(source.crs.linear_units_factor[1]-1)>1e-8:
+                raise ValueError('Metre projected evidence required')
+            raster_grid=~grid*source.transform
+            if not np.allclose([raster_grid.a,raster_grid.b,raster_grid.d,raster_grid.e],[1,0,0,1],atol=1e-8):
+                raise ValueError('Roof absence requires aligned 1m surface/terrain evidence')
+            for cell,value in zip(rows,source.sample([(c['easting'],c['northing']) for c in rows],masked=True)):
+                cell[role]=None if np.ma.is_masked(value[0]) or not math.isfinite(float(value[0])) else float(value[0])
+    return {'schema':'registered-surface-candidates-v1','accepted_for_block_edits':False,
+      'surface_offset_m':reg['vertical_ground_surface']['rounded_surface_offset_m'],
+      'registration_sha256':sha(args.registration),'dataset_sha256':sha(args.dataset),
+      'source_sample':args.sample,'dtm_sha256':sha(args.dtm),'dsm_sha256':sha(args.dsm),
+      'label_counts':{str(k):int(np.count_nonzero(a==k)) for k in np.unique(a)},'cells':rows}
+
+
+def inspect(args):
+    from voxel_mapper.bedrock_patch import inspect_columns
+    request=json.loads(args.requests.read_text())
+    return {'schema':'native-surface-observations-v1','requests_sha256':sha(args.requests),
+      'baseline_sha256':sha(args.baseline),'surface_offset_m':request['surface_offset_m'],
+      'cells':inspect_columns(args.baseline,request['cells'],request['surface_offset_m'])}
+
+
+def propose(args):
+    observations=json.loads(args.observations.read_text())
+    return {'schema':'surface-repair-proposals-v1','accepted_for_block_edits':False,
+      'observations_sha256':sha(args.observations),'requests_sha256':observations['requests_sha256'],
+      'baseline_sha256':observations['baseline_sha256'],'cells':[
+       {'x':c['x'],'z':c['z'],**assess_lawn_column(c,surface_offset_m=observations['surface_offset_m'])}
+       for c in observations['cells']]}
+
+
+def accept(args):
+    proposals=json.loads(args.proposals.read_text());review=json.loads(args.review.read_text())
+    if review.get('proposals_sha256')!=sha(args.proposals) or review.get('accepted_for_scoped_preview') is not True:
+        raise ValueError('Hash-bound scoped review required')
+    accepted={tuple(p) for p in review['accepted_columns']}
+    available={(c['x'],c['z']) for c in proposals['cells'] if c['status']=='candidate'}
+    if not accepted or not accepted<=available:raise ValueError('Review includes unqualified cells')
+    edits=[];heights=[]
+    for c in proposals['cells']:
+        if (c['x'],c['z']) not in accepted:continue
+        edits.extend({**e,'accepted':True,'evidence_sha256':sha(args.review)} for e in c['edits'])
+        heights.append(c['height_update'])
+    plan={'schema':'bedrock-scoped-patch-v1','baseline_sha256':proposals['baseline_sha256'],
+          'registration':{'accepted_for_this_patch':True,'evidence_sha256':sha(args.review)},
+          'edits':edits,'height_updates':heights}
+    from voxel_mapper.bedrock_patch import validate_plan
+    validate_plan(plan,proposals['baseline_sha256'])
+    return plan
+
+
+def main():
+    parser=argparse.ArgumentParser(description=__doc__);sub=parser.add_subparsers(dest='mode',required=True)
+    for mode,names in [('prepare',['dataset','registration','dtm','dsm']),('inspect',['requests','baseline']),
+                       ('propose',['observations']),('accept',['proposals','review'])]:
+        p=sub.add_parser(mode)
+        for name in names:p.add_argument('--'+name,type=Path,required=True)
+        if mode=='prepare':p.add_argument('--sample',required=True)
+        p.add_argument('--output',type=Path,required=True)
+    a=parser.parse_args();result=globals()[a.mode](a);write_fresh(a.output,result)
+    print(json.dumps({'output':str(a.output),'schema':result['schema']}))
+
+
+if __name__=='__main__':main()

@@ -6,7 +6,7 @@ import struct
 import tempfile
 import unittest
 import zipfile
-from voxel_mapper.bedrock_patch import validate_plan,extract_archive,patch_subchunk,patch_records
+from voxel_mapper.bedrock_patch import validate_plan,extract_archive,patch_subchunk,patch_records,inspect_columns
 
 
 def plan():
@@ -84,3 +84,28 @@ class NativePatchTests(unittest.TestCase):
         with self.assertRaises(ValueError):patch_records(protected,plan())
         q=bytearray(raw);q[1]=2
         with self.assertRaises(ValueError):patch_subchunk(bytes(q),plan()['edits'])
+
+    def test_column_inspector_rejects_stale_heightmaps(self):
+        import leveldb
+        raw,codec,array,tail=self.fixture()
+        prefix=struct.pack('<ii',0,0)
+        with tempfile.TemporaryDirectory() as td:
+            root=Path(td)/'world';root.mkdir()
+            (root/'level.dat').write_bytes(b'fixture-not-a-client-world')
+            (root/'levelname.txt').write_text('fixture')
+            height=bytearray(512);struct.pack_into('<H',height,44,96)
+            for name,value in [('correct',96),('stale',94)]:
+                struct.pack_into('<H',height,44,value)
+                db=leveldb.LevelDB(str(root/'db'),create_if_missing=True)
+                try:
+                    db.put(prefix+b'\x2f\x05',raw)
+                    db.put(prefix+b'\x2f\x06',b'\x09\x01\x06'+codec._encode_packed_array(array*0,min_bit_size=2)+tail)
+                    db.put(prefix+b'\x2b',bytes(height))
+                finally:db.close()
+                archive=Path(td)/(name+'.zip')
+                with zipfile.ZipFile(archive,'w') as z:
+                    for f in root.rglob('*'):
+                        if f.is_file():z.write(f,f.relative_to(root).as_posix())
+                result=inspect_columns(archive,[{'x':6,'z':1,'dtm':192.,'dsm':192.02}],98)[0]
+                self.assertEqual(result['supported_storage'],name=='correct')
+                self.assertEqual(result['native_heightmap_top_y'],value-1)

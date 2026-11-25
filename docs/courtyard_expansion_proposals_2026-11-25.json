@@ -1,0 +1,1139 @@
+{
+  "schema": "surface-repair-proposals-v1",
+  "accepted_for_block_edits": false,
+  "observations_sha256": "606486ed559f982f3ab5e1ff53e19b105dc2d958f601c0a33d856286bba8789f",
+  "requests_sha256": "ebff04c3f525244d05f5f25cd617944d9082729b3d38ab414a5748399c710984",
+  "baseline_sha256": "6e072c25dbe4f1271fbc776a3fed75b2e459689679b4444fe6041582cdf23a70",
+  "cells": [
+    {
+      "x": 888,
+      "z": 348,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 889,
+      "z": 348,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 890,
+      "z": 348,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 891,
+      "z": 348,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 892,
+      "z": 348,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 893,
+      "z": 348,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 894,
+      "z": 348,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 895,
+      "z": 348,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 896,
+      "z": 348,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 886,
+      "z": 349,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 887,
+      "z": 349,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 888,
+      "z": 349,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 889,
+      "z": 349,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 890,
+      "z": 349,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 891,
+      "z": 349,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 892,
+      "z": 349,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 893,
+      "z": 349,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 894,
+      "z": 349,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 895,
+      "z": 349,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 896,
+      "z": 349,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 884,
+      "z": 350,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 885,
+      "z": 350,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 886,
+      "z": 350,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 887,
+      "z": 350,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 888,
+      "z": 350,
+      "status": "withheld",
+      "reason": "measured_above_ground_geometry",
+      "edits": []
+    },
+    {
+      "x": 889,
+      "z": 350,
+      "status": "withheld",
+      "reason": "measured_above_ground_geometry",
+      "edits": []
+    },
+    {
+      "x": 890,
+      "z": 350,
+      "status": "withheld",
+      "reason": "measured_above_ground_geometry",
+      "edits": []
+    },
+    {
+      "x": 891,
+      "z": 350,
+      "status": "candidate",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [
+        {
+          "xyz": [
+            891,
+            93,
+            350
+          ],
+          "before": "minecraft:stone_bricks",
+          "after": "minecraft:grass_block",
+          "source_type": "reviewed_mask"
+        },
+        {
+          "xyz": [
+            891,
+            95,
+            350
+          ],
+          "before": "minecraft:deepslate_tiles",
+          "after": "minecraft:air",
+          "source_type": "measured_surface_conflict"
+        }
+      ],
+      "height_update": {
+        "xz": [
+          891,
+          350
+        ],
+        "before": 96,
+        "after": 94
+      },
+      "before_dsm_residual_m": 2.0059967041015625,
+      "after_dsm_residual_m": 0.0059967041015625
+    },
+    {
+      "x": 892,
+      "z": 350,
+      "status": "withheld",
+      "reason": "measured_above_ground_geometry",
+      "edits": []
+    },
+    {
+      "x": 893,
+      "z": 350,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 894,
+      "z": 350,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 883,
+      "z": 351,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 884,
+      "z": 351,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 885,
+      "z": 351,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 886,
+      "z": 351,
+      "status": "withheld",
+      "reason": "measured_above_ground_geometry",
+      "edits": []
+    },
+    {
+      "x": 887,
+      "z": 351,
+      "status": "withheld",
+      "reason": "measured_above_ground_geometry",
+      "edits": []
+    },
+    {
+      "x": 888,
+      "z": 351,
+      "status": "withheld",
+      "reason": "measured_above_ground_geometry",
+      "edits": []
+    },
+    {
+      "x": 889,
+      "z": 351,
+      "status": "withheld",
+      "reason": "measured_above_ground_geometry",
+      "edits": []
+    },
+    {
+      "x": 890,
+      "z": 351,
+      "status": "withheld",
+      "reason": "unsupported_ground_support",
+      "edits": []
+    },
+    {
+      "x": 891,
+      "z": 351,
+      "status": "candidate",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [
+        {
+          "xyz": [
+            891,
+            93,
+            351
+          ],
+          "before": "minecraft:stone_bricks",
+          "after": "minecraft:grass_block",
+          "source_type": "reviewed_mask"
+        },
+        {
+          "xyz": [
+            891,
+            95,
+            351
+          ],
+          "before": "minecraft:deepslate_tiles",
+          "after": "minecraft:air",
+          "source_type": "measured_surface_conflict"
+        }
+      ],
+      "height_update": {
+        "xz": [
+          891,
+          351
+        ],
+        "before": 96,
+        "after": 94
+      },
+      "before_dsm_residual_m": 2.04998779296875,
+      "after_dsm_residual_m": 0.04998779296875
+    },
+    {
+      "x": 892,
+      "z": 351,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 893,
+      "z": 351,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 882,
+      "z": 352,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 883,
+      "z": 352,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 884,
+      "z": 352,
+      "status": "withheld",
+      "reason": "measured_above_ground_geometry",
+      "edits": []
+    },
+    {
+      "x": 885,
+      "z": 352,
+      "status": "withheld",
+      "reason": "measured_above_ground_geometry",
+      "edits": []
+    },
+    {
+      "x": 886,
+      "z": 352,
+      "status": "withheld",
+      "reason": "measured_above_ground_geometry",
+      "edits": []
+    },
+    {
+      "x": 887,
+      "z": 352,
+      "status": "candidate",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [
+        {
+          "xyz": [
+            887,
+            93,
+            352
+          ],
+          "before": "minecraft:cracked_stone_bricks",
+          "after": "minecraft:grass_block",
+          "source_type": "reviewed_mask"
+        },
+        {
+          "xyz": [
+            887,
+            95,
+            352
+          ],
+          "before": "minecraft:deepslate_tiles",
+          "after": "minecraft:air",
+          "source_type": "measured_surface_conflict"
+        }
+      ],
+      "height_update": {
+        "xz": [
+          887,
+          352
+        ],
+        "before": 96,
+        "after": 94
+      },
+      "before_dsm_residual_m": 2.0009918212890625,
+      "after_dsm_residual_m": 0.0009918212890625
+    },
+    {
+      "x": 888,
+      "z": 352,
+      "status": "withheld",
+      "reason": "negative_surface_height_unknown",
+      "edits": []
+    },
+    {
+      "x": 889,
+      "z": 352,
+      "status": "withheld",
+      "reason": "negative_surface_height_unknown",
+      "edits": []
+    },
+    {
+      "x": 890,
+      "z": 352,
+      "status": "candidate",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [
+        {
+          "xyz": [
+            890,
+            93,
+            352
+          ],
+          "before": "minecraft:stone_bricks",
+          "after": "minecraft:grass_block",
+          "source_type": "reviewed_mask"
+        },
+        {
+          "xyz": [
+            890,
+            95,
+            352
+          ],
+          "before": "minecraft:deepslate_tiles",
+          "after": "minecraft:air",
+          "source_type": "measured_surface_conflict"
+        }
+      ],
+      "height_update": {
+        "xz": [
+          890,
+          352
+        ],
+        "before": 96,
+        "after": 94
+      },
+      "before_dsm_residual_m": 2.0779876708984375,
+      "after_dsm_residual_m": 0.0779876708984375
+    },
+    {
+      "x": 891,
+      "z": 352,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 892,
+      "z": 352,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 882,
+      "z": 353,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 883,
+      "z": 353,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 884,
+      "z": 353,
+      "status": "withheld",
+      "reason": "measured_above_ground_geometry",
+      "edits": []
+    },
+    {
+      "x": 885,
+      "z": 353,
+      "status": "withheld",
+      "reason": "measured_above_ground_geometry",
+      "edits": []
+    },
+    {
+      "x": 886,
+      "z": 353,
+      "status": "already_matches",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          886,
+          353
+        ],
+        "before": 94,
+        "after": 94
+      },
+      "before_dsm_residual_m": 0.022003173828125,
+      "after_dsm_residual_m": 0.022003173828125
+    },
+    {
+      "x": 887,
+      "z": 353,
+      "status": "already_matches",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          887,
+          353
+        ],
+        "before": 94,
+        "after": 94
+      },
+      "before_dsm_residual_m": 0.0229949951171875,
+      "after_dsm_residual_m": 0.0229949951171875
+    },
+    {
+      "x": 888,
+      "z": 353,
+      "status": "already_matches",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          888,
+          353
+        ],
+        "before": 94,
+        "after": 94
+      },
+      "before_dsm_residual_m": 0.0309906005859375,
+      "after_dsm_residual_m": 0.0309906005859375
+    },
+    {
+      "x": 889,
+      "z": 353,
+      "status": "withheld",
+      "reason": "negative_surface_height_unknown",
+      "edits": []
+    },
+    {
+      "x": 890,
+      "z": 353,
+      "status": "withheld",
+      "reason": "negative_surface_height_unknown",
+      "edits": []
+    },
+    {
+      "x": 891,
+      "z": 353,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 892,
+      "z": 353,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 882,
+      "z": 354,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 883,
+      "z": 354,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 884,
+      "z": 354,
+      "status": "candidate",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [
+        {
+          "xyz": [
+            884,
+            93,
+            354
+          ],
+          "before": "minecraft:stone_bricks",
+          "after": "minecraft:grass_block",
+          "source_type": "reviewed_mask"
+        },
+        {
+          "xyz": [
+            884,
+            95,
+            354
+          ],
+          "before": "minecraft:deepslate_tiles",
+          "after": "minecraft:air",
+          "source_type": "measured_surface_conflict"
+        }
+      ],
+      "height_update": {
+        "xz": [
+          884,
+          354
+        ],
+        "before": 96,
+        "after": 94
+      },
+      "before_dsm_residual_m": 1.925994873046875,
+      "after_dsm_residual_m": 0.074005126953125
+    },
+    {
+      "x": 885,
+      "z": 354,
+      "status": "candidate",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [
+        {
+          "xyz": [
+            885,
+            93,
+            354
+          ],
+          "before": "minecraft:stone_bricks",
+          "after": "minecraft:grass_block",
+          "source_type": "reviewed_mask"
+        },
+        {
+          "xyz": [
+            885,
+            95,
+            354
+          ],
+          "before": "minecraft:deepslate_tiles",
+          "after": "minecraft:air",
+          "source_type": "measured_surface_conflict"
+        }
+      ],
+      "height_update": {
+        "xz": [
+          885,
+          354
+        ],
+        "before": 96,
+        "after": 94
+      },
+      "before_dsm_residual_m": 1.958984375,
+      "after_dsm_residual_m": 0.041015625
+    },
+    {
+      "x": 886,
+      "z": 354,
+      "status": "already_matches",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          886,
+          354
+        ],
+        "before": 94,
+        "after": 94
+      },
+      "before_dsm_residual_m": 0.00299072265625,
+      "after_dsm_residual_m": 0.00299072265625
+    },
+    {
+      "x": 887,
+      "z": 354,
+      "status": "already_matches",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          887,
+          354
+        ],
+        "before": 94,
+        "after": 94
+      },
+      "before_dsm_residual_m": 0.0259857177734375,
+      "after_dsm_residual_m": 0.0259857177734375
+    },
+    {
+      "x": 888,
+      "z": 354,
+      "status": "already_matches",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          888,
+          354
+        ],
+        "before": 94,
+        "after": 94
+      },
+      "before_dsm_residual_m": 0.0359954833984375,
+      "after_dsm_residual_m": 0.0359954833984375
+    },
+    {
+      "x": 889,
+      "z": 354,
+      "status": "withheld",
+      "reason": "unsupported_ground_support",
+      "edits": []
+    },
+    {
+      "x": 890,
+      "z": 354,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 891,
+      "z": 354,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 883,
+      "z": 355,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 884,
+      "z": 355,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 885,
+      "z": 355,
+      "status": "candidate",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [
+        {
+          "xyz": [
+            885,
+            93,
+            355
+          ],
+          "before": "minecraft:stone_bricks",
+          "after": "minecraft:grass_block",
+          "source_type": "reviewed_mask"
+        },
+        {
+          "xyz": [
+            885,
+            95,
+            355
+          ],
+          "before": "minecraft:deepslate_tiles",
+          "after": "minecraft:air",
+          "source_type": "measured_surface_conflict"
+        }
+      ],
+      "height_update": {
+        "xz": [
+          885,
+          355
+        ],
+        "before": 96,
+        "after": 94
+      },
+      "before_dsm_residual_m": 1.98199462890625,
+      "after_dsm_residual_m": 0.01800537109375
+    },
+    {
+      "x": 886,
+      "z": 355,
+      "status": "withheld",
+      "reason": "negative_surface_height_unknown",
+      "edits": []
+    },
+    {
+      "x": 887,
+      "z": 355,
+      "status": "withheld",
+      "reason": "negative_surface_height_unknown",
+      "edits": []
+    },
+    {
+      "x": 888,
+      "z": 355,
+      "status": "candidate",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [
+        {
+          "xyz": [
+            888,
+            93,
+            355
+          ],
+          "before": "minecraft:stone_bricks",
+          "after": "minecraft:grass_block",
+          "source_type": "reviewed_mask"
+        },
+        {
+          "xyz": [
+            888,
+            95,
+            355
+          ],
+          "before": "minecraft:deepslate_tiles",
+          "after": "minecraft:air",
+          "source_type": "measured_surface_conflict"
+        }
+      ],
+      "height_update": {
+        "xz": [
+          888,
+          355
+        ],
+        "before": 96,
+        "after": 94
+      },
+      "before_dsm_residual_m": 2.07598876953125,
+      "after_dsm_residual_m": 0.07598876953125
+    },
+    {
+      "x": 889,
+      "z": 355,
+      "status": "withheld",
+      "reason": "negative_surface_height_unknown",
+      "edits": []
+    },
+    {
+      "x": 890,
+      "z": 355,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 891,
+      "z": 355,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 884,
+      "z": 356,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 885,
+      "z": 356,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 886,
+      "z": 356,
+      "status": "candidate",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [
+        {
+          "xyz": [
+            886,
+            93,
+            356
+          ],
+          "before": "minecraft:stone_bricks",
+          "after": "minecraft:grass_block",
+          "source_type": "reviewed_mask"
+        },
+        {
+          "xyz": [
+            886,
+            95,
+            356
+          ],
+          "before": "minecraft:deepslate_tiles",
+          "after": "minecraft:air",
+          "source_type": "measured_surface_conflict"
+        }
+      ],
+      "height_update": {
+        "xz": [
+          886,
+          356
+        ],
+        "before": 96,
+        "after": 94
+      },
+      "before_dsm_residual_m": 2.027984619140625,
+      "after_dsm_residual_m": 0.027984619140625
+    },
+    {
+      "x": 887,
+      "z": 356,
+      "status": "withheld",
+      "reason": "unverified_ground_material",
+      "edits": []
+    },
+    {
+      "x": 888,
+      "z": 356,
+      "status": "withheld",
+      "reason": "negative_surface_height_unknown",
+      "edits": []
+    },
+    {
+      "x": 889,
+      "z": 356,
+      "status": "withheld",
+      "reason": "vertical_quantization_residual",
+      "edits": []
+    },
+    {
+      "x": 890,
+      "z": 356,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 891,
+      "z": 356,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 884,
+      "z": 357,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 885,
+      "z": 357,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 886,
+      "z": 357,
+      "status": "withheld",
+      "reason": "unverified_ground_material",
+      "edits": []
+    },
+    {
+      "x": 887,
+      "z": 357,
+      "status": "withheld",
+      "reason": "unverified_ground_material",
+      "edits": []
+    },
+    {
+      "x": 888,
+      "z": 357,
+      "status": "withheld",
+      "reason": "unverified_ground_material",
+      "edits": []
+    },
+    {
+      "x": 889,
+      "z": 357,
+      "status": "withheld",
+      "reason": "vertical_quantization_residual",
+      "edits": []
+    },
+    {
+      "x": 890,
+      "z": 357,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 891,
+      "z": 357,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 885,
+      "z": 358,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 886,
+      "z": 358,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 887,
+      "z": 358,
+      "status": "withheld",
+      "reason": "unverified_ground_material",
+      "edits": []
+    },
+    {
+      "x": 888,
+      "z": 358,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 889,
+      "z": 358,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 890,
+      "z": 358,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 885,
+      "z": 359,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 886,
+      "z": 359,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 887,
+      "z": 359,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 888,
+      "z": 359,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 889,
+      "z": 359,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 886,
+      "z": 360,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 887,
+      "z": 360,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    },
+    {
+      "x": 887,
+      "z": 361,
+      "status": "withheld",
+      "reason": "outside_reviewed_lawn_interior",
+      "edits": []
+    }
+  ]
+}

@@ -138,6 +138,60 @@ def snapshot(root):
     finally:db.close()
 
 
+def inspect_columns(archive, cells, surface_offset_m):
+    """Read fresh native columns without translation or modifying the archive."""
+    from amulet.level.formats.leveldb_world.interface.chunk.base_leveldb_interface import BaseLevelDBInterface
+    codec=BaseLevelDBInterface.__new__(BaseLevelDBInterface)
+    with tempfile.TemporaryDirectory(prefix='bedrock-observe-') as td:
+        root=Path(td);extract_archive(archive,root);records=snapshot(root);cache={};result=[]
+        chunk_keys={}
+        for key in records:
+            if len(key)==10 and key[8]==47:chunk_keys.setdefault(key[:8],[]).append(key)
+        def decoded(key):
+            if key not in cache:
+                value=records.get(key,b'')
+                if len(value)<4 or value[:2]!=b'\x09\x01' or value[3]&1 or value[2:3]!=key[9:10]:cache[key]=None
+                else:
+                    array,palette,rest=codec._load_palette_blocks(value[3:])
+                    cache[key]=(array,palette) if not rest and int(array.min())>=0 and int(array.max())<len(palette) else None
+            return cache[key]
+        for cell in cells:
+            r=dict(cell);x,z=r['x'],r['z'];prefix=struct.pack('<ii',x//16,z//16)
+            raw=records.get(prefix+b'\x2b',b'')
+            r['supported_storage']=True;r['block_entities']=prefix+b'\x31' in records
+            if len(raw)<512:
+                r['supported_storage']=False;result.append(r);continue
+            top=struct.unpack_from('<H',raw,2*((z%16)*16+x%16))[0]-1
+            actual_top=None
+            for key in chunk_keys.get(prefix,[]):
+                data=decoded(key)
+                if data is None:r['supported_storage']=False;break
+                array,palette=data;cy=struct.unpack('b',key[9:10])[0]
+                for ly in range(16):
+                    if palette[int(array[x%16,ly,z%16])].compound['name'].py_str!='minecraft:air':
+                        actual_top=max(actual_top if actual_top is not None else -65,cy*16+ly)
+            r['native_heightmap_top_y']=top
+            if actual_top!=top:r['supported_storage']=False
+            r['native_top_y']=top;r['native_profile']={}
+            if r.get('dtm') is None:
+                result.append(r);continue
+            import math
+            ground=int(math.floor(r['dtm']+.5))-int(surface_offset_m)-1
+            if not -64<=ground<=top<320 or top-ground>32:
+                r['supported_storage']=False;result.append(r);continue
+            for y in range(ground-1,top+2):
+                key=prefix+b'\x2f'+struct.pack('b',y//16)
+                decoded(key)
+                if cache[key] is None:
+                    r['supported_storage']=False;break
+                array,palette=cache[key];index=int(array[x%16,y%16,z%16])
+                if not 0<=index<len(palette):
+                    r['supported_storage']=False;break
+                r['native_profile'][str(y)]=palette[index].compound['name'].py_str
+            result.append(r)
+    return result
+
+
 def apply(baseline, plan_path, output, report_path):
     """Publish only after re-extraction and full logical-record verification."""
     import leveldb
