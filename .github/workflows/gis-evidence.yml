@@ -55,7 +55,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: python -m pip install 'numpy>=1.26,<2' 'cython<4' setuptools wheel 'cmake<4' ninja
+      - run: python -m pip install 'numpy>=1.26,<2' 'cython<4' setuptools wheel versioneer 'cmake<4' ninja
       - run: python -m pip install --no-build-isolation '.[bedrock]'
       - run: python -m unittest discover -s tests -p 'test_bedrock_patch.py' -v
   live-pilot:
