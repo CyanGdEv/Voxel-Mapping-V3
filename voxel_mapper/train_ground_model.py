@@ -127,8 +127,18 @@ def _read_samples(dataset_path: Path, *, use_context=False) -> tuple[list[Sample
 
 
 def _split(samples: list[Sample], validation_fraction: float, seed: int,
-           holdout_park: str | None) -> tuple[list[Sample], list[Sample], dict]:
+           holdout_park: str | None, validation_groups=None) -> tuple[list[Sample], list[Sample], dict]:
     parks = sorted({s.park_id for s in samples})
+    if validation_groups:
+        if holdout_park or len(parks) != 1:
+            raise ValueError("Explicit validation groups require one park and no park holdout")
+        selected = set(validation_groups)
+        available = {s.split_group for s in samples}
+        if selected - available or selected == available:
+            raise ValueError("Validation groups must exist and leave training groups")
+        return ([s for s in samples if s.split_group not in selected],
+                [s for s in samples if s.split_group in selected],
+                {"mode":"explicit_group", "validation_groups":sorted(selected)})
     if holdout_park:
         if holdout_park not in parks:
             raise ValueError(f"holdout park {holdout_park!r} has no reviewed labelled samples")
@@ -196,6 +206,52 @@ def _tile(rgb: np.ndarray, labels: np.ndarray, size: int, training: bool, contex
     return (rgb, labels) if context is None else (rgb, labels, np.ascontiguousarray(context))
 
 
+def build_model(input_channels: int, num_classes: int):
+    """Shared training/inference architecture; state-dict keys stay compatible."""
+    import torch
+    from torch import nn
+    import torch.nn.functional as F
+    if input_channels not in (3, 28) or not 1 <= num_classes <= 256:
+        raise ValueError("Unsupported ground model dimensions")
+    class ConvBlock(nn.Module):
+        def __init__(self, in_ch: int, out_ch: int):
+            super().__init__()
+            self.layers = nn.Sequential(
+                nn.Conv2d(in_ch, out_ch, 3, padding=1, bias=False),
+                nn.BatchNorm2d(out_ch), nn.ReLU(inplace=True),
+                nn.Conv2d(out_ch, out_ch, 3, padding=1, bias=False),
+                nn.BatchNorm2d(out_ch), nn.ReLU(inplace=True),
+            )
+        def forward(self, x):
+            return self.layers(x)
+
+    class SmallUNet(nn.Module):
+        def __init__(self, output_classes: int):
+            super().__init__()
+            self.e1 = ConvBlock(input_channels, 16)
+            self.e2 = ConvBlock(16, 32)
+            self.e3 = ConvBlock(32, 64)
+            self.mid = ConvBlock(64, 128)
+            self.pool = nn.MaxPool2d(2)
+            self.u3 = ConvBlock(128 + 64, 64)
+            self.u2 = ConvBlock(64 + 32, 32)
+            self.u1 = ConvBlock(32 + 16, 16)
+            self.out = nn.Conv2d(16, output_classes, 1)
+        def forward(self, x):
+            a = self.e1(x)
+            b = self.e2(self.pool(a))
+            c = self.e3(self.pool(b))
+            d = self.mid(self.pool(c))
+            d = F.interpolate(d, size=c.shape[-2:], mode="bilinear", align_corners=False)
+            d = self.u3(torch.cat([d, c], dim=1))
+            d = F.interpolate(d, size=b.shape[-2:], mode="bilinear", align_corners=False)
+            d = self.u2(torch.cat([d, b], dim=1))
+            d = F.interpolate(d, size=a.shape[-2:], mode="bilinear", align_corners=False)
+            return self.out(self.u1(torch.cat([d, a], dim=1)))
+
+    return SmallUNet(num_classes)
+
+
 def train(args: argparse.Namespace) -> dict:
     try:
         import torch
@@ -204,8 +260,11 @@ def train(args: argparse.Namespace) -> dict:
     except ImportError as exc:
         raise SystemExit("Install optional dependencies with: pip install 'voxel-mapper[train]'") from exc
 
-    from .multisource_chips import CHANNELS, empty, drop_groups
+    from .multisource_chips import CHANNELS, GROUPS, empty, drop_groups, select_groups
     use_context = getattr(args,"multisource",False)
+    context_groups = getattr(args,"context_group",None) or [name for name, _ in GROUPS]
+    if set(context_groups) - {name for name, _ in GROUPS}:
+        raise ValueError("Unknown context group")
     dropout = getattr(args,"context_dropout",0.2)
     if not 0 <= dropout <= 1:
         raise ValueError("Context dropout must be in [0,1]")
@@ -230,12 +289,17 @@ def train(args: argparse.Namespace) -> dict:
             raise ValueError("all datasets must use the same label_map IDs and names")
         samples.extend(current)
         source_reports.append(report)
+    if use_context:
+        for sample in samples:
+            if sample.context is not None:
+                sample.context = select_groups(sample.context, context_groups)
     if not samples:
         skipped = sum(item["skipped_all_ignore"] for item in source_reports)
         raise ValueError(f"no reviewed labels found; {skipped} all-ignore samples were skipped")
 
     train_samples, valid_samples, split_report = _split(
-        samples, args.validation_fraction, args.seed, args.holdout_park
+        samples, args.validation_fraction, args.seed, args.holdout_park,
+        getattr(args,"validation_group",None)
     )
     if not valid_samples:
         raise ValueError("validation split is empty")
@@ -253,44 +317,8 @@ def train(args: argparse.Namespace) -> dict:
     weights[present] = (counts[present].sum() / counts[present]) ** 0.25
     weights[present] /= weights[present].mean()
 
-    class ConvBlock(nn.Module):
-        def __init__(self, in_ch: int, out_ch: int):
-            super().__init__()
-            self.layers = nn.Sequential(
-                nn.Conv2d(in_ch, out_ch, 3, padding=1, bias=False),
-                nn.BatchNorm2d(out_ch), nn.ReLU(inplace=True),
-                nn.Conv2d(out_ch, out_ch, 3, padding=1, bias=False),
-                nn.BatchNorm2d(out_ch), nn.ReLU(inplace=True),
-            )
-        def forward(self, x):
-            return self.layers(x)
-
-    class SmallUNet(nn.Module):
-        def __init__(self, output_classes: int):
-            super().__init__()
-            self.e1 = ConvBlock(len(input_names), 16)
-            self.e2 = ConvBlock(16, 32)
-            self.e3 = ConvBlock(32, 64)
-            self.mid = ConvBlock(64, 128)
-            self.pool = nn.MaxPool2d(2)
-            self.u3 = ConvBlock(128 + 64, 64)
-            self.u2 = ConvBlock(64 + 32, 32)
-            self.u1 = ConvBlock(32 + 16, 16)
-            self.out = nn.Conv2d(16, output_classes, 1)
-        def forward(self, x):
-            a = self.e1(x)
-            b = self.e2(self.pool(a))
-            c = self.e3(self.pool(b))
-            d = self.mid(self.pool(c))
-            d = F.interpolate(d, size=c.shape[-2:], mode="bilinear", align_corners=False)
-            d = self.u3(torch.cat([d, c], dim=1))
-            d = F.interpolate(d, size=b.shape[-2:], mode="bilinear", align_corners=False)
-            d = self.u2(torch.cat([d, b], dim=1))
-            d = F.interpolate(d, size=a.shape[-2:], mode="bilinear", align_corners=False)
-            return self.out(self.u1(torch.cat([d, a], dim=1)))
-
     device = torch.device("cuda" if torch.cuda.is_available() and not args.cpu else "cpu")
-    model = SmallUNet(args.num_classes).to(device)
+    model = build_model(len(input_names), args.num_classes).to(device)
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.learning_rate)
     loss_fn = nn.CrossEntropyLoss(
         weight=torch.tensor(weights, dtype=torch.float32, device=device),
@@ -390,7 +418,9 @@ def train(args: argparse.Namespace) -> dict:
         if valid_pixels and mean_iou is not None and mean_iou > best_validation_mean_iou:
             best_validation_mean_iou = mean_iou
             torch.save({"state_dict": model.state_dict(), "num_classes": args.num_classes,
-                        "class_map": label_map, "input_channels": len(input_names), "input_names": input_names, "context_schema": "voxel-multisource-v1" if use_context else None}, args.output / "model.pt")
+                        "class_map": label_map, "input_channels": len(input_names), "input_names": input_names,
+                        "context_groups":context_groups if use_context else [],
+                        "context_schema": "voxel-multisource-v1" if use_context else None}, args.output / "model.pt")
 
     checkpoint = args.output / "model.pt"
     best_metric = None
@@ -419,6 +449,7 @@ def train(args: argparse.Namespace) -> dict:
         "mode": "multisource" if use_context else "rgb",
         "seed": args.seed,
         "context_dropout": dropout if use_context else 0,
+        "context_groups": context_groups if use_context else [],
         "train_ids": [[s.park_id,s.split_group,s.sample_id] for s in train_samples],
         "validation_ids": [[s.park_id,s.split_group,s.sample_id] for s in valid_samples],
         "train_samples": len(train_samples),
@@ -449,6 +480,7 @@ def main() -> None:
                         help="Dataset ZIP; repeat for multiple parks/datasets")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--holdout-park", help="Evaluate transfer to this park ID")
+    parser.add_argument("--validation-group", action="append", help="Fixed held-out source/area group; repeat as needed. Caller must verify geographic separation.")
     parser.add_argument("--validation-fraction", type=float, default=0.2)
     parser.add_argument("--num-classes", type=int, default=10)
     parser.add_argument("--epochs", type=int, default=20)
@@ -460,6 +492,7 @@ def main() -> None:
     parser.add_argument("--cpu", action="store_true")
     parser.add_argument("--multisource", action="store_true", help="Use aligned GIS and LiDAR context chips")
     parser.add_argument("--context-dropout", type=float, default=0.2)
+    parser.add_argument("--context-group", action="append", help="Retain only these contextual groups for ablation; repeat as needed")
     args = parser.parse_args()
     if not 0 < args.validation_fraction < 1:
         parser.error("--validation-fraction must be between 0 and 1")

@@ -11,7 +11,24 @@ import numpy as np
 from PIL import Image
 from voxel_mapper.multisource_chips import CHANNELS, empty
 from voxel_mapper.train_ground_model import train
+from voxel_mapper.train_ground_model import Sample, _split
 from voxel_mapper.benchmark_multisource import compare
+
+
+class ExplicitHoldout(unittest.TestCase):
+    def test_fixed_group_across_seeds_and_invalid_selection(self):
+        rows = [Sample(str(i), "park", group, None, None)
+                for i, group in enumerate(("west", "west", "east"))]
+        for seed in (41, 42, 43):
+            train_rows, valid_rows, report = _split(rows, .2, seed, None, ["east"])
+            self.assertEqual([s.sample_id for s in train_rows], ["0", "1"])
+            self.assertEqual([s.sample_id for s in valid_rows], ["2"])
+            self.assertEqual(report["mode"], "explicit_group")
+        for groups in (["absent"], ["west", "east"]):
+            with self.assertRaises(ValueError):
+                _split(rows, .2, 41, None, groups)
+        with self.assertRaises(ValueError):
+            _split(rows, .2, 41, "park", ["east"])
 
 @unittest.skipUnless(importlib.util.find_spec("torch"),"optional CPU training smoke test requires torch")
 class TrainingSmoke(unittest.TestCase):
@@ -56,3 +73,21 @@ class TrainingSmoke(unittest.TestCase):
             self.assertTrue((root/"multi"/"model.pt").is_file())
             self.assertIn("delta_mean_iou",report)
             self.assertEqual(rgb["validation_ids"],multi["validation_ids"])
+            if importlib.util.find_spec("rasterio"):
+                import rasterio
+                from voxel_mapper.predict_ground_model import predict
+                from voxel_mapper.train_ground_model import _decode_labels
+                result = predict(root/"multi"/"model.pt", dataset, root/"predictions", threads=1)
+                self.assertFalse(result["accepted_for_world"])
+                validation = {row[2] for row in multi["validation_ids"]}
+                matrix = np.zeros((10,10), dtype=np.int64)
+                with zipfile.ZipFile(dataset) as z:
+                    for i, row in enumerate(result["samples"]):
+                        with rasterio.open(root/"predictions"/row["files"]["classes"]["path"]) as src:
+                            self.assertEqual(src.crs.to_epsg(), 27700)
+                            self.assertEqual(src.transform.c, i*100)
+                            pred = src.read(1)
+                        if str(i) in validation:
+                            target = _decode_labels(z.read(f"labels{i}.png"))
+                            matrix += np.bincount((target.astype(int)*10+pred).ravel(), minlength=100).reshape(10,10)
+                np.testing.assert_array_equal(matrix, multi["validation_confusion_matrix"])

@@ -57,6 +57,18 @@ def drop_groups(data, rng, probability):
         offset+=size
     return result
 
+def select_groups(data, groups):
+    """Ablate whole contextual groups, including validity masks."""
+    if set(groups) - {name for name, _ in GROUPS}:
+        raise ValueError("Unknown context group")
+    result = data.copy()
+    offset = 0
+    for name, size in GROUPS:
+        if name not in groups:
+            result[:, :, offset:offset+size] = 0
+        offset += size
+    return result
+
 def _grid(spec, height, width):
     from rasterio.crs import CRS
     from affine import Affine

@@ -7,7 +7,7 @@ import zipfile
 from pathlib import Path
 
 import numpy as np
-from voxel_mapper.multisource_chips import CHANNELS, empty, decode, drop_groups, build_chip, pack
+from voxel_mapper.multisource_chips import CHANNELS, empty, decode, drop_groups, build_chip, pack, select_groups
 
 try:
     import rasterio
@@ -34,6 +34,18 @@ class ContextTests(unittest.TestCase):
         np.savez_compressed(buf,context=a,channel_names=np.asarray(CHANNELS))
         with self.assertRaisesRegex(ValueError,"validity"):
             decode(buf.getvalue(),2,2)
+
+    def test_ablation_removes_values_and_masks_without_mutation(self):
+        a = empty(2,2)
+        a[:,:,0:2] = 1
+        a[:,:,12] = 1
+        a[:,:,20] = 1
+        b = select_groups(a, ["landcover"])
+        self.assertFalse(np.any(b[:,:,:12]))
+        np.testing.assert_array_equal(b[:,:,12:21], a[:,:,12:21])
+        self.assertTrue(np.all(a[:,:,0:2] == 1))
+        with self.assertRaises(ValueError):
+            select_groups(a, ["invented"])
 
     @unittest.skipIf(rasterio is None,"install GIS and Pillow")
     def test_alignment_and_unchanged_labels(self):

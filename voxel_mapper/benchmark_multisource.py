@@ -38,6 +38,7 @@ def main():
     p.add_argument("--dataset",type=Path,action="append",required=True)
     p.add_argument("--output",type=Path,required=True)
     p.add_argument("--holdout-park")
+    p.add_argument("--validation-group", action="append", help="Fixed held-out source/area group; must be geographically independent")
     p.add_argument("--validation-fraction",type=float,default=.2)
     p.add_argument("--num-classes",type=int,default=10)
     p.add_argument("--epochs",type=int,default=20)
@@ -47,6 +48,7 @@ def main():
     p.add_argument("--seed",type=int,default=41)
     p.add_argument("--threads",type=int,default=2)
     p.add_argument("--context-dropout",type=float,default=.2)
+    p.add_argument("--context-group",action="append",help="Retain selected contextual groups for ablation")
     p.add_argument("--cpu",action="store_true")
     args=p.parse_args()
     if not 0<args.validation_fraction<1 or args.patch_size<64 or args.patch_size%16 or min(args.epochs,args.batch_size,args.threads)<1:
