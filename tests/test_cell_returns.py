@@ -11,16 +11,17 @@ from voxel_mapper.ground_surface import direct_ground_support,assess_lawn_column
 
 
 class CellReturnTests(unittest.TestCase):
-    def fixture(self,path, *, duplicate=False, obstacle=False, flagged=False, clustered=False, invalid_return=False):
+    def fixture(self,path, *, duplicate=False, obstacle=False, flagged=False, clustered=False, invalid_return=False, edge_obstacle=False):
         header=laspy.LasHeader(point_format=6,version='1.4');header.scales=[.01,.01,.01];header.add_crs(CRS.from_epsg(27700))
         data=laspy.LasData(header)
         xy=[(.25,.25),(.75,.25),(.25,.75),(.75,.75)]
         if clustered:xy=[(.49,.49),(.51,.49),(.49,.51),(.51,.51)]
         if duplicate:xy=[xy[0]]*4
         if obstacle:xy.append((.5,.5))
+        if edge_obstacle:xy.append((1.,.5))
         data.x=[1000+x for x,z in xy];data.y=[2000-z for x,z in xy];data.z=[192]*len(xy)
         data.classification=[2]*len(xy);data.return_number=[1]*len(xy);data.number_of_returns=[1]*len(xy)
-        if obstacle:data.classification[-1]=6;data.z[-1]=194
+        if obstacle or edge_obstacle:data.classification[-1]=6;data.z[-1]=194
         if flagged:data.withheld=[True]+[False]*(len(xy)-1)
         if invalid_return:data.number_of_returns[0]=0
         data.write(path)
@@ -32,6 +33,9 @@ class CellReturnTests(unittest.TestCase):
                 path=Path(td)/'fixture.las';checksum=self.fixture(path,**options)
                 r=summarize_cell_returns(path,[{'x':0,'z':0}],[1,0,1000,0,-1,2000],expected_sha256=checksum)
                 self.assertEqual(r['cells'][0]['observed_clear_ground'],not options)
+            checksum=self.fixture(path,edge_obstacle=True)
+            edge=summarize_cell_returns(path,[{'x':0,'z':0}],[1,0,1000,0,-1,2000],expected_sha256=checksum)
+            self.assertEqual(edge['raw_retained_points'],4);self.assertTrue(edge['cells'][0]['observed_clear_ground'])
             with self.assertRaises(ValueError):summarize_cell_returns(path,[{'x':0,'z':0}],[1,0,1000,0,-1,2000],expected_sha256='wrong')
             with self.assertRaises(ValueError):summarize_cell_returns(path,[{'x':0,'z':0}],[1,0,1000,0,-1,2000],expected_sha256=checksum,max_scan_points=1)
 
