@@ -19,6 +19,8 @@ ROLES = {
     "vegetation_points": {".las", ".laz"},
     "terrain_dtm": {".tif", ".tiff"},
     "surface_dsm": {".tif", ".tiff"},
+    "lidar_intensity": {".tif", ".tiff"},
+    "landcover_context": {".tif", ".tiff"},
     "surface_labels": {".tif", ".tiff"},
     "path_polygons": {".gpkg", ".geojson", ".json", ".shp"},
     "building_footprints": {".gpkg", ".geojson", ".json", ".shp"},
@@ -151,7 +153,8 @@ def validate(root: Path, manifest_path: Path) -> dict[str, Any]:
                            "resolution_m": layer.get("resolution_m"),
                            "horizontal_accuracy_m": layer.get("horizontal_accuracy_m"),
                            "vertical_accuracy_m": layer.get("vertical_accuracy_m"),
-                           "class_codes": layer.get("class_codes"), "raster_info": raster_info})
+                           "class_codes": layer.get("class_codes"), "raster_info": raster_info,
+                           "intensity_policy": layer.get("intensity_policy")})
 
     if "surface_labels" not in seen_roles:
         warnings.append("No reviewed surface-label raster: this bundle cannot yet improve material classification")

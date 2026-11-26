@@ -1,0 +1,92 @@
+name: GIS evidence checks
+on:
+  pull_request:
+    paths:
+      - 'voxel_mapper/**'
+      - 'tests/**'
+      - 'pyproject.toml'
+      - 'examples/**'
+      - 'tools/free_lidar_export_bundle.py'
+      - 'tools/audit_view_georef.py'
+      - 'tools/prepare_registered_broad_chips.py'
+      - 'tools/plan_surface_repairs.py'
+      - 'tools/audit_surface_returns.py'
+      - 'tools/benchmark_registered_areas.py'
+      - 'tools/benchmark_residual_fusion.py'
+      - 'tools/evaluate_ground_candidates.py'
+      - '.github/workflows/gis-evidence.yml'
+  workflow_dispatch:
+    inputs:
+      live_pilot:
+        type: boolean
+        default: false
+        description: Query public GIS sources for the Alton Towers pilot
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install '.[gis,matching]'
+      - run: python -m unittest discover -s tests -v
+  training-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install '.[gis,matching]'
+      - run: python -m pip install 'torch>=2.4,<3' --index-url https://download.pytorch.org/whl/cpu
+      - run: python -m unittest discover -s tests -p 'test_multisource_training_smoke.py' -v
+      - run: python -m unittest discover -s tests -p 'test_residual_fusion.py' -v
+  native-bedrock:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      CC: gcc
+      CXX: g++
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install 'numpy>=1.26,<2' 'cython<4' setuptools wheel versioneer 'cmake<4' ninja
+      - run: python -m pip install --no-build-isolation '.[bedrock]'
+      - run: python -m unittest discover -s tests -p 'test_bedrock_patch.py' -v
+  live-pilot:
+    if: github.event_name == 'workflow_dispatch' && inputs.live_pilot
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install '.[gis]'
+      - run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from voxel_mapper.open_gis import collect
+          from voxel_mapper.landcover import collect as landcover
+          from voxel_mapper.gis_context import write_context_grid
+          config = json.loads(Path("examples/alton_gis.json").read_text())
+          output = Path("output/gis-pilot")
+          features, report = collect(config["bbox"], config["gis"], output)
+          raster = landcover(config["bbox"], config["landcover"], output)
+          write_context_grid(config["bbox"], features, report["layers"], output, landcover_report=raster, cell_m=config["gis_context"]["cell_m"])
+          if any(layer["status"] in ("partial","unavailable") for layer in report["layers"]) or raster["status"] != "available":
+              raise SystemExit("Incomplete live acquisition; inspect evidence reports")
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: alton-gis-evidence
+          path: output/gis-pilot/

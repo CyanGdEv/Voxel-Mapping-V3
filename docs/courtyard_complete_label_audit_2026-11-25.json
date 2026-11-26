@@ -1,0 +1,32 @@
+{
+  "schema": "courtyard-complete-label-audit-v1",
+  "baseline_sha256": "56d9ef76df2a3937d01670a5ed39e0f5f9343c1f2ff38164f4b154a6be4f1405",
+  "requests_sha256": "703fc2e6338431b3c6e0a941252406a4b3b3427a81b83e1daf6f53a26a29724a",
+  "observations_sha256": "615308daa8cbbd87123b7476b39aedf7d9056fd3a41ba4385729bf1dc68dd54f",
+  "proposals_sha256": "f8725e227fb5ce33ca5fd22c32b06289dfac916749a706bd86166ac3e098d71a",
+  "class_counts": {
+    "1": {
+      "cells": 113,
+      "outcomes": {
+        "outside_reviewed_surface_interior": 68,
+        "measured_above_ground_geometry": 13,
+        "already_matches": 15,
+        "unsupported_ground_support": 2,
+        "negative_surface_height_unknown": 8,
+        "unverified_ground_material": 5,
+        "vertical_quantization_residual": 2
+      }
+    },
+    "9": {
+      "cells": 123,
+      "outcomes": {
+        "outside_reviewed_surface_interior": 100,
+        "already_matches": 9,
+        "negative_surface_height_unknown": 9,
+        "vertical_quantization_residual": 5
+      }
+    }
+  },
+  "new_candidates": 0,
+  "paving_materials_changed": 0
+}

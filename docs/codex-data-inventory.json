@@ -1,0 +1,83 @@
+{
+  "schema": "voxel-external-data-inventory-v1",
+  "status": "partially_received_in_workspace",
+  "root": "data",
+  "files": [
+    {
+      "path": "training/Alton_Towers_Georeferenced_Ground_Training.zip",
+      "sha256": "22522d22be8b63a9ffb482eab5e413f189cf29af2377abaad58b1f96f2235973",
+      "workspace_status": "received_checksum_verified"
+    },
+    {
+      "path": "training/Magic_Kingdom_Georeferenced_Paving_Starter.zip",
+      "sha256": "9161a3fccdec380fd55c2f02dec4b09ab4ae36339f66687ae28f10a21676d344",
+      "workspace_status": "not_supplied"
+    },
+    {
+      "path": "experiments/Mutiny_Bay_Offline_Multisource_Pilot.zip",
+      "sha256": "43719d6d8d3e18294a247bf9e7143bdafe5173f0b0f8f660a22522237e353865",
+      "workspace_status": "received_checksum_verified"
+    },
+    {
+      "path": "audit/Alton_Georeferencing_Audit.json",
+      "sha256": "c590a19b0461084a401a9e6ad94e753e20100cd2501556b4d6f80cfaede718ea",
+      "workspace_status": "not_supplied"
+    },
+    {
+      "path": "lidar/Alton_Tree_Canopy_LiDAR_Training.zip",
+      "sha256": "787851d42c29665049220f6876de73802b8b8afe26f7cc17db9aabe2e09f547e",
+      "workspace_status": "received_checksum_verified"
+    },
+    {
+      "path": "training/Alton_Towers_Parkwide_Semantic_Training_2026-11_v1.zip",
+      "sha256": "4e20a17896d9ec60691c97d45b7cab72594ec1b10f51d6ee9670fe528cb25170",
+      "workspace_status": "not_supplied"
+    },
+    {
+      "path": "training/Alton_Towers_AI_Training_Expansion_2026-11_v2.zip",
+      "sha256": "a8da54f402ea9ac26cdd111d405ca1a682765b91661c613d2d510b733cb7e99b",
+      "workspace_status": "not_supplied"
+    },
+    {
+      "path": "lidar/alton_lidar_geometry.zip",
+      "sha256": "a14fd2b0c49cc8d45d0b823fefa59b05f0c7c3ae5be7d8607422a571ff235364",
+      "workspace_status": "not_supplied"
+    },
+    {
+      "path": "training/alton_registered_views.zip",
+      "sha256": "492ea934100b9e63116dc91cd367cecd3d54589285ed37536a0726df1dbb1c68",
+      "workspace_status": "not_supplied"
+    }
+  ],
+  "baseline": {
+    "file": "Alton_Towers_Go_Jetters_Queue_v20_Noisy_Leaves.mcworld",
+    "sha256": "0cf1c7712eb4d57f79425fc706a25afc6d521dc1c8f98deb192a6b605ecb6431",
+    "status": "received_zip_integrity_verified_original_preserved",
+    "geographic_registration": "Source grid recovered; corroborated by related supplied canopy archive audit. See world_registration_evidence_2026-11-25.json and reviewed_view_registration_2026-11-25.json."
+  },
+  "notes": "These hashes were computed on actual local files. Binary archives are not in this public repository. Verify redistribution rights before public upload; use private storage or local workspace if needed.",
+  "generated_world_previews": [
+    {
+      "workspace_path": "/workspace/experiments/Alton_Towers_Courtyard_Verified_Preview.mcworld",
+      "sha256": "6e072c25dbe4f1271fbc776a3fed75b2e459689679b4444fe6041582cdf23a70",
+      "status": "native_roundtrip_verified_client_untested",
+      "cumulative_block_changes": 12
+    },
+    {
+      "workspace_path": "/workspace/experiments/Alton_Towers_Courtyard_Expanded_Preview.mcworld",
+      "sha256": "56d9ef76df2a3937d01670a5ed39e0f5f9343c1f2ff38164f4b154a6be4f1405",
+      "parent_sha256": "6e072c25dbe4f1271fbc776a3fed75b2e459689679b4444fe6041582cdf23a70",
+      "status": "native_roundtrip_verified_client_untested",
+      "cumulative_block_changes": 30,
+      "production_model_promoted": false
+    },
+    {
+      "workspace_path": "/workspace/experiments/Alton_Towers_Courtyard_Classified_LiDAR_Preview.mcworld",
+      "sha256": "4825dadc4a0e0d4e3874affff1583dba0d631280a79b3e7af1bd9ca4a73f1ae1",
+      "parent_sha256": "56d9ef76df2a3937d01670a5ed39e0f5f9343c1f2ff38164f4b154a6be4f1405",
+      "status": "native_roundtrip_verified_client_untested",
+      "cumulative_block_changes": 38,
+      "production_model_promoted": false
+    }
+  ]
+}

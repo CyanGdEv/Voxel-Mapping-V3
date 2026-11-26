@@ -135,3 +135,94 @@ def validate_label_codes(labels: Iterable[int]) -> dict[str, object]:
         "ignored_cells": counts.get(IGNORE, 0),
         "material_inference_policy": "unlabelled and low-confidence cells remain unknown",
     }
+
+
+def assess_lawn_column(cell, *, surface_offset_m, max_surface_height_m=.05,
+                       max_vertical_residual_m=.1, allow_paving_roof_only=False, point_evidence=None):
+    """Propose a bounded repair from reviewed lawn + measured heights.
+
+    No evidence is accepted here. Native observations must cover the complete
+    column above terrain; trees, walls, fluids and uncertain geometry survive.
+    """
+    def reject(reason):return {"status":"withheld","reason":reason,"edits":[]}
+    if cell.get('label') not in ((1,9) if allow_paving_roof_only else (1,)) or not cell.get('safe_interior'):
+        return reject('outside_reviewed_surface_interior' if allow_paving_roof_only else 'outside_reviewed_lawn_interior')
+    if cell.get('block_entities') or not cell.get('supported_storage',False):
+        top=cell.get('native_observed_top_block','') or ''
+        if cell.get('native_column_status')=='height_metadata_differs_from_observed_top' and (top.endswith('_leaves') or top in ('minecraft:leaves','minecraft:leaves2')):
+            return reject('retained_overhanging_vegetation')
+        return reject('protected_or_unsupported_native_column')
+    dtm,dsm=cell.get('dtm'),cell.get('dsm')
+    same_cell=(point_evidence is not None and (point_evidence.get('x'),point_evidence.get('z'))==(cell['x'],cell['z']))
+    if same_cell:
+        classes={int(k) for k,v in point_evidence.get('class_counts',{}).items() if v}
+        if classes & {6,9,17}:return reject('classified_structure_or_water')
+        maximum=point_evidence.get('all_z_max')
+        if dtm is not None and maximum is not None and math.isfinite(dtm) and math.isfinite(maximum) and maximum-dtm>.15+1e-9:
+            return reject('observed_elevated_returns')
+    point_supported=same_cell and direct_ground_support(point_evidence)
+    if point_supported:
+        median=point_evidence['ground_z_median']
+        if dtm is not None and math.isfinite(dtm) and abs(dtm-median)>.15+1e-9:
+            return reject('conflicting_terrain_evidence')
+        if dsm is not None and math.isfinite(dsm) and dsm-median>.15+1e-9:
+            return reject('conflicting_elevated_raster_surface')
+        dtm=median
+        surface=point_evidence['all_z_max']
+    else:
+        if dtm is None or dsm is None or not all(math.isfinite(v) for v in (dtm,dsm)):
+            return reject('missing_height_evidence')
+        if dsm<dtm:return reject('negative_surface_height_unknown')
+        if dsm-dtm>max_surface_height_m:return reject('measured_above_ground_geometry')
+        surface=dsm
+    y=int(math.floor(dtm+.5))-int(surface_offset_m)-1
+    if surface_offset_m!=int(surface_offset_m) or abs(y+1+surface_offset_m-dtm)>max_vertical_residual_m:
+        return reject('vertical_quantization_residual')
+    profile={int(k):v for k,v in cell.get('native_profile',{}).items()}
+    top=cell.get('native_top_y')
+    if type(top) is not int or not y<=top<=y+4 or any(k not in profile for k in range(y-1,top+2)):
+        return reject('incomplete_or_high_native_geometry')
+    if profile[top+1]!='minecraft:air':return reject('stale_native_top')
+    paving={'minecraft:stone_bricks','minecraft:mossy_stone_bricks','minecraft:cracked_stone_bricks'}
+    roof={'minecraft:deepslate_tiles','minecraft:cracked_deepslate_tiles'}
+    accepted_floor=(paving|{'minecraft:brick_block','minecraft:stone','minecraft:smooth_stone','minecraft:andesite','minecraft:polished_andesite','minecraft:gray_concrete'}) if cell['label']==9 else paving|{'minecraft:grass_block'}
+    if profile[y] not in accepted_floor:
+        return reject('unverified_ground_material')
+    if profile[y-1] not in paving|{'minecraft:dirt','minecraft:dirt_with_roots','minecraft:coarse_dirt','minecraft:stone','minecraft:grass_block'}:
+        return reject('unsupported_ground_support')
+    if any(profile[k] not in roof|{'minecraft:air'} for k in range(y+1,top+1)):
+        return reject('retained_structure_vegetation_or_water')
+    x,z=cell['x'],cell['z'];edits=[]
+    if cell['label']==1 and profile[y]!='minecraft:grass_block':
+        edits.append({'xyz':[x,y,z],'before':profile[y],'after':'minecraft:grass_block','source_type':'reviewed_mask'})
+    for k in range(y+1,top+1):
+        if profile[k] in roof:
+            edits.append({'xyz':[x,k,z],'before':profile[k],'after':'minecraft:air','source_type':'measured_surface_conflict'})
+    return {'status':'candidate' if edits else 'already_matches','reason':'reviewed_paving_and_low_measured_surface' if cell['label']==9 else 'reviewed_lawn_and_low_measured_surface',
+            'edits':edits,'height_update':{'xz':[x,z],'before':top+1,'after':y+1},
+            'height_evidence_basis':'classified_cell_returns' if point_supported else 'raster_pair',
+            'before_surface_evidence_residual_m':abs(top+1+surface_offset_m-surface),
+            'after_surface_evidence_residual_m':abs(y+1+surface_offset_m-surface),
+            'before_dsm_residual_m':None if point_supported else abs(top+1+surface_offset_m-dsm),
+            'after_dsm_residual_m':None if point_supported else abs(y+1+surface_offset_m-dsm)}
+
+
+def direct_ground_support(record):
+    """Strict observed-return support, not a calibrated absence probability."""
+    try:
+        classes={int(k):v for k,v in record['class_counts'].items()}
+        counts=[record[k] for k in ('unique_returns','ground_returns','first_ground_returns','excluded_points')]
+        if any(type(v) is not int or v<0 for v in counts):return False
+        if any(type(v) is not int or v<0 for v in classes.values()):return False
+        total,ground,first,excluded=counts
+        heights=[record[k] for k in ('ground_z_median','ground_z_range','all_z_min','all_z_max')]
+        if not all(isinstance(v,(int,float)) and math.isfinite(v) for v in heights):return False
+        median,spread,minimum,maximum=heights
+        return (excluded==0 and 4<=first<=ground<=total and ground==classes.get(2,0)
+                and sum(classes.values())==total and set(classes)<={1,2}
+                and sorted(set(record['first_ground_quadrants']))==[0,1,2,3]
+                and .5-1e-9<=record['first_ground_x_span_m']<=1
+                and .5-1e-9<=record['first_ground_z_span_m']<=1
+                and 0<=spread<=.15+1e-9 and minimum<=median<=maximum
+                and maximum-median<=.15+1e-9 and median-minimum<=.15+1e-9)
+    except (KeyError,TypeError,ValueError):return False

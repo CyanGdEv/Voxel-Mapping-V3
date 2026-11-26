@@ -1,0 +1,184 @@
+{
+  "schema": "bedrock-scoped-patch-result-v1",
+  "baseline_sha256": "0cf1c7712eb4d57f79425fc706a25afc6d521dc1c8f98deb192a6b605ecb6431",
+  "plan_sha256": "d7e976ee0457ea308982a78f74070b4941e95983ee1b6dd535a56ae37bc5c645",
+  "output_sha256": "6e072c25dbe4f1271fbc776a3fed75b2e459689679b4444fe6041582cdf23a70",
+  "blocks_changed": 12,
+  "height_columns_changed": 6,
+  "native_records_total": 63650,
+  "native_records_changed": 2,
+  "records": [
+    {
+      "key_hex": "37000000160000002f05",
+      "before_sha256": "4d59fcac02011b1e2d77554d3e3c11fb20e68d67d5c7b4ddac129b11c162efc6",
+      "after_sha256": "1d7e77dacd53efd1f3ab7a468c98db1f1ea57119620c33deca010013774d370e"
+    },
+    {
+      "key_hex": "37000000160000002b",
+      "before_sha256": "4096a045de752dfe627b545928c334b96ff9a244edfb92f59e03795a7dae9af3",
+      "after_sha256": "1564b8419c27eb7e75a06e25e27e4f2d0a9d9e4a14de359bab47487bb7466d63"
+    }
+  ],
+  "non_database_assets_unchanged": true,
+  "all_other_native_records_unchanged": true,
+  "export_reextraction_records_identical": true,
+  "independent_amulet_block_checks": 12,
+  "overworld_chunks": 8704,
+  "bedrock_version": [
+    1,
+    21,
+    120,
+    0,
+    0
+  ],
+  "edits": [
+    {
+      "xyz": [
+        886,
+        93,
+        353
+      ],
+      "before": "minecraft:stone_bricks",
+      "after": "minecraft:grass_block",
+      "accepted": true,
+      "source_type": "reviewed_mask",
+      "evidence_sha256": "c0c7d97f0fa50e8fa0f0d9bb7a4452f4275caf63143ef293e3c8246ab575bdbe"
+    },
+    {
+      "xyz": [
+        886,
+        95,
+        353
+      ],
+      "before": "minecraft:deepslate_tiles",
+      "after": "minecraft:air",
+      "accepted": true,
+      "source_type": "measured_surface_conflict",
+      "evidence_sha256": "c0c7d97f0fa50e8fa0f0d9bb7a4452f4275caf63143ef293e3c8246ab575bdbe"
+    },
+    {
+      "xyz": [
+        887,
+        93,
+        353
+      ],
+      "before": "minecraft:mossy_stone_bricks",
+      "after": "minecraft:grass_block",
+      "accepted": true,
+      "source_type": "reviewed_mask",
+      "evidence_sha256": "c0c7d97f0fa50e8fa0f0d9bb7a4452f4275caf63143ef293e3c8246ab575bdbe"
+    },
+    {
+      "xyz": [
+        887,
+        95,
+        353
+      ],
+      "before": "minecraft:deepslate_tiles",
+      "after": "minecraft:air",
+      "accepted": true,
+      "source_type": "measured_surface_conflict",
+      "evidence_sha256": "c0c7d97f0fa50e8fa0f0d9bb7a4452f4275caf63143ef293e3c8246ab575bdbe"
+    },
+    {
+      "xyz": [
+        888,
+        93,
+        353
+      ],
+      "before": "minecraft:mossy_stone_bricks",
+      "after": "minecraft:grass_block",
+      "accepted": true,
+      "source_type": "reviewed_mask",
+      "evidence_sha256": "c0c7d97f0fa50e8fa0f0d9bb7a4452f4275caf63143ef293e3c8246ab575bdbe"
+    },
+    {
+      "xyz": [
+        888,
+        95,
+        353
+      ],
+      "before": "minecraft:deepslate_tiles",
+      "after": "minecraft:air",
+      "accepted": true,
+      "source_type": "measured_surface_conflict",
+      "evidence_sha256": "c0c7d97f0fa50e8fa0f0d9bb7a4452f4275caf63143ef293e3c8246ab575bdbe"
+    },
+    {
+      "xyz": [
+        886,
+        93,
+        354
+      ],
+      "before": "minecraft:stone_bricks",
+      "after": "minecraft:grass_block",
+      "accepted": true,
+      "source_type": "reviewed_mask",
+      "evidence_sha256": "c0c7d97f0fa50e8fa0f0d9bb7a4452f4275caf63143ef293e3c8246ab575bdbe"
+    },
+    {
+      "xyz": [
+        886,
+        95,
+        354
+      ],
+      "before": "minecraft:deepslate_tiles",
+      "after": "minecraft:air",
+      "accepted": true,
+      "source_type": "measured_surface_conflict",
+      "evidence_sha256": "c0c7d97f0fa50e8fa0f0d9bb7a4452f4275caf63143ef293e3c8246ab575bdbe"
+    },
+    {
+      "xyz": [
+        887,
+        93,
+        354
+      ],
+      "before": "minecraft:stone_bricks",
+      "after": "minecraft:grass_block",
+      "accepted": true,
+      "source_type": "reviewed_mask",
+      "evidence_sha256": "c0c7d97f0fa50e8fa0f0d9bb7a4452f4275caf63143ef293e3c8246ab575bdbe"
+    },
+    {
+      "xyz": [
+        887,
+        95,
+        354
+      ],
+      "before": "minecraft:deepslate_tiles",
+      "after": "minecraft:air",
+      "accepted": true,
+      "source_type": "measured_surface_conflict",
+      "evidence_sha256": "c0c7d97f0fa50e8fa0f0d9bb7a4452f4275caf63143ef293e3c8246ab575bdbe"
+    },
+    {
+      "xyz": [
+        888,
+        93,
+        354
+      ],
+      "before": "minecraft:stone_bricks",
+      "after": "minecraft:grass_block",
+      "accepted": true,
+      "source_type": "reviewed_mask",
+      "evidence_sha256": "c0c7d97f0fa50e8fa0f0d9bb7a4452f4275caf63143ef293e3c8246ab575bdbe"
+    },
+    {
+      "xyz": [
+        888,
+        95,
+        354
+      ],
+      "before": "minecraft:deepslate_tiles",
+      "after": "minecraft:air",
+      "accepted": true,
+      "source_type": "measured_surface_conflict",
+      "evidence_sha256": "c0c7d97f0fa50e8fa0f0d9bb7a4452f4275caf63143ef293e3c8246ab575bdbe"
+    }
+  ],
+  "limitations": [
+    "Native-format verification; not an in-game Minecraft client test.",
+    "Scoped reviewed/measured evidence only; no AI model promotion."
+  ]
+}

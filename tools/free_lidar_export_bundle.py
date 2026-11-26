@@ -110,10 +110,18 @@ def export(config_path: Path) -> Path:
          "output_type": "max", **base_writer},
         {"type": "writers.las", "inputs": ["vegetation"], "filename": str(veg_path),
          "compression": True, "forward": "all"}]
+    intensity_path = output / "ground_intensity.tif"
+    if config.get("export_ground_intensity", False):
+        if not (grid or bounds):
+            raise ValueError("Ground intensity requires explicit grid or bounds for alignment")
+        pipeline.append({"type":"writers.gdal", "inputs":["ground"],
+                         "filename":str(intensity_path), "dimension":"Intensity",
+                         "output_type":"mean", **base_writer})
     _run_pdal(pdal, {"pipeline": pipeline}, output, "LiDAR export")
 
     raster_info = {}
-    for raster_path in (dtm_path, dsm_path):
+    rasters = [dtm_path, dsm_path] + ([intensity_path] if config.get("export_ground_intensity", False) else [])
+    for raster_path in rasters:
         metadata = subprocess.run([gdalinfo, "-json", str(raster_path)], check=True,
                                   capture_output=True, text=True)
         raster_info[raster_path.name] = json.loads(metadata.stdout)
@@ -135,6 +143,13 @@ def export(config_path: Path) -> Path:
          "source_id": source_id, "crs": srs, "observed_date": config.get("observed_date"),
          "classification_scheme": config.get("classification_scheme", "ASPRS LAS classes")},
     ]
+    if config.get("export_ground_intensity", False):
+        info = raster_info[intensity_path.name]
+        layers.append({"id":"ground-intensity","role":"lidar_intensity","path":intensity_path.name,
+                       "source_id":source_id,"crs":srs,"resolution_m":resolution,
+                       "observed_date":config.get("observed_date"),
+                       "raster_info":{"width":info["size"][0],"height":info["size"][1]},
+                       "intensity_policy":"Uncalibrated mean of class 2 returns; no reflectance or material label inference."})
     manifest = {"schema_version": "voxel-geospatial-bundle-v1",
                 "park": config.get("park", "Alton Towers"),
                 "crs": {"horizontal": srs, "vertical_datum": config.get("vertical_datum", "unknown"),

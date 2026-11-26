@@ -1,0 +1,2359 @@
+{
+  "schema": "surface-repair-proposals-v1",
+  "accepted_for_block_edits": false,
+  "observations_sha256": "615308daa8cbbd87123b7476b39aedf7d9056fd3a41ba4385729bf1dc68dd54f",
+  "requests_sha256": "703fc2e6338431b3c6e0a941252406a4b3b3427a81b83e1daf6f53a26a29724a",
+  "point_evidence_sha256": "ea2e3039c65a037ff414e3247cccfb4ccc060eae5c205a5e7ef2e6c3dc0a6759",
+  "baseline_sha256": "56d9ef76df2a3937d01670a5ed39e0f5f9343c1f2ff38164f4b154a6be4f1405",
+  "cells": [
+    {
+      "x": 888,
+      "z": 348,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 889,
+      "z": 348,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 890,
+      "z": 348,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 891,
+      "z": 348,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 892,
+      "z": 348,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 893,
+      "z": 348,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 894,
+      "z": 348,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 895,
+      "z": 348,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 896,
+      "z": 348,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 886,
+      "z": 349,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 887,
+      "z": 349,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 888,
+      "z": 349,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 889,
+      "z": 349,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 890,
+      "z": 349,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 891,
+      "z": 349,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 892,
+      "z": 349,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 893,
+      "z": 349,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 894,
+      "z": 349,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 895,
+      "z": 349,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 896,
+      "z": 349,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 884,
+      "z": 350,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 885,
+      "z": 350,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 886,
+      "z": 350,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 887,
+      "z": 350,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 888,
+      "z": 350,
+      "label": 1,
+      "status": "withheld",
+      "reason": "observed_elevated_returns",
+      "edits": []
+    },
+    {
+      "x": 889,
+      "z": 350,
+      "label": 1,
+      "status": "withheld",
+      "reason": "observed_elevated_returns",
+      "edits": []
+    },
+    {
+      "x": 890,
+      "z": 350,
+      "label": 1,
+      "status": "withheld",
+      "reason": "observed_elevated_returns",
+      "edits": []
+    },
+    {
+      "x": 891,
+      "z": 350,
+      "label": 1,
+      "status": "already_matches",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          891,
+          350
+        ],
+        "before": 94,
+        "after": 94
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 0.0059967041015625,
+      "after_surface_evidence_residual_m": 0.0059967041015625,
+      "before_dsm_residual_m": 0.0059967041015625,
+      "after_dsm_residual_m": 0.0059967041015625
+    },
+    {
+      "x": 892,
+      "z": 350,
+      "label": 1,
+      "status": "withheld",
+      "reason": "measured_above_ground_geometry",
+      "edits": []
+    },
+    {
+      "x": 893,
+      "z": 350,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 894,
+      "z": 350,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 883,
+      "z": 351,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 884,
+      "z": 351,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 885,
+      "z": 351,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 886,
+      "z": 351,
+      "label": 1,
+      "status": "withheld",
+      "reason": "observed_elevated_returns",
+      "edits": []
+    },
+    {
+      "x": 887,
+      "z": 351,
+      "label": 1,
+      "status": "withheld",
+      "reason": "observed_elevated_returns",
+      "edits": []
+    },
+    {
+      "x": 888,
+      "z": 351,
+      "label": 1,
+      "status": "withheld",
+      "reason": "measured_above_ground_geometry",
+      "edits": []
+    },
+    {
+      "x": 889,
+      "z": 351,
+      "label": 1,
+      "status": "candidate",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [
+        {
+          "xyz": [
+            889,
+            93,
+            351
+          ],
+          "before": "minecraft:mossy_stone_bricks",
+          "after": "minecraft:grass_block",
+          "source_type": "reviewed_mask"
+        },
+        {
+          "xyz": [
+            889,
+            95,
+            351
+          ],
+          "before": "minecraft:cracked_deepslate_tiles",
+          "after": "minecraft:air",
+          "source_type": "measured_surface_conflict"
+        }
+      ],
+      "height_update": {
+        "xz": [
+          889,
+          351
+        ],
+        "before": 96,
+        "after": 94
+      },
+      "height_evidence_basis": "classified_cell_returns",
+      "before_surface_evidence_residual_m": 1.960000000000008,
+      "after_surface_evidence_residual_m": 0.03999999999999204,
+      "before_dsm_residual_m": null,
+      "after_dsm_residual_m": null
+    },
+    {
+      "x": 890,
+      "z": 351,
+      "label": 1,
+      "status": "candidate",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [
+        {
+          "xyz": [
+            890,
+            93,
+            351
+          ],
+          "before": "minecraft:stone_bricks",
+          "after": "minecraft:grass_block",
+          "source_type": "reviewed_mask"
+        },
+        {
+          "xyz": [
+            890,
+            95,
+            351
+          ],
+          "before": "minecraft:cracked_deepslate_tiles",
+          "after": "minecraft:air",
+          "source_type": "measured_surface_conflict"
+        }
+      ],
+      "height_update": {
+        "xz": [
+          890,
+          351
+        ],
+        "before": 96,
+        "after": 94
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 2.0529937744140625,
+      "after_surface_evidence_residual_m": 0.0529937744140625,
+      "before_dsm_residual_m": 2.0529937744140625,
+      "after_dsm_residual_m": 0.0529937744140625
+    },
+    {
+      "x": 891,
+      "z": 351,
+      "label": 1,
+      "status": "already_matches",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          891,
+          351
+        ],
+        "before": 94,
+        "after": 94
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 0.04998779296875,
+      "after_surface_evidence_residual_m": 0.04998779296875,
+      "before_dsm_residual_m": 0.04998779296875,
+      "after_dsm_residual_m": 0.04998779296875
+    },
+    {
+      "x": 892,
+      "z": 351,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 893,
+      "z": 351,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 882,
+      "z": 352,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 883,
+      "z": 352,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 884,
+      "z": 352,
+      "label": 1,
+      "status": "withheld",
+      "reason": "observed_elevated_returns",
+      "edits": []
+    },
+    {
+      "x": 885,
+      "z": 352,
+      "label": 1,
+      "status": "withheld",
+      "reason": "observed_elevated_returns",
+      "edits": []
+    },
+    {
+      "x": 886,
+      "z": 352,
+      "label": 1,
+      "status": "withheld",
+      "reason": "observed_elevated_returns",
+      "edits": []
+    },
+    {
+      "x": 887,
+      "z": 352,
+      "label": 1,
+      "status": "already_matches",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          887,
+          352
+        ],
+        "before": 94,
+        "after": 94
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 0.0009918212890625,
+      "after_surface_evidence_residual_m": 0.0009918212890625,
+      "before_dsm_residual_m": 0.0009918212890625,
+      "after_dsm_residual_m": 0.0009918212890625
+    },
+    {
+      "x": 888,
+      "z": 352,
+      "label": 1,
+      "status": "candidate",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [
+        {
+          "xyz": [
+            888,
+            93,
+            352
+          ],
+          "before": "minecraft:stone_bricks",
+          "after": "minecraft:grass_block",
+          "source_type": "reviewed_mask"
+        },
+        {
+          "xyz": [
+            888,
+            95,
+            352
+          ],
+          "before": "minecraft:deepslate_tiles",
+          "after": "minecraft:air",
+          "source_type": "measured_surface_conflict"
+        }
+      ],
+      "height_update": {
+        "xz": [
+          888,
+          352
+        ],
+        "before": 96,
+        "after": 94
+      },
+      "height_evidence_basis": "classified_cell_returns",
+      "before_surface_evidence_residual_m": 2.030000000000001,
+      "after_surface_evidence_residual_m": 0.030000000000001137,
+      "before_dsm_residual_m": null,
+      "after_dsm_residual_m": null
+    },
+    {
+      "x": 889,
+      "z": 352,
+      "label": 1,
+      "status": "withheld",
+      "reason": "negative_surface_height_unknown",
+      "edits": []
+    },
+    {
+      "x": 890,
+      "z": 352,
+      "label": 1,
+      "status": "already_matches",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          890,
+          352
+        ],
+        "before": 94,
+        "after": 94
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 0.0779876708984375,
+      "after_surface_evidence_residual_m": 0.0779876708984375,
+      "before_dsm_residual_m": 0.0779876708984375,
+      "after_dsm_residual_m": 0.0779876708984375
+    },
+    {
+      "x": 891,
+      "z": 352,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 892,
+      "z": 352,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 882,
+      "z": 353,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 883,
+      "z": 353,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 884,
+      "z": 353,
+      "label": 1,
+      "status": "withheld",
+      "reason": "observed_elevated_returns",
+      "edits": []
+    },
+    {
+      "x": 885,
+      "z": 353,
+      "label": 1,
+      "status": "withheld",
+      "reason": "measured_above_ground_geometry",
+      "edits": []
+    },
+    {
+      "x": 886,
+      "z": 353,
+      "label": 1,
+      "status": "already_matches",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          886,
+          353
+        ],
+        "before": 94,
+        "after": 94
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 0.022003173828125,
+      "after_surface_evidence_residual_m": 0.022003173828125,
+      "before_dsm_residual_m": 0.022003173828125,
+      "after_dsm_residual_m": 0.022003173828125
+    },
+    {
+      "x": 887,
+      "z": 353,
+      "label": 1,
+      "status": "already_matches",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          887,
+          353
+        ],
+        "before": 94,
+        "after": 94
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 0.0229949951171875,
+      "after_surface_evidence_residual_m": 0.0229949951171875,
+      "before_dsm_residual_m": 0.0229949951171875,
+      "after_dsm_residual_m": 0.0229949951171875
+    },
+    {
+      "x": 888,
+      "z": 353,
+      "label": 1,
+      "status": "already_matches",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          888,
+          353
+        ],
+        "before": 94,
+        "after": 94
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 0.0309906005859375,
+      "after_surface_evidence_residual_m": 0.0309906005859375,
+      "before_dsm_residual_m": 0.0309906005859375,
+      "after_dsm_residual_m": 0.0309906005859375
+    },
+    {
+      "x": 889,
+      "z": 353,
+      "label": 1,
+      "status": "withheld",
+      "reason": "negative_surface_height_unknown",
+      "edits": []
+    },
+    {
+      "x": 890,
+      "z": 353,
+      "label": 1,
+      "status": "withheld",
+      "reason": "negative_surface_height_unknown",
+      "edits": []
+    },
+    {
+      "x": 891,
+      "z": 353,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 892,
+      "z": 353,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 882,
+      "z": 354,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 883,
+      "z": 354,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 884,
+      "z": 354,
+      "label": 1,
+      "status": "already_matches",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          884,
+          354
+        ],
+        "before": 94,
+        "after": 94
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 0.074005126953125,
+      "after_surface_evidence_residual_m": 0.074005126953125,
+      "before_dsm_residual_m": 0.074005126953125,
+      "after_dsm_residual_m": 0.074005126953125
+    },
+    {
+      "x": 885,
+      "z": 354,
+      "label": 1,
+      "status": "already_matches",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          885,
+          354
+        ],
+        "before": 94,
+        "after": 94
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 0.041015625,
+      "after_surface_evidence_residual_m": 0.041015625,
+      "before_dsm_residual_m": 0.041015625,
+      "after_dsm_residual_m": 0.041015625
+    },
+    {
+      "x": 886,
+      "z": 354,
+      "label": 1,
+      "status": "already_matches",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          886,
+          354
+        ],
+        "before": 94,
+        "after": 94
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 0.00299072265625,
+      "after_surface_evidence_residual_m": 0.00299072265625,
+      "before_dsm_residual_m": 0.00299072265625,
+      "after_dsm_residual_m": 0.00299072265625
+    },
+    {
+      "x": 887,
+      "z": 354,
+      "label": 1,
+      "status": "already_matches",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          887,
+          354
+        ],
+        "before": 94,
+        "after": 94
+      },
+      "height_evidence_basis": "classified_cell_returns",
+      "before_surface_evidence_residual_m": 0.009999999999990905,
+      "after_surface_evidence_residual_m": 0.009999999999990905,
+      "before_dsm_residual_m": null,
+      "after_dsm_residual_m": null
+    },
+    {
+      "x": 888,
+      "z": 354,
+      "label": 1,
+      "status": "already_matches",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          888,
+          354
+        ],
+        "before": 94,
+        "after": 94
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 0.0359954833984375,
+      "after_surface_evidence_residual_m": 0.0359954833984375,
+      "before_dsm_residual_m": 0.0359954833984375,
+      "after_dsm_residual_m": 0.0359954833984375
+    },
+    {
+      "x": 889,
+      "z": 354,
+      "label": 1,
+      "status": "candidate",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [
+        {
+          "xyz": [
+            889,
+            93,
+            354
+          ],
+          "before": "minecraft:stone_bricks",
+          "after": "minecraft:grass_block",
+          "source_type": "reviewed_mask"
+        },
+        {
+          "xyz": [
+            889,
+            95,
+            354
+          ],
+          "before": "minecraft:deepslate_tiles",
+          "after": "minecraft:air",
+          "source_type": "measured_surface_conflict"
+        }
+      ],
+      "height_update": {
+        "xz": [
+          889,
+          354
+        ],
+        "before": 96,
+        "after": 94
+      },
+      "height_evidence_basis": "classified_cell_returns",
+      "before_surface_evidence_residual_m": 2.079999999999984,
+      "after_surface_evidence_residual_m": 0.07999999999998408,
+      "before_dsm_residual_m": null,
+      "after_dsm_residual_m": null
+    },
+    {
+      "x": 890,
+      "z": 354,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 891,
+      "z": 354,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 883,
+      "z": 355,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 884,
+      "z": 355,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 885,
+      "z": 355,
+      "label": 1,
+      "status": "already_matches",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          885,
+          355
+        ],
+        "before": 94,
+        "after": 94
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 0.01800537109375,
+      "after_surface_evidence_residual_m": 0.01800537109375,
+      "before_dsm_residual_m": 0.01800537109375,
+      "after_dsm_residual_m": 0.01800537109375
+    },
+    {
+      "x": 886,
+      "z": 355,
+      "label": 1,
+      "status": "withheld",
+      "reason": "negative_surface_height_unknown",
+      "edits": []
+    },
+    {
+      "x": 887,
+      "z": 355,
+      "label": 1,
+      "status": "withheld",
+      "reason": "negative_surface_height_unknown",
+      "edits": []
+    },
+    {
+      "x": 888,
+      "z": 355,
+      "label": 1,
+      "status": "already_matches",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          888,
+          355
+        ],
+        "before": 94,
+        "after": 94
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 0.07598876953125,
+      "after_surface_evidence_residual_m": 0.07598876953125,
+      "before_dsm_residual_m": 0.07598876953125,
+      "after_dsm_residual_m": 0.07598876953125
+    },
+    {
+      "x": 889,
+      "z": 355,
+      "label": 1,
+      "status": "withheld",
+      "reason": "negative_surface_height_unknown",
+      "edits": []
+    },
+    {
+      "x": 890,
+      "z": 355,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 891,
+      "z": 355,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 875,
+      "z": 356,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 884,
+      "z": 356,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 885,
+      "z": 356,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 886,
+      "z": 356,
+      "label": 1,
+      "status": "already_matches",
+      "reason": "reviewed_lawn_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          886,
+          356
+        ],
+        "before": 94,
+        "after": 94
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 0.027984619140625,
+      "after_surface_evidence_residual_m": 0.027984619140625,
+      "before_dsm_residual_m": 0.027984619140625,
+      "after_dsm_residual_m": 0.027984619140625
+    },
+    {
+      "x": 887,
+      "z": 356,
+      "label": 1,
+      "status": "withheld",
+      "reason": "unverified_ground_material",
+      "edits": []
+    },
+    {
+      "x": 888,
+      "z": 356,
+      "label": 1,
+      "status": "withheld",
+      "reason": "negative_surface_height_unknown",
+      "edits": []
+    },
+    {
+      "x": 889,
+      "z": 356,
+      "label": 1,
+      "status": "withheld",
+      "reason": "vertical_quantization_residual",
+      "edits": []
+    },
+    {
+      "x": 890,
+      "z": 356,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 891,
+      "z": 356,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 873,
+      "z": 357,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 874,
+      "z": 357,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 875,
+      "z": 357,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 876,
+      "z": 357,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 877,
+      "z": 357,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 884,
+      "z": 357,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 885,
+      "z": 357,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 886,
+      "z": 357,
+      "label": 1,
+      "status": "withheld",
+      "reason": "unverified_ground_material",
+      "edits": []
+    },
+    {
+      "x": 887,
+      "z": 357,
+      "label": 1,
+      "status": "withheld",
+      "reason": "unverified_ground_material",
+      "edits": []
+    },
+    {
+      "x": 888,
+      "z": 357,
+      "label": 1,
+      "status": "withheld",
+      "reason": "unverified_ground_material",
+      "edits": []
+    },
+    {
+      "x": 889,
+      "z": 357,
+      "label": 1,
+      "status": "withheld",
+      "reason": "vertical_quantization_residual",
+      "edits": []
+    },
+    {
+      "x": 890,
+      "z": 357,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 891,
+      "z": 357,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 872,
+      "z": 358,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 873,
+      "z": 358,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 874,
+      "z": 358,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 875,
+      "z": 358,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 876,
+      "z": 358,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 877,
+      "z": 358,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 885,
+      "z": 358,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 886,
+      "z": 358,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 887,
+      "z": 358,
+      "label": 1,
+      "status": "withheld",
+      "reason": "unverified_ground_material",
+      "edits": []
+    },
+    {
+      "x": 888,
+      "z": 358,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 889,
+      "z": 358,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 890,
+      "z": 358,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 872,
+      "z": 359,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 873,
+      "z": 359,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 874,
+      "z": 359,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 875,
+      "z": 359,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 876,
+      "z": 359,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 877,
+      "z": 359,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 878,
+      "z": 359,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 885,
+      "z": 359,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 886,
+      "z": 359,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 887,
+      "z": 359,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 888,
+      "z": 359,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 889,
+      "z": 359,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 876,
+      "z": 360,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 877,
+      "z": 360,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 878,
+      "z": 360,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 886,
+      "z": 360,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 887,
+      "z": 360,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 887,
+      "z": 361,
+      "label": 1,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 861,
+      "z": 363,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 862,
+      "z": 363,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 858,
+      "z": 364,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 859,
+      "z": 364,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 860,
+      "z": 364,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 861,
+      "z": 364,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 862,
+      "z": 364,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 848,
+      "z": 365,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 857,
+      "z": 365,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 858,
+      "z": 365,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 859,
+      "z": 365,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 860,
+      "z": 365,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 861,
+      "z": 365,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 862,
+      "z": 365,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 848,
+      "z": 366,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 849,
+      "z": 366,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 855,
+      "z": 366,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 856,
+      "z": 366,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 857,
+      "z": 366,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 858,
+      "z": 366,
+      "label": 9,
+      "status": "already_matches",
+      "reason": "reviewed_paving_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          858,
+          366
+        ],
+        "before": 93,
+        "after": 93
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 0.0550079345703125,
+      "after_surface_evidence_residual_m": 0.0550079345703125,
+      "before_dsm_residual_m": 0.0550079345703125,
+      "after_dsm_residual_m": 0.0550079345703125
+    },
+    {
+      "x": 859,
+      "z": 366,
+      "label": 9,
+      "status": "withheld",
+      "reason": "negative_surface_height_unknown",
+      "edits": []
+    },
+    {
+      "x": 860,
+      "z": 366,
+      "label": 9,
+      "status": "already_matches",
+      "reason": "reviewed_paving_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          860,
+          366
+        ],
+        "before": 93,
+        "after": 93
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 0.0420074462890625,
+      "after_surface_evidence_residual_m": 0.0420074462890625,
+      "before_dsm_residual_m": 0.0420074462890625,
+      "after_dsm_residual_m": 0.0420074462890625
+    },
+    {
+      "x": 861,
+      "z": 366,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 862,
+      "z": 366,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 848,
+      "z": 367,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 849,
+      "z": 367,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 850,
+      "z": 367,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 851,
+      "z": 367,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 852,
+      "z": 367,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 853,
+      "z": 367,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 854,
+      "z": 367,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 855,
+      "z": 367,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 856,
+      "z": 367,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 857,
+      "z": 367,
+      "label": 9,
+      "status": "already_matches",
+      "reason": "reviewed_paving_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          857,
+          367
+        ],
+        "before": 93,
+        "after": 93
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 0.0670166015625,
+      "after_surface_evidence_residual_m": 0.0670166015625,
+      "before_dsm_residual_m": 0.0670166015625,
+      "after_dsm_residual_m": 0.0670166015625
+    },
+    {
+      "x": 858,
+      "z": 367,
+      "label": 9,
+      "status": "already_matches",
+      "reason": "reviewed_paving_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          858,
+          367
+        ],
+        "before": 93,
+        "after": 93
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 0.07000732421875,
+      "after_surface_evidence_residual_m": 0.07000732421875,
+      "before_dsm_residual_m": 0.07000732421875,
+      "after_dsm_residual_m": 0.07000732421875
+    },
+    {
+      "x": 859,
+      "z": 367,
+      "label": 9,
+      "status": "already_matches",
+      "reason": "reviewed_paving_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          859,
+          367
+        ],
+        "before": 93,
+        "after": 93
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 0.071014404296875,
+      "after_surface_evidence_residual_m": 0.071014404296875,
+      "before_dsm_residual_m": 0.071014404296875,
+      "after_dsm_residual_m": 0.071014404296875
+    },
+    {
+      "x": 860,
+      "z": 367,
+      "label": 9,
+      "status": "already_matches",
+      "reason": "reviewed_paving_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          860,
+          367
+        ],
+        "before": 93,
+        "after": 93
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 0.0770111083984375,
+      "after_surface_evidence_residual_m": 0.0770111083984375,
+      "before_dsm_residual_m": 0.0770111083984375,
+      "after_dsm_residual_m": 0.0770111083984375
+    },
+    {
+      "x": 861,
+      "z": 367,
+      "label": 9,
+      "status": "already_matches",
+      "reason": "reviewed_paving_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          861,
+          367
+        ],
+        "before": 93,
+        "after": 93
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 0.084014892578125,
+      "after_surface_evidence_residual_m": 0.084014892578125,
+      "before_dsm_residual_m": 0.084014892578125,
+      "after_dsm_residual_m": 0.084014892578125
+    },
+    {
+      "x": 862,
+      "z": 367,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 863,
+      "z": 367,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 848,
+      "z": 368,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 849,
+      "z": 368,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 850,
+      "z": 368,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 851,
+      "z": 368,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 852,
+      "z": 368,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 853,
+      "z": 368,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 854,
+      "z": 368,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 855,
+      "z": 368,
+      "label": 9,
+      "status": "withheld",
+      "reason": "negative_surface_height_unknown",
+      "edits": []
+    },
+    {
+      "x": 856,
+      "z": 368,
+      "label": 9,
+      "status": "already_matches",
+      "reason": "reviewed_paving_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          856,
+          368
+        ],
+        "before": 93,
+        "after": 93
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 0.100006103515625,
+      "after_surface_evidence_residual_m": 0.100006103515625,
+      "before_dsm_residual_m": 0.100006103515625,
+      "after_dsm_residual_m": 0.100006103515625
+    },
+    {
+      "x": 857,
+      "z": 368,
+      "label": 9,
+      "status": "withheld",
+      "reason": "vertical_quantization_residual",
+      "edits": []
+    },
+    {
+      "x": 858,
+      "z": 368,
+      "label": 9,
+      "status": "withheld",
+      "reason": "vertical_quantization_residual",
+      "edits": []
+    },
+    {
+      "x": 859,
+      "z": 368,
+      "label": 9,
+      "status": "withheld",
+      "reason": "vertical_quantization_residual",
+      "edits": []
+    },
+    {
+      "x": 860,
+      "z": 368,
+      "label": 9,
+      "status": "withheld",
+      "reason": "negative_surface_height_unknown",
+      "edits": []
+    },
+    {
+      "x": 861,
+      "z": 368,
+      "label": 9,
+      "status": "withheld",
+      "reason": "negative_surface_height_unknown",
+      "edits": []
+    },
+    {
+      "x": 862,
+      "z": 368,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 863,
+      "z": 368,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 847,
+      "z": 369,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 848,
+      "z": 369,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 849,
+      "z": 369,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 850,
+      "z": 369,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 851,
+      "z": 369,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 852,
+      "z": 369,
+      "label": 9,
+      "status": "already_matches",
+      "reason": "reviewed_paving_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          852,
+          369
+        ],
+        "before": 93,
+        "after": 93
+      },
+      "height_evidence_basis": "classified_cell_returns",
+      "before_surface_evidence_residual_m": 0.0800000000000125,
+      "after_surface_evidence_residual_m": 0.0800000000000125,
+      "before_dsm_residual_m": null,
+      "after_dsm_residual_m": null
+    },
+    {
+      "x": 853,
+      "z": 369,
+      "label": 9,
+      "status": "already_matches",
+      "reason": "reviewed_paving_and_low_measured_surface",
+      "edits": [],
+      "height_update": {
+        "xz": [
+          853,
+          369
+        ],
+        "before": 93,
+        "after": 93
+      },
+      "height_evidence_basis": "raster_pair",
+      "before_surface_evidence_residual_m": 0.0690155029296875,
+      "after_surface_evidence_residual_m": 0.0690155029296875,
+      "before_dsm_residual_m": 0.0690155029296875,
+      "after_dsm_residual_m": 0.0690155029296875
+    },
+    {
+      "x": 854,
+      "z": 369,
+      "label": 9,
+      "status": "withheld",
+      "reason": "negative_surface_height_unknown",
+      "edits": []
+    },
+    {
+      "x": 855,
+      "z": 369,
+      "label": 9,
+      "status": "withheld",
+      "reason": "vertical_quantization_residual",
+      "edits": []
+    },
+    {
+      "x": 856,
+      "z": 369,
+      "label": 9,
+      "status": "withheld",
+      "reason": "vertical_quantization_residual",
+      "edits": []
+    },
+    {
+      "x": 857,
+      "z": 369,
+      "label": 9,
+      "status": "withheld",
+      "reason": "negative_surface_height_unknown",
+      "edits": []
+    },
+    {
+      "x": 858,
+      "z": 369,
+      "label": 9,
+      "status": "withheld",
+      "reason": "vertical_quantization_residual",
+      "edits": []
+    },
+    {
+      "x": 859,
+      "z": 369,
+      "label": 9,
+      "status": "withheld",
+      "reason": "negative_surface_height_unknown",
+      "edits": []
+    },
+    {
+      "x": 860,
+      "z": 369,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 861,
+      "z": 369,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 862,
+      "z": 369,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 863,
+      "z": 369,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 864,
+      "z": 369,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 888,
+      "z": 369,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 847,
+      "z": 370,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 848,
+      "z": 370,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 849,
+      "z": 370,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 850,
+      "z": 370,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 851,
+      "z": 370,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 852,
+      "z": 370,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 853,
+      "z": 370,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 854,
+      "z": 370,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 855,
+      "z": 370,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 856,
+      "z": 370,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 857,
+      "z": 370,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 858,
+      "z": 370,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 859,
+      "z": 370,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 860,
+      "z": 370,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 861,
+      "z": 370,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 862,
+      "z": 370,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 863,
+      "z": 370,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 864,
+      "z": 370,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 852,
+      "z": 371,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 853,
+      "z": 371,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 854,
+      "z": 371,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 855,
+      "z": 371,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 856,
+      "z": 371,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 857,
+      "z": 371,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 858,
+      "z": 371,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    },
+    {
+      "x": 859,
+      "z": 371,
+      "label": 9,
+      "status": "withheld",
+      "reason": "outside_reviewed_surface_interior",
+      "edits": []
+    }
+  ]
+}

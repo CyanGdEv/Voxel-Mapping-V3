@@ -9,7 +9,9 @@ from __future__ import annotations
 import argparse
 import csv
 import io
+import hashlib
 import json
+import math
 import random
 import zipfile
 from dataclasses import dataclass
@@ -40,6 +42,7 @@ class Sample:
     split_group: str
     image: np.ndarray
     labels: np.ndarray
+    context: np.ndarray | None = None
 
 
 def _decode_rgb(blob: bytes) -> np.ndarray:
@@ -62,10 +65,11 @@ def _manifest_from_zip(archive: zipfile.ZipFile) -> dict:
     return json.loads(archive.read("manifest.json"))
 
 
-def _read_samples(dataset_path: Path) -> tuple[list[Sample], dict, dict]:
+def _read_samples(dataset_path: Path, *, use_context=False, require_georeference=False) -> tuple[list[Sample], dict, dict]:
     samples: list[Sample] = []
     skipped_all_ignore = 0
     skipped_bad_shape = 0
+    skipped_unregistered = 0
     with zipfile.ZipFile(dataset_path) as archive:
         manifest = _manifest_from_zip(archive)
         label_map = {int(k): str(v) for k, v in
@@ -83,6 +87,9 @@ def _read_samples(dataset_path: Path) -> tuple[list[Sample], dict, dict]:
             raise ValueError(f"{dataset_path}: manifest has no samples or chip_index.csv")
 
         for index, record in enumerate(records):
+            if (require_georeference or manifest.get("registration_filter_required")) and not record.get("georef"):
+                skipped_unregistered += 1
+                continue
             image_name = record.get("image")
             label_name = record.get("labels")
             if not image_name or not label_name:
@@ -95,6 +102,9 @@ def _read_samples(dataset_path: Path) -> tuple[list[Sample], dict, dict]:
             if rgb.shape[:2] != labels.shape:
                 skipped_bad_shape += 1
                 continue
+            if require_georeference or manifest.get("registration_filter_required"):
+                from .multisource_chips import _grid
+                _grid(record["georef"],*labels.shape)
             valid = labels != IGNORE
             if not np.any(valid):
                 skipped_all_ignore += 1
@@ -106,18 +116,38 @@ def _read_samples(dataset_path: Path) -> tuple[list[Sample], dict, dict]:
             group = str(record.get("split_group") or record.get("source_group") or
                         manifest.get("source_tile") or record.get("sample_id") or index)
             sample_id = str(record.get("sample_id") or f"{dataset_path.stem}:{index}")
-            samples.append(Sample(sample_id, park_id, group, rgb, labels))
+            context = None
+            if use_context and record.get("context"):
+                from .multisource_chips import decode, CHANNELS
+                if manifest.get("context_schema") != "voxel-multisource-v1" or tuple(manifest.get("context_channels", [])) != CHANNELS:
+                    raise ValueError("Unsupported multisource manifest")
+                if not record.get("georef") or not record.get("context_provenance"):
+                    raise ValueError("Context sample requires georeference and provenance")
+                context = decode(archive.read(record["context"]), *labels.shape)
+            samples.append(Sample(sample_id, park_id, group, rgb, labels, context))
     return samples, label_map, {
         "source_zip": dataset_path.name,
         "labelled_samples": len(samples),
         "skipped_all_ignore": skipped_all_ignore,
         "skipped_shape_mismatch": skipped_bad_shape,
+        "skipped_unregistered": skipped_unregistered,
+        "context_samples": sum(s.context is not None for s in samples),
     }
 
 
 def _split(samples: list[Sample], validation_fraction: float, seed: int,
-           holdout_park: str | None) -> tuple[list[Sample], list[Sample], dict]:
+           holdout_park: str | None, validation_groups=None) -> tuple[list[Sample], list[Sample], dict]:
     parks = sorted({s.park_id for s in samples})
+    if validation_groups:
+        if holdout_park or len(parks) != 1:
+            raise ValueError("Explicit validation groups require one park and no park holdout")
+        selected = set(validation_groups)
+        available = {s.split_group for s in samples}
+        if selected - available or selected == available:
+            raise ValueError("Validation groups must exist and leave training groups")
+        return ([s for s in samples if s.split_group not in selected],
+                [s for s in samples if s.split_group in selected],
+                {"mode":"explicit_group", "validation_groups":sorted(selected)})
     if holdout_park:
         if holdout_park not in parks:
             raise ValueError(f"holdout park {holdout_park!r} has no reviewed labelled samples")
@@ -146,14 +176,14 @@ def _split(samples: list[Sample], validation_fraction: float, seed: int,
     return train, valid, {"mode": "source_group", "validation_groups": sorted(valid_groups)}
 
 
-def _tile(rgb: np.ndarray, labels: np.ndarray, size: int, training: bool) -> tuple[np.ndarray, np.ndarray]:
+def _tile(rgb: np.ndarray, labels: np.ndarray, size: int, training: bool, context=None):
     height, width = labels.shape
     if height < size or width < size:
-        scale = max(size / height, size / width)
-        new_size = (max(size, round(width * scale)), max(size, round(height * scale)))
-        rgb_img = Image.fromarray(rgb).resize(new_size, Image.Resampling.BILINEAR)
-        labels_img = Image.fromarray(labels).resize(new_size, Image.Resampling.NEAREST)
-        rgb, labels = np.asarray(rgb_img), np.asarray(labels_img)
+        ph,pw = max(0,size-height),max(0,size-width)
+        rgb = np.pad(rgb,((0,ph),(0,pw),(0,0)),mode="edge")
+        labels = np.pad(labels,((0,ph),(0,pw)),constant_values=IGNORE)
+        if context is not None:
+            context = np.pad(context,((0,ph),(0,pw),(0,0)),constant_values=0)
         height, width = labels.shape
     if training:
         top = random.randint(0, height - size)
@@ -167,60 +197,59 @@ def _tile(rgb: np.ndarray, labels: np.ndarray, size: int, training: bool) -> tup
         top = max(0, (height - size) // 2)
         left = max(0, (width - size) // 2)
     rgb, labels = rgb[top:top + size, left:left + size], labels[top:top + size, left:left + size]
+    if context is not None:
+        context = context[top:top + size, left:left + size]
     if training:
         if random.random() < 0.5:
             rgb, labels = rgb[:, ::-1], labels[:, ::-1]
+            if context is not None: context = context[:, ::-1]
         if random.random() < 0.5:
             rgb, labels = rgb[::-1, :], labels[::-1, :]
+            if context is not None: context = context[::-1, :]
         turns = random.randrange(4)
         if turns:
             rgb, labels = np.rot90(rgb, turns), np.rot90(labels, turns)
-    return np.ascontiguousarray(rgb), np.ascontiguousarray(labels)
+            if context is not None: context = np.rot90(context, turns)
+    rgb = np.ascontiguousarray(rgb)
+    labels = np.ascontiguousarray(labels)
+    return (rgb, labels) if context is None else (rgb, labels, np.ascontiguousarray(context))
 
 
-def train(args: argparse.Namespace) -> dict:
-    try:
-        import torch
-        from torch import nn
-        import torch.nn.functional as F
-    except ImportError as exc:
-        raise SystemExit("Install optional dependencies with: pip install 'voxel-mapper[train]'") from exc
-
-    random.seed(args.seed)
-    np.random.seed(args.seed)
-    torch.manual_seed(args.seed)
-    torch.set_num_threads(args.threads)
-
-    samples, label_map, source_reports = [], None, []
-    for path in args.dataset:
-        current, current_map, report = _read_samples(path)
-        if label_map is None:
-            label_map = current_map
-        elif current_map != label_map:
-            raise ValueError("all datasets must use the same label_map IDs and names")
-        samples.extend(current)
-        source_reports.append(report)
-    if not samples:
-        skipped = sum(item["skipped_all_ignore"] for item in source_reports)
-        raise ValueError(f"no reviewed labels found; {skipped} all-ignore samples were skipped")
-
-    train_samples, valid_samples, split_report = _split(
-        samples, args.validation_fraction, args.seed, args.holdout_park
-    )
-    if not valid_samples:
-        raise ValueError("validation split is empty")
-    if max(label_map) >= args.num_classes:
-        raise ValueError("--num-classes must be greater than the largest label ID")
-
-    counts = np.zeros(args.num_classes, dtype=np.int64)
-    for sample in train_samples:
-        hist = np.bincount(sample.labels[sample.labels != IGNORE], minlength=args.num_classes)
-        counts += hist[:args.num_classes]
-    weights = np.ones(args.num_classes, dtype=np.float32)
-    present = counts > 0
-    weights[present] = (counts[present].sum() / counts[present]) ** 0.25
-    weights[present] /= weights[present].mean()
-
+def build_model(input_channels: int, num_classes: int, *, architecture="unet", residual_bound=1.0):
+    """Shared training/inference architecture; state-dict keys stay compatible."""
+    import torch
+    from torch import nn
+    import torch.nn.functional as F
+    if input_channels not in (3, 28) or not 1 <= num_classes <= 256:
+        raise ValueError("Unsupported ground model dimensions")
+    if architecture in ("rgb_residual_v1","rgb_residual_control_v1"):
+        if input_channels != 28 or not math.isfinite(residual_bound) or not 0 < residual_bound <= 2:
+            raise ValueError("Residual fusion requires 28 inputs and a bound in (0,2]")
+        class ResidualFusion(nn.Module):
+            def __init__(self):
+                super().__init__()
+                self.rgb = build_model(3,num_classes)
+                self.rgb.requires_grad_(False)
+                self.adapter = nn.Sequential(nn.Conv2d(28,16,3,padding=1),nn.ReLU(),
+                    nn.Conv2d(16,16,3,padding=1),nn.ReLU(),nn.Conv2d(16,num_classes,1))
+                nn.init.zeros_(self.adapter[-1].weight)
+                nn.init.zeros_(self.adapter[-1].bias)
+            def train(self, mode=True):
+                super().train(mode)
+                self.rgb.eval()  # Freeze BatchNorm statistics as well as weights.
+                return self
+            def residual(self, x):
+                masks = x[:,[4,6,8,10,12,14,23,25,27]]
+                known = masks.amax(1,keepdim=True)
+                adapter_input = torch.cat((x[:,:3],torch.zeros_like(x[:,3:])),1) if architecture == "rgb_residual_control_v1" else x
+                return residual_bound * torch.tanh(self.adapter(adapter_input)) * known
+            def forward(self, x):
+                with torch.no_grad():
+                    baseline = self.rgb(x[:,:3])
+                return baseline + self.residual(x)
+        return ResidualFusion().train(False)
+    if architecture != "unet":
+        raise ValueError("Unsupported ground architecture")
     class ConvBlock(nn.Module):
         def __init__(self, in_ch: int, out_ch: int):
             super().__init__()
@@ -236,7 +265,7 @@ def train(args: argparse.Namespace) -> dict:
     class SmallUNet(nn.Module):
         def __init__(self, output_classes: int):
             super().__init__()
-            self.e1 = ConvBlock(3, 16)
+            self.e1 = ConvBlock(input_channels, 16)
             self.e2 = ConvBlock(16, 32)
             self.e3 = ConvBlock(32, 64)
             self.mid = ConvBlock(64, 128)
@@ -257,9 +286,125 @@ def train(args: argparse.Namespace) -> dict:
             d = F.interpolate(d, size=a.shape[-2:], mode="bilinear", align_corners=False)
             return self.out(self.u1(torch.cat([d, a], dim=1)))
 
+    return SmallUNet(num_classes)
+
+
+def validate_rgb_teacher(report, expected, sources):
+    """Reject warm starts with different held-out/training membership or lineage."""
+    if report.get("mode") != "rgb" or report.get("status") != "trained":
+        raise ValueError("A completed RGB baseline is required")
+    for key,value in expected.items():
+        if report.get(key) != value:
+            raise ValueError("RGB baseline mismatch: "+key)
+    if [s["dataset_sha256"] for s in report["sources"]] != [s["dataset_sha256"] for s in sources]:
+        raise ValueError("RGB baseline dataset mismatch")
+
+
+def train(args: argparse.Namespace) -> dict:
+    try:
+        import torch
+        from torch import nn
+        import torch.nn.functional as F
+    except ImportError as exc:
+        raise SystemExit("Install optional dependencies with: pip install 'voxel-mapper[train]'") from exc
+
+    from .multisource_chips import CHANNELS, GROUPS, empty, drop_groups, select_groups, fit_continuous_scaling, scale_continuous
+    use_context = getattr(args,"multisource",False)
+    context_groups = getattr(args,"context_group",None) or [name for name, _ in GROUPS]
+    if getattr(args,"context_baseline",False):
+        if not use_context:
+            raise ValueError("Context baseline requires multisource mode")
+        context_groups = []
+    if set(context_groups) - {name for name, _ in GROUPS}:
+        raise ValueError("Unknown context group")
+    dropout = getattr(args,"context_dropout",0.2)
+    if not 0 <= dropout <= 1:
+        raise ValueError("Context dropout must be in [0,1]")
+    input_names = ("red","green","blue") + (CHANNELS if use_context else ())
+    args.output.mkdir(parents=True,exist_ok=True)
+    if (args.output / "model.pt").exists():
+        raise ValueError("Use a fresh output directory; refusing stale checkpoint reuse")
+    context_rng = random.Random(args.seed+1001)
+    random.seed(args.seed)
+    np.random.seed(args.seed)
+    torch.manual_seed(args.seed)
+    torch.set_num_threads(args.threads)
+
+    samples, label_map, source_reports = [], None, []
+    for path in args.dataset:
+        current, current_map, report = _read_samples(path,use_context=use_context,
+            require_georeference=getattr(args,"require_georeference",False))
+        with path.open("rb") as stream:
+            report["dataset_sha256"] = hashlib.file_digest(stream,"sha256").hexdigest()
+        if label_map is None:
+            label_map = current_map
+        elif current_map != label_map:
+            raise ValueError("all datasets must use the same label_map IDs and names")
+        samples.extend(current)
+        source_reports.append(report)
+    if use_context:
+        for sample in samples:
+            if sample.context is not None:
+                sample.context = select_groups(sample.context, context_groups)
+    if not samples:
+        skipped = sum(item["skipped_all_ignore"] for item in source_reports)
+        raise ValueError(f"no reviewed labels found; {skipped} all-ignore samples were skipped")
+
+    train_samples, valid_samples, split_report = _split(
+        samples, args.validation_fraction, args.seed, args.holdout_park,
+        getattr(args,"validation_group",None)
+    )
+    if not valid_samples:
+        raise ValueError("validation split is empty")
+    if use_context and context_groups and not all(any(s.context is not None and np.any(s.context[s.labels != IGNORE]) for s in split) for split in (train_samples,valid_samples)):
+        raise ValueError("Multisource training requires nonempty context in both training and validation splits")
+    normalization = getattr(args,"context_normalization","none")
+    if normalization not in ("none","train_p95") or (normalization != "none" and not use_context):
+        raise ValueError("Invalid context normalization mode")
+    scaling = fit_continuous_scaling(s.context for s in train_samples) if normalization == "train_p95" else None
+    if scaling:
+        for sample in train_samples + valid_samples:
+            if sample.context is not None:
+                sample.context = scale_continuous(sample.context, scaling)
+    if max(label_map) >= args.num_classes:
+        raise ValueError("--num-classes must be greater than the largest label ID")
+
+    counts = np.zeros(args.num_classes, dtype=np.int64)
+    for sample in train_samples:
+        hist = np.bincount(sample.labels[sample.labels != IGNORE], minlength=args.num_classes)
+        counts += hist[:args.num_classes]
+    weights = np.ones(args.num_classes, dtype=np.float32)
+    present = counts > 0
+    weights[present] = (counts[present].sum() / counts[present]) ** 0.25
+    weights[present] /= weights[present].mean()
+
     device = torch.device("cuda" if torch.cuda.is_available() and not args.cpu else "cpu")
-    model = SmallUNet(args.num_classes).to(device)
-    optimizer = torch.optim.AdamW(model.parameters(), lr=args.learning_rate)
+    teacher_path = getattr(args,"rgb_checkpoint",None)
+    architecture = ("rgb_residual_control_v1" if getattr(args,"residual_rgb_only",False) else "rgb_residual_v1") if teacher_path else "unet"
+    residual_bound = getattr(args,"residual_bound",1.)
+    residual_penalty = getattr(args,"residual_penalty",.05)
+    teacher_provenance = None
+    if not math.isfinite(residual_penalty) or residual_penalty < 0:
+        raise ValueError("Invalid residual penalty")
+    model = build_model(len(input_names), args.num_classes, architecture=architecture,
+                        residual_bound=residual_bound).to(device)
+    if teacher_path:
+        teacher_report_path = teacher_path.parent/"training-report.json"
+        teacher_report = json.loads(teacher_report_path.read_text())
+        expected = {"train_ids":[[s.park_id,s.split_group,s.sample_id] for s in train_samples],
+                    "validation_ids":[[s.park_id,s.split_group,s.sample_id] for s in valid_samples],
+                    "class_map":{str(k):v for k,v in label_map.items()},"seed":args.seed,"split":split_report}
+        validate_rgb_teacher(teacher_report,expected,source_reports)
+        if teacher_report["training"]["patch_size"] != args.patch_size:
+            raise ValueError("RGB baseline inference tile size mismatch")
+        saved_teacher = torch.load(teacher_path,map_location=device,weights_only=True)
+        if saved_teacher["input_channels"] != 3 or saved_teacher["num_classes"] != args.num_classes or {str(k):v for k,v in saved_teacher["class_map"].items()} != expected["class_map"]:
+            raise ValueError("RGB checkpoint schema mismatch")
+        model.rgb.load_state_dict(saved_teacher["state_dict"])
+        teacher_provenance = {"checkpoint_sha256":hashlib.sha256(teacher_path.read_bytes()).hexdigest(),
+            "report_sha256":hashlib.sha256(teacher_report_path.read_bytes()).hexdigest()}
+
+    optimizer = torch.optim.AdamW((p for p in model.parameters() if p.requires_grad), lr=args.learning_rate)
     loss_fn = nn.CrossEntropyLoss(
         weight=torch.tensor(weights, dtype=torch.float32, device=device),
         ignore_index=IGNORE,
@@ -268,8 +413,15 @@ def train(args: argparse.Namespace) -> dict:
     def to_batch(items, training):
         xs, ys = [], []
         for sample in items:
-            rgb, mask = _tile(sample.image, sample.labels, args.patch_size, training)
-            xs.append(torch.from_numpy(rgb.copy()).permute(2, 0, 1).float() / 255.0)
+            if use_context:
+                context = sample.context if sample.context is not None else empty(*sample.labels.shape)
+                rgb, mask, context = _tile(sample.image, sample.labels, args.patch_size, training, context)
+                if training: context = drop_groups(context,context_rng,dropout)
+                values = np.concatenate((rgb.astype(np.float32)/255,context),axis=2)
+            else:
+                rgb, mask = _tile(sample.image, sample.labels, args.patch_size, training)
+                values = rgb.astype(np.float32)/255
+            xs.append(torch.from_numpy(values.copy()).permute(2, 0, 1))
             ys.append(torch.from_numpy(mask.copy()).long())
         return torch.stack(xs).to(device), torch.stack(ys).to(device)
 
@@ -291,7 +443,13 @@ def train(args: argparse.Namespace) -> dict:
                             rgb = np.pad(rgb, ((0, pad_h), (0, pad_w), (0, 0)), mode="edge")
                             mask = np.pad(mask, ((0, pad_h), (0, pad_w)), mode="constant",
                                           constant_values=IGNORE)
-                        xb = torch.from_numpy(rgb.copy()).permute(2, 0, 1).float().unsqueeze(0).to(device) / 255.0
+                        values = rgb.astype(np.float32)/255
+                        if use_context:
+                            context = (sample.context[y:y+args.patch_size,x:x+args.patch_size] if sample.context is not None else empty(min(args.patch_size,h-y),min(args.patch_size,w-x)))
+                            if pad_h or pad_w:
+                                context = np.pad(context,((0,pad_h),(0,pad_w),(0,0)),constant_values=0)
+                            values = np.concatenate((values,context),axis=2)
+                        xb = torch.from_numpy(values.copy()).permute(2, 0, 1).unsqueeze(0).to(device)
                         pred = model(xb).argmax(1).squeeze(0).cpu().numpy()
                         valid = mask != IGNORE
                         if np.any(valid):
@@ -299,8 +457,24 @@ def train(args: argparse.Namespace) -> dict:
                             matrix += np.bincount(pairs, minlength=args.num_classes**2).reshape(args.num_classes, args.num_classes)
         return matrix
 
+    def save_checkpoint():
+        torch.save({"state_dict": model.state_dict(), "num_classes": args.num_classes,
+                        "class_map": label_map, "input_channels": len(input_names), "input_names": input_names,
+                        "context_groups":context_groups if use_context else [],
+                        "context_scaling":scaling,
+                        "architecture":architecture,"residual_bound":residual_bound,
+                        "context_schema": "voxel-multisource-v1" if use_context else None}, args.output / "model.pt")
+
     best_validation_mean_iou = -1.0
     history = []
+    baseline_mean_iou = None
+    if teacher_path:
+        cm = confusion_for(valid_samples)
+        supported = cm.sum(1)>0
+        union = cm.sum(0)+cm.sum(1)-cm.diagonal()
+        baseline_mean_iou = float(np.mean(cm.diagonal()[supported]/union[supported]))
+        best_validation_mean_iou = baseline_mean_iou
+        save_checkpoint()  # Explicit epoch-zero fallback, not proof of generalization.
     for epoch in range(1, args.epochs + 1):
         model.train()
         order = list(range(len(train_samples)))
@@ -314,6 +488,8 @@ def train(args: argparse.Namespace) -> dict:
             optimizer.zero_grad(set_to_none=True)
             logits = model(xb)
             loss = loss_fn(logits, yb)
+            if teacher_path:
+                loss = loss + residual_penalty * model.residual(xb).square().mean()
             loss.backward()
             optimizer.step()
             train_loss_sum += float(loss.detach().cpu())
@@ -325,7 +501,8 @@ def train(args: argparse.Namespace) -> dict:
             pixel_accuracy = float(cm.trace() / valid_pixels)
             intersections = np.diag(cm).astype(np.float64)
             unions = cm.sum(axis=0) + cm.sum(axis=1) - intersections
-            defined = unions > 0
+            # Compare the same reviewed classes regardless of predicted classes.
+            defined = cm.sum(axis=1) > 0
             mean_iou = float(np.mean(intersections[defined] / unions[defined])) if np.any(defined) else None
         else:
             pixel_accuracy = None
@@ -343,8 +520,7 @@ def train(args: argparse.Namespace) -> dict:
         # Without reviewed validation pixels, do not select a checkpoint.
         if valid_pixels and mean_iou is not None and mean_iou > best_validation_mean_iou:
             best_validation_mean_iou = mean_iou
-            torch.save({"state_dict": model.state_dict(), "num_classes": args.num_classes,
-                        "class_map": label_map, "input_channels": 3}, args.output / "model.pt")
+            save_checkpoint()
 
     checkpoint = args.output / "model.pt"
     best_metric = None
@@ -367,21 +543,33 @@ def train(args: argparse.Namespace) -> dict:
         "schema": "voxel-ground-segmentation-training-v1",
         "status": "trained" if final_cm.sum() else "no_validation_labels_checkpoint_not_saved",
         "device": str(device),
+        "architecture":architecture,"teacher":teacher_provenance,
+        "residual_bound":residual_bound if teacher_path else None,
+        "residual_penalty":residual_penalty if teacher_path else None,
+        "epoch_zero_mean_iou":baseline_mean_iou,
         "class_map": {str(k): v for k, v in sorted(label_map.items())},
         "split": split_report,
+        "input_names": list(input_names),
+        "mode": "multisource" if use_context else "rgb",
+        "seed": args.seed,
+        "context_dropout": dropout if use_context else 0,
+        "context_groups": context_groups if use_context else [],
+        "context_scaling":scaling,
+        "train_ids": [[s.park_id,s.split_group,s.sample_id] for s in train_samples],
+        "validation_ids": [[s.park_id,s.split_group,s.sample_id] for s in valid_samples],
         "train_samples": len(train_samples),
         "validation_samples": len(valid_samples),
         "sources": source_reports,
         "training": {"epochs": args.epochs, "batch_size": args.batch_size,
                      "patch_size": args.patch_size, "learning_rate": args.learning_rate,
                      "best_validation_mean_iou": best_validation_mean_iou if best_metric is not None else None,
-                     "best_validation_pixel_accuracy": best_metric},
+                     "best_validation_pixel_accuracy": float(final_cm.trace()/final_cm.sum()) if final_cm.sum() else None},
         "history": history,
         "validation_confusion_matrix": final_cm.tolist(),
         "per_class": per_class,
         "limitations": [
             "This baseline learns ground-surface labels only; semantic object classes need a separate reviewed label map.",
-            "RGB is used for every park; the fourth NAIP band is kept in source archives but excluded until all compared parks have compatible channels.",
+            "GIS and LiDAR are context only; reviewed masks remain the targets. Missing context uses zero validity. Fourth NAIP band is not used.",
             "A park holdout measures transfer only for classes represented by reviewed pixels in that held-out park.",
             "No model is trained from all-ignore samples.",
         ],
@@ -397,6 +585,8 @@ def main() -> None:
                         help="Dataset ZIP; repeat for multiple parks/datasets")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--holdout-park", help="Evaluate transfer to this park ID")
+    parser.add_argument("--validation-group", action="append", help="Fixed held-out source/area group; repeat as needed. Caller must verify geographic separation.")
+    parser.add_argument("--require-georeference", action="store_true", help="Exclude samples without accepted geographic transforms")
     parser.add_argument("--validation-fraction", type=float, default=0.2)
     parser.add_argument("--num-classes", type=int, default=10)
     parser.add_argument("--epochs", type=int, default=20)
@@ -406,6 +596,15 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=41)
     parser.add_argument("--threads", type=int, default=2)
     parser.add_argument("--cpu", action="store_true")
+    parser.add_argument("--multisource", action="store_true", help="Use aligned GIS and LiDAR context chips")
+    parser.add_argument("--rgb-checkpoint",type=Path,help="Frozen RGB checkpoint with matching sibling training report")
+    parser.add_argument("--residual-rgb-only",action="store_true",help="Capacity control: correction sees RGB only; same context availability gate")
+    parser.add_argument("--residual-bound",type=float,default=1.)
+    parser.add_argument("--residual-penalty",type=float,default=.05)
+    parser.add_argument("--context-normalization", choices=("none","train_p95"), default="none")
+    parser.add_argument("--context-baseline", action="store_true", help="28-channel control with every context value and mask zeroed")
+    parser.add_argument("--context-dropout", type=float, default=0.2)
+    parser.add_argument("--context-group", action="append", help="Retain only these contextual groups for ablation; repeat as needed")
     args = parser.parse_args()
     if not 0 < args.validation_fraction < 1:
         parser.error("--validation-fraction must be between 0 and 1")

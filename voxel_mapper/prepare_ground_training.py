@@ -91,6 +91,7 @@ def prepare(semantic_root: Path, paving_root: Path, output_zip: Path) -> dict:
     manifest = {
         "title": "Alton Towers ground surface starter dataset",
         "park_id": "alton_towers",
+        "park_id": "alton_towers",
         "version": "2026-11-ground-v1",
         "label_map": {
             "1": "grass_unspecified", "2": "worn_grass_unlabelled",

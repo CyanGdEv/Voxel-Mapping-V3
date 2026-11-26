@@ -1,0 +1,2101 @@
+{
+  "schema": "reviewed-view-registration-cycle-v1",
+  "source_dataset_sha256": "22522d22be8b63a9ffb482eab5e413f189cf29af2377abaad58b1f96f2235973",
+  "reference_archive_sha256": "787851d42c29665049220f6876de73802b8b8afe26f7cc17db9aabe2e09f547e",
+  "opencv_version": "4.14.0",
+  "review": {
+    "dataset_sha256": "22522d22be8b63a9ffb482eab5e413f189cf29af2377abaad58b1f96f2235973",
+    "reference_archive_sha256": "787851d42c29665049220f6876de73802b8b8afe26f7cc17db9aabe2e09f547e",
+    "accepted_ids": [
+      "parkwide_batch3/view_03",
+      "parkwide_batch3/view_04",
+      "parkwide_batch3/view_06",
+      "selected_aerials/view_01",
+      "selected_aerials/view_08",
+      "selected_aerials/view_09",
+      "selected_aerials/view_10"
+    ],
+    "visual_alignment_reviewed": true,
+    "reviewer": "Codex source-relative visual review",
+    "review_image": "corrected-review.jpg",
+    "review_image_sha256": "2603e630f8370f0d64ce33a6c6b008e01bed88e5973fa119f74e60a6bdbcd144",
+    "opencv_version": "4.14.0",
+    "scope": "Correct pixel-centre resize convention; direct source-relative fit only; no absolute survey accuracy or fine-material label acceptance."
+  },
+  "summary": {
+    "accepted_relative_views": 7,
+    "registered_total": 327,
+    "remaining_unregistered": 19,
+    "buffer_m": 32.0,
+    "buffer_policy": "Requested separation plus both relative registration uncertainties",
+    "geographic_groups": {
+      "geographic_1bcc4fca1552": [
+        "parkwide_batch3/view_03",
+        "parkwide_batch3/view_04",
+        "selected_aerials/view_09"
+      ],
+      "geographic_1f2030b78bd1": [
+        "parkwide_batch3/view_06"
+      ],
+      "geographic_299b80e09090": [
+        "selected_aerials/view_01"
+      ],
+      "geographic_63b0ff5ef1ff": [
+        "selected_aerials/view_08",
+        "selected_aerials/view_10"
+      ],
+      "geographic_bbf6a1fb1cfa": [
+        "mb_x016_y048__r0",
+        "mb_x016_y048__r180",
+        "mb_x016_y048__r270",
+        "mb_x016_y048__r90",
+        "mb_x016_y064__r0",
+        "mb_x016_y064__r180",
+        "mb_x016_y064__r270",
+        "mb_x016_y064__r90",
+        "mb_x032_y048__r0",
+        "mb_x032_y048__r180",
+        "mb_x032_y048__r270",
+        "mb_x032_y048__r90",
+        "mb_x032_y064__r0",
+        "mb_x032_y064__r180",
+        "mb_x032_y064__r270",
+        "mb_x032_y064__r90",
+        "mb_x032_y080__r0",
+        "mb_x032_y080__r180",
+        "mb_x032_y080__r270",
+        "mb_x032_y080__r90",
+        "mb_x048_y048__r0",
+        "mb_x048_y048__r180",
+        "mb_x048_y048__r270",
+        "mb_x048_y048__r90",
+        "mb_x048_y064__r0",
+        "mb_x048_y064__r180",
+        "mb_x048_y064__r270",
+        "mb_x048_y064__r90",
+        "mb_x048_y080__r0",
+        "mb_x048_y080__r180",
+        "mb_x048_y080__r270",
+        "mb_x048_y080__r90",
+        "mb_x064_y048__r0",
+        "mb_x064_y048__r180",
+        "mb_x064_y048__r270",
+        "mb_x064_y048__r90",
+        "mb_x064_y064__r0",
+        "mb_x064_y064__r180",
+        "mb_x064_y064__r270",
+        "mb_x064_y064__r90",
+        "mb_x064_y080__r0",
+        "mb_x064_y080__r180",
+        "mb_x064_y080__r270",
+        "mb_x064_y080__r90",
+        "mb_x064_y096__r0",
+        "mb_x064_y096__r180",
+        "mb_x064_y096__r270",
+        "mb_x064_y096__r90",
+        "mb_x080_y064__r0",
+        "mb_x080_y064__r180",
+        "mb_x080_y064__r270",
+        "mb_x080_y064__r90",
+        "mb_x080_y080__r0",
+        "mb_x080_y080__r180",
+        "mb_x080_y080__r270",
+        "mb_x080_y080__r90",
+        "mb_x080_y096__r0",
+        "mb_x080_y096__r180",
+        "mb_x080_y096__r270",
+        "mb_x080_y096__r90",
+        "mb_x080_y112__r0",
+        "mb_x080_y112__r180",
+        "mb_x080_y112__r270",
+        "mb_x080_y112__r90",
+        "mb_x096_y048__r0",
+        "mb_x096_y048__r180",
+        "mb_x096_y048__r270",
+        "mb_x096_y048__r90",
+        "mb_x096_y064__r0",
+        "mb_x096_y064__r180",
+        "mb_x096_y064__r270",
+        "mb_x096_y064__r90",
+        "mb_x096_y080__r0",
+        "mb_x096_y080__r180",
+        "mb_x096_y080__r270",
+        "mb_x096_y080__r90",
+        "mb_x096_y096__r0",
+        "mb_x096_y096__r180",
+        "mb_x096_y096__r270",
+        "mb_x096_y096__r90",
+        "mb_x096_y112__r0",
+        "mb_x096_y112__r180",
+        "mb_x096_y112__r270",
+        "mb_x096_y112__r90",
+        "mb_x112_y032__r0",
+        "mb_x112_y032__r180",
+        "mb_x112_y032__r270",
+        "mb_x112_y032__r90",
+        "mb_x112_y048__r0",
+        "mb_x112_y048__r180",
+        "mb_x112_y048__r270",
+        "mb_x112_y048__r90",
+        "mb_x112_y064__r0",
+        "mb_x112_y064__r180",
+        "mb_x112_y064__r270",
+        "mb_x112_y064__r90",
+        "mb_x112_y080__r0",
+        "mb_x112_y080__r180",
+        "mb_x112_y080__r270",
+        "mb_x112_y080__r90",
+        "mb_x112_y096__r0",
+        "mb_x112_y096__r180",
+        "mb_x112_y096__r270",
+        "mb_x112_y096__r90",
+        "mb_x112_y112__r0",
+        "mb_x112_y112__r180",
+        "mb_x112_y112__r270",
+        "mb_x112_y112__r90",
+        "mb_x112_y128__r0",
+        "mb_x112_y128__r180",
+        "mb_x112_y128__r270",
+        "mb_x112_y128__r90",
+        "mb_x128_y032__r0",
+        "mb_x128_y032__r180",
+        "mb_x128_y032__r270",
+        "mb_x128_y032__r90",
+        "mb_x128_y048__r0",
+        "mb_x128_y048__r180",
+        "mb_x128_y048__r270",
+        "mb_x128_y048__r90",
+        "mb_x128_y064__r0",
+        "mb_x128_y064__r180",
+        "mb_x128_y064__r270",
+        "mb_x128_y064__r90",
+        "mb_x128_y080__r0",
+        "mb_x128_y080__r180",
+        "mb_x128_y080__r270",
+        "mb_x128_y080__r90",
+        "mb_x128_y096__r0",
+        "mb_x128_y096__r180",
+        "mb_x128_y096__r270",
+        "mb_x128_y096__r90",
+        "mb_x128_y112__r0",
+        "mb_x128_y112__r180",
+        "mb_x128_y112__r270",
+        "mb_x128_y112__r90",
+        "mb_x128_y128__r0",
+        "mb_x128_y128__r180",
+        "mb_x128_y128__r270",
+        "mb_x128_y128__r90",
+        "mb_x128_y144__r0",
+        "mb_x128_y144__r180",
+        "mb_x128_y144__r270",
+        "mb_x128_y144__r90",
+        "mb_x144_y032__r0",
+        "mb_x144_y032__r180",
+        "mb_x144_y032__r270",
+        "mb_x144_y032__r90",
+        "mb_x144_y048__r0",
+        "mb_x144_y048__r180",
+        "mb_x144_y048__r270",
+        "mb_x144_y048__r90",
+        "mb_x144_y064__r0",
+        "mb_x144_y064__r180",
+        "mb_x144_y064__r270",
+        "mb_x144_y064__r90",
+        "mb_x144_y080__r0",
+        "mb_x144_y080__r180",
+        "mb_x144_y080__r270",
+        "mb_x144_y080__r90",
+        "mb_x144_y096__r0",
+        "mb_x144_y096__r180",
+        "mb_x144_y096__r270",
+        "mb_x144_y096__r90",
+        "mb_x144_y112__r0",
+        "mb_x144_y112__r180",
+        "mb_x144_y112__r270",
+        "mb_x144_y112__r90",
+        "mb_x144_y128__r0",
+        "mb_x144_y128__r180",
+        "mb_x144_y128__r270",
+        "mb_x144_y128__r90",
+        "mb_x144_y144__r0",
+        "mb_x144_y144__r180",
+        "mb_x144_y144__r270",
+        "mb_x144_y144__r90",
+        "mb_x144_y160__r0",
+        "mb_x144_y160__r180",
+        "mb_x144_y160__r270",
+        "mb_x144_y160__r90",
+        "mb_x160_y032__r0",
+        "mb_x160_y032__r180",
+        "mb_x160_y032__r270",
+        "mb_x160_y032__r90",
+        "mb_x160_y048__r0",
+        "mb_x160_y048__r180",
+        "mb_x160_y048__r270",
+        "mb_x160_y048__r90",
+        "mb_x160_y064__r0",
+        "mb_x160_y064__r180",
+        "mb_x160_y064__r270",
+        "mb_x160_y064__r90",
+        "mb_x160_y080__r0",
+        "mb_x160_y080__r180",
+        "mb_x160_y080__r270",
+        "mb_x160_y080__r90",
+        "mb_x160_y096__r0",
+        "mb_x160_y096__r180",
+        "mb_x160_y096__r270",
+        "mb_x160_y096__r90",
+        "mb_x160_y112__r0",
+        "mb_x160_y112__r180",
+        "mb_x160_y112__r270",
+        "mb_x160_y112__r90",
+        "mb_x160_y128__r0",
+        "mb_x160_y128__r180",
+        "mb_x160_y128__r270",
+        "mb_x160_y128__r90",
+        "mb_x160_y144__r0",
+        "mb_x160_y144__r180",
+        "mb_x160_y144__r270",
+        "mb_x160_y144__r90",
+        "mb_x160_y160__r0",
+        "mb_x160_y160__r180",
+        "mb_x160_y160__r270",
+        "mb_x160_y160__r90",
+        "mb_x176_y032__r0",
+        "mb_x176_y032__r180",
+        "mb_x176_y032__r270",
+        "mb_x176_y032__r90",
+        "mb_x176_y048__r0",
+        "mb_x176_y048__r180",
+        "mb_x176_y048__r270",
+        "mb_x176_y048__r90",
+        "mb_x176_y064__r0",
+        "mb_x176_y064__r180",
+        "mb_x176_y064__r270",
+        "mb_x176_y064__r90",
+        "mb_x176_y080__r0",
+        "mb_x176_y080__r180",
+        "mb_x176_y080__r270",
+        "mb_x176_y080__r90",
+        "mb_x176_y096__r0",
+        "mb_x176_y096__r180",
+        "mb_x176_y096__r270",
+        "mb_x176_y096__r90",
+        "mb_x176_y112__r0",
+        "mb_x176_y112__r180",
+        "mb_x176_y112__r270",
+        "mb_x176_y112__r90",
+        "mb_x176_y128__r0",
+        "mb_x176_y128__r180",
+        "mb_x176_y128__r270",
+        "mb_x176_y128__r90",
+        "mb_x176_y144__r0",
+        "mb_x176_y144__r180",
+        "mb_x176_y144__r270",
+        "mb_x176_y144__r90",
+        "mb_x192_y048__r0",
+        "mb_x192_y048__r180",
+        "mb_x192_y048__r270",
+        "mb_x192_y048__r90",
+        "mb_x192_y064__r0",
+        "mb_x192_y064__r180",
+        "mb_x192_y064__r270",
+        "mb_x192_y064__r90",
+        "mb_x192_y080__r0",
+        "mb_x192_y080__r180",
+        "mb_x192_y080__r270",
+        "mb_x192_y080__r90",
+        "mb_x192_y096__r0",
+        "mb_x192_y096__r180",
+        "mb_x192_y096__r270",
+        "mb_x192_y096__r90",
+        "mb_x192_y112__r0",
+        "mb_x192_y112__r180",
+        "mb_x192_y112__r270",
+        "mb_x192_y112__r90",
+        "mb_x192_y128__r0",
+        "mb_x192_y128__r180",
+        "mb_x192_y128__r270",
+        "mb_x192_y128__r90",
+        "mb_x192_y144__r0",
+        "mb_x192_y144__r180",
+        "mb_x192_y144__r270",
+        "mb_x192_y144__r90",
+        "mb_x208_y048__r0",
+        "mb_x208_y048__r180",
+        "mb_x208_y048__r270",
+        "mb_x208_y048__r90",
+        "mb_x208_y064__r0",
+        "mb_x208_y064__r180",
+        "mb_x208_y064__r270",
+        "mb_x208_y064__r90",
+        "mb_x208_y080__r0",
+        "mb_x208_y080__r180",
+        "mb_x208_y080__r270",
+        "mb_x208_y080__r90",
+        "mb_x208_y096__r0",
+        "mb_x208_y096__r180",
+        "mb_x208_y096__r270",
+        "mb_x208_y096__r90",
+        "mb_x208_y112__r0",
+        "mb_x208_y112__r180",
+        "mb_x208_y112__r270",
+        "mb_x208_y112__r90",
+        "mb_x208_y128__r0",
+        "mb_x208_y128__r180",
+        "mb_x208_y128__r270",
+        "mb_x208_y128__r90",
+        "mb_x208_y144__r0",
+        "mb_x208_y144__r180",
+        "mb_x208_y144__r270",
+        "mb_x208_y144__r90",
+        "mb_x224_y064__r0",
+        "mb_x224_y064__r180",
+        "mb_x224_y064__r270",
+        "mb_x224_y064__r90",
+        "mb_x224_y080__r0",
+        "mb_x224_y080__r180",
+        "mb_x224_y080__r270",
+        "mb_x224_y080__r90",
+        "mb_x224_y112__r0",
+        "mb_x224_y112__r180",
+        "mb_x224_y112__r270",
+        "mb_x224_y112__r90",
+        "mb_x224_y128__r0",
+        "mb_x224_y128__r180",
+        "mb_x224_y128__r270",
+        "mb_x224_y128__r90"
+      ]
+    },
+    "policy": "Groups are conservative overlap/source groups, not independent acquisitions. Unknown registrations must be filtered before geographic evaluation."
+  },
+  "context_attachment": {
+    "aligned": 327,
+    "missing_georeference": 19,
+    "no_context": 0
+  },
+  "source_members_preserved": 693,
+  "existing_exact_transforms_preserved": 320,
+  "source_relative_transforms_added": 7,
+  "views": [
+    {
+      "status": "withheld",
+      "match_count": 7,
+      "reasons": [
+        "insufficient_distinct_matches"
+      ],
+      "sample_id": "parkwide_batch3/view_01",
+      "image_sha256": "cdc3b6af973e954707d7f5ca2f5d5c6753796488f78a8e3bc7b187a67da933e6",
+      "labels_sha256": "4b65a316090d6bb555a1fb8b3eba25b2f9381cb5c42b03e5c7758a856da39fcd",
+      "image_shape": [
+        995,
+        703
+      ],
+      "label_counts": {
+        "9": 213213,
+        "255": 486272
+      },
+      "repeat_scale": {
+        "status": "withheld",
+        "reasons": [
+          "insufficient_distinct_matches"
+        ]
+      }
+    },
+    {
+      "status": "withheld",
+      "match_count": 50,
+      "reasons": [
+        "limited_control_extent"
+      ],
+      "matrix": [
+        [
+          -0.0537833892356776,
+          0.020953915862891914,
+          301.9291038149481
+        ],
+        [
+          -0.02080402138906668,
+          -0.05349630047203929,
+          434.92097569982883
+        ]
+      ],
+      "control_inliers": 31,
+      "control_fraction": 0.8157894736842105,
+      "checkpoint_count": 12,
+      "checkpoint_fraction": 0.8333333333333334,
+      "checkpoint_rms": 0.2739433865802485,
+      "checkpoint_p90": 315.2063550304335,
+      "spread": [
+        0.7794514389249426,
+        0.60945113748312
+      ],
+      "anisotropy": 1.0056424221106464,
+      "sample_id": "parkwide_batch3/view_02",
+      "image_sha256": "1ce996d6b44573b62fcc06cc63cdde7f1e346dd116b5b136325409359c8b11f5",
+      "labels_sha256": "04471c9eb0fb9c790063d81c68bd706f36402626940f26142e423f829dd0776d",
+      "image_shape": [
+        1526,
+        1076
+      ],
+      "label_counts": {
+        "9": 231899,
+        "255": 1410077
+      },
+      "image_agreement": {
+        "whole_view_inside_reference": true,
+        "known_reference_fraction": 1.0,
+        "compared_pixels": 5438,
+        "gray_correlation": 0.9577944215027442,
+        "reference_corners": [
+          [
+            301.9455185516345,
+            434.95812586075937
+          ],
+          [
+            244.0745917340454,
+            412.57299884612365
+          ],
+          [
+            276.0502673408185,
+            330.93764432579167
+          ],
+          [
+            333.92119415840756,
+            353.32277134042744
+          ]
+        ]
+      },
+      "repeat_scale": {
+        "status": "withheld",
+        "reasons": [
+          "withheld_checkpoint_error",
+          "limited_control_extent"
+        ],
+        "matrix": [
+          [
+            -0.05378840602333898,
+            0.0209493860664732,
+            301.94167310834894
+          ],
+          [
+            -0.020754314460365558,
+            -0.053443499905320595,
+            434.8441409320349
+          ]
+        ],
+        "checkpoint_fraction": 0.6923076923076923,
+        "checkpoint_rms": 0.282455497536154,
+        "image_agreement": {
+          "whole_view_inside_reference": true,
+          "known_reference_fraction": 1.0,
+          "compared_pixels": 5433,
+          "gray_correlation": 0.9574640367131847,
+          "reference_corners": [
+            [
+              301.9580926183274,
+              434.88123983921776
+            ],
+            [
+              244.08176773721462,
+              412.5495974798644
+            ],
+            [
+              276.05053087465274,
+              330.99481662434516
+            ],
+            [
+              333.9268557557655,
+              353.32645898369856
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "status": "validated_relative_candidate",
+      "match_count": 56,
+      "reasons": [],
+      "matrix": [
+        [
+          0.075344702715384,
+          -0.016398941170787093,
+          277.60149326586736
+        ],
+        [
+          0.01638883063177949,
+          0.0752410606773607,
+          477.88988289916796
+        ]
+      ],
+      "control_inliers": 31,
+      "control_fraction": 0.8378378378378378,
+      "checkpoint_count": 19,
+      "checkpoint_fraction": 0.8947368421052632,
+      "checkpoint_rms": 0.2494262019526351,
+      "checkpoint_p90": 46.6874700045065,
+      "spread": [
+        0.7414411489399638,
+        0.7984064742922783
+      ],
+      "anisotropy": 1.0013523037165786,
+      "sample_id": "parkwide_batch3/view_03",
+      "image_sha256": "5430cba69d0027404b9e729f5a1669b32efff4194c6f8a6095e62ef75ed6f16c",
+      "labels_sha256": "c8b2cdc77716068970d7bf2f5abf3c2c71b77fcb67013d7548b7348554b3c27a",
+      "image_shape": [
+        1514,
+        1069
+      ],
+      "label_counts": {
+        "1": 25626,
+        "9": 227750,
+        "255": 1365090
+      },
+      "image_agreement": {
+        "whole_view_inside_reference": true,
+        "known_reference_fraction": 1.0,
+        "compared_pixels": 9610,
+        "gray_correlation": 0.9654384540924569,
+        "reference_corners": [
+          [
+            277.5720203850951,
+            477.8440679535134
+          ],
+          [
+            358.11550758784057,
+            495.36372789888566
+          ],
+          [
+            333.28751065526893,
+            609.2786937644098
+          ],
+          [
+            252.7440234525234,
+            591.7590338190375
+          ]
+        ]
+      },
+      "repeat_scale": {
+        "status": "validated_relative_candidate",
+        "reasons": [],
+        "matrix": [
+          [
+            0.07520039496352059,
+            -0.016327675130258328,
+            277.608771905924
+          ],
+          [
+            0.016587956509008638,
+            0.07509734834724195,
+            477.86082479351654
+          ]
+        ],
+        "checkpoint_fraction": 1.0,
+        "checkpoint_rms": 0.33294785995580606,
+        "image_agreement": {
+          "whole_view_inside_reference": true,
+          "known_reference_fraction": 1.0,
+          "compared_pixels": 9574,
+          "gray_correlation": 0.9636272939244184,
+          "reference_corners": [
+            [
+              277.57933554600737,
+              477.8149821410884
+            ],
+            [
+              357.9685577620109,
+              495.54750764921863
+            ],
+            [
+              333.2484576147998,
+              609.2448930469429
+            ],
+            [
+              252.85923539879627,
+              591.5123675388127
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "status": "validated_relative_candidate",
+      "match_count": 46,
+      "reasons": [],
+      "matrix": [
+        [
+          0.06518921710947706,
+          -0.014024166031734016,
+          322.6794145434833
+        ],
+        [
+          0.01420706102555365,
+          0.0650453123788712,
+          482.8421695399572
+        ]
+      ],
+      "control_inliers": 28,
+      "control_fraction": 0.7777777777777778,
+      "checkpoint_count": 10,
+      "checkpoint_fraction": 0.8,
+      "checkpoint_rms": 0.4204070596420346,
+      "checkpoint_p90": 143.03299749107694,
+      "spread": [
+        0.8144921351900591,
+        0.7991335317492485
+      ],
+      "anisotropy": 1.0034988680958052,
+      "sample_id": "parkwide_batch3/view_04",
+      "image_sha256": "732255b193c69afc40c711461c918442857c2829c3ecbacb1e6206ddf287cacf",
+      "labels_sha256": "c6c7ce729c6be1dfa1825e5277cbfd0a4462aab98ca2e9f9bdf6c1864b285d14",
+      "image_shape": [
+        1526,
+        1100
+      ],
+      "label_counts": {
+        "1": 86995,
+        "9": 226786,
+        "255": 1364819
+      },
+      "image_agreement": {
+        "whole_view_inside_reference": true,
+        "known_reference_fraction": 1.0,
+        "compared_pixels": 7453,
+        "gray_correlation": 0.9799580420297928,
+        "reference_corners": [
+          [
+            322.6538320179444,
+            482.802543353255
+          ],
+          [
+            394.3619708383692,
+            498.43031048136396
+          ],
+          [
+            372.9610934739431,
+            597.6894571715214
+          ],
+          [
+            301.2529546535183,
+            582.0616900434125
+          ]
+        ]
+      },
+      "repeat_scale": {
+        "status": "validated_relative_candidate",
+        "reasons": [],
+        "matrix": [
+          [
+            0.06522638533697783,
+            -0.013988592609274023,
+            322.6119528427925
+          ],
+          [
+            0.014056219671828277,
+            0.06497131498988747,
+            482.93272861727695
+          ]
+        ],
+        "checkpoint_fraction": 1.0,
+        "checkpoint_rms": 0.3783053991145317,
+        "image_agreement": {
+          "whole_view_inside_reference": true,
+          "known_reference_fraction": 1.0,
+          "compared_pixels": 7446,
+          "gray_correlation": 0.9808530957030182,
+          "reference_corners": [
+            [
+              322.5863339464287,
+              482.8932148499461
+            ],
+            [
+              394.3353578171043,
+              498.3550564889572
+            ],
+            [
+              372.9887654953521,
+              597.5012831635255
+            ],
+            [
+              301.23974162467647,
+              582.0394415245144
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "status": "withheld",
+      "match_count": 25,
+      "reasons": [
+        "weak_control_consensus"
+      ],
+      "matrix": [
+        [
+          -0.055662345979069654,
+          -0.007193298927516102,
+          499.1348577271485
+        ],
+        [
+          0.0070074438727984675,
+          -0.0552659918427313,
+          951.8757467160422
+        ]
+      ],
+      "control_inliers": 13,
+      "control_fraction": 0.8666666666666667,
+      "checkpoint_count": 10,
+      "checkpoint_fraction": 1.0,
+      "checkpoint_rms": 0.27893443484349084,
+      "checkpoint_p90": 0.40684166356742657,
+      "spread": [
+        0.6929830768440344,
+        0.8021694868803024
+      ],
+      "anisotropy": 1.0078596390396488,
+      "sample_id": "parkwide_batch3/view_05",
+      "image_sha256": "d324c32df0d93181ac37d31c19f0e90b20364c39f44c2707010e6ce659db2454",
+      "labels_sha256": "4892932376ac5342ef9126f088672b4b7b65bbf4e6fc893f07f7f96bdc9355c1",
+      "image_shape": [
+        1526,
+        1178
+      ],
+      "label_counts": {
+        "1": 75949,
+        "9": 288336,
+        "255": 1433343
+      },
+      "image_agreement": {
+        "whole_view_inside_reference": true,
+        "known_reference_fraction": 1.0,
+        "compared_pixels": 5621,
+        "gray_correlation": 0.9614085014366203,
+        "reference_corners": [
+          [
+            499.1662855496018,
+            951.8998759900271
+          ],
+          [
+            433.5960419862578,
+            960.1546448721837
+          ],
+          [
+            422.6190678228682,
+            875.8187413201757
+          ],
+          [
+            488.18931138621224,
+            867.5639724380192
+          ]
+        ]
+      },
+      "repeat_scale": {
+        "status": "withheld",
+        "reasons": [
+          "weak_control_consensus"
+        ],
+        "matrix": [
+          [
+            -0.055698218935890706,
+            -0.007167275997756988,
+            499.15604892011504
+          ],
+          [
+            0.007002110978169073,
+            -0.0553081633145933,
+            951.9404154762129
+          ]
+        ],
+        "checkpoint_fraction": 1.0,
+        "checkpoint_rms": 0.275633287992376,
+        "image_agreement": {
+          "whole_view_inside_reference": true,
+          "known_reference_fraction": 1.0,
+          "compared_pixels": 5630,
+          "gray_correlation": 0.9588437245536539,
+          "reference_corners": [
+            [
+              499.1874816675819,
+              951.9645685023811
+            ],
+            [
+              433.5749797611026,
+              960.2130552346644
+            ],
+            [
+              422.63771658852545,
+              875.8127980165949
+            ],
+            [
+              488.2502184950047,
+              867.5643112843118
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "status": "validated_relative_candidate",
+      "match_count": 105,
+      "reasons": [],
+      "matrix": [
+        [
+          0.10769501375353982,
+          -0.046985365773870504,
+          557.2036380930871
+        ],
+        [
+          0.046824805938333304,
+          0.1072987072221045,
+          846.0879071482448
+        ]
+      ],
+      "control_inliers": 66,
+      "control_fraction": 0.9166666666666666,
+      "checkpoint_count": 33,
+      "checkpoint_fraction": 0.9696969696969697,
+      "checkpoint_rms": 0.25388280281290915,
+      "checkpoint_p90": 0.42320831605421105,
+      "spread": [
+        0.8860874510647959,
+        0.8202763870358467
+      ],
+      "anisotropy": 1.003652458319471,
+      "sample_id": "parkwide_batch3/view_06",
+      "image_sha256": "d45d938f07fb11738ec6c6bdbda7ad7e90bfe1609507481f552c671096c44d1f",
+      "labels_sha256": "32e73531c2c6eabf442eda7d2c16e6c6a972b82b731bc015f4d1235a9f90e786",
+      "image_shape": [
+        1526,
+        1105
+      ],
+      "label_counts": {
+        "9": 14060,
+        "255": 1672170
+      },
+      "image_agreement": {
+        "whole_view_inside_reference": true,
+        "known_reference_fraction": 1.0,
+        "compared_pixels": 23196,
+        "gray_correlation": 0.9610957944708173,
+        "reference_corners": [
+          [
+            557.1732832690973,
+            846.0108453916646
+          ],
+          [
+            676.1762734667587,
+            897.7522559535229
+          ],
+          [
+            604.4766052958323,
+            1061.4900831744544
+          ],
+          [
+            485.47361509817085,
+            1009.748672612596
+          ]
+        ]
+      },
+      "repeat_scale": {
+        "status": "validated_relative_candidate",
+        "reasons": [],
+        "matrix": [
+          [
+            0.10768445515683545,
+            -0.04693772284672567,
+            557.1614844967869
+          ],
+          [
+            0.046835498475107026,
+            0.10726023824391347,
+            846.0514138163776
+          ]
+        ],
+        "checkpoint_fraction": 0.9705882352941176,
+        "checkpoint_rms": 0.2463123822228352,
+        "image_agreement": {
+          "whole_view_inside_reference": true,
+          "known_reference_fraction": 1.0,
+          "compared_pixels": 23184,
+          "gray_correlation": 0.9624023707624708,
+          "reference_corners": [
+            [
+              557.1311111306319,
+              845.9743659480181
+            ],
+            [
+              676.122434078935,
+              897.7275917630113
+            ],
+            [
+              604.4954690148317,
+              1061.4067153232234
+            ],
+            [
+              485.5041460665285,
+              1009.65348950823
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "status": "withheld",
+      "match_count": 54,
+      "reasons": [
+        "limited_control_extent"
+      ],
+      "matrix": [
+        [
+          0.02912282063364848,
+          -0.09000213313203351,
+          555.1081545509958
+        ],
+        [
+          0.08988306025294134,
+          0.02912039496165024,
+          498.01829223457923
+        ]
+      ],
+      "control_inliers": 26,
+      "control_fraction": 0.8666666666666667,
+      "checkpoint_count": 24,
+      "checkpoint_fraction": 0.875,
+      "checkpoint_rms": 0.3075544873166193,
+      "checkpoint_p90": 0.9826237128472693,
+      "spread": [
+        0.7441428901373778,
+        0.6103377379477024
+      ],
+      "anisotropy": 1.0012605577960287,
+      "sample_id": "parkwide_batch3/view_07",
+      "image_sha256": "57d6d8ecac79cf3621cb84f448785ec2502dd9a56f35ea76cfdb72de95038c7f",
+      "labels_sha256": "501a2b044958071c0e429bd180474c75700cc1a11a20197b4f2d6d7de61078f2",
+      "image_shape": [
+        1526,
+        1105
+      ],
+      "label_counts": {
+        "1": 20604,
+        "9": 95943,
+        "255": 1569683
+      },
+      "image_agreement": {
+        "whole_view_inside_reference": true,
+        "known_reference_fraction": 1.0,
+        "compared_pixels": 15073,
+        "gray_correlation": 0.9767367238270972,
+        "reference_corners": [
+          [
+            555.138594207245,
+            497.9587905069719
+          ],
+          [
+            587.3193110074266,
+            597.2795720864722
+          ],
+          [
+            449.9760558479434,
+            641.7172947979504
+          ],
+          [
+            417.79533904776184,
+            542.3965132184502
+          ]
+        ]
+      },
+      "repeat_scale": {
+        "status": "withheld",
+        "reasons": [
+          "limited_control_extent"
+        ],
+        "matrix": [
+          [
+            0.02915205712742566,
+            -0.09006027353879024,
+            555.1337155900511
+          ],
+          [
+            0.09002611671430895,
+            0.02894700633431377,
+            498.003740042493
+          ]
+        ],
+        "checkpoint_fraction": 0.9545454545454546,
+        "checkpoint_rms": 0.30617028699110194,
+        "image_agreement": {
+          "whole_view_inside_reference": true,
+          "known_reference_fraction": 1.0,
+          "compared_pixels": 15100,
+          "gray_correlation": 0.9768103742348822,
+          "reference_corners": [
+            [
+              555.1641696982568,
+              497.9442534809687
+            ],
+            [
+              587.3771928240621,
+              597.4231124502801
+            ],
+            [
+              449.94521540386825,
+              641.5962441164429
+            ],
+            [
+              417.7321922780629,
+              542.1173851471315
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "status": "withheld",
+      "match_count": 30,
+      "reasons": [
+        "weak_control_consensus"
+      ],
+      "matrix": [
+        [
+          -0.05648698017334483,
+          -0.007057432744121723,
+          499.0015884812748
+        ],
+        [
+          0.007382062381539088,
+          -0.056580922618691534,
+          953.417218307735
+        ]
+      ],
+      "control_inliers": 13,
+      "control_fraction": 0.65,
+      "checkpoint_count": 10,
+      "checkpoint_fraction": 1.0,
+      "checkpoint_rms": 0.36378542127107105,
+      "checkpoint_p90": 0.4311582373301418,
+      "spread": [
+        0.6927497834350271,
+        0.6955102384090424
+      ],
+      "anisotropy": 1.0059472827226892,
+      "sample_id": "parkwide_batch3/view_08",
+      "image_sha256": "d25097328741d0ef695704522eb76cd092eed8d3092a02642bd975a35ddc7d89",
+      "labels_sha256": "f0d69bcfc843c3cbd545eb60769bd78705618748f853b4eba8b0c7a52341645c",
+      "image_shape": [
+        1526,
+        1160
+      ],
+      "label_counts": {
+        "1": 73553,
+        "9": 280227,
+        "255": 1416380
+      },
+      "image_agreement": {
+        "whole_view_inside_reference": true,
+        "known_reference_fraction": 1.0,
+        "compared_pixels": 5739,
+        "gray_correlation": 0.9570886497814051,
+        "reference_corners": [
+          [
+            499.03336068773353,
+            953.4418177378535
+          ],
+          [
+            433.5084636866535,
+            962.0050101004389
+          ],
+          [
+            422.73882131912376,
+            875.6625221843155
+          ],
+          [
+            488.26371832020374,
+            867.0993298217303
+          ]
+        ]
+      },
+      "repeat_scale": {
+        "status": "withheld",
+        "reasons": [
+          "weak_control_consensus"
+        ],
+        "matrix": [
+          [
+            -0.056289398333252326,
+            -0.0074259625331931515,
+            499.3038793015008
+          ],
+          [
+            0.007459432202545788,
+            -0.0564713792795162,
+            953.2988730462223
+          ]
+        ],
+        "checkpoint_fraction": 0.8461538461538461,
+        "checkpoint_rms": 0.25518946350409716,
+        "image_agreement": {
+          "whole_view_inside_reference": true,
+          "known_reference_fraction": 1.0,
+          "compared_pixels": 5728,
+          "gray_correlation": 0.9468878463873465,
+          "reference_corners": [
+            [
+              499.335736981934,
+              953.3233790197608
+            ],
+            [
+              434.04003491536133,
+              961.9763203747139
+            ],
+            [
+              422.70801608970856,
+              875.8009955941722
+            ],
+            [
+              488.00371815628125,
+              867.148054239219
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "status": "withheld",
+      "match_count": 30,
+      "reasons": [
+        "limited_control_extent"
+      ],
+      "matrix": [
+        [
+          -0.026202632302828877,
+          0.04861433487972266,
+          509.8460370490547
+        ],
+        [
+          -0.04886383077496696,
+          -0.025680791806118507,
+          930.2152382007416
+        ]
+      ],
+      "control_inliers": 16,
+      "control_fraction": 0.8421052631578947,
+      "checkpoint_count": 11,
+      "checkpoint_fraction": 0.8181818181818182,
+      "checkpoint_rms": 0.26076333601816604,
+      "checkpoint_p90": 587.0739611410366,
+      "spread": [
+        0.6138201356763137,
+        0.692611426115036
+      ],
+      "anisotropy": 1.0105312649619056,
+      "sample_id": "parkwide_batch3/view_09",
+      "image_sha256": "d5a6c5dfa4c26540641745c11326eafa27ce58c246241d8f3c80fe896a12ea79",
+      "labels_sha256": "32f363dde7634a81cd38723b839b85d8c5d19ecb12934a13f2a589dd6c622c59",
+      "image_shape": [
+        1526,
+        1072
+      ],
+      "label_counts": {
+        "9": 264520,
+        "255": 1371352
+      },
+      "image_agreement": {
+        "whole_view_inside_reference": true,
+        "known_reference_fraction": 1.0,
+        "compared_pixels": 4986,
+        "gray_correlation": 0.9528912422018344,
+        "reference_corners": [
+          [
+            509.8348311977663,
+            930.2525105120321
+          ],
+          [
+            481.7456093691337,
+            877.8704839212676
+          ],
+          [
+            555.9310843955905,
+            838.6815956251307
+          ],
+          [
+            584.0203062242231,
+            891.0636222158953
+          ]
+        ]
+      },
+      "repeat_scale": {
+        "status": "withheld",
+        "reasons": [
+          "weak_control_consensus",
+          "withheld_checkpoint_error",
+          "limited_control_extent"
+        ],
+        "matrix": [
+          [
+            -0.026197871054133338,
+            0.048613566881082024,
+            509.8337096035989
+          ],
+          [
+            -0.048787173072730665,
+            -0.02570251815792405,
+            930.2164560564069
+          ]
+        ],
+        "checkpoint_fraction": 0.6666666666666666,
+        "checkpoint_rms": 0.23483015384989187,
+        "image_agreement": {
+          "whole_view_inside_reference": true,
+          "known_reference_fraction": 1.0,
+          "compared_pixels": 4982,
+          "gray_correlation": 0.9533461555068679,
+          "reference_corners": [
+            [
+              509.82250175568544,
+              930.2537009020222
+            ],
+            [
+              481.7383839856545,
+              877.9538513680549
+            ],
+            [
+              555.9226870461856,
+              838.7318086590628
+            ],
+            [
+              584.0068048162166,
+              891.0316581930301
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "status": "withheld",
+      "match_count": 8,
+      "reasons": [
+        "insufficient_distinct_matches"
+      ],
+      "sample_id": "parkwide_batch3/view_10",
+      "image_sha256": "62c57bc4fbc0988759d5bafbc4e7c9040d56444b63a9599fc430eb13de322de2",
+      "labels_sha256": "0f74666dff158cb1e2db6964ff5f618da07a99b344abdc4598c405adccbc1e5d",
+      "image_shape": [
+        1526,
+        1124
+      ],
+      "label_counts": {
+        "9": 497142,
+        "255": 1218082
+      },
+      "repeat_scale": {
+        "status": "withheld",
+        "reasons": [
+          "insufficient_distinct_matches"
+        ]
+      }
+    },
+    {
+      "status": "withheld",
+      "match_count": 20,
+      "reasons": [
+        "insufficient_distinct_matches"
+      ],
+      "sample_id": "parkwide_batch4/view_01",
+      "image_sha256": "a2d8f5377f10c7bbf6f4f410911ddd5de5ececfc5a0503b9be85370ad05a20e4",
+      "labels_sha256": "cc56cb75ba0be6bb1e2e4b408d73e90db05506411d9f486634449ea7189e8966",
+      "image_shape": [
+        1536,
+        1118
+      ],
+      "label_counts": {
+        "9": 638212,
+        "255": 1079036
+      },
+      "repeat_scale": {
+        "status": "withheld",
+        "reasons": [
+          "insufficient_distinct_matches"
+        ]
+      }
+    },
+    {
+      "status": "withheld",
+      "match_count": 2,
+      "reasons": [
+        "insufficient_distinct_matches"
+      ],
+      "sample_id": "parkwide_batch4/view_02",
+      "image_sha256": "fc8823bb516b4e2a886450ef413aadbc12b5b23b53a00ec56292eac1359ab961",
+      "labels_sha256": "be21818a3cb25d910bf3f3ea1e59098274200cbf0e7f88143dcc302e447c3d7b",
+      "image_shape": [
+        1450,
+        1536
+      ],
+      "label_counts": {
+        "9": 1203883,
+        "255": 1023317
+      },
+      "repeat_scale": {
+        "status": "withheld",
+        "reasons": [
+          "insufficient_distinct_matches"
+        ]
+      }
+    },
+    {
+      "status": "withheld",
+      "match_count": 3,
+      "reasons": [
+        "insufficient_distinct_matches"
+      ],
+      "sample_id": "parkwide_batch4/view_03",
+      "image_sha256": "51aeb4cc87f903c7ae121767889134d763e92b445a2c06c08a465b171606a9b4",
+      "labels_sha256": "eb43192c5b59ec01019c832ae833d5697e5eb49f0b4fe7c15c8638428b4143a9",
+      "image_shape": [
+        1536,
+        1536
+      ],
+      "label_counts": {
+        "9": 873894,
+        "255": 1485402
+      },
+      "repeat_scale": {
+        "status": "withheld",
+        "reasons": [
+          "insufficient_distinct_matches"
+        ]
+      }
+    },
+    {
+      "status": "withheld",
+      "match_count": 4,
+      "reasons": [
+        "insufficient_distinct_matches"
+      ],
+      "sample_id": "parkwide_batch4/view_04",
+      "image_sha256": "9efc627a1a8165795e7d67a1dac2b9f17174fbf7a5e657b9569c34621bf71afa",
+      "labels_sha256": "5c8fbb871db4ba321863161e452dceb3c0440352fca7b7ded1af33395d8e7a1c",
+      "image_shape": [
+        1536,
+        1227
+      ],
+      "label_counts": {
+        "255": 1884672
+      },
+      "repeat_scale": {
+        "status": "withheld",
+        "reasons": [
+          "insufficient_distinct_matches"
+        ]
+      }
+    },
+    {
+      "status": "withheld",
+      "match_count": 2,
+      "reasons": [
+        "insufficient_distinct_matches"
+      ],
+      "sample_id": "parkwide_batch4/view_05",
+      "image_sha256": "93cc8d704be3d18526501a800321981783b879fe391858d3280ce97cc3ab336e",
+      "labels_sha256": "fe60ab0d63c9a9e01e2af161ca1f9a936e481448435cbc664ea29df31ada2991",
+      "image_shape": [
+        1536,
+        1150
+      ],
+      "label_counts": {
+        "9": 176186,
+        "255": 1590214
+      },
+      "repeat_scale": {
+        "status": "withheld",
+        "reasons": [
+          "insufficient_distinct_matches"
+        ]
+      }
+    },
+    {
+      "status": "withheld",
+      "match_count": 1,
+      "reasons": [
+        "insufficient_distinct_matches"
+      ],
+      "sample_id": "parkwide_batch4/view_06",
+      "image_sha256": "f8a79aab71820c5998208b623a546a18c1ec655192699b09196c1a51528ffff7",
+      "labels_sha256": "96777e060b4ac6ae1a1f23a2d30c985d28b89b789c8fb8414a8f766403202819",
+      "image_shape": [
+        1450,
+        1526
+      ],
+      "label_counts": {
+        "255": 2212700
+      },
+      "repeat_scale": {
+        "status": "withheld",
+        "reasons": [
+          "insufficient_distinct_matches"
+        ]
+      }
+    },
+    {
+      "status": "validated_relative_candidate",
+      "match_count": 44,
+      "reasons": [],
+      "matrix": [
+        [
+          0.0036234902219448024,
+          0.06662128170450972,
+          844.7224809387529
+        ],
+        [
+          -0.0668822575607074,
+          0.003513523474860111,
+          401.8186171768747
+        ]
+      ],
+      "control_inliers": 21,
+      "control_fraction": 0.7777777777777778,
+      "checkpoint_count": 17,
+      "checkpoint_fraction": 0.8823529411764706,
+      "checkpoint_rms": 0.30544263467173405,
+      "checkpoint_p90": 0.8961972907878066,
+      "spread": [
+        0.8046238161881106,
+        0.7412320971488953
+      ],
+      "anisotropy": 1.004245497143177,
+      "sample_id": "selected_aerials/view_01",
+      "image_sha256": "11379e94e862880efb48fa2e08a124ca8b04c69a77615f3fb0df123bef69d80d",
+      "labels_sha256": "e9de363ffc785dad486b71ab61975ef64d8dd7af684b8fc11d1bd3604b652373",
+      "image_shape": [
+        1536,
+        1085
+      ],
+      "label_counts": {
+        "1": 46361,
+        "9": 76836,
+        "255": 1543363
+      },
+      "image_agreement": {
+        "whole_view_inside_reference": true,
+        "known_reference_fraction": 1.0,
+        "compared_pixels": 7449,
+        "gray_correlation": 0.97148272541757,
+        "reference_corners": [
+          [
+            844.6873585527898,
+            401.8503015439176
+          ],
+          [
+            848.6188454435999,
+            329.2830520905501
+          ],
+          [
+            950.9491341417267,
+            334.6798241479352
+          ],
+          [
+            947.0176472509166,
+            407.24707360130276
+          ]
+        ]
+      },
+      "repeat_scale": {
+        "status": "validated_relative_candidate",
+        "reasons": [],
+        "matrix": [
+          [
+            0.0036589936879099618,
+            0.06668836189691822,
+            844.6403469104538
+          ],
+          [
+            -0.06686943956435892,
+            0.0034496199534162866,
+            401.913423398066
+          ]
+        ],
+        "checkpoint_fraction": 0.9333333333333333,
+        "checkpoint_rms": 0.26445545652945734,
+        "image_agreement": {
+          "whole_view_inside_reference": true,
+          "known_reference_fraction": 1.0,
+          "compared_pixels": 7455,
+          "gray_correlation": 0.9704313007217369,
+          "reference_corners": [
+            [
+              844.6051732326614,
+              401.9451333078715
+            ],
+            [
+              848.5751813840437,
+              329.39179138054203
+            ],
+            [
+              951.0085052577101,
+              334.6904076289895
+            ],
+            [
+              947.0384971063278,
+              407.2437495563189
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "status": "withheld",
+      "match_count": 13,
+      "reasons": [
+        "insufficient_distinct_matches"
+      ],
+      "sample_id": "selected_aerials/view_02",
+      "image_sha256": "d5e7aaeb4fdcc0c8d59d2c4623d77fac77df82e7d4adf144fb59ca672986182a",
+      "labels_sha256": "f5b2a0e6b48ba56e679e4a6dbcd7348af354d0c8df16bb628cd977f5e8c68be8",
+      "image_shape": [
+        1536,
+        1158
+      ],
+      "label_counts": {
+        "9": 208752,
+        "255": 1569936
+      },
+      "repeat_scale": {
+        "status": "withheld",
+        "reasons": [
+          "insufficient_distinct_matches"
+        ]
+      }
+    },
+    {
+      "status": "withheld",
+      "match_count": 11,
+      "reasons": [
+        "insufficient_distinct_matches"
+      ],
+      "sample_id": "selected_aerials/view_03",
+      "image_sha256": "07b47ad46dd4c805be280ad53bbd13ba2ca4c3918b8623ce15ccdeb499f3279a",
+      "labels_sha256": "78221a894e3477bd535c6846cfe5776b9fbde84ec12643fd918b3108b9bd844f",
+      "image_shape": [
+        1536,
+        1163
+      ],
+      "label_counts": {
+        "9": 261713,
+        "255": 1524655
+      },
+      "repeat_scale": {
+        "status": "withheld",
+        "reasons": [
+          "insufficient_distinct_matches"
+        ]
+      }
+    },
+    {
+      "status": "withheld",
+      "match_count": 8,
+      "reasons": [
+        "insufficient_distinct_matches"
+      ],
+      "sample_id": "selected_aerials/view_04",
+      "image_sha256": "1ca1410eb57dd34032ee71fc37653b7f3c5630db6ef02533424319b4905c42c4",
+      "labels_sha256": "c1ccc083be0599bba7f7bb3c4dcf5987cad531c0f7d7ed701863f0a18decf46c",
+      "image_shape": [
+        1536,
+        1184
+      ],
+      "label_counts": {
+        "9": 82971,
+        "255": 1735653
+      },
+      "repeat_scale": {
+        "status": "withheld",
+        "reasons": [
+          "insufficient_distinct_matches"
+        ]
+      }
+    },
+    {
+      "status": "withheld",
+      "match_count": 41,
+      "reasons": [
+        "weak_control_consensus",
+        "limited_control_extent"
+      ],
+      "matrix": [
+        [
+          -0.06546231885119778,
+          0.025381754233543236,
+          955.7640122740006
+        ],
+        [
+          -0.025402559785050967,
+          -0.06561257026939889,
+          524.0409272926806
+        ]
+      ],
+      "control_inliers": 12,
+      "control_fraction": 0.75,
+      "checkpoint_count": 25,
+      "checkpoint_fraction": 0.84,
+      "checkpoint_rms": 0.37749953957602317,
+      "checkpoint_p90": 335.25425980071947,
+      "spread": [
+        0.5909195371324969,
+        0.6700042113661766
+      ],
+      "anisotropy": 1.0021604878945187,
+      "sample_id": "selected_aerials/view_05",
+      "image_sha256": "2b4876fb2417c78286d8a359181020d5ac3c395b11576cc94c681a8695b459f6",
+      "labels_sha256": "e6c0c3eda21b3b41201f003d3fffe4503d26a5d2ec94dc78b0ba93642d85df24",
+      "image_shape": [
+        1522,
+        1067
+      ],
+      "label_counts": {
+        "9": 113621,
+        "255": 1510353
+      },
+      "image_agreement": {
+        "whole_view_inside_reference": true,
+        "known_reference_fraction": 1.0,
+        "compared_pixels": 8021,
+        "gray_correlation": 0.9583002886787216,
+        "reference_corners": [
+          [
+            955.7840525563095,
+            524.0864348577079
+          ],
+          [
+            885.9357583420814,
+            496.98190356705845
+          ],
+          [
+            924.5667882855342,
+            397.1195716170334
+          ],
+          [
+            994.4150824997622,
+            424.2241029076828
+          ]
+        ]
+      },
+      "repeat_scale": {
+        "status": "withheld",
+        "reasons": [
+          "weak_control_consensus",
+          "limited_control_extent"
+        ],
+        "matrix": [
+          [
+            -0.06544359621403949,
+            0.02540317745788065,
+            955.7399723465676
+          ],
+          [
+            -0.025385342858369932,
+            -0.0656631198234436,
+            524.1070315450118
+          ]
+        ],
+        "checkpoint_fraction": 0.95,
+        "checkpoint_rms": 0.37625072584492664,
+        "image_agreement": {
+          "whole_view_inside_reference": true,
+          "known_reference_fraction": 1.0,
+          "compared_pixels": 8025,
+          "gray_correlation": 0.9567632353937224,
+          "reference_corners": [
+            [
+              955.7599925559457,
+              524.1525557763526
+            ],
+            [
+              885.9316753955655,
+              497.0663949464719
+            ],
+            [
+              924.5953114864599,
+              397.1271265751908
+            ],
+            [
+              994.42362864684,
+              424.21328740507147
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "status": "withheld",
+      "match_count": 8,
+      "reasons": [
+        "insufficient_distinct_matches"
+      ],
+      "sample_id": "selected_aerials/view_06",
+      "image_sha256": "e0332e068bdd99b23de0ecd372bf50b4779b0beff63a4d67a7cd39f1b0607845",
+      "labels_sha256": "4eb936136851256fe89b78ebfad5d478a01add921fcf43ac5c0097a596e51caf",
+      "image_shape": [
+        1536,
+        1206
+      ],
+      "label_counts": {
+        "9": 241337,
+        "255": 1611079
+      },
+      "repeat_scale": {
+        "status": "withheld",
+        "reasons": [
+          "insufficient_distinct_matches"
+        ]
+      }
+    },
+    {
+      "status": "withheld",
+      "match_count": 23,
+      "reasons": [
+        "insufficient_distinct_matches"
+      ],
+      "sample_id": "selected_aerials/view_07",
+      "image_sha256": "f1c8232c094cd22b5403e99492ba0728ac79b575376e31f59c792f6d8c9c2b2d",
+      "labels_sha256": "b1ac1e82cabb4bd89d7a35ea06289788ef32766c77c62c27622e63847c0b6ba5",
+      "image_shape": [
+        1527,
+        1081
+      ],
+      "label_counts": {
+        "9": 74436,
+        "255": 1576251
+      },
+      "repeat_scale": {
+        "status": "withheld",
+        "reasons": [
+          "insufficient_distinct_matches"
+        ]
+      }
+    },
+    {
+      "status": "validated_relative_candidate",
+      "match_count": 48,
+      "reasons": [],
+      "matrix": [
+        [
+          -0.05381193818827346,
+          0.0209677745498147,
+          301.9268161961502
+        ],
+        [
+          -0.020772578604277746,
+          -0.05348490359370725,
+          434.84594827799236
+        ]
+      ],
+      "control_inliers": 34,
+      "control_fraction": 0.918918918918919,
+      "checkpoint_count": 11,
+      "checkpoint_fraction": 0.8181818181818182,
+      "checkpoint_rms": 0.29317111641178745,
+      "checkpoint_p90": 350.11077459571896,
+      "spread": [
+        0.7809535980224609,
+        0.6849692165851593
+      ],
+      "anisotropy": 1.0066381156438071,
+      "sample_id": "selected_aerials/view_08",
+      "image_sha256": "9b6bb2b7c144bca2d20b49e21e7cae11dd96dac9bbc9ae5958130cae530f814b",
+      "labels_sha256": "bf0985f68d70a91dd4f08a42f0b161eeca7142074f9c6e3ee211af8d1b00e127",
+      "image_shape": [
+        1527,
+        1074
+      ],
+      "label_counts": {
+        "9": 231105,
+        "255": 1408893
+      },
+      "image_agreement": {
+        "whole_view_inside_reference": true,
+        "known_reference_fraction": 1.0,
+        "compared_pixels": 5435,
+        "gray_correlation": 0.959193050126024,
+        "reference_corners": [
+          [
+            301.94323827796944,
+            434.88307701909133
+          ],
+          [
+            244.14921666376372,
+            412.5733275980971
+          ],
+          [
+            276.16700840133075,
+            330.9018798105061
+          ],
+          [
+            333.96103001553644,
+            353.2116292315004
+          ]
+        ]
+      },
+      "repeat_scale": {
+        "status": "validated_relative_candidate",
+        "reasons": [],
+        "matrix": [
+          [
+            -0.05380895085199695,
+            0.02096619834217304,
+            301.9443472875504
+          ],
+          [
+            -0.02074246131271892,
+            -0.05346145941690156,
+            434.8441882293014
+          ]
+        ],
+        "checkpoint_fraction": 0.8181818181818182,
+        "checkpoint_rms": 0.28754937066932584,
+        "image_agreement": {
+          "whole_view_inside_reference": true,
+          "known_reference_fraction": 1.0,
+          "compared_pixels": 5432,
+          "gray_correlation": 0.9570325741508562,
+          "reference_corners": [
+            [
+              301.9607686638053,
+              434.8812901896662
+            ],
+            [
+              244.16995544876056,
+              412.60388673980606
+            ],
+            [
+              276.1853403172588,
+              330.9682382101974
+            ],
+            [
+              333.97615353230356,
+              353.2456416600575
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "status": "validated_relative_candidate",
+      "match_count": 51,
+      "reasons": [],
+      "matrix": [
+        [
+          0.06520317846013264,
+          -0.014019252778264372,
+          322.6713298555356
+        ],
+        [
+          0.01410533031315571,
+          0.06501684254796587,
+          482.8972157050744
+        ]
+      ],
+      "control_inliers": 29,
+      "control_fraction": 0.725,
+      "checkpoint_count": 11,
+      "checkpoint_fraction": 0.8181818181818182,
+      "checkpoint_rms": 0.38220507346261307,
+      "checkpoint_p90": 114.06500680812098,
+      "spread": [
+        0.873077563154019,
+        0.7988109886646271
+      ],
+      "anisotropy": 1.0030861695097388,
+      "sample_id": "selected_aerials/view_09",
+      "image_sha256": "901f798291c8c89042c780d4822bce34e8b3b4394aa19957f559ef19e2dbeb8e",
+      "labels_sha256": "26c85f56719f7be6b31ef2b127cc3189367e3d359275fa5cf856bf85f4e6dc49",
+      "image_shape": [
+        1527,
+        1100
+      ],
+      "label_counts": {
+        "1": 86995,
+        "9": 226786,
+        "255": 1365919
+      },
+      "image_agreement": {
+        "whole_view_inside_reference": true,
+        "known_reference_fraction": 1.0,
+        "compared_pixels": 7454,
+        "gray_correlation": 0.9803393785724396,
+        "reference_corners": [
+          [
+            322.6457378926947,
+            482.85765461864383
+          ],
+          [
+            394.36923419884056,
+            498.37351796311515
+          ],
+          [
+            372.96183520643086,
+            597.654236533859
+          ],
+          [
+            301.23833890028493,
+            582.1383731893877
+          ]
+        ]
+      },
+      "repeat_scale": {
+        "status": "validated_relative_candidate",
+        "reasons": [],
+        "matrix": [
+          [
+            0.06524697358500746,
+            -0.013990123863178073,
+            322.59382735155475
+          ],
+          [
+            0.014047351492464895,
+            0.0649739432407644,
+            482.94263556980496
+          ]
+        ],
+        "checkpoint_fraction": 1.0,
+        "checkpoint_rms": 0.35653583840625197,
+        "image_agreement": {
+          "whole_view_inside_reference": true,
+          "known_reference_fraction": 1.0,
+          "compared_pixels": 7451,
+          "gray_correlation": 0.9808099514486079,
+          "reference_corners": [
+            [
+              322.5681989266938,
+              482.90312492243834
+            ],
+            [
+              394.33986987020205,
+              498.3552115641497
+            ],
+            [
+              372.97695073112914,
+              597.570422892797
+            ],
+            [
+              301.2052797876209,
+              582.1183362510856
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "status": "validated_relative_candidate",
+      "match_count": 38,
+      "reasons": [],
+      "matrix": [
+        [
+          -0.060407028021603,
+          0.023206245879631184,
+          329.8363494223477
+        ],
+        [
+          -0.02333382127718364,
+          -0.05990931592406318,
+          385.21173381597634
+        ]
+      ],
+      "control_inliers": 19,
+      "control_fraction": 0.7916666666666666,
+      "checkpoint_count": 14,
+      "checkpoint_fraction": 0.9285714285714286,
+      "checkpoint_rms": 0.2915217330229182,
+      "checkpoint_p90": 0.4975120093165244,
+      "spread": [
+        0.7794704702903301,
+        0.8781703859567642
+      ],
+      "anisotropy": 1.007997540800222,
+      "sample_id": "selected_aerials/view_10",
+      "image_sha256": "33d5a6249ac48e11eef2a61764d77e80d4ec29407e2ccc969b84f1cdc49c5cf6",
+      "labels_sha256": "1ebf46a70fd742274e4e39f5b40686f2d9e9453cac4bd231d1841ec5eb2ce6be",
+      "image_shape": [
+        1536,
+        1077
+      ],
+      "label_counts": {
+        "1": 36182,
+        "9": 263868,
+        "255": 1354222
+      },
+      "image_agreement": {
+        "whole_view_inside_reference": true,
+        "known_reference_fraction": 1.0,
+        "compared_pixels": 6881,
+        "gray_correlation": 0.9438691162351586,
+        "reference_corners": [
+          [
+            329.8549498134187,
+            385.253355384577
+          ],
+          [
+            264.7965806341523,
+            360.1228298690502
+          ],
+          [
+            300.44137430526575,
+            268.10212060968917
+          ],
+          [
+            365.4997434845322,
+            293.2326461252159
+          ]
+        ]
+      },
+      "repeat_scale": {
+        "status": "validated_relative_candidate",
+        "reasons": [],
+        "matrix": [
+          [
+            -0.06042948950624462,
+            0.02320792009905391,
+            329.8691922592456
+          ],
+          [
+            -0.02334055139542838,
+            -0.059893775357101935,
+            385.2478452419169
+          ]
+        ],
+        "checkpoint_fraction": 0.9375,
+        "checkpoint_rms": 0.28167516279755,
+        "image_agreement": {
+          "whole_view_inside_reference": true,
+          "known_reference_fraction": 1.0,
+          "compared_pixels": 6882,
+          "gray_correlation": 0.9409167678088994,
+          "reference_corners": [
+            [
+              329.8878030439492,
+              385.28946240529314
+            ],
+            [
+              264.80524284572374,
+              360.1516885524168
+            ],
+            [
+              300.45260811787057,
+              268.1548496039082
+            ],
+            [
+              365.535168316096,
+              293.29262345678455
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "world_blocks_changed": 0,
+  "original_world_grid_declaration": {
+    "grid": "1 block = 1 metre; world x=easting-406912, z=343984-northing, y=ODN-99",
+    "input_world": "Alton_Towers_CBeebies_Adventure_Land_Reaudit.mcworld",
+    "output_world": "Alton_Towers_Tree_Profile_Update_v9.mcworld",
+    "scope": "Related older-world metadata corroborates the independently recovered current baseline grid; not new survey evidence."
+  }
+}

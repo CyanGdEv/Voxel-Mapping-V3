@@ -1,0 +1,2077 @@
+{
+  "runs": [
+    {
+      "schema": "voxel-multisource-benchmark-v1",
+      "split": {
+        "mode": "explicit_group",
+        "validation_groups": [
+          "east_validation"
+        ]
+      },
+      "seed": 41,
+      "rgb_mean_iou": 0.3302094981156411,
+      "multisource_mean_iou": 0.282075547053432,
+      "delta_mean_iou": -0.04813395106220908,
+      "per_class": {
+        "1": {
+          "name": "grass_unspecified",
+          "labelled_pixels": 0,
+          "rgb_iou": null,
+          "multisource_iou": null,
+          "delta_iou": null
+        },
+        "2": {
+          "name": "worn_grass_unlabelled",
+          "labelled_pixels": 0,
+          "rgb_iou": 0.0,
+          "multisource_iou": null,
+          "delta_iou": null
+        },
+        "3": {
+          "name": "dry_soil_unlabelled",
+          "labelled_pixels": 0,
+          "rgb_iou": null,
+          "multisource_iou": null,
+          "delta_iou": null
+        },
+        "4": {
+          "name": "mud_unlabelled",
+          "labelled_pixels": 0,
+          "rgb_iou": 0.0,
+          "multisource_iou": null,
+          "delta_iou": null
+        },
+        "5": {
+          "name": "gravel_unlabelled",
+          "labelled_pixels": 0,
+          "rgb_iou": null,
+          "multisource_iou": 0.0,
+          "delta_iou": null
+        },
+        "6": {
+          "name": "stone_paving",
+          "labelled_pixels": 690,
+          "rgb_iou": 0.33980582524271846,
+          "multisource_iou": 0.3546441495778046,
+          "delta_iou": 0.01483832433508614
+        },
+        "7": {
+          "name": "brick_paving",
+          "labelled_pixels": 535,
+          "rgb_iou": 0.6508226691042047,
+          "multisource_iou": 0.45454545454545453,
+          "delta_iou": -0.1962772145587502
+        },
+        "8": {
+          "name": "asphalt",
+          "labelled_pixels": 18,
+          "rgb_iou": 0.0,
+          "multisource_iou": 0.037037037037037035,
+          "delta_iou": 0.037037037037037035
+        },
+        "9": {
+          "name": "paving_unspecified",
+          "labelled_pixels": 0,
+          "rgb_iou": null,
+          "multisource_iou": null,
+          "delta_iou": null
+        }
+      },
+      "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment.",
+      "lidar_mean_iou": 0.2283968422050828
+    },
+    {
+      "schema": "voxel-multisource-benchmark-v1",
+      "split": {
+        "mode": "explicit_group",
+        "validation_groups": [
+          "east_validation"
+        ]
+      },
+      "seed": 42,
+      "rgb_mean_iou": 0.3314429982995762,
+      "multisource_mean_iou": 0.283234800308776,
+      "delta_mean_iou": -0.04820819799080017,
+      "per_class": {
+        "1": {
+          "name": "grass_unspecified",
+          "labelled_pixels": 0,
+          "rgb_iou": null,
+          "multisource_iou": null,
+          "delta_iou": null
+        },
+        "2": {
+          "name": "worn_grass_unlabelled",
+          "labelled_pixels": 0,
+          "rgb_iou": 0.0,
+          "multisource_iou": 0.0,
+          "delta_iou": 0.0
+        },
+        "3": {
+          "name": "dry_soil_unlabelled",
+          "labelled_pixels": 0,
+          "rgb_iou": null,
+          "multisource_iou": null,
+          "delta_iou": null
+        },
+        "4": {
+          "name": "mud_unlabelled",
+          "labelled_pixels": 0,
+          "rgb_iou": null,
+          "multisource_iou": 0.0,
+          "delta_iou": null
+        },
+        "5": {
+          "name": "gravel_unlabelled",
+          "labelled_pixels": 0,
+          "rgb_iou": null,
+          "multisource_iou": null,
+          "delta_iou": null
+        },
+        "6": {
+          "name": "stone_paving",
+          "labelled_pixels": 690,
+          "rgb_iou": 0.1905424200278164,
+          "multisource_iou": 0.39155920281359907,
+          "delta_iou": 0.20101678278578267
+        },
+        "7": {
+          "name": "brick_paving",
+          "labelled_pixels": 535,
+          "rgb_iou": 0.8037865748709122,
+          "multisource_iou": 0.4364060676779463,
+          "delta_iou": -0.3673805071929659
+        },
+        "8": {
+          "name": "asphalt",
+          "labelled_pixels": 18,
+          "rgb_iou": 0.0,
+          "multisource_iou": 0.021739130434782608,
+          "delta_iou": 0.021739130434782608
+        },
+        "9": {
+          "name": "paving_unspecified",
+          "labelled_pixels": 0,
+          "rgb_iou": 0.0,
+          "multisource_iou": null,
+          "delta_iou": null
+        }
+      },
+      "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment.",
+      "lidar_mean_iou": 0.29238806470524015
+    },
+    {
+      "schema": "voxel-multisource-benchmark-v1",
+      "split": {
+        "mode": "explicit_group",
+        "validation_groups": [
+          "east_validation"
+        ]
+      },
+      "seed": 43,
+      "rgb_mean_iou": 0.2230343324262,
+      "multisource_mean_iou": 0.3354765125265839,
+      "delta_mean_iou": 0.1124421801003839,
+      "per_class": {
+        "1": {
+          "name": "grass_unspecified",
+          "labelled_pixels": 0,
+          "rgb_iou": null,
+          "multisource_iou": null,
+          "delta_iou": null
+        },
+        "2": {
+          "name": "worn_grass_unlabelled",
+          "labelled_pixels": 0,
+          "rgb_iou": null,
+          "multisource_iou": 0.0,
+          "delta_iou": null
+        },
+        "3": {
+          "name": "dry_soil_unlabelled",
+          "labelled_pixels": 0,
+          "rgb_iou": null,
+          "multisource_iou": null,
+          "delta_iou": null
+        },
+        "4": {
+          "name": "mud_unlabelled",
+          "labelled_pixels": 0,
+          "rgb_iou": 0.0,
+          "multisource_iou": null,
+          "delta_iou": null
+        },
+        "5": {
+          "name": "gravel_unlabelled",
+          "labelled_pixels": 0,
+          "rgb_iou": null,
+          "multisource_iou": null,
+          "delta_iou": null
+        },
+        "6": {
+          "name": "stone_paving",
+          "labelled_pixels": 690,
+          "rgb_iou": 0.5726280436607892,
+          "multisource_iou": 0.5509977827050998,
+          "delta_iou": -0.02163026095568943
+        },
+        "7": {
+          "name": "brick_paving",
+          "labelled_pixels": 535,
+          "rgb_iou": 0.09647495361781076,
+          "multisource_iou": 0.4554317548746518,
+          "delta_iou": 0.35895680125684104
+        },
+        "8": {
+          "name": "asphalt",
+          "labelled_pixels": 18,
+          "rgb_iou": 0.0,
+          "multisource_iou": 0.0,
+          "delta_iou": 0.0
+        },
+        "9": {
+          "name": "paving_unspecified",
+          "labelled_pixels": 0,
+          "rgb_iou": null,
+          "multisource_iou": 0.0,
+          "delta_iou": null
+        }
+      },
+      "policy": "Validation-selected checkpoints; not independent test accuracy. One seed is not statistical evidence of generalization. No automatic deployment.",
+      "lidar_mean_iou": 0.28416610855976526
+    }
+  ],
+  "mean_rgb_iou": 0.29489560961380573,
+  "mean_lidar_iou": 0.26831700515669604,
+  "mean_multisource_iou": 0.3002622866295973,
+  "source_receipts": {
+    "mutiny-full-context.zip": "6d9af44299029f56d9dccb9dd0177afc111ddc4484cf2261844e0b4894d506b5",
+    "lidar-evidence.json": "0fabe88f628393b1ec7c366ec7d601728ffaf163f7af76ea43113220c21dfbf7",
+    "training-catalog-full.json": "9e4570e74218bcb9e68ecec140598f673c5b881db4f715e22030d84ff3d6df48"
+  },
+  "parameters": {
+    "epochs": 20,
+    "patch_size": 64,
+    "batch_size": 4,
+    "learning_rate": 0.001,
+    "seeds": [
+      41,
+      42,
+      43
+    ],
+    "context_dropout": 0.2,
+    "split": "west training, 32m buffer, east validation, same as preceding production pilot"
+  },
+  "limitations": [
+    "Single crop and validation-selected checkpoints; no park generalisation.",
+    "OS water polygons and OSM remain missing.",
+    "Source observations from 2022 may precede aerial/park changes; missing rasters remain unknown.",
+    "Raw ground intensity mean is not a material label.",
+    "No model promotion or world changes."
+  ],
+  "per_run_reports": [
+    {
+      "seed": 41,
+      "mode": "rgb",
+      "training": {
+        "epochs": 20,
+        "batch_size": 4,
+        "patch_size": 64,
+        "learning_rate": 0.001,
+        "best_validation_mean_iou": 0.3302094981156411,
+        "best_validation_pixel_accuracy": 0.5116653258246179
+      },
+      "per_class": {
+        "1": {
+          "name": "grass_unspecified",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "2": {
+          "name": "worn_grass_unlabelled",
+          "precision": 0.0,
+          "recall": null,
+          "iou": 0.0,
+          "labelled_pixels": 0
+        },
+        "3": {
+          "name": "dry_soil_unlabelled",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "4": {
+          "name": "mud_unlabelled",
+          "precision": 0.0,
+          "recall": null,
+          "iou": 0.0,
+          "labelled_pixels": 0
+        },
+        "5": {
+          "name": "gravel_unlabelled",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "6": {
+          "name": "stone_paving",
+          "precision": 0.6763285024154589,
+          "recall": 0.4057971014492754,
+          "iou": 0.33980582524271846,
+          "labelled_pixels": 690
+        },
+        "7": {
+          "name": "brick_paving",
+          "precision": 0.967391304347826,
+          "recall": 0.6654205607476635,
+          "iou": 0.6508226691042047,
+          "labelled_pixels": 535
+        },
+        "8": {
+          "name": "asphalt",
+          "precision": 0.0,
+          "recall": 0.0,
+          "iou": 0.0,
+          "labelled_pixels": 18
+        },
+        "9": {
+          "name": "paving_unspecified",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          342,
+          0,
+          51,
+          0,
+          280,
+          12,
+          5,
+          0
+        ],
+        [
+          0,
+          0,
+          41,
+          0,
+          2,
+          0,
+          134,
+          356,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          12,
+          0,
+          6,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "seed": 41,
+      "mode": "lidar",
+      "training": {
+        "epochs": 20,
+        "batch_size": 4,
+        "patch_size": 64,
+        "learning_rate": 0.001,
+        "best_validation_mean_iou": 0.2283968422050828,
+        "best_validation_pixel_accuracy": 0.38857602574416733
+      },
+      "per_class": {
+        "1": {
+          "name": "grass_unspecified",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "2": {
+          "name": "worn_grass_unlabelled",
+          "precision": 0.0,
+          "recall": null,
+          "iou": 0.0,
+          "labelled_pixels": 0
+        },
+        "3": {
+          "name": "dry_soil_unlabelled",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "4": {
+          "name": "mud_unlabelled",
+          "precision": 0.0,
+          "recall": null,
+          "iou": 0.0,
+          "labelled_pixels": 0
+        },
+        "5": {
+          "name": "gravel_unlabelled",
+          "precision": 0.0,
+          "recall": null,
+          "iou": 0.0,
+          "labelled_pixels": 0
+        },
+        "6": {
+          "name": "stone_paving",
+          "precision": 0.5084745762711864,
+          "recall": 0.043478260869565216,
+          "iou": 0.04172461752433936,
+          "labelled_pixels": 690
+        },
+        "7": {
+          "name": "brick_paving",
+          "precision": 0.7282958199356914,
+          "recall": 0.8467289719626169,
+          "iou": 0.6434659090909091,
+          "labelled_pixels": 535
+        },
+        "8": {
+          "name": "asphalt",
+          "precision": null,
+          "recall": 0.0,
+          "iou": 0.0,
+          "labelled_pixels": 18
+        },
+        "9": {
+          "name": "paving_unspecified",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          17,
+          0,
+          79,
+          0,
+          4,
+          396,
+          30,
+          164,
+          0,
+          0
+        ],
+        [
+          4,
+          0,
+          13,
+          0,
+          1,
+          35,
+          29,
+          453,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          12,
+          0,
+          5,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "seed": 41,
+      "mode": "multisource",
+      "training": {
+        "epochs": 20,
+        "batch_size": 4,
+        "patch_size": 64,
+        "learning_rate": 0.001,
+        "best_validation_mean_iou": 0.282075547053432,
+        "best_validation_pixel_accuracy": 0.5591311343523733
+      },
+      "per_class": {
+        "1": {
+          "name": "grass_unspecified",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "2": {
+          "name": "worn_grass_unlabelled",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "3": {
+          "name": "dry_soil_unlabelled",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "4": {
+          "name": "mud_unlabelled",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "5": {
+          "name": "gravel_unlabelled",
+          "precision": 0.0,
+          "recall": null,
+          "iou": 0.0,
+          "labelled_pixels": 0
+        },
+        "6": {
+          "name": "stone_paving",
+          "precision": 0.6789838337182448,
+          "recall": 0.4260869565217391,
+          "iou": 0.3546441495778046,
+          "labelled_pixels": 690
+        },
+        "7": {
+          "name": "brick_paving",
+          "precision": 0.5369127516778524,
+          "recall": 0.7476635514018691,
+          "iou": 0.45454545454545453,
+          "labelled_pixels": 535
+        },
+        "8": {
+          "name": "asphalt",
+          "precision": 0.1,
+          "recall": 0.05555555555555555,
+          "iou": 0.037037037037037035,
+          "labelled_pixels": 18
+        },
+        "9": {
+          "name": "paving_unspecified",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          2,
+          0,
+          0,
+          0,
+          0,
+          53,
+          294,
+          332,
+          9,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          135,
+          400,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          4,
+          13,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "seed": 42,
+      "mode": "rgb",
+      "training": {
+        "epochs": 20,
+        "batch_size": 4,
+        "patch_size": 64,
+        "learning_rate": 0.001,
+        "best_validation_mean_iou": 0.3314429982995762,
+        "best_validation_pixel_accuracy": 0.48592115848753015
+      },
+      "per_class": {
+        "1": {
+          "name": "grass_unspecified",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "2": {
+          "name": "worn_grass_unlabelled",
+          "precision": 0.0,
+          "recall": null,
+          "iou": 0.0,
+          "labelled_pixels": 0
+        },
+        "3": {
+          "name": "dry_soil_unlabelled",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "4": {
+          "name": "mud_unlabelled",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "5": {
+          "name": "gravel_unlabelled",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "6": {
+          "name": "stone_paving",
+          "precision": 0.8253012048192772,
+          "recall": 0.19855072463768117,
+          "iou": 0.1905424200278164,
+          "labelled_pixels": 690
+        },
+        "7": {
+          "name": "brick_paving",
+          "precision": 0.9103313840155945,
+          "recall": 0.8728971962616823,
+          "iou": 0.8037865748709122,
+          "labelled_pixels": 535
+        },
+        "8": {
+          "name": "asphalt",
+          "precision": null,
+          "recall": 0.0,
+          "iou": 0.0,
+          "labelled_pixels": 18
+        },
+        "9": {
+          "name": "paving_unspecified",
+          "precision": 0.0,
+          "recall": null,
+          "iou": 0.0,
+          "labelled_pixels": 0
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          481,
+          0,
+          0,
+          0,
+          137,
+          46,
+          0,
+          26
+        ],
+        [
+          0,
+          0,
+          41,
+          0,
+          0,
+          0,
+          27,
+          467,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          16,
+          0,
+          0,
+          0,
+          2,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "seed": 42,
+      "mode": "lidar",
+      "training": {
+        "epochs": 20,
+        "batch_size": 4,
+        "patch_size": 64,
+        "learning_rate": 0.001,
+        "best_validation_mean_iou": 0.29238806470524015,
+        "best_validation_pixel_accuracy": 0.5100563153660499
+      },
+      "per_class": {
+        "1": {
+          "name": "grass_unspecified",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "2": {
+          "name": "worn_grass_unlabelled",
+          "precision": 0.0,
+          "recall": null,
+          "iou": 0.0,
+          "labelled_pixels": 0
+        },
+        "3": {
+          "name": "dry_soil_unlabelled",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "4": {
+          "name": "mud_unlabelled",
+          "precision": 0.0,
+          "recall": null,
+          "iou": 0.0,
+          "labelled_pixels": 0
+        },
+        "5": {
+          "name": "gravel_unlabelled",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "6": {
+          "name": "stone_paving",
+          "precision": 0.7035928143712575,
+          "recall": 0.34057971014492755,
+          "iou": 0.29784537389100124,
+          "labelled_pixels": 690
+        },
+        "7": {
+          "name": "brick_paving",
+          "precision": 0.6867256637168142,
+          "recall": 0.7252336448598131,
+          "iou": 0.5449438202247191,
+          "labelled_pixels": 535
+        },
+        "8": {
+          "name": "asphalt",
+          "precision": 0.03514376996805112,
+          "recall": 0.6111111111111112,
+          "iou": 0.034375,
+          "labelled_pixels": 18
+        },
+        "9": {
+          "name": "paving_unspecified",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          5,
+          0,
+          235,
+          175,
+          274,
+          0
+        ],
+        [
+          0,
+          0,
+          18,
+          0,
+          7,
+          0,
+          94,
+          388,
+          28,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          5,
+          2,
+          11,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "seed": 42,
+      "mode": "multisource",
+      "training": {
+        "epochs": 20,
+        "batch_size": 4,
+        "patch_size": 64,
+        "learning_rate": 0.001,
+        "best_validation_mean_iou": 0.283234800308776,
+        "best_validation_pixel_accuracy": 0.5703942075623492
+      },
+      "per_class": {
+        "1": {
+          "name": "grass_unspecified",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "2": {
+          "name": "worn_grass_unlabelled",
+          "precision": 0.0,
+          "recall": null,
+          "iou": 0.0,
+          "labelled_pixels": 0
+        },
+        "3": {
+          "name": "dry_soil_unlabelled",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "4": {
+          "name": "mud_unlabelled",
+          "precision": 0.0,
+          "recall": null,
+          "iou": 0.0,
+          "labelled_pixels": 0
+        },
+        "5": {
+          "name": "gravel_unlabelled",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "6": {
+          "name": "stone_paving",
+          "precision": 0.6720321931589537,
+          "recall": 0.48405797101449277,
+          "iou": 0.39155920281359907,
+          "labelled_pixels": 690
+        },
+        "7": {
+          "name": "brick_paving",
+          "precision": 0.5373563218390804,
+          "recall": 0.6990654205607477,
+          "iou": 0.4364060676779463,
+          "labelled_pixels": 535
+        },
+        "8": {
+          "name": "asphalt",
+          "precision": 0.034482758620689655,
+          "recall": 0.05555555555555555,
+          "iou": 0.021739130434782608,
+          "labelled_pixels": 18
+        },
+        "9": {
+          "name": "paving_unspecified",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          13,
+          0,
+          334,
+          315,
+          28,
+          0
+        ],
+        [
+          0,
+          0,
+          1,
+          0,
+          7,
+          0,
+          153,
+          374,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          10,
+          7,
+          1,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "seed": 43,
+      "mode": "rgb",
+      "training": {
+        "epochs": 20,
+        "batch_size": 4,
+        "patch_size": 64,
+        "learning_rate": 0.001,
+        "best_validation_mean_iou": 0.2230343324262,
+        "best_validation_pixel_accuracy": 0.5905068382944489
+      },
+      "per_class": {
+        "1": {
+          "name": "grass_unspecified",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "2": {
+          "name": "worn_grass_unlabelled",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "3": {
+          "name": "dry_soil_unlabelled",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "4": {
+          "name": "mud_unlabelled",
+          "precision": 0.0,
+          "recall": null,
+          "iou": 0.0,
+          "labelled_pixels": 0
+        },
+        "5": {
+          "name": "gravel_unlabelled",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "6": {
+          "name": "stone_paving",
+          "precision": 0.5765004226542688,
+          "recall": 0.9884057971014493,
+          "iou": 0.5726280436607892,
+          "labelled_pixels": 690
+        },
+        "7": {
+          "name": "brick_paving",
+          "precision": 0.9285714285714286,
+          "recall": 0.09719626168224299,
+          "iou": 0.09647495361781076,
+          "labelled_pixels": 535
+        },
+        "8": {
+          "name": "asphalt",
+          "precision": 0.0,
+          "recall": 0.0,
+          "iou": 0.0,
+          "labelled_pixels": 18
+        },
+        "9": {
+          "name": "paving_unspecified",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          682,
+          4,
+          3,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          483,
+          52,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          18,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "seed": 43,
+      "mode": "lidar",
+      "training": {
+        "epochs": 20,
+        "batch_size": 4,
+        "patch_size": 64,
+        "learning_rate": 0.001,
+        "best_validation_mean_iou": 0.28416610855976526,
+        "best_validation_pixel_accuracy": 0.5591311343523733
+      },
+      "per_class": {
+        "1": {
+          "name": "grass_unspecified",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "2": {
+          "name": "worn_grass_unlabelled",
+          "precision": 0.0,
+          "recall": null,
+          "iou": 0.0,
+          "labelled_pixels": 0
+        },
+        "3": {
+          "name": "dry_soil_unlabelled",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "4": {
+          "name": "mud_unlabelled",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "5": {
+          "name": "gravel_unlabelled",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "6": {
+          "name": "stone_paving",
+          "precision": 0.667447306791569,
+          "recall": 0.41304347826086957,
+          "iou": 0.3425480769230769,
+          "labelled_pixels": 690
+        },
+        "7": {
+          "name": "brick_paving",
+          "precision": 0.6038291605301914,
+          "recall": 0.7663551401869159,
+          "iou": 0.5099502487562189,
+          "labelled_pixels": 535
+        },
+        "8": {
+          "name": "asphalt",
+          "precision": 0.0,
+          "recall": 0.0,
+          "iou": 0.0,
+          "labelled_pixels": 18
+        },
+        "9": {
+          "name": "paving_unspecified",
+          "precision": 0.0,
+          "recall": null,
+          "iou": 0.0,
+          "labelled_pixels": 0
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          134,
+          0,
+          0,
+          0,
+          285,
+          268,
+          2,
+          1
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          125,
+          410,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          17,
+          1,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "seed": 43,
+      "mode": "multisource",
+      "training": {
+        "epochs": 20,
+        "batch_size": 4,
+        "patch_size": 64,
+        "learning_rate": 0.001,
+        "best_validation_mean_iou": 0.3354765125265839,
+        "best_validation_pixel_accuracy": 0.6629123089300081
+      },
+      "per_class": {
+        "1": {
+          "name": "grass_unspecified",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "2": {
+          "name": "worn_grass_unlabelled",
+          "precision": 0.0,
+          "recall": null,
+          "iou": 0.0,
+          "labelled_pixels": 0
+        },
+        "3": {
+          "name": "dry_soil_unlabelled",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "4": {
+          "name": "mud_unlabelled",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "5": {
+          "name": "gravel_unlabelled",
+          "precision": null,
+          "recall": null,
+          "iou": null,
+          "labelled_pixels": 0
+        },
+        "6": {
+          "name": "stone_paving",
+          "precision": 0.7009873060648801,
+          "recall": 0.7202898550724638,
+          "iou": 0.5509977827050998,
+          "labelled_pixels": 690
+        },
+        "7": {
+          "name": "brick_paving",
+          "precision": 0.6411764705882353,
+          "recall": 0.611214953271028,
+          "iou": 0.4554317548746518,
+          "labelled_pixels": 535
+        },
+        "8": {
+          "name": "asphalt",
+          "precision": 0.0,
+          "recall": 0.0,
+          "iou": 0.0,
+          "labelled_pixels": 18
+        },
+        "9": {
+          "name": "paving_unspecified",
+          "precision": 0.0,
+          "recall": null,
+          "iou": 0.0,
+          "labelled_pixels": 0
+        }
+      },
+      "confusion_matrix": [
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          11,
+          0,
+          0,
+          0,
+          497,
+          179,
+          2,
+          1
+        ],
+        [
+          0,
+          0,
+          8,
+          0,
+          0,
+          0,
+          200,
+          327,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2,
+          0,
+          0,
+          0,
+          12,
+          4,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      ]
+    }
+  ],
+  "coverage": {
+    "crop_shape": [
+      211,
+      267
+    ],
+    "unique_labelled_pixels": 3202,
+    "height_known_pixels": 43753,
+    "intensity_known_pixels": 33982,
+    "height_known_labelled_pixels": 2489,
+    "intensity_known_labelled_pixels": 2947,
+    "height_validity_policy": "Nonfinite or negative DSM-DTM remains unknown; no interpolation or negative-height clipping."
+  }
+}
