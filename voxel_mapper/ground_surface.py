@@ -148,6 +148,9 @@ def assess_lawn_column(cell, *, surface_offset_m, max_surface_height_m=.05,
     if cell.get('label') not in ((1,9) if allow_paving_roof_only else (1,)) or not cell.get('safe_interior'):
         return reject('outside_reviewed_surface_interior' if allow_paving_roof_only else 'outside_reviewed_lawn_interior')
     if cell.get('block_entities') or not cell.get('supported_storage',False):
+        top=cell.get('native_observed_top_block','') or ''
+        if cell.get('native_column_status')=='height_metadata_differs_from_observed_top' and (top.endswith('_leaves') or top in ('minecraft:leaves','minecraft:leaves2')):
+            return reject('retained_overhanging_vegetation')
         return reject('protected_or_unsupported_native_column')
     dtm,dsm=cell.get('dtm'),cell.get('dsm')
     same_cell=(point_evidence is not None and (point_evidence.get('x'),point_evidence.get('z'))==(cell['x'],cell['z']))

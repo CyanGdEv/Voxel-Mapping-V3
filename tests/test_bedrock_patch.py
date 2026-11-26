@@ -109,3 +109,5 @@ class NativePatchTests(unittest.TestCase):
                 result=inspect_columns(archive,[{'x':6,'z':1,'dtm':192.,'dsm':192.02}],98)[0]
                 self.assertEqual(result['supported_storage'],name=='correct')
                 self.assertEqual(result['native_heightmap_top_y'],value-1)
+                self.assertEqual(result['native_observed_top_y'],95)
+                self.assertEqual(result['native_observed_top_block'],'minecraft:deepslate_tiles')

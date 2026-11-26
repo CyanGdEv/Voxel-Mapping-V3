@@ -49,6 +49,13 @@ class SurfaceRepairTests(unittest.TestCase):
             r=assess_lawn_column(c,surface_offset_m=98)
             self.assertEqual(r['status'],'withheld',c);self.assertEqual(r['edits'],[])
 
+    def test_existing_canopy_overhang_is_preserved_and_identified(self):
+        c=cell();c.update(supported_storage=False,native_column_status='height_metadata_differs_from_observed_top',
+                         native_observed_top_y=112,native_observed_top_block='minecraft:oak_leaves')
+        result=assess_lawn_column(c,surface_offset_m=98)
+        self.assertEqual(result['reason'],'retained_overhanging_vegetation')
+        self.assertEqual(result['edits'],[])
+
     def test_review_is_bound_to_proposals_and_only_qualified_coordinates(self):
         p=assess_lawn_column(cell(),surface_offset_m=98)
         with tempfile.TemporaryDirectory() as td:
@@ -94,3 +101,35 @@ class GridPreparationTests(unittest.TestCase):
                     self.assertEqual(result['cells'][0]['x'],0);self.assertFalse(result['accepted_for_block_edits'])
                 else:
                     with self.assertRaises(ValueError):prepare(args)
+
+
+class AreaMergeTests(unittest.TestCase):
+    def request(self,name='one',label=1,safe=False):
+        return {'surface_offset_m':98,'registration_sha256':'r','dataset_sha256':'d',
+                'dtm_sha256':'t','dsm_sha256':'s','paving_roof_only':True,'source_sample':name,
+                'source_split_group':'area','accepted_for_block_edits':False,
+                'cells':[{'x':0,'z':0,'easting':1000.5,'northing':1999.5,'dtm':192.,'dsm':192.01,
+                          'label':label,'safe_interior':safe}]}
+
+    def test_overlapping_samples_do_not_duplicate_evidence_or_revive_conflicts(self):
+        from tools.plan_surface_repairs import merge_area_requests
+        result=merge_area_requests([self.request(),self.request('two',safe=True)])
+        self.assertEqual(result['unique_native_cells'],1)
+        self.assertEqual(result['overlapping_observations_deduplicated'],1)
+        self.assertTrue(result['cells'][0]['safe_interior'])
+        self.assertEqual(result['source_split_groups'],['area'])
+        self.assertNotIn('source_split_group',result)
+        self.assertFalse(result['accepted_for_block_edits'])
+        accepted=self.request();accepted['accepted_for_block_edits']=True
+        self.assertFalse(merge_area_requests([accepted])['accepted_for_block_edits'])
+        conflict=merge_area_requests([self.request(),self.request('two',label=9),self.request('three',safe=True)])
+        self.assertEqual(conflict['cells'][0]['label'],255)
+        self.assertFalse(conflict['cells'][0]['safe_interior'])
+        self.assertEqual(conflict['conflicting_cells_ignored'],1)
+
+    def test_mixed_sources_and_shifted_overlaps_are_rejected(self):
+        from tools.plan_surface_repairs import merge_area_requests
+        other=self.request('two');other['dtm_sha256']='different'
+        with self.assertRaises(ValueError):merge_area_requests([self.request(),other])
+        other=self.request('two');other['cells'][0]['northing']+=.25
+        with self.assertRaises(ValueError):merge_area_requests([self.request(),other])

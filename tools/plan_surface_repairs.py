@@ -66,6 +66,57 @@ def prepare(args):
       'label_counts':{str(k):int(np.count_nonzero(a==k)) for k in np.unique(a)},'cells':rows}
 
 
+def merge_area_requests(requests):
+    """One proposal location per native cell; disagreements stay unknown."""
+    if not requests:raise ValueError('No registered samples selected')
+    base=dict(requests[0]);merged={};sources=[]
+    identity=('surface_offset_m','registration_sha256','dataset_sha256','dtm_sha256','dsm_sha256','paving_roof_only')
+    observations=0
+    for request in requests:
+        if any(request[k]!=base[k] for k in identity):raise ValueError('Area evidence identity mismatch')
+        sources.append(request['source_sample'])
+        for c in request['cells']:
+            observations+=1;key=(c['x'],c['z']);group=request.get('source_split_group')
+            if key not in merged:
+                merged[key]={**c,'source_sample_count':1,'source_groups':[group] if group else []}
+                continue
+            old=merged[key]
+            if any(old[k]!=c[k] for k in ('easting','northing','dtm','dsm')):
+                raise ValueError('Overlapping cells disagree on alignment or heights')
+            old['source_sample_count']+=1
+            if group and group not in old['source_groups']:old['source_groups'].append(group)
+            if old['label']!=c['label']:
+                old['label']=255;old['safe_interior']=False
+            elif old['label']!=255:
+                old['safe_interior']=old['safe_interior'] or c['safe_interior']
+    cells=[merged[k] for k in sorted(merged)]
+    base.pop('source_split_group',None)
+    for c in cells:c['source_groups'].sort()
+    base.update(source_sample='merged_registered_areas',source_samples=sorted(sources),cells=cells,
+       accepted_for_block_edits=False,
+       source_split_groups=sorted({r['source_split_group'] for r in requests if r.get('source_split_group')}),
+       source_label_observations=observations,unique_native_cells=len(cells),
+       overlapping_observations_deduplicated=observations-len(cells),
+       conflicting_cells_ignored=sum(c['label']==255 for c in cells),
+       label_counts={str(k):sum(c['label']==k for c in cells) for k in sorted({c['label'] for c in cells})})
+    return base
+
+
+def prepare_area(args):
+    """Reuse single-chip validation/erosion and deduplicate geographic overlap."""
+    with zipfile.ZipFile(args.dataset) as z:manifest=json.loads(z.read('manifest.json'))
+    groups=set(args.group or [])
+    selected=[r for r in manifest['samples'] if not groups or r.get('split_group') in groups]
+    if not selected or len(selected)>256:raise ValueError('Select 1..256 registered samples')
+    if groups-{r.get('split_group') for r in selected}:raise ValueError('Requested group absent')
+    requests=[]
+    for record in selected:
+        options=argparse.Namespace(**vars(args));options.sample=record['sample_id']
+        request=prepare(options);request['source_split_group']=record.get('split_group')
+        requests.append(request)
+    return merge_area_requests(requests)
+
+
 def inspect(args):
     from voxel_mapper.bedrock_patch import inspect_columns
     request=json.loads(args.requests.read_text())
@@ -116,12 +167,13 @@ def accept(args):
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__);sub=parser.add_subparsers(dest='mode',required=True)
-    for mode,names in [('prepare',['dataset','registration','dtm','dsm']),('inspect',['requests','baseline']),
+    for mode,names in [('prepare',['dataset','registration','dtm','dsm']),('prepare_area',['dataset','registration','dtm','dsm']),('inspect',['requests','baseline']),
                        ('propose',['observations']),('accept',['proposals','review'])]:
         p=sub.add_parser(mode)
         for name in names:p.add_argument('--'+name,type=Path,required=True)
-        if mode=='prepare':
-            p.add_argument('--sample',required=True)
+        if mode in ('prepare','prepare_area'):
+            if mode=='prepare':p.add_argument('--sample',required=True)
+            else:p.add_argument('--group',action='append',help='Repeat to select source groups; default all')
             p.add_argument('--include-paving',action='store_true',help='Also propose roof-only corrections over reviewed generic paving')
         if mode=='propose':p.add_argument('--cell-returns',type=Path,help='Hash-bound raw classified-cell evidence; original raster values remain unchanged')
         p.add_argument('--output',type=Path,required=True)

@@ -162,15 +162,21 @@ def inspect_columns(archive, cells, surface_offset_m):
             if len(raw)<512:
                 r['supported_storage']=False;result.append(r);continue
             top=struct.unpack_from('<H',raw,2*((z%16)*16+x%16))[0]-1
-            actual_top=None
+            actual_top=None;actual_top_block=None
             for key in chunk_keys.get(prefix,[]):
                 data=decoded(key)
                 if data is None:r['supported_storage']=False;break
                 array,palette=data;cy=struct.unpack('b',key[9:10])[0]
                 for ly in range(16):
                     if palette[int(array[x%16,ly,z%16])].compound['name'].py_str!='minecraft:air':
-                        actual_top=max(actual_top if actual_top is not None else -65,cy*16+ly)
+                        candidate_y=cy*16+ly
+                        if actual_top is None or candidate_y>actual_top:
+                            actual_top=candidate_y;actual_top_block=palette[int(array[x%16,ly,z%16])].compound['name'].py_str
             r['native_heightmap_top_y']=top
+            r['native_top_scan_complete']=r['supported_storage']
+            r['native_observed_top_y']=actual_top
+            r['native_observed_top_block']=actual_top_block
+            r['native_column_status']='unsupported_storage' if not r['supported_storage'] else 'height_metadata_differs_from_observed_top' if actual_top!=top else 'supported'
             if actual_top!=top:r['supported_storage']=False
             r['native_top_y']=top;r['native_profile']={}
             if r.get('dtm') is None:

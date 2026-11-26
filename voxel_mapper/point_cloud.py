@@ -271,6 +271,8 @@ def summarize_cell_returns(cloud, cells, grid_transform, *, expected_sha256,
     z0,z1=min(z for x,z in wanted),max(z for x,z in wanted)+1
     corners=[grid*p for p in [(x0,z0),(x1,z0),(x0,z1),(x1,z1)]]
     lo=np.min(corners,axis=0);hi=np.max(corners,axis=0)
+    width=x1-x0
+    wanted_linear=np.asarray([(z-z0)*width+x-x0 for x,z in sorted(wanted)],dtype=np.int64)
     groups={key:[] for key in wanted};discarded=collections.Counter();scanned=raw_retained=excluded_flags=0
     with laspy.open(cloud) as reader:
         if not is_bng(reader.header.parse_crs()):raise ValueError('Verified native BNG point-cloud CRS required')
@@ -283,17 +285,21 @@ def summarize_cell_returns(cloud, cells, grid_transform, *, expected_sha256,
             keep=(e>=lo[0])&(e<=hi[0])&(n>=lo[1])&(n<=hi[1])&np.isfinite(h)
             withheld=np.asarray(chunk.withheld,dtype=bool);synthetic=np.asarray(chunk.synthetic,dtype=bool)
             classification=np.asarray(chunk.classification);returns=np.asarray(chunk.return_number);totals=np.asarray(chunk.number_of_returns)
-            for i in np.flatnonzero(keep):
-                fx,fz=inverse*(float(e[i]),float(n[i]));fx,fz=round(fx,8),round(fz,8)
-                key=(int(np.floor(fx)),int(np.floor(fz)))
-                if key not in wanted:continue
+            indices=np.flatnonzero(keep)
+            fx=np.round(inverse.a*e[indices]+inverse.b*n[indices]+inverse.c,8)
+            fz=np.round(inverse.d*e[indices]+inverse.e*n[indices]+inverse.f,8)
+            ix,iz=np.floor(fx).astype(np.int64),np.floor(fz).astype(np.int64)
+            inside=(ix>=x0)&(ix<x1)&(iz>=z0)&(iz<z1)
+            selected=inside & np.isin((iz-z0)*width+ix-x0,wanted_linear)
+            for j in np.flatnonzero(selected):
+                i=int(indices[j]);key=(int(ix[j]),int(iz[j]));px,pz=float(fx[j]),float(fz[j])
                 raw_retained+=1
                 if raw_retained>max_retained_points:raise ValueError('Retained point budget exceeded')
                 if withheld[i] or synthetic[i]:excluded_flags+=1;discarded[key]+=1;continue
                 cls=int(classification[i])
                 if cls in (7,18) or not 1<=int(returns[i])<=int(totals[i])<=15:excluded_flags+=1;discarded[key]+=1;continue
                 groups[key].append((int(chunk.X[i]),int(chunk.Y[i]),int(chunk.Z[i]),cls,
-                   int(returns[i]),int(totals[i]),float(h[i]),fx-key[0],fz-key[1]))
+                   int(returns[i]),int(totals[i]),float(h[i]),px-key[0],pz-key[1]))
         if scanned!=reader.header.point_count:raise ValueError('Incomplete point scan')
         scales=reader.header.scales.tolist()
     rows=[]

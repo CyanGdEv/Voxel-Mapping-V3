@@ -1,0 +1,186 @@
+{
+  "schema": "registered-area-evidence-cycle-v1",
+  "source_dataset_sha256": "4ea28cc91f83350fff7108f6577fcdc7139ee5691e42b6cac503b2ea38fd66cb",
+  "baseline_world_sha256": "4825dadc4a0e0d4e3874affff1583dba0d631280a79b3e7af1bd9ca4a73f1ae1",
+  "samples": 47,
+  "source_groups": [
+    "geographic_1bcc4fca1552",
+    "geographic_1f2030b78bd1",
+    "geographic_299b80e09090",
+    "geographic_63b0ff5ef1ff"
+  ],
+  "source_label_observations": 8615,
+  "unique_native_cells": 2333,
+  "duplicate_observations_removed": 6282,
+  "ignored_label_conflicts": 0,
+  "labels": {
+    "1": 474,
+    "9": 1859
+  },
+  "safe_interior_cells": 786,
+  "raw_points_scanned": 10537336,
+  "raw_returns_in_requested_cells": 6251,
+  "distributed_ground_cells": 77,
+  "areas": {
+    "geographic_63b0ff5ef1ff": {
+      "unique_cells": 827,
+      "labels": {
+        "9": 757,
+        "1": 70
+      },
+      "outcomes": {
+        "outside_reviewed_surface_interior": 615,
+        "retained_overhanging_vegetation": 32,
+        "observed_elevated_returns": 40,
+        "vertical_quantization_residual": 91,
+        "negative_surface_height_unknown": 41,
+        "measured_above_ground_geometry": 2,
+        "already_matches": 6
+      },
+      "distributed_ground_cells": 34
+    },
+    "geographic_1bcc4fca1552": {
+      "unique_cells": 1170,
+      "labels": {
+        "9": 879,
+        "1": 291
+      },
+      "outcomes": {
+        "outside_reviewed_surface_interior": 691,
+        "negative_surface_height_unknown": 111,
+        "observed_elevated_returns": 26,
+        "vertical_quantization_residual": 287,
+        "retained_overhanging_vegetation": 48,
+        "already_matches": 1,
+        "measured_above_ground_geometry": 5,
+        "unverified_ground_material": 1
+      },
+      "distributed_ground_cells": 15
+    },
+    "geographic_1f2030b78bd1": {
+      "unique_cells": 100,
+      "labels": {
+        "9": 100
+      },
+      "outcomes": {
+        "outside_reviewed_surface_interior": 73,
+        "vertical_quantization_residual": 17,
+        "retained_overhanging_vegetation": 2,
+        "negative_surface_height_unknown": 8
+      },
+      "distributed_ground_cells": 12
+    },
+    "geographic_299b80e09090": {
+      "unique_cells": 236,
+      "labels": {
+        "9": 123,
+        "1": 113
+      },
+      "outcomes": {
+        "outside_reviewed_surface_interior": 168,
+        "already_matches": 29,
+        "negative_surface_height_unknown": 14,
+        "vertical_quantization_residual": 8,
+        "observed_elevated_returns": 9,
+        "measured_above_ground_geometry": 3,
+        "unverified_ground_material": 5
+      },
+      "distributed_ground_cells": 16
+    }
+  },
+  "outcomes": {
+    "outside_reviewed_surface_interior": 1547,
+    "retained_overhanging_vegetation": 82,
+    "observed_elevated_returns": 75,
+    "vertical_quantization_residual": 403,
+    "negative_surface_height_unknown": 174,
+    "measured_above_ground_geometry": 10,
+    "already_matches": 36,
+    "unverified_ground_material": 6
+  },
+  "registration_retries": {
+    "768": {
+      "dataset_sha256": "e069963b0e849797d8dc77b2c0db4d7ee58f53f313f34579ae829d47b226d03e",
+      "reference_archive_sha256": "787851d42c29665049220f6876de73802b8b8afe26f7cc17db9aabe2e09f547e",
+      "views_retried": 19,
+      "validated_candidates": 0,
+      "reasons": {
+        "insufficient_distinct_matches": 12,
+        "withheld_checkpoint_error": 3,
+        "limited_control_extent": 5,
+        "weak_control_consensus": 2,
+        "insufficient_spatial_holdouts": 1
+      },
+      "audit_sha256": "003527f8d4037ca04eb722b941427d4b59df6e69a20e360c9b26f5718ba78ee2"
+    },
+    "1536": {
+      "dataset_sha256": "e069963b0e849797d8dc77b2c0db4d7ee58f53f313f34579ae829d47b226d03e",
+      "reference_archive_sha256": "787851d42c29665049220f6876de73802b8b8afe26f7cc17db9aabe2e09f547e",
+      "views_retried": 19,
+      "validated_candidates": 0,
+      "reasons": {
+        "insufficient_distinct_matches": 13,
+        "withheld_checkpoint_error": 2,
+        "limited_control_extent": 4,
+        "weak_control_consensus": 3
+      },
+      "audit_sha256": "a3a1037b6575c510eba7ccf40cf8294e08e81d13e68243c7a3f02360ce49daaa"
+    }
+  },
+  "prior_courtyard_cell_summaries_reproduced": 236,
+  "world_blocks_changed": 0,
+  "new_georeferences_written": 0,
+  "new_world_exported": false,
+  "models_promoted": 0,
+  "limitations": [
+    "Four existing registered source groups; not whole-park accuracy.",
+    "Single imagery and EA survey lineages; overlapping chips are not independent evidence.",
+    "Heightmap/nonair-top differences here are retained oak-leaf canopy, not a diagnosed corrupt heightmap.",
+    "No Minecraft client test."
+  ],
+  "os_download_retry": {
+    "listing_url": "https://api.os.uk/downloads/v1/products/OpenMapLocal/downloads",
+    "listing_http_status": 200,
+    "listing_records": 169,
+    "file": "opmplc_essh_sk.zip",
+    "advertised_bytes": 137251364,
+    "redirect_host": "omseprd1stdstordownload.blob.core.windows.net",
+    "outcome": "proxy_connect_403",
+    "archive_downloaded": false,
+    "features_acquired": 0,
+    "environment_network_policy": "unrestricted",
+    "environment_policy_state": "enforced",
+    "exact_reject_rule": "unknown"
+  },
+  "vertical_residual_diagnostic": {
+    "thresholds_m": [
+      0.1,
+      0.25,
+      0.5
+    ],
+    "new_candidates": [
+      0,
+      0,
+      0
+    ],
+    "already_matches": [
+      36,
+      120,
+      406
+    ],
+    "production_threshold_m": 0.1,
+    "production_threshold_changed": false
+  },
+  "validation": {
+    "full_suite_tests": 66,
+    "full_suite_optional_native_skips": 3,
+    "isolated_native_tests": 5,
+    "minecraft_client_tested": false
+  },
+  "artifact_sha256": {
+    "final-requests.json": "de8b60831b28be7bfb56851850bd3aa921b356999598e07114be9a6993ee8bcb",
+    "audited-observations.json": "6cd7bb662d514d9ed146e0e536022c841f9e99d1da5f896b456c1cde9060bc60",
+    "cell-returns.json": "199fe96b3d90c40e1c30e603d09cf3f11074d819fcd84ba6ad10ff7f399aa189",
+    "final-proposals.json": "ec83077bd1b047ab74a2ecb4cc043cfff2d89634322ac64df28e718fcfa55580"
+  }
+}
